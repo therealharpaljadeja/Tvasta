@@ -1,0 +1,79 @@
+html, body, *{
+	box-sizing: border-box;
+}
+
+.container{
+	display: flex;
+	flex-direction: column;
+	margin: 1rem;
+	background-color: #94bedd;
+	padding: 1rem;	
+	justify-content: space-between;
+	align-items: center;
+	color: #050A35;
+}
+.container h2{
+	text-align: center;
+}
+
+.container .fa-map-marker{
+	position: absolute;
+	font-size: 20px;
+	background-color: white;
+	height: 100%;
+	padding: 5px;
+	left: 10%;
+	margin-left: 50px;
+}
+.container form{
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 500px;
+}
+.container form .disabled-field{
+	position: relative;
+	width: 300px;
+	height: 35px;
+	background-color: red;
+	margin-bottom: 1rem;
+}
+.container form .disabled-field:before{
+	content: '\f041';
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 20%;
+	left: 3%;
+	font-family: FontAwesome;
+}
+.container form .disabled-field:after{
+	content: '\f124';
+	width: 10%;
+	height: 10%;
+	position: absolute;
+	top: 20%;
+	right: -1%;
+	font-family: FontAwesome;
+}
+.container input{
+	height: 100%;
+	width: 300px;
+	padding-left: 1.5rem;
+	margin-bottom: 1rem;
+}
+.container form .search{
+	padding-left: 0rem;
+}
+.container form .submit{
+	padding-left: 0;
+	border: none;
+	background-color: #050A35;
+	width: 40%;
+	align-self: center;
+	height: 40px;
+	text-align: center;
+	color: white;
+}

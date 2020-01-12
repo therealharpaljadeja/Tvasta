@@ -1,0 +1,38 @@
+body{
+	background-color: #021433;
+}
+.container{
+	margin: 1.5rem;
+	text-align: center;
+	color: white;
+}
+.card{
+	max-width: 400px;
+	border-bottom: 0.4rem solid #0099ff;
+	background-color: white;
+	margin-bottom: 1rem;
+}
+.card img{
+	width: 100%;
+}
+.card .name{
+	position: relative;
+	color: #0099ff;
+	
+}
+.card > p{
+	line-height: 0.9rem;
+	margin-left: 3.0rem;
+	text-align: left;
+	color: #291433;
+}
+.name:before{
+	content: '';
+	position: absolute;
+	top: calc(100% - 3px);
+	left: -49.5px;
+	width: 35px;
+	height: 3px;
+	background-color: #0099ff;
+
+}

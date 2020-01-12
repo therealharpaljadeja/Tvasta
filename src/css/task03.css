@@ -1,7 +1,15 @@
+html{
+	padding: 1rem;
+}
 .fa{
 	float: right;
 	color: #525659;
 }
 nav{
 	background-color: white;
+	height: 20px;
+}
+nav img{
+	height: 20px;
+	float: left;
 }

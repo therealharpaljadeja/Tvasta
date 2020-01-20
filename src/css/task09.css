@@ -1,0 +1,37 @@
+html{
+	box-sizing: border-box;
+}
+body{
+	margin: 1rem;
+	text-align: center;
+}
+.container h2{
+	color: #021433;
+
+}
+.container p{
+	color: #021433;
+}
+.grid{
+	display: grid;
+	grid-template-columns: 45% 55%;
+}
+.list{
+	display: grid;
+	grid-template-rows: 14.28%;
+	padding: 4rem 2rem;
+	grid-row-gap: 1rem;
+}
+.list-item{
+	display: grid;
+	grid-template-columns: 20% 80%;
+	border: 1px solid #cccccc;
+	border-radius: 10px;
+}
+.list-item h2{
+	color: #cccccc;
+	font-family: Arial;
+}
+.option{
+	text-align: left;
+}

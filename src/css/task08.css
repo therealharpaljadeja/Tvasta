@@ -1,0 +1,92 @@
+html{
+	box-sizing: border-box;
+}
+body{
+	margin: 1rem 2rem;
+}
+nav{
+	height: 40px;
+}
+.logo{
+	height: 40px;
+	float: left;
+}
+.fa{
+	float: right;
+	color: #525659;
+	height: 40px;
+}
+.container{
+	display: flex;
+	flex-direction: column;
+	
+	background-color: #94bedd;
+	padding: 1rem;	
+	justify-content: space-between;
+	align-items: center;
+	color: #050A35;
+}
+.container h2{
+	text-align: center;
+}
+
+.container form{
+	display: flex;
+	position: relative;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	width: 500px;
+}
+.container input{
+	box-sizing: border-box;
+	height: 100%;
+	width: 300px;
+	margin-bottom: 1rem;
+}
+.container form .search{
+	padding-left: 0rem;
+}
+.container form .submit{
+	padding-left: 0;
+	border: none;
+	background-color: #050A35;
+	width: 40%;
+	align-self: center;
+	height: 40px;
+	text-align: center;
+	color: white;
+}
+.Ahmedabad{
+	box-sizing: border-box;
+	padding-left: 2rem;
+}
+.btn-1{
+	left:0;
+}
+.btn-2{
+	right: 0;
+}
+.fa{
+	font-size: 15px !important;
+	color: #021433;
+}
+.location-btn{
+	position: absolute;
+	width: 12%;
+	height: 100%;
+	border: 1px solid #dddddd;
+	text-align: center;
+}
+.disabled-field{
+	height: 34px;
+	position: relative;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: flex-start;
+}
+i{
+	margin-right: 4px;
+	margin-top: 5.5px;
+}

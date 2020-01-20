@@ -1,0 +1,50 @@
+body{
+	background-color: #021433;
+}
+.container{
+	display: grid;
+	grid-template-rows: 100%;
+	text-align: center;
+	color: white;
+	margin: 1.5rem;
+}
+.cards{
+	display: grid;
+	grid-template-columns: 33.33% 33.33% 33.33%;
+	grid-row-gap: 1rem;
+}
+.card{
+	max-width: 400px;
+	border-bottom: 0.4rem solid #0099ff;
+	background-color: white;
+}
+.card img{
+	width: 100%;
+	height: 70%;
+}
+.card .name{
+	position: relative;
+	color: #0099ff;
+	
+}
+.card > p{
+	line-height: 0.9rem;
+	margin-left: 3.0rem;
+	text-align: left;
+	color: #291433;
+}
+.name:before{
+	content: '';
+	position: absolute;
+	top: calc(100% - 3px);
+	left: -49.5px;
+	width: 35px;
+	height: 3px;
+	background-color: #0099ff;
+
+}
+@media(max-width: 1260px){
+	.cards{
+		grid-template-columns: 50% 50%;
+	}
+}

@@ -62,6 +62,9 @@ nav .nav-buttons .quote {
   background-color: #2a2d3e;
   color: white;
 }
+nav .fa-bars {
+  display: none;
+}
 
 .section-1 {
   background-image: url("../../assets/img1.jpg");
@@ -532,17 +535,301 @@ nav .nav-buttons .quote {
   background-color: #0173c7;
 }
 
-@media only screen and (max-width: 100rem) {
+@media only screen and (max-width: 76.8rem) {
   nav {
-    padding-left: 0rem;
-    margin-left: 5rem;
+    margin-left: 1.5rem;
+  }
+  nav .menu ul {
+    display: none;
+  }
+  nav .nav-buttons {
+    display: none;
+  }
+  nav .fa-bars {
+    display: inline;
+    margin-right: 10rem;
+    font-size: 2rem;
+    align-self: center;
+  }
+
+  .section-1 {
+    height: 35rem;
+  }
+  .section-1-grid {
+    padding: 5rem;
+    width: 90%;
+  }
+  .section-1-grid .field span .fa-crosshairs {
+    right: 60%;
+  }
+
+  .section-2 {
+    height: 70rem;
+  }
+  .section-2 .container {
+    padding: 3rem 5rem;
+  }
+  .section-2 .container h2 {
+    font-size: 3rem;
+  }
+  .section-2 .container p {
+    font-size: 1.1rem;
+    line-height: 2rem;
+  }
+  .section-2 .container .grid {
+    grid-column-gap: 5rem;
+  }
+  .section-2 .container .grid .col-1 ul li {
+    font-size: 1.5rem;
+  }
+  .section-2 .container .grid .col-2 img {
+    width: 30rem;
+  }
+
+  .section-3 {
+    height: 110rem;
+  }
+  .section-3 .container {
+    padding: 3rem 5rem;
+  }
+  .section-3 .container .cards {
+    grid-template-columns: 50% 50%;
+    grid-row-gap: 1rem;
+  }
+  .section-3 .container .cards .card .description .name::after {
+    left: -7%;
+  }
+  .section-3 .container .dots {
+    margin-top: 43rem;
+  }
+
+  .section-4 .container {
+    padding: 3rem 5rem;
+  }
+  .section-4 .container .dots {
+    margin-top: 5rem;
+  }
+
+  .section-5 .container {
+    padding: 3rem 5rem;
   }
 
   .section-6 .container {
-    grid-template-columns: 50% 50%;
+    padding-left: 5rem;
   }
   .section-6 .container .col-2 button {
     margin-right: 10rem;
+    font-size: 1.2rem;
+    padding: 2rem 4rem;
+  }
+
+  .footer .container {
+    padding-left: 5rem;
+  }
+  .footer .container ul li {
+    font-size: 1.3rem;
+    margin-left: 1.2rem;
+  }
+  .footer .container ul li:first-child {
+    margin-left: 0;
+  }
+  .footer .container img {
+    margin-right: 10rem;
+  }
+  .footer .container .social {
+    margin-right: 10rem;
+  }
+}
+@media only screen and (max-width: 37.5rem) {
+  nav {
+    margin-left: 1.5rem;
+  }
+  nav .fa-bars {
+    margin-right: 5rem;
+  }
+
+  .section-1 {
+    height: 35rem;
+  }
+  .section-1-grid {
+    padding: 1.5rem;
+    width: 90%;
+  }
+  .section-1-grid h2 {
+    font-size: 2.1rem;
+  }
+  .section-1-grid p {
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+  .section-1-grid .field {
+    flex-direction: column;
+  }
+  .section-1-grid .field .district {
+    margin-bottom: 1rem;
+  }
+  .section-1-grid .field span .fa-map-marker {
+    left: 4%;
+    top: 4%;
+  }
+  .section-1-grid .field span .fa-crosshairs {
+    right: 5%;
+    top: 4%;
+  }
+  .section-1-grid .field .search-bar {
+    margin-bottom: 1rem;
+  }
+
+  .section-2 {
+    height: 160rem;
+  }
+  .section-2 .container p {
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+  .section-2 .container .grid {
+    grid-template-rows: 100% 100%;
+    grid-template-columns: 100%;
+    grid-row-gap: 2rem;
+  }
+  .section-2 .container .grid .col-1 {
+    grid-row: 2/-1;
+  }
+  .section-2 .container .grid .col-2 {
+    grid-row: 1/2;
+  }
+  .section-2 .container .grid .col-2 img {
+    width: 30rem;
+  }
+  .section-2 .container .grid .col-2 p {
+    font-size: 1rem;
+    line-height: 2rem;
+  }
+
+  .section-3 {
+    height: 205rem;
+  }
+  .section-3 .container {
+    padding: 3rem 1.5rem;
+  }
+  .section-3 .container h2 {
+    font-size: 2.5rem;
+    line-height: 3rem;
+  }
+  .section-3 .container .cards {
+    grid-template-columns: 100%;
+  }
+  .section-3 .container .cards .card .description .name::after {
+    left: -6.5%;
+  }
+  .section-3 .container .dots {
+    margin-top: 126rem;
+  }
+
+  .section-4 {
+    height: 230rem;
+  }
+  .section-4 .container {
+    padding: 3rem 1.5rem;
+  }
+  .section-4 .container h2 {
+    font-size: 2rem;
+  }
+  .section-4 .container .grid {
+    grid-template-columns: 100%;
+    height: 200rem;
+    grid-gap: 1rem;
+    grid-template-rows: auto;
+  }
+  .section-4 .container .grid .card-1 {
+    grid-row: initial;
+    grid-column: initial;
+  }
+  .section-4 .container .grid .card-2 {
+    grid-row: initial;
+    grid-column: initial;
+  }
+  .section-4 .container .grid .card-3 {
+    grid-row: initial;
+    grid-column: initial;
+  }
+  .section-4 .container .grid .card-4 {
+    grid-row: initial;
+    grid-column: initial;
+  }
+  .section-4 .container .grid .card-5 {
+    grid-row: initial;
+    grid-column: initial;
+  }
+  .section-4 .container .grid .card-6 {
+    grid-row: initial;
+    grid-column: initial;
+  }
+  .section-4 .container .dots {
+    margin-top: 1rem;
+  }
+
+  .section-5 {
+    height: 78rem;
+  }
+  .section-5 .container {
+    padding: 3rem 1.5rem;
+  }
+  .section-5 .container h2 {
+    font-size: 2rem;
+  }
+  .section-5 .container .grid {
+    grid-template-columns: repeat(2, 50%);
+    grid-column-gap: 0.4rem;
+    grid-row-gap: 1rem;
+  }
+
+  .section-6 {
+    height: 30rem;
+  }
+  .section-6 .container {
+    text-align: center;
+    padding-left: 0rem;
+    grid-template-columns: 100%;
+  }
+  .section-6 .container .col-1 {
+    text-align: center;
+  }
+  .section-6 .container .col-2 {
+    text-align: center;
+    grid-row: initial;
+    grid-column: initial;
+  }
+  .section-6 .container .col-2 button {
+    margin-right: 0rem;
+  }
+
+  .footer {
+    height: 35rem;
+  }
+  .footer .container {
+    padding-left: 1.5rem;
+    grid-template-columns: 100%;
+  }
+  .footer .container ul {
+    grid-row: 2/3;
+    flex-direction: column;
+    margin-left: -10rem;
+    text-align: center;
+  }
+  .footer .container ul li {
+    margin-bottom: 2rem;
+  }
+  .footer .container img {
+    grid-row: 1/2;
+  }
+  .footer .container p {
+    grid-row: 3/4;
+    text-align: center;
+    margin-right: 3rem;
+  }
+  .footer .container .social {
+    margin-right: 11rem;
   }
 }
 

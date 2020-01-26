@@ -76,6 +76,9 @@ nav{
 			color: $background-color;
 		}
 	}	
+	.fa-bars{
+		display: none;
+	}
 }
 
 .section-1{
@@ -576,18 +579,344 @@ nav{
 	background-color: $another-blue;
 }
 
-@media only screen and (max-width: 100rem) {
+
+@media only screen and (max-width: 76.8rem){
 	nav{
-		padding-left: 0rem;
-		margin-left: 5rem;
+		margin-left: 1.5rem;
+		.menu{
+			ul{
+				display: none;
+			}
+		}
+		.nav-buttons{
+			display: none;
+		}
+		.fa-bars{
+			display: inline;
+			margin-right: 10rem;
+			font-size: 2rem;
+			align-self: center;
+		}
+	}
+
+	.section-1{
+		height: 35rem;
+		&-grid{
+			padding: 5rem;
+			width: 90%;
+			.field{
+				span{
+					.fa-crosshairs{
+						right: 60%;
+					}	
+				}
+			}
+		}
+	}
+
+	.section-2{	
+		height: 70rem;
+
+		.container{
+			padding: 3rem 5rem;
+			h2{
+			font-size: 3rem;
+			}
+			p{
+				font-size: 1.1rem;
+				line-height: 2rem;
+			}
+			.grid{
+				grid-column-gap: 5rem;
+
+				.col-1{
+					ul{
+						li{
+							font-size: 1.5rem;
+						}
+					}	
+				}
+				.col-2{
+					img{
+						width: 30rem;
+					}
+				}
+			}
+		}
+		
+	}
+	.section-3{
+		height: 110rem;
+		.container{
+			padding: 3rem 5rem;
+			.cards{
+				grid-template-columns: 50% 50%;
+				grid-row-gap: 1rem;
+				.card{
+					.description{
+						.name{
+							&::after{
+								left: -7%;
+							}
+						}
+					}
+				}
+			}
+			.dots{
+				margin-top: 43rem;
+			}
+		}
+	}
+	.section-4{
+		.container{
+			padding: 3rem 5rem;
+			.dots{
+				margin-top: 5rem;
+			}
+		}
+	}
+
+	.section-5{
+		.container{
+			padding: 3rem 5rem;
+		}
 	}
 	.section-6{
 		.container{
-			grid-template-columns: 50% 50%;
+			padding-left: 5rem;
 			.col-2{
 				button{
 					margin-right: 10rem;
+					font-size: 1.2rem;
+					padding: 2rem 4rem;
 				}
+			}
+		}
+	}
+
+	.footer{
+		.container{
+			padding-left:5rem;
+			ul{
+				li{
+					&:first-child{
+					margin-left: 0;
+				}
+				font-size: 1.3rem;
+				margin-left: 1.2rem;
+				}
+			}
+			img{
+				margin-right: 10rem;
+			}
+			.social{
+				margin-right: 10rem;
+			}
+
+		}
+	}
+	
+}
+
+@media only screen and (max-width: 37.5rem){
+	nav{
+		margin-left: 1.5rem;
+		.fa-bars{
+			margin-right: 5rem;
+		}
+	}
+	.section-1{
+		height: 35rem;
+		&-grid{
+			padding: 1.5rem;
+			width: 90%;
+			h2{
+				font-size: 2.1rem;
+			}
+			p{
+				font-size: 1rem;
+				line-height: 2rem;
+			}
+			.field{
+
+				flex-direction: column;
+				.district{
+					margin-bottom: 1rem;
+				}
+				span{
+					.fa-map-marker{
+						left: 4%;
+						top: 4%;
+					}
+					.fa-crosshairs{
+						right: 5%;
+						top: 4%;
+					}
+				}
+
+				.search-bar{
+					margin-bottom: 1rem;
+				}
+
+			}
+		}
+	}
+	.section-2{
+		height: 160rem;
+		.container{
+			p{
+				font-size: 1rem;
+				line-height: 2rem;
+			}
+			.grid{
+				grid-template-rows: 100% 100%;
+				grid-template-columns:100%;
+				grid-row-gap: 2rem;
+
+				.col-1{
+					grid-row: 2/-1;
+				}
+				.col-2{
+					grid-row: 1/2;
+					img{
+						width: 30rem;
+					}
+					p{
+						font-size: 1rem;
+						line-height: 2rem;
+					}
+				}
+			}
+		}
+	}
+
+	.section-3{
+		height: 205rem;
+		.container{
+			padding: 3rem 1.5rem;
+			h2{
+				font-size: 2.5rem;
+				line-height: 3rem;
+			}
+			.cards{
+				grid-template-columns: 100%;
+				.card{
+					.description{
+						.name{
+							&::after{
+								left: -6.5%;
+							}
+						}
+					}
+				}
+			}
+			.dots{
+				margin-top: 126rem;
+			}
+		}
+	}
+
+	.section-4{
+		height: 230rem;
+		.container{
+			padding: 3rem 1.5rem;
+			h2{
+				font-size: 2rem;
+			}
+			.grid{
+				grid-template-columns: 100%;
+				height: 200rem;
+				grid-gap: 1rem;
+				grid-template-rows: auto;
+				.card{
+					&-1{
+						grid-row: initial;
+						grid-column: initial;
+					}
+					&-2{
+						grid-row: initial;
+						grid-column: initial;
+					}
+					&-3{
+						grid-row: initial;
+						grid-column: initial;
+					}
+					&-4{
+						grid-row: initial;
+						grid-column: initial;
+					}
+					&-5{
+						grid-row: initial;
+						grid-column: initial;
+					}
+					&-6{
+						grid-row: initial;
+						grid-column: initial;
+					}
+				}
+			}
+			.dots{
+				margin-top: 1rem;
+			}
+		}
+	}
+	.section-5{
+		height: 78rem;
+		.container{
+			padding: 3rem 1.5rem;
+			h2{
+				font-size: 2rem;
+			}
+			.grid{
+				grid-template-columns: repeat(2, 50%);
+				grid-column-gap: 0.4rem;
+				grid-row-gap: 1rem; 
+			}
+		}
+	}
+	.section-6{
+		height: 30rem;
+		.container{
+			text-align: center;
+			padding-left: 0rem;
+			grid-template-columns: 100%;
+			.col-1{
+				text-align: center;
+			}
+			.col-2{
+				text-align: center;
+				grid-row: initial;
+				grid-column: initial;
+				button{
+					margin-right: 0rem;
+				}
+			}
+		}
+	}
+	.footer{
+		height: 35rem;
+		.container{
+			padding-left: 1.5rem;
+			grid-template-columns: 100%;
+			ul{
+				grid-row: 2/3;
+				flex-direction: column;
+				margin-left: -10rem;
+				text-align: center;
+				li{
+					margin-bottom: 2rem;
+				}
+			}
+			img{
+				grid-row: 1/2;
+			}
+			p{
+				grid-row: 3/4;
+				text-align: center;
+				margin-right: 3rem;
+			}
+			.social{
+				margin-right: 11rem;
 			}
 		}
 	}

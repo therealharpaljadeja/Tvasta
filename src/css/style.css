@@ -3,22 +3,24 @@ html, body {
   font-size: 10px;
   margin: 0;
   padding: 0;
-  max-width: 100%;
+}
+
+body {
+  box-sizing: border-box;
   overflow-x: hidden;
 }
 
 nav {
-  padding-right: 2rem;
-  padding-left: 2rem;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
   display: flex;
   position: relative;
   width: 100%;
-  height: 4rem;
+  height: 8rem;
   background-color: white;
   flex-direction: row;
-  margin-left: 10rem;
+  box-sizing: border-box;
+  padding: 2rem 10rem;
+  justify-content: flex-end;
+  align-items: center;
 }
 nav .logo {
   flex-grow: 1;
@@ -28,7 +30,8 @@ nav .logo img {
   height: 100%;
 }
 nav .menu {
-  flex-grow: 1;
+  flex-grow: 2;
+  padding-left: 10rem;
 }
 nav .menu ul {
   list-style-type: none;
@@ -36,22 +39,28 @@ nav .menu ul {
   flex-direction: row;
   text-align: center;
   justify-content: center;
-  margin-left: -30rem;
 }
 nav .menu ul li {
-  font-family: "Medina Gothic Regular";
-  font-size: 1.5rem;
+  font-family: "Nexa Light";
+  font-size: 1.3rem;
   color: #2a2d3e;
   margin-left: 3rem;
+  font-weight: 600;
+  letter-spacing: 0.1rem;
 }
 nav .nav-buttons {
   flex-grow: 1;
+  padding-left: 6.5rem;
 }
 nav .nav-buttons-button {
+  box-sizing: border-box;
   padding: 1rem 1.8rem;
   color: #2a2d3e;
   border: 1px solid #2a2d3e;
   border-radius: 0.5rem;
+  font-family: "Nexa Light";
+  letter-spacing: 0.05rem;
+  font-weight: 600;
 }
 nav .nav-buttons .login {
   background-color: white;
@@ -64,12 +73,13 @@ nav .nav-buttons .quote {
 }
 nav .fa-bars {
   display: none;
+  color: #525659;
 }
 
 .section-1 {
-  background-image: url("../../assets/img1.jpg");
+  background-image: url("../assets/img1.jpg");
   width: 100%;
-  height: 45rem;
+  height: auto;
   background-size: cover;
   position: relative;
 }
@@ -80,47 +90,76 @@ nav .fa-bars {
   color: #2a2d3e;
 }
 .section-1-grid h2 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   line-height: 2rem;
+  font-family: "Nexa Bold";
 }
 .section-1-grid p {
   font-size: 1.7rem;
   line-height: 3rem;
+  font-family: "Nexa Bold";
 }
 .section-1 .field {
   margin-top: 1rem;
   display: flex;
   flex-direction: row;
-  box-shadow: 0px 0px 1rem rgba(0, 0, 0, 0.2);
   position: relative;
 }
-.section-1 .field .district {
-  flex-grow: 1;
-  position: relative;
-  padding-left: 4rem;
-  font-size: 1.3rem;
-  color: #333;
-}
-.section-1 .field span {
+.section-1 .field .search-location {
   height: 100%;
+  position: relative;
+  box-sizing: border-box;
 }
-.section-1 .field span .fa {
+.section-1 .field .search-location .district {
+  height: 100%;
+  flex-grow: 1;
+  font-size: 1.3rem;
+  color: #999;
+  font-family: "Nexa Bold";
+  letter-spacing: 0.05rem;
+  padding-left: 3.5rem;
+  box-sizing: border-box;
+}
+.section-1 .field .search-location .map-marker {
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 3rem;
+  padding-top: 1.7rem;
+  font-size: 1.5rem;
+  padding-left: 1.5rem;
+}
+.section-1 .field .search-location .map-marker .fa {
   position: absolute;
   font-size: 2rem;
 }
-.section-1 .field span .fa-map-marker {
+.section-1 .field .search-location .map-marker .fa-map-marker {
   left: 2%;
   top: 26%;
 }
-.section-1 .field span .fa-crosshairs {
+.section-1 .field .search-location .crosshairs {
+  height: 100%;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 3rem;
+  padding-top: 1.7rem;
+  font-size: 1.5rem;
+  padding-left: 1.5rem;
+}
+.section-1 .field .search-location .crosshairs .fa-crosshairs {
   right: 65%;
   top: 26%;
-  color: #888;
+  color: #999;
 }
 .section-1 .field .search-bar {
   flex-grow: 2;
   font-size: 1.3rem;
-  color: #333;
+  color: #999;
+  font-family: "Nexa Bold";
+  letter-spacing: 0.05rem;
+  padding-left: 2.5rem;
 }
 .section-1 .field .search-btn {
   background-color: #2a2d3e;
@@ -128,6 +167,9 @@ nav .fa-bars {
   padding: 2rem;
   border: none;
   flex-grow: 1;
+  font-size: 1.5rem;
+  font-family: "Nexa Bold";
+  letter-spacing: 0.05rem;
 }
 
 .section-2 {
@@ -141,14 +183,17 @@ nav .fa-bars {
   width: 100%;
   color: #2a2d3e;
   grid-template-rows: 100% 100% 100%;
+  font-family: "Nexa Bold";
 }
 .section-2 .container h2 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   line-height: 2rem;
 }
 .section-2 .container p {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 3rem;
+  font-family: "Nexa Light";
+  letter-spacing: 0.1rem;
 }
 .section-2 .container .grid {
   display: grid;
@@ -165,8 +210,18 @@ nav .fa-bars {
   padding: 0;
   box-sizing: border-box;
 }
+.section-2 .container .grid ul .active {
+  border: 2px solid #9cbfda;
+  color: #2a2d3e;
+}
+.section-2 .container .grid ul .active span {
+  color: #9cbfda;
+  font-size: 2.5rem;
+}
 .section-2 .container .grid ul li {
-  color: #809c99;
+  box-sizing: border-box;
+  font-size: 2rem;
+  color: #bbb;
   display: grid;
   border-radius: 0.6rem;
   grid-template-columns: 20% 80%;
@@ -175,16 +230,20 @@ nav .fa-bars {
   font-size: 2rem;
   margin-bottom: 1rem;
   grid-column-gap: 1rem;
+  border: 2px solid #eee;
 }
-.section-2 .container .grid ul li:first-child {
+.section-2 .container .grid ul li span {
+  justify-self: center;
+  font-size: 2.5rem;
+  color: #bbb;
+}
+.section-2 .container .grid ul li:hover {
+  box-sizing: border-box;
   border: 2px solid #9cbfda;
   color: #2a2d3e;
 }
-.section-2 .container .grid ul li:first-child span {
+.section-2 .container .grid ul li:hover span {
   color: #9cbfda;
-}
-.section-2 .container .grid ul li span {
-  justify-self: right;
 }
 .section-2 .container .col-2 {
   text-align: center;
@@ -202,20 +261,23 @@ nav .fa-bars {
   box-sizing: border-box;
   width: 100%;
   color: white;
+  font-family: "Nexa Bold";
 }
 .section-3 .container h2 {
   font-size: 3.5rem;
   line-height: 2rem;
+  letter-spacing: 0.05rem;
 }
 .section-3 .container p {
   font-size: 1.4rem;
   line-height: 3rem;
   margin-bottom: 3rem;
+  font-family: "Nexa Light";
+  letter-spacing: 0.1rem;
 }
 .section-3 .container .cards {
   display: grid;
-  grid-template-columns: 25% 25% 25% 25%;
-  height: 40rem;
+  grid-template-columns: repeat(4, 1fr);
   grid-column-gap: 1rem;
   margin-bottom: 2rem;
 }
@@ -227,18 +289,18 @@ nav .fa-bars {
   position: relative;
 }
 .section-3 .container .cards .card-1 {
-  background-image: url("../../assets/image--002.jpg");
+  background-image: url("../assets/image--002.jpg");
 }
 .section-3 .container .cards .card-2 {
-  background-image: url("../../assets/image--003.jpg");
+  background-image: url("../assets/image--003.jpg");
   background-position: -0.5rem;
 }
 .section-3 .container .cards .card-3 {
-  background-image: url("../../assets/image--004.jpg");
+  background-image: url("../assets/image--004.jpg");
   background-position: 0.6rem;
 }
 .section-3 .container .cards .card-4 {
-  background-image: url("../../assets/image--005.jpg");
+  background-image: url("../assets/image--005.jpg");
 }
 .section-3 .container .cards .card .description {
   position: absolute;
@@ -246,11 +308,12 @@ nav .fa-bars {
   width: 100%;
   height: 30%;
   background-color: white;
+  border-bottom: 0.4rem solid #9cbfda;
 }
 .section-3 .container .cards .card .description .name {
   position: relative;
   color: #0173c7;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   margin-left: 2rem;
   line-height: 1rem;
 }
@@ -269,6 +332,7 @@ nav .fa-bars {
   color: #2a2d3e;
   margin-bottom: 0;
   line-height: 1rem;
+  letter-spacing: 0.05rem;
 }
 .section-3 .container .cards .card .description .qualification {
   font-size: 1.2rem;
@@ -276,6 +340,7 @@ nav .fa-bars {
   color: #2a2d3e;
   margin-bottom: 0;
   line-height: 1rem;
+  letter-spacing: 0.01rem;
 }
 .section-3 .container .cards .card .description .location {
   font-size: 1.2rem;
@@ -283,8 +348,10 @@ nav .fa-bars {
   color: #2a2d3e;
   margin-bottom: 0;
   line-height: 1rem;
+  letter-spacing: 0.05rem;
 }
 .section-3 .container .dots {
+  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   height: 2rem;
@@ -307,7 +374,7 @@ nav .fa-bars {
 
 .section-4 {
   width: 100%;
-  height: 100rem;
+  height: 97rem;
   background-color: white;
   box-sizing: border-box;
 }
@@ -316,22 +383,25 @@ nav .fa-bars {
   box-sizing: border-box;
   width: 100%;
   color: #2a2d3e;
+  font-family: "Nexa Bold";
 }
 .section-4 .container h2 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   line-height: 2rem;
 }
 .section-4 .container p {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 2rem;
   margin-bottom: 3rem;
+  font-family: "Nexa Light";
+  letter-spacing: 0.05rem;
 }
 .section-4 .container .grid {
   display: grid;
-  grid-template-columns: repeat(9, 11.11%);
-  grid-template-rows: repeat(9, 11.11%);
+  grid-template-columns: repeat(9, 1fr);
+  grid-template-rows: repeat(9, 1fr);
   height: 70rem;
-  grid-gap: 0.4rem;
+  grid-gap: 1rem;
   box-sizing: border-box;
 }
 .section-4 .container .grid .card {
@@ -339,12 +409,14 @@ nav .fa-bars {
   width: 100%;
   background-size: cover;
   color: white;
+  box-sizing: border-box;
 }
 .section-4 .container .grid .card h3 {
   position: absolute;
   bottom: 4.5rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   left: 10%;
+  margin-bottom: 1.5rem;
 }
 .section-4 .container .grid .card p {
   position: absolute;
@@ -355,35 +427,35 @@ nav .fa-bars {
 .section-4 .container .grid .card-1 {
   grid-row: 1/4;
   grid-column: 1/4;
-  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../../assets/image--009.jpg");
+  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../assets/image--009.jpg");
 }
 .section-4 .container .grid .card-2 {
-  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../../assets/image--010.jpg");
+  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../assets/image--010.jpg");
   grid-column: 4/7;
   grid-row: 1/6;
 }
 .section-4 .container .grid .card-3 {
-  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../../assets/image--011.jpg");
+  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../assets/image--011.jpg");
   grid-column: 7/10;
   grid-row: 1/5;
 }
 .section-4 .container .grid .card-4 {
-  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../../assets/image--006.jpg");
+  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../assets/image--006.jpg");
   grid-column: 1/4;
   grid-row: 4/-1;
 }
 .section-4 .container .grid .card-5 {
-  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../../assets/image--008.jpg");
+  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../assets/image--008.jpg");
   grid-column: 4/7;
   grid-row: 6/-1;
 }
 .section-4 .container .grid .card-6 {
-  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../../assets/image--007.jpg");
+  background-image: linear-gradient(to top, #2a2d3e, transparent), url("../assets/image--007.jpg");
   grid-column: 7/10;
   grid-row: 5/-1;
 }
 .section-4 .container .dots {
-  margin-top: 4rem;
+  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   height: 2rem;
@@ -413,21 +485,24 @@ nav .fa-bars {
   padding: 3rem 10rem;
   box-sizing: border-box;
   width: 100%;
+  font-family: "Nexa Bold";
 }
 .section-5 .container h2 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   line-height: 2rem;
 }
 .section-5 .container p {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 2rem;
   margin-bottom: 3rem;
+  font-family: "Nexa Light";
+  letter-spacing: 0.05rem;
 }
 .section-5 .container .grid {
   width: 100%;
   display: grid;
   grid-template-rows: 100%;
-  grid-template-columns: repeat(6, 16.67%);
+  grid-template-columns: repeat(6, 1fr);
   grid-column-gap: 0.4rem;
 }
 .section-5 .container .grid .choice {
@@ -439,7 +514,6 @@ nav .fa-bars {
 
 .section-6 {
   width: 100%;
-  height: 20rem;
   background-color: #9cbfda;
 }
 .section-6 .container {
@@ -449,17 +523,22 @@ nav .fa-bars {
   display: grid;
   grid-template-columns: 60% 40%;
   grid-template-rows: 50% 50%;
+  font-family: "Nexa Bold";
+  box-sizing: border-box;
+  padding: 2rem 10rem;
 }
 .section-6 .container h2 {
-  font-size: 3.5rem;
+  font-size: 4rem;
   line-height: 2rem;
   color: white;
 }
 .section-6 .container p {
-  font-size: 1.4rem;
+  font-size: 1.5rem;
   line-height: 2rem;
   margin-bottom: 3rem;
   color: #2a2d3e;
+  letter-spacing: 0.05rem;
+  font-family: "Nexa Light";
 }
 .section-6 .container .col-2 {
   grid-row: 1/3;
@@ -467,21 +546,22 @@ nav .fa-bars {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
+  align-items: flex-end;
 }
 .section-6 .container .col-2 button {
   background-color: #3c7abe;
-  padding: 3rem 7rem;
+  padding: 3rem 4rem;
   border: none;
   color: white;
-  margin-right: 4rem;
-  font-size: 1.5rem;
+  font-size: 2rem;
   border-radius: 0.5rem;
+  font-family: "Nexa Bold";
 }
 
 .footer {
   width: 100%;
-  height: 15rem;
+  height: 17rem;
+  box-sizing: border-box;
 }
 .footer .container {
   width: 100%;
@@ -489,7 +569,9 @@ nav .fa-bars {
   grid-template-columns: 50% 50%;
   grid-template-rows: 50% 50%;
   padding-left: 10rem;
-  margin-top: 2rem;
+  box-sizing: border-box;
+  padding: 4rem 10rem;
+  font-family: "Nexa Bold";
 }
 .footer .container ul {
   list-style-type: none;
@@ -497,6 +579,8 @@ nav .fa-bars {
   flex-direction: row;
   margin-left: -4rem;
   align-self: center;
+  font-family: "Nexa Light";
+  letter-spacing: 0.05rem;
 }
 .footer .container ul li {
   margin-left: 1rem;
@@ -506,27 +590,28 @@ nav .fa-bars {
   margin-left: 0;
 }
 .footer .container img {
-  align-self: center;
   width: 20rem;
   height: 5rem;
-  align-self: center;
+  align-self: end;
   justify-self: end;
-  margin-right: 15rem;
 }
 .footer .container p {
   font-size: 1.4rem;
   line-height: 2rem;
   color: #2a2d3e;
   align-self: end;
+  font-family: "Nexa Light";
 }
 .footer .container .social {
   align-self: end;
   justify-self: end;
-  margin-right: 15rem;
 }
 .footer .container .social i {
   font-size: 2rem;
   margin-right: 1.5rem;
+}
+.footer .container .social i:last-child {
+  margin-right: 0;
 }
 
 .border {
@@ -537,7 +622,7 @@ nav .fa-bars {
 
 @media only screen and (max-width: 76.8rem) {
   nav {
-    margin-left: 1.5rem;
+    padding: 2rem 5rem;
   }
   nav .menu ul {
     display: none;
@@ -547,34 +632,68 @@ nav .fa-bars {
   }
   nav .fa-bars {
     display: inline;
-    margin-right: 10rem;
     font-size: 2rem;
     align-self: center;
   }
 
   .section-1 {
-    height: 35rem;
+    height: 46rem;
+    box-sizing: border-box;
   }
   .section-1-grid {
     padding: 5rem;
-    width: 90%;
+    width: 100%;
+    box-sizing: border-box;
   }
-  .section-1-grid .field span .fa-crosshairs {
-    right: 60%;
+  .section-1-grid h2 {
+    justify-self: center;
+  }
+  .section-1-grid p {
+    justify-self: center;
+    padding: 0rem 4rem;
+    text-align: center;
+  }
+  .section-1-grid .field {
+    padding: 0rem 15rem;
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    grid-row-gap: 1rem;
+    box-sizing: border-box;
+  }
+  .section-1-grid .field .search-location .district {
+    width: 100%;
+  }
+  .section-1-grid .field .search-location .map-marker {
+    padding-top: 1.7rem;
+    padding-left: 1.7rem;
+    box-sizing: border-box;
+  }
+  .section-1-grid .field .search-location .crosshairs {
+    padding-top: 1.7rem;
+    padding-right: 3.5rem;
+    box-sizing: border-box;
+  }
+  .section-1-grid .field .search-bar {
+    padding-left: 1rem;
+  }
+  .section-1-grid .field .search-btn {
+    margin: 0rem 6rem;
   }
 
   .section-2 {
-    height: 70rem;
+    height: 65rem;
   }
   .section-2 .container {
     padding: 3rem 5rem;
   }
   .section-2 .container h2 {
     font-size: 3rem;
+    text-align: center;
   }
   .section-2 .container p {
     font-size: 1.1rem;
     line-height: 2rem;
+    text-align: center;
   }
   .section-2 .container .grid {
     grid-column-gap: 5rem;
@@ -582,87 +701,195 @@ nav .fa-bars {
   .section-2 .container .grid .col-1 ul li {
     font-size: 1.5rem;
   }
+  .section-2 .container .grid .col-1 ul li:hover {
+    border: 2px solid #9cbfda;
+    color: #2a2d3e;
+  }
+  .section-2 .container .grid .col-1 ul li:hover span {
+    color: #9cbfda;
+    font-size: 2.5rem;
+  }
+  .section-2 .container .grid .col-1 ul .active {
+    border: 2px solid #9cbfda;
+    color: #2a2d3e;
+  }
+  .section-2 .container .grid .col-1 ul .active span {
+    color: #9cbfda;
+    font-size: 2.5rem;
+  }
   .section-2 .container .grid .col-2 img {
     width: 30rem;
   }
 
   .section-3 {
     height: 110rem;
+    box-sizing: border-box;
   }
   .section-3 .container {
     padding: 3rem 5rem;
+    box-sizing: border-box;
+  }
+  .section-3 .container h2 {
+    text-align: center;
+  }
+  .section-3 .container p {
+    text-align: center;
   }
   .section-3 .container .cards {
-    grid-template-columns: 50% 50%;
+    grid-template-columns: repeat(2, 1fr);
     grid-row-gap: 1rem;
   }
   .section-3 .container .cards .card .description .name::after {
-    left: -7%;
+    left: -6%;
+  }
+  .section-3 .container .cards .card .description .qualification {
+    text-align: left;
+  }
+  .section-3 .container .cards .card .description .designation {
+    text-align: left;
+  }
+  .section-3 .container .cards .card .description .location {
+    text-align: left;
   }
   .section-3 .container .dots {
-    margin-top: 43rem;
+    margin-top: 1rem;
   }
 
   .section-4 .container {
     padding: 3rem 5rem;
   }
+  .section-4 .container h2 {
+    text-align: center;
+  }
+  .section-4 .container p {
+    text-align: center;
+  }
+  .section-4 .container .grid {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 70rem;
+  }
+  .section-4 .container .grid .card-1 {
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+  .section-4 .container .grid .card-2 {
+    grid-row: 1/2;
+    grid-column: 2/3;
+  }
+  .section-4 .container .grid .card-3 {
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
+  .section-4 .container .grid .card-4 {
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+  .section-4 .container .grid .card-5 {
+    grid-row: 3/4;
+    grid-column: 1/2;
+  }
+  .section-4 .container .grid .card-6 {
+    grid-row: 3/4;
+    grid-column: 2/3;
+  }
   .section-4 .container .dots {
-    margin-top: 5rem;
+    margin-top: 1.5rem;
   }
 
+  .section-5 {
+    height: 58rem;
+  }
   .section-5 .container {
     padding: 3rem 5rem;
   }
+  .section-5 .container h2 {
+    text-align: center;
+  }
+  .section-5 .container p {
+    text-align: center;
+  }
+  .section-5 .container .grid {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 1rem;
+  }
 
+  .section-6 {
+    height: 23rem;
+    box-sizing: border-box;
+  }
   .section-6 .container {
-    padding-left: 5rem;
+    padding: 2rem 5rem;
+    box-sizing: border-box;
+    grid-template-rows: repeat(2, 1fr);
+    grid-template-columns: 100%;
+  }
+  .section-6 .container .col-1 {
+    grid-row: 1/2;
+    grid-column: 1/2;
+  }
+  .section-6 .container .col-1 h2 {
+    text-align: center;
+    line-height: 1rem;
+  }
+  .section-6 .container .col-1 p {
+    text-align: center;
+    line-height: 1rem;
+  }
+  .section-6 .container .col-2 {
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    grid-row: 2/3;
+    grid-column: 1/2;
   }
   .section-6 .container .col-2 button {
-    margin-right: 10rem;
-    font-size: 1.2rem;
+    margin-right: 0rem;
+    font-size: 1.5rem;
     padding: 2rem 4rem;
   }
 
   .footer .container {
-    padding-left: 5rem;
+    padding: 4rem 5rem;
   }
   .footer .container ul li {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     margin-left: 1.2rem;
   }
   .footer .container ul li:first-child {
     margin-left: 0;
   }
-  .footer .container img {
-    margin-right: 10rem;
-  }
   .footer .container .social {
-    margin-right: 10rem;
+    color: #2a2d3e;
+    align-self: center;
+  }
+  .footer .container .social i {
+    font-size: 1.5rem;
   }
 }
-@media only screen and (max-width: 37.5rem) {
+@media only screen and (max-width: 375px) {
   nav {
-    margin-left: 1.5rem;
-  }
-  nav .fa-bars {
-    margin-right: 5rem;
+    padding: 2rem 2rem;
   }
 
   .section-1 {
-    height: 35rem;
+    height: 40rem;
   }
   .section-1-grid {
-    padding: 1.5rem;
-    width: 90%;
+    padding: 2rem;
+    width: 100%;
   }
   .section-1-grid h2 {
     font-size: 2.1rem;
   }
   .section-1-grid p {
-    font-size: 1rem;
+    padding: 0rem 2rem;
+    font-size: 1.4rem;
     line-height: 2rem;
   }
   .section-1-grid .field {
+    padding: 0;
     flex-direction: column;
   }
   .section-1-grid .field .district {
@@ -681,13 +908,14 @@ nav .fa-bars {
   }
 
   .section-2 {
-    height: 160rem;
+    height: 200rem;
   }
   .section-2 .container p {
-    font-size: 1rem;
+    font-size: 1.3rem;
     line-height: 2rem;
   }
   .section-2 .container .grid {
+    margin-top: 4rem;
     grid-template-rows: 100% 100%;
     grid-template-columns: 100%;
     grid-row-gap: 2rem;
@@ -707,7 +935,7 @@ nav .fa-bars {
   }
 
   .section-3 {
-    height: 205rem;
+    height: 200rem;
   }
   .section-3 .container {
     padding: 3rem 1.5rem;
@@ -723,7 +951,7 @@ nav .fa-bars {
     left: -6.5%;
   }
   .section-3 .container .dots {
-    margin-top: 126rem;
+    margin-top: 2rem;
   }
 
   .section-4 {
@@ -785,15 +1013,20 @@ nav .fa-bars {
   }
 
   .section-6 {
-    height: 30rem;
+    height: 28rem;
   }
   .section-6 .container {
     text-align: center;
     padding-left: 0rem;
     grid-template-columns: 100%;
+    padding: 4rem 0rem;
   }
   .section-6 .container .col-1 {
     text-align: center;
+  }
+  .section-6 .container .col-1 p {
+    padding: 0rem 2rem;
+    line-height: 2rem;
   }
   .section-6 .container .col-2 {
     text-align: center;
@@ -805,16 +1038,20 @@ nav .fa-bars {
   }
 
   .footer {
-    height: 35rem;
+    height: 38rem;
+    background-color: #2a2d3e;
+    color: white;
   }
   .footer .container {
-    padding-left: 1.5rem;
+    padding: 2rem 0rem;
+    grid-gap: 2rem;
     grid-template-columns: 100%;
   }
   .footer .container ul {
+    align-self: center;
+    justify-self: center;
     grid-row: 2/3;
     flex-direction: column;
-    margin-left: -10rem;
     text-align: center;
   }
   .footer .container ul li {
@@ -822,14 +1059,21 @@ nav .fa-bars {
   }
   .footer .container img {
     grid-row: 1/2;
+    justify-self: center;
+    align-self: center;
   }
   .footer .container p {
+    color: white;
     grid-row: 3/4;
     text-align: center;
-    margin-right: 3rem;
+    margin: 0;
+    justify-self: center;
+    align-self: center;
   }
   .footer .container .social {
-    margin-right: 11rem;
+    color: white;
+    justify-self: center;
+    align-self: center;
   }
 }
 

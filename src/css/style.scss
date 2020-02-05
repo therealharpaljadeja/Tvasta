@@ -1,34 +1,35 @@
-$font-family-nav: 'Aksara Regular';
-$font-family-heading: 'Futura PT Heavy';
-$font-family-para: 'Medina Gothic Regular';
 $dark-color: #2a2d3e;
 $light-color: #9cbfda;
 $another-blue: #0173c7;
 $background-color: white;
 $disabled: #333;
+$nexa-bold: 'Nexa Bold';
+$nexa-light: 'Nexa Light';
+
 
 html, body{
 	box-sizing: border-box;
 	font-size: 10px;
 	margin: 0;
 	padding: 0;
-    max-width: 100%;
-    overflow-x: hidden;
 }
 
+body{
+	box-sizing: border-box;
+	overflow-x: hidden;
+}
 
 nav{
-	padding-right: 2rem;
-	padding-left: 2rem;
-	padding-top: 3rem;
-	padding-bottom: 3rem;
 	display: flex;
 	position: relative;
 	width: 100%;
-	height: 4rem; 
+	height: 8rem; 
 	background-color: $background-color;
 	flex-direction: row;
-	margin-left: 10rem;
+	box-sizing: border-box;
+	padding: 2rem 10rem;
+	justify-content: flex-end;
+	align-items: center;
 	.logo{
 		flex-grow: 1;
 		img{
@@ -38,19 +39,21 @@ nav{
 	}
 
 	.menu{
-		flex-grow: 1;
+		flex-grow: 2;
+		padding-left: 10rem;
 		ul{
 			list-style-type: none;
 			display: flex;
 			flex-direction: row;
 			text-align: center;
 			justify-content: center;
-			margin-left: -30rem;
 			li{
-				font-family: $font-family-para;
-				font-size: 1.5rem;	
+				font-family: $nexa-light;
+				font-size: 1.3rem;	
 				color: $dark-color;
 				margin-left: 3rem;
+				font-weight: 600;
+				letter-spacing: 0.1rem;
 			}
 		}
 
@@ -58,11 +61,16 @@ nav{
 
 	.nav-buttons{
 		flex-grow: 1;
+		padding-left: 6.5rem;
 		&-button{
+			box-sizing: border-box;
 			padding: 1rem 1.8rem;
 			color: $dark-color;
 			border: 1px solid $dark-color;
 			border-radius: .5rem;
+			font-family: $nexa-light;
+			letter-spacing: 0.05rem;
+			font-weight: 600;
 		}
 
 		.login{
@@ -78,13 +86,14 @@ nav{
 	}	
 	.fa-bars{
 		display: none;
+		color: #525659;
 	}
 }
 
 .section-1{
-	background-image: url('../../assets/img1.jpg');
+	background-image: url('../assets/img1.jpg');
 	width: 100%;
-	height: 45rem;
+	height: auto;
 	background-size: cover;
 	position: relative;
 	&-grid{
@@ -93,12 +102,14 @@ nav{
 		width: 60%;
 		color: $dark-color;
 		h2{
-			font-size: 3.5rem;
+			font-size: 4rem;
 			line-height: 2rem;
+			font-family: $nexa-bold;
 		}
 		p{
 			font-size: 1.7rem;
 			line-height: 3rem;
+			font-family: $nexa-bold;
 		}
 
 	}
@@ -106,41 +117,66 @@ nav{
 		margin-top: 1rem;
 		display: flex;
 		flex-direction: row;
-		box-shadow: 0px 0px 1rem rgba(0,0,0,.2);
 		position: relative;
-		
-		.district{
-			flex-grow: 1;
-			position: relative;
-			padding-left: 4rem;
-			font-size: 1.3rem;
-			color: $disabled;
-		}
-
-		span{
+		.search-location{
 			height: 100%;
-			
-			.fa{
+			position: relative;
+			box-sizing: border-box;
+			.district{
+				height: 100%;	
+				flex-grow: 1;
+				font-size: 1.3rem;
+				color: #999;
+				font-family: $nexa-bold;
+				letter-spacing: .05rem;
+				padding-left: 3.5rem;
+				box-sizing: border-box;
+			}
+
+			.map-marker{
+				height: 100%;
 				position: absolute;
-				font-size: 2rem;
-				
-				&-map-marker{
-					left: 2%;
-					top: 26%;
+				left: 0;
+				top: 0;
+				width: 3rem;
+				padding-top: 1.7rem;
+				font-size: 1.5rem;
+				padding-left: 1.5rem;
+				.fa{
+					position: absolute;
+					font-size: 2rem;
+					
+					&-map-marker{
+						left: 2%;
+						top: 26%;
+					}
 				}
-				&-crosshairs{
-					right: 65%;
-					top: 26%;
-					color: #888;
+			}
+			.crosshairs{
+				height: 100%;
+				position: absolute;
+				right: 0;
+				top: 0;
+				width: 3rem;
+				padding-top: 1.7rem;
+				font-size: 1.5rem;
+				padding-left: 1.5rem;
+				.fa{
+					&-crosshairs{
+						right: 65%;
+						top: 26%;
+						color: #999;
+					}	
 				}
 			}
 		}
-		
-
 		.search-bar{
 			flex-grow: 2;
 			font-size: 1.3rem;
-			color: $disabled;
+			color: #999;
+			font-family: $nexa-bold;
+			letter-spacing: 0.05rem;
+			padding-left: 2.5rem;
 		}
 
 		.search-btn{
@@ -149,6 +185,9 @@ nav{
 			padding: 2rem;
 			border: none;
 			flex-grow: 1;
+			font-size: 1.5rem;
+			font-family: $nexa-bold;
+			letter-spacing: 0.05rem;
 		}
 	}
 	
@@ -164,13 +203,16 @@ nav{
 		width: 100%;
 		color: $dark-color;
 		grid-template-rows: 100% 100% 100%;
+		font-family: $nexa-bold;
 		h2{
-			font-size: 3.5rem;
+			font-size: 4rem;
 			line-height: 2rem;
 		}
 		p{
-			font-size: 1.4rem;
+			font-size: 1.5rem;
 			line-height: 3rem;
+			font-family: $nexa-light;
+			letter-spacing: 0.1rem;
 		}
 		.grid{
 			display: grid;
@@ -185,17 +227,20 @@ nav{
 				text-align: center;	
 				padding: 0;
 				box-sizing:border-box;
-				
-				li{
 
-					&:first-child{
+				.active{
 						border: 2px solid $light-color;	
 						color: $dark-color;
 						span{
 							color: $light-color;
+							font-size: 2.5rem;
 						}
-					}
-					color: #809c99;
+				}
+
+				li{
+					box-sizing: border-box;
+					font-size: 2rem;
+					color: #bbb;
 					display: grid;
 					border-radius: .6rem;
 					grid-template-columns: 20% 80%;
@@ -204,8 +249,19 @@ nav{
 					font-size: 2rem;
 					margin-bottom: 1rem;
 					grid-column-gap: 1rem;
+					border: 2px solid #eee;
 					span{
-						justify-self: right;
+						justify-self: center;
+						font-size: 2.5rem;
+						color: #bbb;
+					}
+					&:hover{
+						box-sizing: border-box;
+						border: 2px solid $light-color;	
+						color: $dark-color;
+						span{
+							color: $light-color;
+						}
 					}
 				}	
 			}
@@ -231,20 +287,22 @@ nav{
 		box-sizing: border-box;
 		width: 100%;
 		color: $background-color;
-
+		font-family: $nexa-bold;
 		h2{
 			font-size: 3.5rem;
 			line-height: 2rem;
+			letter-spacing: 0.05rem;
 		}
 		p{
 			font-size: 1.4rem;
 			line-height: 3rem;
 			margin-bottom: 3rem;
+			font-family: $nexa-light;
+			letter-spacing: 0.1rem;
 		}
 		.cards{
 			display: grid;
-			grid-template-columns: 25% 25% 25% 25%;
-			height: 40rem;
+			grid-template-columns: repeat(4, 1fr);
 			grid-column-gap: 1rem;
 			margin-bottom: 2rem;
 			.card{
@@ -254,18 +312,18 @@ nav{
 				background-position: -2rem -2rem;
 				position: relative;
 				&-1{
-					background-image: url('../../assets/image--002.jpg');
+					background-image: url('../assets/image--002.jpg');
 				}
 				&-2{
-					background-image: url('../../assets/image--003.jpg');
+					background-image: url('../assets/image--003.jpg');
 					background-position: -.5rem;
 				}
 				&-3{
-					background-image: url('../../assets/image--004.jpg');
+					background-image: url('../assets/image--004.jpg');
 					background-position: .6rem;
 				}
 				&-4{
-					background-image: url('../../assets/image--005.jpg');
+					background-image: url('../assets/image--005.jpg');
 				}
 				.description{
 					position: absolute;
@@ -273,13 +331,15 @@ nav{
 					width: 100%;
 					height: 30%;
 					background-color: $background-color;
+					border-bottom: 0.4rem solid #9cbfda;
 
 					.name{
 						position: relative;
 						color: $another-blue;
-						font-size: 1.5rem;
+						font-size: 1.7rem;
 						margin-left: 2rem;
 						line-height: 1rem;
+
 						&::after{
 							content: '';
 							width: 5%;
@@ -297,6 +357,7 @@ nav{
 						color: $dark-color;
 						margin-bottom: 0;
 						line-height: 1rem;
+						letter-spacing: 0.05rem;
 					}
 					.qualification{
 						font-size: 1.2rem;
@@ -304,6 +365,7 @@ nav{
 						color: $dark-color;	
 						margin-bottom: 0;
 						line-height: 1rem;
+						letter-spacing: 0.01rem;
 					}
 					.location{
 						font-size: 1.2rem;
@@ -311,12 +373,14 @@ nav{
 						color: $dark-color;
 						margin-bottom: 0;
 						line-height: 1rem;	
+						letter-spacing: 0.05rem;
 					}
 				}
 			}
 		}
 		
 		.dots{
+			margin-top: 2rem;
 			display: flex;
 			flex-direction: row;
 			height: 2rem;
@@ -343,7 +407,7 @@ nav{
 
 .section-4{
 	width: 100%;
-	height: 100rem;
+	height: 97rem;
 	background-color: $background-color;
 	box-sizing: border-box;
 	.container{
@@ -351,32 +415,37 @@ nav{
 		box-sizing: border-box;
 		width: 100%;
 		color: $dark-color;
+		font-family: $nexa-bold;
 		h2{
-			font-size: 3.5rem;
+			font-size: 4rem;
 			line-height: 2rem;
 		}
 		p{
-			font-size: 1.4rem;
+			font-size: 1.5rem;
 			line-height: 2rem;
 			margin-bottom: 3rem;
+			font-family: $nexa-light;
+			letter-spacing: 0.05rem;
 		}
 		.grid{
 			display: grid;
-			grid-template-columns: repeat(9, 11.11%);
-			grid-template-rows: repeat(9,11.11%);
+			grid-template-columns: repeat(9, 1fr);
+			grid-template-rows: repeat(9, 1fr);
 			height: 70rem;
-			grid-gap: .4rem;
+			grid-gap: 1rem;
 			box-sizing:border-box;
 			.card{
 				position: relative;
 				width: 100%;
 				background-size: cover;
 				color: $background-color;
+				box-sizing: border-box;
 				h3{
 					position: absolute;
 					bottom:4.5rem;
-					font-size: 1.5rem;
+					font-size: 2rem;
 					left: 10%;
+					margin-bottom: 1.5rem;
 				}
 				p{
 					position: absolute;
@@ -387,30 +456,30 @@ nav{
 				&-1{
 					grid-row: 1/4;
 					grid-column: 1/4;
-					background-image: linear-gradient(to top, $dark-color, transparent), url('../../assets/image--009.jpg');
+					background-image: linear-gradient(to top, $dark-color, transparent), url('../assets/image--009.jpg');
 				}
 				&-2{
-					background-image: linear-gradient(to top, $dark-color, transparent), url('../../assets/image--010.jpg');
+					background-image: linear-gradient(to top, $dark-color, transparent), url('../assets/image--010.jpg');
 					grid-column: 4/7;
 					grid-row: 1/6;
 				}	
 				&-3{
-					background-image: linear-gradient(to top, $dark-color, transparent), url('../../assets/image--011.jpg');
+					background-image: linear-gradient(to top, $dark-color, transparent), url('../assets/image--011.jpg');
 					grid-column: 7/10;
 					grid-row: 1/5;
 				}
 				&-4{
-					background-image: linear-gradient(to top, $dark-color, transparent), url('../../assets/image--006.jpg');
+					background-image: linear-gradient(to top, $dark-color, transparent), url('../assets/image--006.jpg');
 					grid-column: 1/4;
 					grid-row: 4/-1;
 				}
 				&-5{
-					background-image: linear-gradient(to top, $dark-color, transparent), url('../../assets/image--008.jpg');
+					background-image: linear-gradient(to top, $dark-color, transparent), url('../assets/image--008.jpg');
 					grid-column: 4/7;
 					grid-row: 6/-1;
 				}
 				&-6{
-					background-image: linear-gradient(to top, $dark-color, transparent), url('../../assets/image--007.jpg');
+					background-image: linear-gradient(to top, $dark-color, transparent), url('../assets/image--007.jpg');
 					grid-column: 7/10;
 					grid-row: 5/-1;
 				}
@@ -418,7 +487,7 @@ nav{
 		}
 
 		.dots{
-			margin-top: 4rem;
+			margin-top: 2rem;
 			display: flex;
 			flex-direction: row;
 			height: 2rem;
@@ -450,21 +519,24 @@ nav{
 		padding: 3rem 10rem;
 		box-sizing: border-box;
 		width: 100%;
+		font-family: $nexa-bold;
 
 		h2{
-			font-size: 3.5rem;
+			font-size: 4rem;
 			line-height: 2rem;
 		}
 		p{
-			font-size: 1.4rem;
+			font-size: 1.5rem;
 			line-height: 2rem;
 			margin-bottom: 3rem;
+			font-family: $nexa-light;
+			letter-spacing: 0.05rem;
 		}
 		.grid{
 			width: 100%;
 			display: grid;
 			grid-template-rows: 100%;
-			grid-template-columns: repeat(6,16.67%);
+			grid-template-columns: repeat(6, 1fr);
 			grid-column-gap: .4rem;
 			.choice{
 				text-align: center;
@@ -478,7 +550,6 @@ nav{
 
 .section-6{
 	width: 100%;
-	height: 20rem;
 	background-color: $light-color;
 	.container{
 		width: 100%;
@@ -487,18 +558,23 @@ nav{
 		display: grid;
 		grid-template-columns: 60% 40%;
 		grid-template-rows: 50% 50%;
-	
+		font-family: $nexa-bold;
+		box-sizing: border-box;
+		padding: 2rem 10rem; 
+
 		h2{
-		font-size: 3.5rem;
+		font-size: 4rem;
 		line-height: 2rem;
 		color: $background-color;
 		}
 
 		p{
-			font-size: 1.4rem;
+			font-size: 1.5rem;
 			line-height: 2rem;
 			margin-bottom: 3rem;
 			color: $dark-color;
+			letter-spacing: 0.05rem;
+			font-family: $nexa-light;
 		}
 
 		.col-2{
@@ -507,15 +583,15 @@ nav{
 			display: flex;
 			flex-direction: column;
 			justify-content: center;
-			align-items:center;
+			align-items:flex-end;
 			button{
 				background-color: #3c7abe;
-				padding: 3rem 7rem;
+				padding: 3rem 4rem;
 				border: none;
 				color: $background-color;
-				margin-right: 4rem;
-				font-size: 1.5rem;
+				font-size: 2rem;
 				border-radius: .5rem;
+				font-family: $nexa-bold;
 			}
 		}
 	}
@@ -523,20 +599,28 @@ nav{
 
 .footer{
 	width: 100%;
-	height: 15rem;
+	height: 17rem;
+	box-sizing: border-box;
+
 	.container{
 		width: 100%;
 		display: grid;
 		grid-template-columns: 50% 50%;
 		grid-template-rows: 50% 50%;
 		padding-left: 10rem;
-		margin-top: 2rem;
+		box-sizing: border-box;
+		padding: 4rem 10rem;
+		font-family: $nexa-bold;
+
 		ul{
 			list-style-type: none;
 			display: flex;
 			flex-direction: row;
 			margin-left: -4rem;
 			align-self: center;
+			font-family: $nexa-light;
+			letter-spacing: 0.05rem;
+
 			li{
 				&:first-child{
 					margin-left: 0;
@@ -546,28 +630,28 @@ nav{
 			}
 		}
 		img{
-			align-self: center;
 			width: 20rem;
 			height: 5rem;
-			align-self: center;
+			align-self: end;
 			justify-self: end;
-			margin-right: 15rem;
 		}
 		p{
 			font-size: 1.4rem;
 			line-height: 2rem;
 			color: $dark-color;
 			align-self: end;
+			font-family: $nexa-light;
 		}
 		.social{
 			align-self: end;
 			justify-self: end;
-			margin-right: 15rem;
 
 			i{
 				font-size: 2rem;
 				margin-right: 1.5rem;
-
+				&:last-child{
+					margin-right: 0;
+				}
 			}
 		}
 	}
@@ -582,7 +666,7 @@ nav{
 
 @media only screen and (max-width: 76.8rem){
 	nav{
-		margin-left: 1.5rem;
+		padding: 2rem 5rem;
 		.menu{
 			ul{
 				display: none;
@@ -593,38 +677,77 @@ nav{
 		}
 		.fa-bars{
 			display: inline;
-			margin-right: 10rem;
 			font-size: 2rem;
 			align-self: center;
 		}
 	}
 
 	.section-1{
-		height: 35rem;
+		height: 46rem;
+		box-sizing: border-box;
+
 		&-grid{
 			padding: 5rem;
-			width: 90%;
+			width: 100%;
+			box-sizing: border-box;
+
+			h2{
+				justify-self: center;
+			}
+
+			p{
+				justify-self: center;
+				padding: 0rem 4rem;
+				text-align: center;
+			}
+
 			.field{
-				span{
-					.fa-crosshairs{
-						right: 60%;
-					}	
+				padding: 0rem 15rem;
+				display: grid;
+				grid-template-rows: repeat(3, 1fr);
+				grid-row-gap: 1rem;
+				box-sizing: border-box;
+
+				.search-location{
+					.district{
+						width: 100%;
+					}
+					.map-marker{
+						padding-top: 1.7rem;
+						padding-left: 1.7rem;
+						box-sizing: border-box;	
+					}
+					.crosshairs{
+						padding-top: 1.7rem;
+						padding-right: 3.5rem;
+						box-sizing: border-box;
+					}
+				}
+				
+				.search-bar{
+					padding-left: 1rem;
+				}
+
+				.search-btn{
+					margin: 0rem 6rem;
 				}
 			}
 		}
 	}
 
 	.section-2{	
-		height: 70rem;
+		height: 65rem;
 
 		.container{
 			padding: 3rem 5rem;
 			h2{
-			font-size: 3rem;
+				font-size: 3rem;
+				text-align: center;
 			}
 			p{
 				font-size: 1.1rem;
 				line-height: 2rem;
+				text-align: center;
 			}
 			.grid{
 				grid-column-gap: 5rem;
@@ -633,6 +756,22 @@ nav{
 					ul{
 						li{
 							font-size: 1.5rem;
+							&:hover{
+								border: 2px solid $light-color;	
+								color: $dark-color;
+								span{
+									color: $light-color;
+									font-size: 2.5rem;
+								}
+							}
+						}
+						.active{
+							border: 2px solid $light-color;	
+							color: $dark-color;
+							span{
+								color: $light-color;
+								font-size: 2.5rem;
+							}
 						}
 					}	
 				}
@@ -647,47 +786,139 @@ nav{
 	}
 	.section-3{
 		height: 110rem;
+		box-sizing: border-box;
+
 		.container{
 			padding: 3rem 5rem;
+			box-sizing: border-box;
+			h2{
+				text-align: center;
+			}
+			p{
+				text-align: center;
+			}
+
 			.cards{
-				grid-template-columns: 50% 50%;
+				grid-template-columns: repeat(2, 1fr);
 				grid-row-gap: 1rem;
+
 				.card{
 					.description{
 						.name{
 							&::after{
-								left: -7%;
+								left: -6%;
 							}
+						}
+						.qualification{
+							text-align: left;
+						}
+						.designation{
+							text-align: left;
+						}
+						.location{
+							text-align: left;
 						}
 					}
 				}
 			}
 			.dots{
-				margin-top: 43rem;
+				margin-top: 1rem;
 			}
 		}
 	}
 	.section-4{
 		.container{
+
 			padding: 3rem 5rem;
+			h2{
+				text-align: center;
+			}
+			p{
+				text-align: center;
+			}
+			.grid{
+				grid-template-columns: repeat(2,1fr);
+				grid-template-rows: repeat(3,1fr);
+				height: 70rem;
+				.card{
+					&-1{
+						grid-row: 1/2;
+						grid-column: 1/2;
+					}
+					&-2{
+						grid-row: 1/2;
+						grid-column: 2/3;
+					}
+					&-3{
+						grid-row: 2/3;
+						grid-column: 1/2;
+					}
+					&-4{
+						grid-row: 2/3;
+						grid-column: 2/3;
+					}
+					&-5{
+						grid-row: 3/4;
+						grid-column: 1/2;
+					}
+					&-6{
+						grid-row: 3/4;
+						grid-column: 2/3;
+					}
+				}
+			}
 			.dots{
-				margin-top: 5rem;
+				margin-top: 1.5rem;
 			}
 		}
 	}
 
 	.section-5{
+		height: 58rem;
 		.container{
 			padding: 3rem 5rem;
+			h2{
+				text-align: center;
+			}
+			p{
+				text-align: center;
+			}
+			.grid{
+				grid-template-columns: repeat(3,1fr);
+				grid-template-rows: repeat(2,1fr);
+				grid-gap: 1rem;
+			}
 		}
 	}
 	.section-6{
+		height: 23rem;
+		box-sizing: border-box;
 		.container{
-			padding-left: 5rem;
+			padding: 2rem 5rem;
+			box-sizing: border-box;
+			grid-template-rows: repeat(2,1fr);
+			grid-template-columns: 100%;
+			.col-1{
+				grid-row: 1/2;
+				grid-column: 1/2;
+				h2{
+					text-align: center;
+					line-height: 1rem;
+				}
+				p{
+					text-align: center;
+					line-height: 1rem;
+				}
+			}
 			.col-2{
+				flex-direction: row;
+				justify-content: center;
+				align-items: flex-start;
+				grid-row: 2/3;
+				grid-column: 1/2;
 				button{
-					margin-right: 10rem;
-					font-size: 1.2rem;
+					margin-right: 0rem;
+					font-size: 1.5rem;
 					padding: 2rem 4rem;
 				}
 			}
@@ -696,21 +927,24 @@ nav{
 
 	.footer{
 		.container{
-			padding-left:5rem;
+			padding: 4rem 5rem;
 			ul{
 				li{
 					&:first-child{
 					margin-left: 0;
 				}
-				font-size: 1.3rem;
+				font-size: 1.2rem;
 				margin-left: 1.2rem;
 				}
 			}
 			img{
-				margin-right: 10rem;
 			}
 			.social{
-				margin-right: 10rem;
+				color: $dark-color;
+				align-self: center;
+				i{
+					font-size: 1.5rem;
+				}
 			}
 
 		}
@@ -718,27 +952,25 @@ nav{
 	
 }
 
-@media only screen and (max-width: 37.5rem){
+@media only screen and (max-width: 375px){
 	nav{
-		margin-left: 1.5rem;
-		.fa-bars{
-			margin-right: 5rem;
-		}
+		padding: 2rem 2rem;
 	}
 	.section-1{
-		height: 35rem;
+		height: 40rem;
 		&-grid{
-			padding: 1.5rem;
-			width: 90%;
+			padding: 2rem;
+			width: 100%;
 			h2{
 				font-size: 2.1rem;
 			}
 			p{
-				font-size: 1rem;
+				padding: 0rem 2rem;
+				font-size: 1.4rem;
 				line-height: 2rem;
 			}
 			.field{
-
+				padding: 0;
 				flex-direction: column;
 				.district{
 					margin-bottom: 1rem;
@@ -762,13 +994,14 @@ nav{
 		}
 	}
 	.section-2{
-		height: 160rem;
+		height: 200rem;
 		.container{
 			p{
-				font-size: 1rem;
+				font-size: 1.3rem;
 				line-height: 2rem;
 			}
 			.grid{
+				margin-top: 4rem;
 				grid-template-rows: 100% 100%;
 				grid-template-columns:100%;
 				grid-row-gap: 2rem;
@@ -791,7 +1024,7 @@ nav{
 	}
 
 	.section-3{
-		height: 205rem;
+		height: 200rem;
 		.container{
 			padding: 3rem 1.5rem;
 			h2{
@@ -811,7 +1044,7 @@ nav{
 				}
 			}
 			.dots{
-				margin-top: 126rem;
+				margin-top: 2rem;
 			}
 		}
 	}
@@ -875,13 +1108,19 @@ nav{
 		}
 	}
 	.section-6{
-		height: 30rem;
+		height: 28rem;
+
 		.container{
 			text-align: center;
 			padding-left: 0rem;
 			grid-template-columns: 100%;
+			padding: 4rem 0rem;
 			.col-1{
 				text-align: center;
+				p{
+					padding: 0rem 2rem;
+					line-height: 2rem;
+				}
 			}
 			.col-2{
 				text-align: center;
@@ -894,14 +1133,18 @@ nav{
 		}
 	}
 	.footer{
-		height: 35rem;
+		height: 38rem;
+		background-color: $dark-color;
+		color: white;
 		.container{
-			padding-left: 1.5rem;
+			padding: 2rem 0rem;
+			grid-gap: 2rem;
 			grid-template-columns: 100%;
 			ul{
+				align-self: center;
+				justify-self: center;
 				grid-row: 2/3;
 				flex-direction: column;
-				margin-left: -10rem;
 				text-align: center;
 				li{
 					margin-bottom: 2rem;
@@ -909,14 +1152,21 @@ nav{
 			}
 			img{
 				grid-row: 1/2;
+				justify-self: center;
+				align-self: center;
 			}
 			p{
+				color: white;
 				grid-row: 3/4;
 				text-align: center;
-				margin-right: 3rem;
+				margin: 0;
+				justify-self: center;
+				align-self: center;
 			}
 			.social{
-				margin-right: 11rem;
+				color: white;
+				justify-self: center;
+				align-self: center;
 			}
 		}
 	}

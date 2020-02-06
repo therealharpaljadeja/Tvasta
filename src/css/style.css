@@ -181,8 +181,9 @@ nav .fa-bars {
   box-sizing: border-box;
   display: grid;
   width: 100%;
+  height: 100%;
   color: #2a2d3e;
-  grid-template-rows: 100% 100% 100%;
+  grid-template-rows: 1fr 2fr 17fr;
   font-family: "Nexa Bold";
 }
 .section-2 .container h2 {
@@ -197,60 +198,85 @@ nav .fa-bars {
 }
 .section-2 .container .grid {
   display: grid;
-  grid-template-rows: 100%;
   grid-template-columns: 40% auto;
-  grid-column-gap: 17rem;
+  grid-column-gap: 10rem;
+  grid-row-gap: 0.5rem;
 }
-.section-2 .container .grid ul {
-  height: 100%;
-  list-style-type: none;
+.section-2 .container .grid .option {
+  font-family: "Nexa Bold";
+  border: 0.2rem solid #eee;
   display: grid;
-  flex-direction: column;
-  text-align: center;
-  padding: 0;
   box-sizing: border-box;
+  border-radius: 0.5rem;
+  grid-template-columns: 25% auto;
+  grid-column: 1/2;
 }
-.section-2 .container .grid ul .active {
-  border: 2px solid #9cbfda;
-  color: #2a2d3e;
+.section-2 .container .grid .option:hover {
+  border: 0.2rem solid #9cbfda;
 }
-.section-2 .container .grid ul .active span {
+.section-2 .container .grid .option:hover span {
   color: #9cbfda;
-  font-size: 2.5rem;
-}
-.section-2 .container .grid ul li {
-  box-sizing: border-box;
-  font-size: 2rem;
-  color: #bbb;
-  display: grid;
-  border-radius: 0.6rem;
-  grid-template-columns: 20% 80%;
-  text-align: left;
-  align-items: center;
-  font-size: 2rem;
-  margin-bottom: 1rem;
-  grid-column-gap: 1rem;
-  border: 2px solid #eee;
-}
-.section-2 .container .grid ul li span {
+  align-self: center;
   justify-self: center;
-  font-size: 2.5rem;
-  color: #bbb;
+  font-size: 3rem;
 }
-.section-2 .container .grid ul li:hover {
-  box-sizing: border-box;
-  border: 2px solid #9cbfda;
+.section-2 .container .grid .option:hover h3 {
+  align-self: center;
+  justify-self: start;
+  font-size: 2rem;
   color: #2a2d3e;
 }
-.section-2 .container .grid ul li:hover span {
-  color: #9cbfda;
+.section-2 .container .grid .option-active {
+  border: 0.2rem solid #9cbfda;
 }
-.section-2 .container .col-2 {
+.section-2 .container .grid .option-active span {
+  color: #9cbfda !important;
+  align-self: center;
+  justify-self: center;
+  font-size: 3rem;
+}
+.section-2 .container .grid .option-active h3 {
+  align-self: center;
+  justify-self: start;
+  font-size: 2rem;
+  color: #2a2d3e !important;
+}
+.section-2 .container .grid .option span {
+  color: #ddd;
+  align-self: center;
+  justify-self: center;
+  font-size: 3rem;
+}
+.section-2 .container .grid .option h3 {
+  align-self: center;
+  justify-self: start;
+  font-size: 2rem;
+  color: #eee;
+}
+.section-2 .container .grid .option-desc {
+  display: none;
+}
+.section-2 .container .grid .option-desc-expand {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-row: 1/8;
+  grid-column: 2/3;
+}
+.section-2 .container .grid .option-desc-expand img {
+  max-width: 50rem;
+  height: auto;
+}
+.section-2 .container .grid .option-desc-expand p {
+  font-size: 1.4rem;
   text-align: center;
 }
-.section-2 .container .col-2 h3 {
+.section-2 .container .grid .option-desc-expand h3 {
   font-size: 2rem;
+  text-align: center;
 }
+
 .section-3 {
   width: 100%;
   height: 70rem;
@@ -681,44 +707,40 @@ nav .fa-bars {
   }
 
   .section-2 {
-    height: 65rem;
+    height: 78rem;
   }
   .section-2 .container {
+    justify-content: center;
     padding: 3rem 5rem;
   }
   .section-2 .container h2 {
+    box-sizing: border-box;
     font-size: 3rem;
     text-align: center;
   }
   .section-2 .container p {
     font-size: 1.1rem;
     line-height: 2rem;
+    padding: 0rem 4rem;
     text-align: center;
   }
   .section-2 .container .grid {
     grid-column-gap: 5rem;
   }
-  .section-2 .container .grid .col-1 ul li {
-    font-size: 1.5rem;
+  .section-2 .container .grid .option-desc {
+    display: none;
   }
-  .section-2 .container .grid .col-1 ul li:hover {
-    border: 2px solid #9cbfda;
-    color: #2a2d3e;
+  .section-2 .container .grid .option-desc-expand {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   }
-  .section-2 .container .grid .col-1 ul li:hover span {
-    color: #9cbfda;
-    font-size: 2.5rem;
+  .section-2 .container .grid .option-desc-expand img {
+    width: 100%;
   }
-  .section-2 .container .grid .col-1 ul .active {
-    border: 2px solid #9cbfda;
-    color: #2a2d3e;
-  }
-  .section-2 .container .grid .col-1 ul .active span {
-    color: #9cbfda;
-    font-size: 2.5rem;
-  }
-  .section-2 .container .grid .col-2 img {
-    width: 30rem;
+  .section-2 .container .grid .option-desc-expand p {
+    padding: 0rem 1rem;
   }
 
   .section-3 {
@@ -908,30 +930,31 @@ nav .fa-bars {
   }
 
   .section-2 {
-    height: 200rem;
+    height: 145rem;
+  }
+  .section-2 .container {
+    grid-template-rows: 1fr 2fr 17fr;
+    padding: 2rem 2rem;
+    grid-row-gap: 2rem;
   }
   .section-2 .container p {
     font-size: 1.3rem;
     line-height: 2rem;
+    padding: 0;
   }
   .section-2 .container .grid {
     margin-top: 4rem;
-    grid-template-rows: 100% 100%;
     grid-template-columns: 100%;
     grid-row-gap: 2rem;
+    box-sizing: border-box;
   }
-  .section-2 .container .grid .col-1 {
-    grid-row: 2/-1;
+  .section-2 .container .grid .option-desc {
+    display: none;
   }
-  .section-2 .container .grid .col-2 {
-    grid-row: 1/2;
-  }
-  .section-2 .container .grid .col-2 img {
-    width: 30rem;
-  }
-  .section-2 .container .grid .col-2 p {
-    font-size: 1rem;
-    line-height: 2rem;
+  .section-2 .container .grid .option-desc-expand {
+    display: block;
+    grid-column: 1/2;
+    grid-row: 2/3;
   }
 
   .section-3 {

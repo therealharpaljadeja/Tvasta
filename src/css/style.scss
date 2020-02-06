@@ -201,8 +201,9 @@ nav{
 		box-sizing: border-box;
 		display: grid;
 		width: 100%;
+		height: 100%;
 		color: $dark-color;
-		grid-template-rows: 100% 100% 100%;
+		grid-template-rows: 1fr 2fr 17fr;
 		font-family: $nexa-bold;
 		h2{
 			font-size: 4rem;
@@ -216,63 +217,85 @@ nav{
 		}
 		.grid{
 			display: grid;
-			grid-template-rows: 100%;
-			grid-template-columns: 40% auto; 
-			grid-column-gap: 17rem;
-			ul{
-				height: 100%;
-				list-style-type: none;
-				display: grid;
-				flex-direction: column; 
-				text-align: center;	
-				padding: 0;
-				box-sizing:border-box;
-
-				.active{
-						border: 2px solid $light-color;	
+			grid-template-columns: 40% auto;
+			grid-column-gap: 10rem;
+			grid-row-gap: .5rem;
+			.option{
+				&:hover{
+					border: 0.2rem solid #9cbfda;
+					span{
+						color: #9cbfda;
+						align-self: center;
+						justify-self: center;
+						font-size: 3rem;
+					}
+					h3{
+						align-self: center;
+						justify-self: start;
+						font-size: 2rem;
 						color: $dark-color;
-						span{
-							color: $light-color;
-							font-size: 2.5rem;
-						}
+					}	
 				}
 
-				li{
-					box-sizing: border-box;
-					font-size: 2rem;
-					color: #bbb;
-					display: grid;
-					border-radius: .6rem;
-					grid-template-columns: 20% 80%;
-					text-align: left;
-					align-items: center;
-					font-size: 2rem;
-					margin-bottom: 1rem;
-					grid-column-gap: 1rem;
-					border: 2px solid #eee;
+				&-active{
+					border: 0.2rem solid #9cbfda;
 					span{
+						color: #9cbfda !important;
+						align-self: center;
 						justify-self: center;
-						font-size: 2.5rem;
-						color: #bbb;
+						font-size: 3rem;
 					}
-					&:hover{
-						box-sizing: border-box;
-						border: 2px solid $light-color;	
-						color: $dark-color;
-						span{
-							color: $light-color;
-						}
+					h3{
+						align-self: center;
+						justify-self: start;
+						font-size: 2rem;
+						color: $dark-color !important;
 					}
-				}	
-			}
-		}
-		.col-2{
-			text-align: center;
-			h3{
-				font-size: 2rem;
-			}
-			p{
+				}
 
+				font-family: $nexa-bold;
+				border: 0.2rem solid #eee;
+				display: grid;
+				box-sizing: border-box;
+				border-radius: 0.5rem;
+				grid-template-columns: 25% auto;
+				grid-column: 1/2;
+				span{
+					color: #ddd;
+					align-self: center;
+					justify-self: center;
+					font-size: 3rem;
+				}
+				h3{
+					align-self: center;
+					justify-self: start;
+					font-size: 2rem;
+					color: #eee;
+				}
+			}
+			.option-desc{
+				display: none;
+				&-expand{
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					align-items: center;
+					grid-row: 1/8;
+					grid-column: 2/3;
+					img{
+						//width: 100%;
+						max-width: 50rem;
+						height: auto;
+					}
+					p{
+						font-size: 1.4rem;
+						text-align: center;
+					}
+					h3{
+						font-size: 2rem;
+						text-align: center;
+					}
+				}
 			}
 		}
 	}
@@ -736,48 +759,38 @@ nav{
 	}
 
 	.section-2{	
-		height: 65rem;
+		height: 78rem;
 
 		.container{
+			justify-content: center;
 			padding: 3rem 5rem;
 			h2{
+				box-sizing: border-box;
 				font-size: 3rem;
 				text-align: center;
 			}
 			p{
 				font-size: 1.1rem;
 				line-height: 2rem;
+				padding: 0rem 4rem;
 				text-align: center;
 			}
 			.grid{
 				grid-column-gap: 5rem;
-
-				.col-1{
-					ul{
-						li{
-							font-size: 1.5rem;
-							&:hover{
-								border: 2px solid $light-color;	
-								color: $dark-color;
-								span{
-									color: $light-color;
-									font-size: 2.5rem;
-								}
-							}
+				.option-desc{
+					display: none;
+					&-expand{
+						display: flex;
+						flex-direction: column;
+						justify-content: center;
+						align-items: center;
+						img{
+							width: 100%;
 						}
-						.active{
-							border: 2px solid $light-color;	
-							color: $dark-color;
-							span{
-								color: $light-color;
-								font-size: 2.5rem;
-							}
+						
+						p{
+							padding: 0rem 1rem;
 						}
-					}	
-				}
-				.col-2{
-					img{
-						width: 30rem;
 					}
 				}
 			}
@@ -994,29 +1007,32 @@ nav{
 		}
 	}
 	.section-2{
-		height: 200rem;
+		height: 145rem;
 		.container{
+			grid-template-rows: 1fr 2fr 17fr;
+			padding: 2rem 2rem;
+			grid-row-gap: 2rem;
+
 			p{
 				font-size: 1.3rem;
 				line-height: 2rem;
+				padding: 0;
 			}
 			.grid{
 				margin-top: 4rem;
-				grid-template-rows: 100% 100%;
 				grid-template-columns:100%;
 				grid-row-gap: 2rem;
+				box-sizing: border-box;
 
-				.col-1{
-					grid-row: 2/-1;
-				}
-				.col-2{
-					grid-row: 1/2;
-					img{
-						width: 30rem;
-					}
-					p{
-						font-size: 1rem;
-						line-height: 2rem;
+				.option{
+					&-desc{
+						display: none;
+						&-expand{
+							display: block;
+							grid-column: 1/2;
+							grid-row: 2/3;
+						}
+						
 					}
 				}
 			}

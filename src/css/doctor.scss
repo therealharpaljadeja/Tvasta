@@ -1,6 +1,5 @@
-$font-family-nav: 'Aksara Regular';
-$font-family-heading: 'Futura PT Heavy';
-$font-family-para: 'Medina Gothic Regular';
+$nexa-bold: "Nexa Bold";
+$nexa-light: "Nexa Light";
 $dark-color: #2a2d3e;
 $light-color: #9cbfda;
 $another-blue: #0173c7;
@@ -16,13 +15,13 @@ html,body{
 }
 
 body{
-	padding: 1rem;
 	box-sizing: border-box;
 }
 nav {
+	padding: 2rem 2rem;
 	display: flex;
 	width: 100%;
-	height: 4rem;
+	height: 8rem;
 	flex-direction: row;
 	justify-content: space-between;
 	box-sizing: border-box;
@@ -35,7 +34,8 @@ nav {
 	}
 	.logo{
 		img{
-			height: 4rem;	
+			width: 15rem;
+			height: auto;	
 		}	
 	}
 	.fa-bars{
@@ -44,14 +44,15 @@ nav {
 }
 
 .breadcrumb{
-	margin: 1.5rem 0rem;
+	padding: 2rem 2rem;
 	.container{
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 
 		p{
-			font-size: 1.2rem;
+			font-family: $nexa-bold;
+			font-size: 1.5rem;
 		}
 		.sort{
 			font-size: 1.2rem;
@@ -67,10 +68,13 @@ nav {
 .doctors-list{
 	width: 100%;
 	height: 405rem;
+	box-sizing: border-box;
+	padding: 0rem 2rem;
 	.container{
 		display: grid;
 		grid-template-columns: 100%;
 		grid-row-gap: 1rem;
+		font-family: $nexa-bold;
 		.col-1{
 			display: none;
 		}
@@ -82,7 +86,7 @@ nav {
 					display: flex;
 					flex-direction: column;
 					justify-content: center;
-					border: .1rem solid #999;
+					border: .1rem solid #bbb;
 					padding: .5rem;
 				.name{
 					h3{
@@ -90,17 +94,17 @@ nav {
 						font-size: 2rem;
 						line-height: 1rem; 	
 						margin: 1rem 0rem;
-						padding-left: 2.5rem;	
+						padding-left: 4rem;	
 					}	
 					position: relative;	
 					&:before{
 						content: '';
 						display: inline;
 						position: absolute;
-						width: 2.5rem;
+						width: 4rem;
 						background-color: $another-blue;
 						left: -1.5%;
-						top: 50%;
+						top: 45%;
 						height: .2rem; 
 					}
 				}
@@ -117,6 +121,7 @@ nav {
 					}	
 				}
 				.book{
+						font-family: $nexa-bold;
 						align-self: center;
 						margin-bottom: 1rem;
 						border: none;
@@ -140,76 +145,106 @@ nav {
 	width: 100%;
 	background-color: $light-color;
 	height: 28rem;
+	box-sizing: border-box;
+
 	.container{
 		display: grid;
 		text-align: center;
 		grid-template-columns: 100%;
 		padding: 2rem;
+		box-sizing: border-box;
+		height: calc(100%);
+		padding: 2rem 2rem;
+
 		h2{
-			font-size: 3.5rem;
-			line-height: 2rem;
+			font-family: $nexa-bold;
+			font-size: 4rem;
+			line-height: 1rem;
 			color: $background-color;
 		}
 		p{
-			font-size: 1.4rem;
+			font-family: $nexa-light;
+			font-size: 1.5rem;
 			line-height: 2rem;
 			margin-bottom: 3rem;
 			color: $dark-color;
 		}
 		.col-2{
 			button{
+				font-family: $nexa-bold;
 				background-color: #3c7abe;
 				color: $background-color;
 				border: none;
 				font-size: 1.5rem;
 				border-radius: .5rem;
-				padding: 3rem 7rem;
+				padding: 2rem 4rem;
 			}
 		}
 	}	
 }
 
 .footer{
-	width: 100%;
-	height: 35rem;
-	border-bottom: 1rem solid $another-blue;
-	.container{
-		display: grid;
-		padding-top: 2.5rem;
-		grid-template-columns: 100%;
-		grid-row-gap: 3rem;
-		ul{
-			grid-row: 2/3;
-			list-style-type: none;
-			display: flex;
-			flex-direction: column;
-			align-self: center;
-			margin-left: -4rem;
-			align-items: center;
-			li{
-				margin-bottom: 2rem;
+		height: 38rem;
+		background-color: $dark-color;
+		color: white;
+		.container{
+			width: 100%;
+			display: grid;
+			font-family: $nexa-light;
+			box-sizing: border-box;
+			padding: 2rem 0rem;
+			grid-gap: 2rem;
+			grid-template-columns: 100%;
+			ul{
+				list-style-type: none;	
+				display: flex;
+				align-self: center;
+				justify-self: center;
+				grid-row: 2/3;
+				flex-direction: column;
+				text-align: center;
+				margin-left: -4rem;
+				letter-spacing: 0.05rem;
+				li{
+					margin-bottom: 2rem;
+					font-size: 1.5rem;
+				}
 			}
-		}
-		img{
-			grid-row: 1/2;
-			width: 20rem;
-			height: 5rem;
-			align-self: center;
-			justify-self: center; 
-		}
-		p{
-			grid-row: 3/4;
-			text-align: center;
-			
-		}
-		.social{
-			align-self: center;
-			justify-self: center;
-			i{
-				padding-left: 1rem;
+			img{
+				grid-row: 1/2;
+				justify-self: center;
+				align-self: center;
+				width: 20rem;
+				height: auto;
+			}
+			p{
+				color: white;
+				grid-row: 3/4;
+				font-size: 1.4rem;
+				text-align: center;
+				margin: 0;
+				justify-self: center;
+				align-self: center;
+			}
+			.social{
+				color: white;
+				justify-self: center;
+				align-self: center;
+				i{
+					font-size: 1.5rem;
+					margin-right: 1.5rem;
+					&:last-child{
+						margin-right: 0;
+					}
+				}
 			}
 		}
 	}
+
+.border{
+	width: 100%;
+	height: 1rem;
+	background-color: $another-blue;
 }
 
 @media(min-width: 768px){
@@ -219,7 +254,7 @@ nav {
 		.container{
 			padding: 1rem; 
 			box-sizing: border-box;
-			grid-template-columns: 30% 70%;
+			grid-template-columns: 3fr 7fr;
 			grid-column-gap: 1rem;
 			.col-1{
 				display: grid;
@@ -230,11 +265,10 @@ nav {
 						border-bottom: none;
 					}
 					display: grid;
-					grid-template-columns: repeat(5,20%);
-					grid-template-rows: 20% 60% 20%;
-					grid-row-gap: 1rem;
+					grid-template-columns: repeat(5,2fr);
+					grid-template-rows: 2fr 3fr 2fr;
 					align-items: center;
-					border-bottom: .1rem solid grey;
+					border-bottom: .1rem solid #bbb;
 					.filter-title{
 						grid-column: 1/4;
 						grid-row: 1/2; 
@@ -258,6 +292,7 @@ nav {
 						grid-row: 2/3;
 						display: grid;
 						grid-template-columns: 100%;
+						align-self: start;
 						label{
 							display: flex;
 							flex-direction: row;
@@ -280,12 +315,15 @@ nav {
 			.col-2{
 				.card{
 					display: grid;
-					grid-template-columns: 60% 40%;
-					grid-template-rows: 20% 60% 20%;
+					grid-template-columns: 6fr 4fr;
+					grid-template-rows: 2fr 6fr 2fr;
 					height: 30rem;
 					.name{
 						grid-column: 1/2;
 						grid-row: 1/2;
+						&:before{
+							top:20%;
+						}
 					}
 					.other-details{
 						grid-column: 1/2;
@@ -308,41 +346,82 @@ nav {
 	}
 
 	.query{
-		height: 17rem;
+		height: 23rem;
+		box-sizing: border-box;
 		.container{
 			text-align: left;
-			grid-template-columns: 60% 40%;
+			box-sizing: border-box;
+			grid-template-columns: 100%;
+			grid-template-rows: repeat(2,1fr);
+			.col-1{
+				grid-row: 1/2;
+				grid-column: 1/2;
+				text-align: center;
+				p{
+					line-height: 1rem;
+				}
+			}
 			.col-2{
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
+				align-items: center;
+				grid-row: 2/3;
+				grid-column: 1/2;
+
 				button{
-					font-size: 1.3rem;
-					padding: 2.5rem 6rem;
+					font-size: 1.5rem;
+					padding: 2rem 4rem;
 				}
 			}
 		}
 	}
 	.footer{
-		height: 15rem;
+		height: 17rem;
+		background-color: white;
+		color: $dark-color;
+		box-sizing: border-box;
+
 		.container{
-			font-size: 1.4rem;
-			grid-template-columns: 60% 40%;
+			font-size: 1rem;
+			grid-template-columns: 6fr 4fr;
 			grid-row-gap: 1rem;
+			box-sizing: border-box;
+			padding: 4rem 5rem;
 			ul{
 				grid-row: 1/2;
 				flex-direction: row;
 				margin-left: 0rem;
+				box-sizing: border-box;
+				margin-left: -4rem;
+				align-self: center;
+				justify-self: start;
+	
 				li{
+					font-size: 1.4rem;
+					letter-spacing: 0.05rem;
+					&:first-child{
+						margin-left: 0;
+					}
 					margin-left: 1rem;
 				}
 			}
+			img{
+				justify-self: end;
+				align-self: center;
+				height: 5rem;
+			}
 			p{
-				margin-left: 5rem;
+				color: $dark-color;
 				font-size: 1.4rem;
 				grid-row: 2/3;
 				text-align: left;
 				grid-column: 1/2;
+				justify-self: start;
+			}
+			.social{
+				justify-self: end;
+				color: $dark-color;
 			}
 		}
 	}
@@ -351,6 +430,7 @@ nav {
 
 @media(min-width: 1024px){
 	nav{
+		padding: 2rem 10rem;
 		.menu{
 			display: inline;
 			flex-grow: 1;
@@ -363,7 +443,7 @@ nav {
 				justify-content: center;
 				margin-left: -6rem;
 				li{
-					font-family: $font-family-para;
+					font-family: $nexa-bold;
 					font-size: 1.5rem;	
 					color: $dark-color;
 					margin-left: 3rem;
@@ -398,21 +478,31 @@ nav {
 			display: none;
 		}
 	}
+	.breadcrumb{
+		padding: 0rem 5rem;
+	}
 	.doctors-list{
+		padding: 0rem 5rem;
 		.container{
-			grid-template-columns: 20% 80%;
+			grid-template-columns: 2fr 8fr;
+			padding: 1rem 0rem;
 			.col-2{
 				.card{
 					height: 30rem;
-					grid-template-columns: 70% 30%;
+					grid-template-columns: 7fr 3fr;
+					.name{
+						&:before{
+							margin-left: .4rem;
+						}
+					}
 					.other-details{
 						display: grid;
-						grid-template-columns: 50% 50%;
+						grid-template-columns: 1fr 1fr;
 						justify-content: center;
 						align-items: center; 
 					}
-					img{
-						height: 30.5rem;
+					.doctor_img{
+						height: 100%;
 					}
 				}
 			}
@@ -420,7 +510,27 @@ nav {
 	}
 	.query{
 		.container{
-			grid-template-columns: 80% 20%;
+			padding: 2rem 10rem;
+			grid-template-columns: 6fr 2fr;
+			grid-template-rows: 100%;
+
+			.col-1{
+				grid-column: 1/2;
+				grid-row: 1/2; 
+				text-align: left;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+			}
+			.col-2{
+				grid-column: 2/3;
+				grid-row: 1/2;
+			}
+		}
+	}
+	.footer{
+		.container{
+			padding: 4rem 10rem;
 		}
 	}
 }

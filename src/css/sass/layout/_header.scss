@@ -1,0 +1,78 @@
+.navbar{
+	position: relative;
+	width: 100%;
+	background-color: $background-color;
+	@include flex(row);
+	@include container-styling-mobile;
+	height: $header-height;
+	&__logo{
+		flex-grow: 1;
+		&__img{
+			@include maintain-aspect-ratio(15rem);
+		}
+	}
+	&__menu{
+		display: none;
+	}
+	&__buttons{
+		display: none;
+	}
+	&__burger{
+		color: $grey-1;
+		display: inline;
+		font-size: 2rem;
+		align-self: center;
+	}
+}
+
+@media (min-width: $bp-tablet){
+	.navbar{
+		@include container-styling-tablet;
+	}
+}
+
+
+@media (min-width: $bp-desktop){
+	.navbar{
+		@include container-styling-desktop;
+		&__menu{
+			display: block;
+			flex-grow: 2;
+			padding-left: 10rem;
+			align-self: center;
+			&__ul{
+				@include flex(row);
+				list-style-type: none;
+				&__item{
+					font-family: $nexa-light;
+					font-size: 1.3rem;
+					color: $dark-blue;
+					margin-left: 3rem;
+					font-weight: 600;
+					letter-spacing: 0.1rem;
+					a, a:visited, a:hover, a:active{
+						text-decoration: none;
+						color: $dark-blue;
+					}
+				}
+			}
+		}
+		&__buttons{
+			display: block;
+			flex-grow: 1;
+			&-login{
+				@include button-styling-desktop;
+				background-color: $background-color;
+			}
+			&-quote{
+				@include button-styling-desktop;
+				background-color: $dark-blue;
+				color: $background-color;
+				padding: 1rem 2.6rem;
+			}
+		}
+		.fa-bars{
+			display: none;
+		}
+	}
+}

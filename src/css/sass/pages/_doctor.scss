@@ -1,0 +1,224 @@
+.breadcrumb{
+	&__container{
+		@include container-styling-mobile;
+		@include flex(row);
+		justify-content: space-between;
+	}
+	&__text{
+			font-family: $nexa-bold;
+			font-size: 1.5rem;
+			padding: 1.5rem 0rem;
+	}
+	&__sort{
+			font-size: 1.2rem;
+			padding: 1.5rem;
+			border: none;
+			.fa-angle-down{
+				font-size: 1.2rem;
+			}
+	}
+}
+
+.doctor_list, .hospital_list{
+	&__container{
+		@include container-styling-mobile;
+		&__col-1{
+			display: none;
+		}
+		&__col-2{
+			grid-template-columns: 100%;
+			grid-row-gap: 1rem; 
+			&__card{
+				display: grid;
+				border: .1rem solid #bbb;
+				padding: .5rem;
+				&__name{
+					position: relative;
+					h3{
+						color: $bright-blue;
+						font-size: 2rem;
+						line-height: 3rem;
+						margin: 1rem 0rem;
+						padding-left: 4rem; 	
+					}
+					&:before{
+						content: '';
+						display: inline;
+						position: absolute;
+						width: 4rem;
+						background-color: $bright-blue;
+						left: -1.5%;
+						top: 45%;
+						height: .2rem; 
+					}
+				}
+				&__other_details{
+					&__para{
+						font-family: $nexa-light;
+						font-size: 1.3rem;
+						span{
+							margin-right: 1rem;
+							img{
+								@include maintain-aspect-ratio(2rem);
+							}
+							i{
+								color: $bright-blue;
+								font-size: 2rem;
+								line-height: 3rem;
+							}
+						}
+					}
+				}
+				&__book{
+					font-family: $nexa-bold;
+					align-self: center;
+					margin-bottom: 1rem;
+					border: none;
+					background-color: $dark-blue;
+					color: white;
+					font-size: 1.5rem;
+					padding: 1rem 3rem;
+					margin-top: 1rem;
+					margin: 1rem 5rem;
+				}
+				&__doctor_img{
+					width: 100%;
+					height: 40rem;
+				}
+			}
+		}
+	}
+}
+ 
+
+@media (min-width: $bp-tablet){
+	.breadcrumb{
+		&__container{
+			@include container-styling-tablet;
+		}
+	}
+	
+	.doctor_list, .hospital_list{
+		height: 195rem;
+		&__container{
+			@include container-styling-tablet;
+			grid-template-columns: 3fr 7fr;
+			grid-column-gap: 1rem;
+			&__col-1{
+				display: block;
+				grid-template-columns: 100%;
+				&__filter{
+					grid-template-columns: repeat(5,2fr);
+					grid-template-rows: 1fr 2fr 1fr;
+					align-items: center;
+					border-bottom: .1rem solid #bbb;
+					height: 25rem;
+					&:last-child{
+						border-bottom: none;
+					}
+					&__title{
+						grid-column: 1/4;
+						grid-row: 1/2; 
+						font-size: 1.5rem;
+						line-height: 2rem;
+					}
+					&__search{
+						grid-column: 4/5;
+						grid-row: 1/2;
+						justify-self: end;
+						align-self: center;
+						font-size: 1rem;
+						color: $bright-blue;
+					}
+					&__collapse{
+						grid-column: 5/6;
+						grid-row: 1/2;
+						justify-self: end;
+						align-self: center;
+						font-size: 1rem;
+					}
+					&__options{
+						grid-column: 1/6;
+						grid-row: 2/3;
+						display: grid;
+						grid-template-columns: 100%;
+						align-self: start;
+						label{
+							display: flex;
+							flex-direction: row;
+							align-items: center;
+							align-self: center;
+						}
+					}
+					&__show_more{
+						color: $bright-blue;
+						grid-column: 1/6;
+						grid-row: 3/4;
+						font-size: 1rem;
+						margin-bottom: 0rem;
+						align-self: center;
+						.fa-plus{
+							margin-right: 1rem;
+						}
+					}
+				}
+			}
+			&__col-2{
+				&__card{
+					height: 28rem;
+					grid-template-columns: 6fr 4fr;
+					grid-template-rows: 2fr 6fr 2fr;
+					&__name{
+						grid-column: 1/2;
+						grid-row: 1/2;
+						&:before{
+							top:45%;
+						}
+					}
+					&__other_details{
+						grid-column: 1/2;
+						grid-row: 2/3;
+					}
+					&__book{
+						grid-column: 1/2;
+						grid-row: 3/4;
+						align-self: start;
+						justify-self: start;
+						margin: 0;
+					}
+					&__doctor_img{
+						grid-column: 2/3;
+						grid-row: 1/4;
+						height: 27rem;
+					}
+				}
+			}
+		}
+	}
+
+}
+
+@media (min-width: $bp-desktop){
+	.breadcrumb{
+		&__container{
+			@include container-styling-desktop;
+		}
+		&__sort{
+			margin-right: 3.8rem;
+		}
+	}
+
+	.doctor_list, .hospital_list{
+		&__container{
+			@include container-styling-desktop;
+			grid-template-columns: 2fr 10fr;
+			grid-column-gap: 6rem;
+			&__col-2{
+				margin-right: 10rem;
+				&__card{
+					grid-template-columns: 6fr 3fr;
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,65 @@
+.help{
+	height: 28rem;
+	background-color: $light-blue;
+	&__container{
+		@include container-styling-mobile;
+		text-align: center;
+		grid-template-columns: 1fr;
+		font-family: $nexa-bold;
+		&__col-1{
+			text-align: center;
+
+			&__heading{
+				font-size: 4rem;
+				line-height: 8rem;
+				color: $background-color;
+			}
+			&__text{
+				line-height: 2rem;
+				font-size: 1.5rem;
+				line-height: 2rem;
+				color: $dark-blue;
+				letter-spacing: 0.05rem;
+			}
+		}
+		&__col-2{
+			text-align: center;	
+			&__button{
+				@include help-button;
+			}
+		}
+	}
+}
+
+@media (min-width: $bp-tablet){
+	.help{
+		height: 24rem;
+		&__container{
+			@include container-styling-tablet;
+			&__col-2{
+				@include flex(column);
+				justify-content: center;
+				align-items: center;
+			}
+		}
+	}
+}
+
+@media (min-width: $bp-desktop){
+	.help{
+		height: 17rem;
+		&__container{
+			@include container-styling-desktop;
+			grid-template-rows: 1fr;
+			grid-template-columns: 1fr 1fr;
+			&__col-1{
+				text-align: left;
+			}
+			&__col-2{
+				@include flex(column);
+				justify-content: center;
+				align-items: flex-end;
+			}
+		}
+	}
+}

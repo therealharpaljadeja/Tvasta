@@ -1,0 +1,772 @@
+.hero{
+	background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/img1.jpg');
+	background-size: cover;
+	position: relative;  
+	height: 30rem;
+	&__container{
+		@include container-styling-mobile;
+		color: $dark-blue;
+		grid-gap: 2rem;
+
+		&__heading{
+			font-size: $mobile-heading-2-font-size;
+			line-height: 3rem;
+			text-align: center;
+		}
+		&__para{
+			font-size: $mobile-para-font-size;
+			line-height: $mobile-para-line-height;
+			text-align: center;
+		}
+		&__field{
+			grid-template-rows: repeat(3,1fr);
+			grid-row-gap: .5rem;
+			font-family: $nexa-bold;
+			&__search_location{
+				position: relative;
+
+				&__district{
+					position: relative;
+					width: 100%;
+					height: 100%;
+					padding-left: 4rem;
+					font-family: $nexa-light;
+					font-size: 1.3rem;
+					letter-spacing: 0.05rem;
+				}
+				&__map-marker{
+					height: 100%;
+					position: absolute;
+					top: 0;
+					left: 0;
+					font-size: 1.5rem;
+					padding-left: 1.7rem;
+					padding-top: 1rem;
+				}
+				&__crosshairs{
+					position: absolute;
+					top: 0;
+					right: 0;
+					padding-top: 1rem;
+					padding-right: 1.7rem;
+					img{
+						@include maintain-aspect-ratio(1.7rem);	
+					}
+				}
+			}
+			&__search{
+				padding-left: 1rem;
+				font-family: $nexa-light;
+				font-size: 1.3rem;
+				letter-spacing: 0.05rem;
+			}
+			&__search__button{
+				@include button-styling-desktop;
+				margin: 0rem 8rem;
+				border-radius: 0;
+				background-color: $dark-blue;
+				color: $background-color;
+				font-family: $nexa-light;
+				font-size: 1.3rem;
+				letter-spacing: 0.05rem;
+			}
+		}
+	}
+}
+
+.how_it_works{
+	height: 145rem;
+	&__container{
+		@include container-styling-mobile;
+		text-align: center;
+		grid-template-rows: 1fr 1fr 19fr;
+		&__heading{
+			font-size: 3rem;
+			line-height: 4rem;
+			color: $dark-blue;
+		}
+		&__para{
+			font-size: 1.5rem;
+			line-height: 2.5rem;
+		}
+	}
+	&__grid{
+		grid-template-columns: 100%;
+		margin-top: 4rem;
+		grid-row-gap: 2rem;
+		&__option{
+			display: grid;
+			grid-template-columns: 3fr 7fr;
+			font-family: $nexa-bold;
+			border-radius: 1rem;
+			border: .2rem solid $grey-2;
+			&:hover{
+				border: 0.2rem solid #9cbfda;
+				span{
+					color: $light-blue;
+					align-self: center;
+					justify-self: center;
+					font-size: 3rem;
+				}
+				h3{
+					align-self: center;
+					justify-self: start;
+					font-size: 2rem;
+					line-height: 2rem;
+					color: $dark-blue;
+				}
+			} 
+			&__number{
+				color: #ddd;
+				align-self: center;
+				justify-self: center;
+				font-size: 3rem;
+			}
+			&__text{
+				align-self: center;
+				justify-self: start;
+				font-size: 2rem;
+				line-height: 2rem;
+				color: #eee;
+			}
+			&-active{
+				border: 0.2rem solid #9cbfda;
+				span{
+					color: $light-blue;
+				}
+				h3{
+					color: $dark-blue;
+				}
+			}
+			&__desc{
+				&-expand{
+					display: block;
+					img{
+						@include maintain-aspect-ratio(100%);
+					}
+					h3{
+						font-size: 2rem;
+						line-height: 4rem;
+						text-align: center;
+						font-family: $nexa-bold;
+					}
+					p{
+						font-size: 1.4rem;
+						text-align: center;
+						font-family: $nexa-light;
+					}	
+				}
+				display: none;
+			}
+		}
+	}
+}
+
+.world_class_doctors{
+	background-color: $dark-blue;
+	&__container{
+		@include container-styling-mobile;
+		text-align: center;
+		&__cards{
+			margin-top: 2rem;
+			grid-row-gap: 1rem;
+			grid-template-rows: repeat(4, 1fr);
+			&__card{
+				width: 100%;
+				height: 42rem;
+				background-size: cover;
+				background-position: -2rem -2rem;
+				position: relative;
+				&-1{
+					background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--002.jpg');
+				}
+				&-2{
+					background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--003.jpg');
+					background-position: -.5rem;
+				}
+				&-3{
+					background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--004.jpg');
+					background-position: .6rem;
+				}
+				&-4{
+					background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--005.jpg');
+				}
+				&__description{
+					position: absolute;
+					bottom: 0;
+					width: 100%;
+					height: 30%;
+					background-color: $background-color;
+					border-bottom: 0.4rem solid $light-blue;
+					text-align: left;
+					&__name{
+						position: relative;
+						font-family: $nexa-bold;
+						color: $bright-blue;
+						font-size: 2rem;
+						margin-left: 2rem;
+						line-height: 2rem;
+						padding-top: 1rem;
+						&::after{
+							content: '';
+							width: 5%;
+							height: .2rem;
+							background-color: $bright-blue;
+							position: absolute;
+							left: -6.5%;
+							bottom: 50%;
+						}
+					}
+					&__designation{
+						font-size: 1.5rem;
+						margin-left: 2rem;
+						color: $dark-blue;
+						margin-bottom: 0;
+						line-height: 3rem;
+						letter-spacing: 0.05rem;
+					}
+					&__qualification{
+						font-size: 1.5rem;
+						margin-left: 2rem;
+						color: $dark-blue;	
+						margin-bottom: 0;
+						line-height: 2rem;
+						padding:0 2rem 0 0;
+						letter-spacing: 0.01rem;
+					}
+					&__location{
+						font-size: 1.5rem;
+						margin-left: 2rem;
+						color: $dark-blue;
+						margin-bottom: 0;
+						line-height: 1.5rem;	
+						letter-spacing: 0.05rem;
+					}
+				}
+			}
+		}
+		&__dots{
+			margin-top: 2rem;
+			display: flex;
+			flex-direction: row;
+			height: 2rem;
+			width: 100%;
+			align-items:center;
+			&__dot{
+				width: 1rem;
+				height: 1rem;
+				border-radius: 50%;
+				background-color: #8e9099;
+				margin-left: .3rem;
+				&:first-child{
+					width: 1.7rem;
+					height: 1.7rem;
+					background-color: $dark-blue;	
+					border: 2px solid $bright-blue;
+				}
+			}	
+		}
+	}
+	&__heading{
+		color: $background-color;
+		font-family: $nexa-bold;
+		font-size: 2.5rem;
+		line-height: 5rem;
+	}
+	&__para{
+		font-size: 1.4rem;
+		line-height: 3rem;
+		color: $background-color;
+		font-family: $nexa-light;
+	}
+	
+}
+
+
+.medical_treatments{
+	height: 219rem;
+	background-color: $background-color;
+	&__container{
+		@include container-styling-mobile;
+		color: $dark-blue;
+		font-family: $nexa-bold;
+		display: block;
+		text-align: center;
+	}
+	&__heading{
+		font-size: $mobile-heading-2-font-size;
+		line-height: 4rem;
+	}	
+	&__para{
+		font-size: $mobile-para-font-size;
+		line-height: 2rem;
+	}
+	&__grid{
+		grid-template-columns: 100%;
+		grid-gap: 1rem;
+		height: 200rem;
+		margin-top: 1rem;
+		&__card{
+			position: relative;
+			color: $background-color;
+			&-1{
+				background-image: linear-gradient(to top, $dark-blue, transparent), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--009.jpg');
+				background-size: cover;
+			}
+			&-2{
+				background-image: linear-gradient(to top, $dark-blue, transparent), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--010.jpg');
+				background-size: cover;
+			}	
+			&-3{
+				background-image: linear-gradient(to top, $dark-blue, transparent), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--011.jpg');
+				background-size: cover;
+			}
+			&-4{
+				background-image: linear-gradient(to top, $dark-blue, transparent), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--006.jpg');
+				background-size: cover;
+			}
+			&-5{
+				background-image: linear-gradient(to top, $dark-blue, transparent), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--008.jpg');	
+				background-size: cover;
+			}
+			&-6{
+				background-image: linear-gradient(to top, $dark-blue, transparent), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--007.jpg');
+				background-size: cover;
+			}
+			&__type{
+				position: absolute;
+				bottom: 4rem;
+				font-size: 2rem;
+				left: 7%;
+			}
+			&__text{
+				position: absolute;
+				bottom: 3%;
+				left: 7%;
+				font-size: 1.2rem;
+			}
+		}
+	}
+	&__dots{
+		margin-top: 2rem;
+		display: flex;
+		flex-direction: row;
+		height: 2rem;
+		width: 100%;
+		align-items:center;
+		&__dot{
+			width: 1rem;
+			height: 1rem;
+			border-radius: 50%;
+			background-color: #8e9099;
+			margin-left: .3rem;
+			&:first-child{
+				width: 1.7rem;
+				height: 1.7rem;
+				background-color: $background-color;	
+				border: 2px solid $bright-blue;
+			}
+		}	
+	}
+}
+
+.services{
+	background-color: #f5f5f5;
+	&__container{
+		@include container-styling-mobile;
+		font-family: $nexa-bold;
+		text-align: center;
+		color: $dark-blue;
+	}
+	&__heading{
+		font-size: $mobile-heading-2-font-size;
+		line-height: 4rem;
+	}
+	&__para{
+		font-size: $mobile-para-font-size;
+		line-height: 2.5rem;
+	}
+	&__grid{
+		margin-top: 4rem;
+		grid-template-columns: repeat(2, 1fr);
+		grid-gap: 1rem;
+		&__choice{
+			text-align: center;
+			padding: 1rem;
+			color: #809c99;
+			background-color: $background-color;
+			border-radius: .5rem;
+		} 
+	}
+}
+
+
+@media (min-width: $bp-tablet) {
+	.hero{
+		&__container{
+			@include container-styling-tablet;
+			grid-gap: 1rem;
+			&__heading{
+				font-size: $tablet-heading-2-font-size;
+				line-height: 4rem;
+				text-align: center;
+			}
+			&__para{
+				font-size: $tablet-para-font-size;
+				text-align: center;
+				padding: 0rem 2rem;
+			}
+			&__field{
+				margin: 0rem 15rem;
+				&__search_location{
+					&__district{
+						font-family: $nexa-light;
+						font-size: 1.3rem;
+						letter-spacing: 0.05rem;
+					}
+				}
+				&__search{
+					font-family: $nexa-light;
+					font-size: 1.3rem;
+					letter-spacing: 0.05rem;
+				}
+				&__search__button{
+					margin: 0rem 10rem;
+					font-family: $nexa-light;
+					font-size: 1.3rem;
+					letter-spacing: 0.05rem;
+				}
+			}
+		}
+	}
+
+	.how_it_works{
+		height: 78rem;
+		&__container{
+			@include container-styling-tablet;
+			grid-template-rows: 1fr 1fr 19fr;
+			font-family: $nexa-bold;
+			&__heading{
+				font-size: $tablet-heading-2-font-size;
+				line-height: 4rem;
+			}
+		}
+		&__grid{
+			grid-template-columns: 4fr 6fr;
+			grid-template-rows: repeat(7,1fr);
+			grid-column-gap: 5rem;
+			grid-row-gap: .5rem;
+			&__option{
+				grid-column: 1/2;
+				&__text{
+					line-height: 2rem;
+					text-align: left
+				}
+				&__desc{
+					&-expand{
+						grid-column: 2/3;	
+						grid-row: 1/8;
+					}
+				}
+			}
+		} 
+	}
+
+	.world_class_doctors{
+		&__container{
+			@include container-styling-tablet;
+			&__cards{
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: repeat(2,1fr);
+				grid-column-gap: 2rem;
+				grid-row-gap: 1rem;
+				&__card{
+					&__description{
+						&__name{
+							&::after{
+								top: 60%;
+							}
+						}
+					}
+				}
+			}
+		}
+		&__heading{
+			font-size: $tablet-heading-2-font-size;
+			line-height: 4rem;
+		}
+		&__para{
+			font-size: $tablet-para-font-size;
+		}
+	}
+
+	.medical_treatments{
+		height: 90rem;
+		&__container{
+			@include container-styling-tablet;
+			text-align: center;
+		}
+		&__heading{
+			font-size: $tablet-heading-2-font-size;
+			line-height: 5rem;
+		}
+		&__para{
+			font-size: $tablet-para-font-size;
+			line-height: 3rem;
+		}
+		&__grid{
+			grid-template-columns: repeat(2,1fr);
+			grid-template-rows: repeat(3,1fr);
+			height: 70rem;
+			grid-gap: 1rem;
+			&__card{
+				&-1{
+					grid-row: 1/2;
+					grid-column: 1/2;
+				}
+				&-2{
+					grid-row: 1/2;
+					grid-column: 2/3;
+				}
+				&-3{
+					grid-row: 2/3;
+					grid-column: 1/2;
+				}
+				&-4{
+					grid-row: 2/3;
+					grid-column: 2/3;
+				}
+				&-5{
+					grid-row: 3/4;
+					grid-column: 1/2;
+				}
+				&-6{
+					grid-row: 3/4;
+					grid-column: 2/3;
+				}
+			}
+		}
+	}
+
+	.services{
+		&__heading{
+			font-size: $tablet-heading-2-font-size;
+			line-height: 5rem;
+		}
+		&__para{
+			font-size: $tablet-para-font-size;
+			line-height: 3rem;
+		}
+		&__grid{
+			margin-top: 1rem;
+			grid-template-columns: repeat(4,1fr);
+		}
+	}
+}
+
+@media (min-width: $bp-desktop) {
+	.hero{
+		height: 40rem;
+		&__container{
+			@include container-styling-desktop;
+			padding: 10rem 10rem;
+			grid-gap: 0rem;
+			width: 70%;
+			&__heading{
+				font-size: $desktop-heading-2-font-size;
+				line-height: 4rem;
+				text-align: left;
+			}
+			&__para{
+				font-size: $desktop-para-font-size;
+				text-align: left;	
+				padding: 0; 
+			}
+			&__field{
+				@include flex(row);
+				margin: 2rem 0;
+				width: 100%;
+				&__search_location{
+					flex-grow: 0;
+					&__district{
+						font-family: $nexa-light;
+						font-size: 1.3rem;
+						letter-spacing: 0.05rem;
+					}
+					&__map-marker{
+						padding-top: 1.6rem;
+						padding-left: 2rem;
+					}
+					&__crosshairs{
+						padding-top: 1.6rem;
+						padding-right: 2rem;
+						img{
+							opacity: 0.3;
+						}	
+					}
+				}
+				&__search{
+					flex-grow: 2;
+					font-family: $nexa-light;
+					font-size: 1.3rem;
+					letter-spacing: 0.05rem;
+				}
+				&__search__button{
+					flex-grow: 1;
+					margin: 0 0;
+					font-family: $nexa-light;
+					font-size: 1.3rem;
+					letter-spacing: 0.05rem;
+				}
+			}
+		}
+	}
+	.how_it_works{
+		height: 105rem;
+		&__container{
+			@include container-styling-desktop;
+			text-align: left;
+			&__heading{
+				font-size: $desktop-heading-2-font-size;
+				line-height: 5rem;
+			}
+			&__para{
+				font-size: $desktop-para-font-size;
+				line-height: 3rem;
+			}
+
+		}
+		&__grid{
+				margin-top: 0;
+				&__option{	
+					&__desc{
+						&__heading{
+							font-size: 3rem !important;
+							line-height: 4rem;
+							margin-top: 2rem;
+						}
+						&__para{
+							font-size: 1.5rem !important;
+							line-height: 2rem;
+						}
+					}
+				}
+		}
+	}
+
+	.world_class_doctors{
+		height: 70rem;
+		&__container{
+			@include container-styling-desktop;
+			text-align: left;
+			grid-template-rows: 2fr 3fr 14fr 1fr;
+			&__cards{
+				grid-template-columns: 1fr 1fr 1fr 1fr;
+				grid-column-gap: 1rem;
+				grid-template-rows: 0;
+				grid-row-gap: 0;
+				margin-top: 0;
+				&__card{
+					&__description{
+						&__name{
+							&::after{
+								top: 60%;
+								left: -8%;
+								width: 6%;
+							}
+						}
+					}
+				}
+			}
+			&__dots{
+				margin-top: 2rem;
+				display: flex;
+				flex-direction: row;
+				height: 2rem;
+				width: 100%;
+				align-items:center;
+				&__dot{
+					width: 1rem;
+					height: 1rem;
+					border-radius: 50%;
+					background-color: #8e9099;
+					margin-left: .3rem;
+					&:first-child{
+						width: 1.7rem;
+						height: 1.7rem;
+						background-color: $dark-blue;	
+						border: 2px solid $bright-blue;
+					}
+				}	
+			}
+		}
+		&__heading{
+			font-size: $desktop-heading-2-font-size;
+			line-height: 4rem;
+		}
+	}
+	.medical_treatments{
+		height: 92rem;
+		&__container{
+			@include container-styling-desktop;
+			text-align: left;
+		}
+		&__heading{
+			font-size: $desktop-heading-2-font-size;
+			line-height: 5rem;
+		}
+		&__para{
+			font-size: $desktop-para-font-size;
+			line-height: 2.5rem;
+		}
+		&__grid{
+			grid-template-columns: repeat(9, 1fr);
+			grid-template-rows: repeat(9, 1fr);
+			margin-top: 2rem;
+			&__card{			
+				&-1{
+					grid-row: 1/4;
+					grid-column: 1/4;
+				}
+				&-2{
+					grid-column: 4/7;
+					grid-row: 1/6;
+				}	
+				&-3{
+					grid-column: 7/10;
+					grid-row: 1/5;
+				}
+				&-4{
+					grid-column: 1/4;
+					grid-row: 4/-1;
+				}
+				&-5{
+					grid-column: 4/7;
+					grid-row: 6/-1;
+				}
+				&-6{
+					grid-column: 7/10;
+					grid-row: 5/-1;
+				}	
+			}
+		}
+	}
+
+	.services{
+		&__container{
+			@include container-styling-desktop;
+			text-align: left;
+		}
+		&__heading{
+			font-size: $desktop-heading-2-font-size;
+			line-height: 5rem;
+		}
+		&__para{
+			font-size: $desktop-para-font-size;
+			line-height: 3rem;	
+		}
+		&__grid{
+			grid-template-columns: repeat(6,1fr);
+		}
+	}
+}

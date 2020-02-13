@@ -1,0 +1,89 @@
+.hospital_list{
+	height: 310rem;
+	&__container{
+		&__col-2{
+			&__card{
+				grid-gap: 1rem;
+				&__hospital_img{
+					width: 100%;
+					height: 40rem;
+				}	
+				&__other_details{
+					&__tags{
+						margin: 2rem 1rem;
+						&__tag{
+							display: inline;
+							border: 1px solid grey;
+							border-radius: 1rem;
+							padding: .5rem;
+							line-height: 3rem;
+							white-space: nowrap;
+						}
+					}
+				}
+				&__book{
+					margin: 0rem 5rem;
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: $bp-tablet) {
+	.hospital_list{
+		height: 170rem;
+		&__container{
+			@include container-styling-tablet;
+			&__col-2{
+				&__card{
+					height: 37rem;
+					grid-template-columns: 6fr 6fr;
+					grid-template-rows: 2fr 6fr 2fr;
+					&:last-child{
+						height: 40rem;
+						img{
+							height: 39rem;
+						}
+					}
+					&__name{
+						h3{
+							line-height: 2rem;	
+						}
+					}
+					&__other_details{
+						display: grid;
+						grid-template-columns: 100%;
+						justify-content: center;
+						align-items: center;
+					}
+					&__hospital_img{
+						grid-column: 2/3;
+						grid-row: 1/4;
+						height: 36rem;
+					}
+					&__book{
+						margin:0;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media (min-width: $bp-desktop){
+	.hospital_list{
+		&__container{
+			@include container-styling-desktop;
+			&__col-2{
+				&__card{
+					grid-template-columns: 6fr 3fr;
+					&__name{
+						&:before{
+							top: 28% !important;
+						}
+					}
+				}
+			}
+		}
+	}
+}

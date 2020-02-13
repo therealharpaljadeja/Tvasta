@@ -1,0 +1,55 @@
+html, body{
+	box-sizing: border-box;
+	font-size: $font-size;
+}
+*, *:before, *:after{
+	box-sizing: inherit;
+}
+
+.grid{
+	display: grid;
+}
+
+.container{
+	display: grid;
+	@include container-styling-mobile;
+}
+
+.para{
+	@include para-styling-mobile;
+}
+
+.heading-2{
+	font-size: $mobile-heading-2-font-size;
+	line-height: $desktop-heading-2-line-height;
+	font-family: $nexa-bold;
+}
+
+.para{
+	font-size: 1.7rem;
+	line-height: 3rem;
+	font-family: $nexa-light;
+}
+
+@media (min-width: $bp-tablet) {
+	.container{
+		@include container-styling-tablet;
+	}
+	.para{
+		@include para-styling-tablet;
+	}
+	
+}
+
+
+
+@media (min-width: $bp-desktop){
+	.container{
+		@include container-styling-desktop;
+	}
+
+	.para{
+		@include para-styling-desktop;
+	}
+
+}

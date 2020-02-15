@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJBel8D54gkYQEMff_sEQQwiBvrJpK7Yo&libraries=places"></script>
 	<title>Tvastra 2020</title> 
 	<link rel="stylesheet" href="css/reset.css">
 	<link rel="stylesheet" type="text/css" href="css/main.css">
@@ -42,7 +43,7 @@
 			</p>
 			<div class="grid hero__container__field">
 				<div class="hero__container__field__search_location">
-					<input type="text" name="district" placeholder="Ahmedabad" class="hero__container__field__search_location__district">
+					<input type="text" name="district" placeholder="Ahmedabad" class="hero__container__field__search_location__district" id="auto-complete">
 					<span class="hero__container__field__search_location__map-marker"><i class="fas fa-map-marker-alt"></i></span>
 					<span id="gps-button" class="hero__container__field__search_location__crosshairs"><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/gps.png" alt=""></span>
 				</div>
@@ -328,6 +329,6 @@
 	</div>
 
 	<script type="text/javascript" src="index.js"></script>
-	 <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJBel8D54gkYQEMff_sEQQwiBvrJpK7Yo&callback=initMap"></script>
+	 
 </body>
 </html>

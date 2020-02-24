@@ -139,6 +139,7 @@
 				}
 			}
 			&__desc{
+				margin: auto;
 				&-expand{
 					display: block;
 					img{
@@ -275,7 +276,7 @@
 	}
 	&__para{
 		font-size: 1.4rem;
-		line-height: 3rem;
+		line-height: 2rem;
 		color: $background-color;
 		font-family: $nexa-light;
 	}
@@ -497,6 +498,7 @@
 		}
 		&__para{
 			font-size: $tablet-para-font-size;
+			line-height: 2.5rem;
 		}
 	}
 
@@ -559,7 +561,8 @@
 		}
 		&__grid{
 			margin-top: 1rem;
-			grid-template-columns: repeat(4,1fr);
+			grid-template-columns: repeat(3,1fr);
+			padding: 0rem 5rem;
 		}
 	}
 }
@@ -702,7 +705,11 @@
 		}
 		&__heading{
 			font-size: $desktop-heading-2-font-size;
-			line-height: 4rem;
+		
+		}
+		&__para{
+			line-height: 2rem;
+			align-self: center;
 		}
 	}
 	.medical_treatments{

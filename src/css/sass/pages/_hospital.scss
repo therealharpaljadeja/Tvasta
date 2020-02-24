@@ -1,5 +1,5 @@
 .hospital_list{
-	height: 310rem;
+	height: 315rem;
 	&__container{
 		&__col-2{
 			&__card{
@@ -10,7 +10,8 @@
 				}	
 				&__other_details{
 					&__tags{
-						margin: 2rem 1rem;
+						margin: 2rem 0rem;
+						grid-column: 1/-1;
 						&__tag{
 							display: inline;
 							border: 1px solid grey;
@@ -31,38 +32,44 @@
 
 @media (min-width: $bp-tablet) {
 	.hospital_list{
-		height: 170rem;
+		height: 140rem;
 		&__container{
 			@include container-styling-tablet;
+			grid-template-columns: 100%;
+			&__col-1{
+				display: none;
+			}
 			&__col-2{
 				&__card{
-					height: 37rem;
-					grid-template-columns: 6fr 6fr;
+					grid-template-columns: 6fr 4fr;
 					grid-template-rows: 2fr 6fr 2fr;
-					&:last-child{
-						height: 40rem;
-						img{
-							height: 39rem;
-						}
-					}
+					grid-gap: 0;
 					&__name{
 						h3{
 							line-height: 2rem;	
 						}
+						&::before{
+							top: 30%;
+						}
 					}
 					&__other_details{
 						display: grid;
-						grid-template-columns: 100%;
+						grid-template-columns: 1fr 1fr;
 						justify-content: center;
 						align-items: center;
+						margin-right: 1rem;
+						&__tags{
+							margin: 1rem 0rem;
+						}
 					}
 					&__hospital_img{
 						grid-column: 2/3;
 						grid-row: 1/4;
-						height: 36rem;
+						height: 100%;
+						object-fit: fill;
 					}
 					&__book{
-						margin:0;
+						margin: 1rem 1rem;
 					}
 				}
 			}
@@ -74,13 +81,27 @@
 	.hospital_list{
 		&__container{
 			@include container-styling-desktop;
+			grid-template-columns: 1fr 6fr;
+			&__col-1{
+				display: inline;
+			}
 			&__col-2{
 				&__card{
 					grid-template-columns: 6fr 3fr;
+					&__other_details{
+						&__para{
+							display: grid;
+							grid-template-columns: 1fr 8fr;
+							align-items: center;
+						}
+					}
 					&__name{
 						&:before{
 							top: 28% !important;
 						}
+					}
+					&__hospital_img{
+						height: 100%;
 					}
 				}
 			}

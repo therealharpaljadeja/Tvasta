@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJBel8D54gkYQEMff_sEQQwiBvrJpK7Yo&libraries=places"></script>
 	<meta charset="UTF-8">
 	<title>Doctor</title>
 	<link rel="stylesheet" href="css/reset.css">
@@ -11,15 +12,27 @@
 <body>
 	<nav class="navbar">
 		<div class="navbar__logo">
-			<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" class="navbar__logo__img">
+			<a href="/">
+				<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" class="navbar__logo__img">
+			</a>
 		</div>
 		<div class="navbar__menu">
 			<ul class="navbar__menu__ul">
 				<li class="navbar__menu__ul__item"><a href="doctor.html" >Doctors</a></li>
-				<li class="navbar__menu__ul__item"><a href="hospital.html">Hospital</a></li>
+				<li class="navbar__menu__ul__item"><a href="hospital.html">Hospitals</a></li>
 				<li class="navbar__menu__ul__item"><a href="doctor.html" >Treatment</a></li>
 				<li class="navbar__menu__ul__item"><a href="doctor.html" >Other Services</a></li>
 				<li class="navbar__menu__ul__item"><a href="doctor.html" >About</a></li>
+			</ul>
+		</div>
+		<div class="navbar__side_menu">
+			<ul class="navbar__side_menu__ul">
+				<li class="navbar__side_menu__ul__item cross"><span><i class="fas fa-window-close"></i></span></li>
+				<li class="navbar__side_menu__ul__item"><a href="doctor.html" >Doctors</a></li>
+				<li class="navbar__side_menu__ul__item"><a href="hospital.html">Hospitals</a></li>
+				<li class="navbar__side_menu__ul__item">Treatment</li>	
+				<li class="navbar__side_menu__ul__item">Other Services</li>
+				<li class="navbar__side_menu__ul__item">About</li>
 			</ul>
 		</div>
 		<div class="navbar__buttons">
@@ -36,9 +49,11 @@
 	<div class="breadcrumb">
 		<div class="breadcrumb__container">
 			<p class="breadcrumb__text">Home / Doctor List</p>
-			<button class="breadcrumb__sort">
-				Sort By <span><i class="fa fa-angle-down"></i></span>
-			</button>
+			<select class="breadcrumb__sort">
+				<option value="" selected>Sort By</option>
+				<option value="name">Name</option>
+				<option value="name">Experience</option>
+			</select>
 		</div>
 	</div>
 
@@ -50,12 +65,12 @@
 					<span class="doctor_list__container__col-1__filter__search"><i class="fa fa-search"></i></span>
 					<span class="doctor_list__container__col-1__filter__collapse"><i class="fa fa-minus"></i></span>
 					<div class="doctor_list__container__col-1__filter__options">
-						<label for="DLF"><input type="checkbox" name="DLF">DLF Cyber City</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Dwarka</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Lajpat Nagar</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Palam Vihar</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Punjabi Bhag</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Pusa Road</label>
+						<label for="DLF"><input type="checkbox" name="DLF">Delhi</label>
+						<label for="DLF"><input type="checkbox" name="DLF">Mumbai</label>
+						<label for="DLF"><input type="checkbox" name="DLF">Bangalore</label>
+						<label for="DLF"><input type="checkbox" name="DLF">Punjab</label>
+						<label for="DLF"><input type="checkbox" name="DLF">Ahmedabad</label>
+						<label for="DLF"><input type="checkbox" name="DLF">Gurgaon</label>
 					</div>
 					<div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span>Show More</div>
 				</div>
@@ -79,11 +94,11 @@
 					<span class="doctor_list__container__col-1__filter__collapse"><i class="fa fa-minus"></i></span>
 					<div class="doctor_list__container__col-1__filter__options">
 						<label for="DLF"><input type="checkbox" name="DLF">Apollo Hospital</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Manipal North Side Hospital</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Northstar</label>
+						<label for="DLF"><input type="checkbox" name="DLF">Rockland</label>
+						<label for="DLF"><input type="checkbox" name="DLF">Kokilaben</label>
 						<label for="DLF"><input type="checkbox" name="DLF">AIIMS</label>
 						<label for="DLF"><input type="checkbox" name="DLF">Fortis Hospital</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Elbit Diagnostics</label>
+						<label for="DLF"><input type="checkbox" name="DLF">Primus Super Speeciality Hospital</label>
 					</div>
 					<div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span> Show More</div>
 				</div>
@@ -111,21 +126,21 @@
 					<div class="doctor_list__container__col-2__card__other_details">
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-certificate"></i></span>10th</p>
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span>12th</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fas fa-clock"></i></span>3 Years Of Experience</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fas fa-building"></i></span>Kokilaben Hospital</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fas fa-map-marker-alt"></i></span>Mumbai</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fas fa-clock"></i></span>9 Years Of Experience</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fas fa-building"></i></span>Rockland Hospital</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fas fa-map-marker-alt"></i></span>Delhi</p>
 					</div>
 					<button class="doctor_list__container__col-2__card__book">Book an appointment</button>
 					<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--002.jpg" alt="" class="doctor_list__container__col-2__card__doctor_img">
 				</div>
 				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-2">
 					<div class="doctor_list__container__col-2__card__name">
-						<h3>Deep Chandra Verma</h3>
+						<h3>Dilip Chandra Dalgade</h3>
 					</div>
 					<div class="doctor_list__container__col-2__card__other_details">
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fa fa-certificate"></i></span>10th</p>
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span>12th</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fa fa-clock"></i></span>3 Years Of Experience</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fa fa-clock"></i></span>13 Years Of Experience</p>
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fa fa-building"></i></span>Kokilaben Hospital</p>
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fa fa-map-marker-alt"></i></span>Mumbai</p>
 					</div>
@@ -134,26 +149,26 @@
 				</div>
 				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-3">
 					<div class="doctor_list__container__col-2__card__name">
-						<h3>Deep Chandra Verma</h3>
+						<h3>Pooja Bindra Verma</h3>
 					</div>
 					<div class="doctor_list__container__col-2__card__other_details">
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fa fa-certificate"></i></span>10th</p>
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span>12th</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fa fa-clock"></i></span>3 Years Of Experience</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fa fa-building"></i></span>Kokilaben Hospital</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fa fa-map-marker-alt"></i></span>Mumbai</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fa fa-clock"></i></span>23 Years Of Experience</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fa fa-building"></i></span>Primus Super Speciality Hospital</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fa fa-map-marker-alt"></i></span>Delhi</p>
 					</div>
 					<button class="doctor_list__container__col-2__card__book">Book an appointment</button>
 					<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--003.jpg" alt="" class="doctor_list__container__col-2__card__doctor_img">
 				</div>
 				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-4">
 					<div class="doctor_list__container__col-2__card__name">
-						<h3>Deep Chandra Verma</h3>
+						<h3>Meena Vijay Sharma</h3>
 					</div>
 					<div class="doctor_list__container__col-2__card__other_details">
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fa fa-certificate"></i></span>10th</p>
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span>12th</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fa fa-clock"></i></span>4 Years Of Experience</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fa fa-clock"></i></span>6 Years Of Experience</p>
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fa fa-building"></i></span>Kokilaben Hospital</p>
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fa fa-map-marker-alt"></i></span>Mumbai</p>
 					</div>
@@ -162,28 +177,28 @@
 				</div>
 				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-5">
 					<div class="doctor_list__container__col-2__card__name">
-						<h3>Deep Chandra Verma</h3>
+						<h3>Abhishek Nitin Joshi</h3>
 					</div>
 					<div class="doctor_list__container__col-2__card__other_details">
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fa fa-certificate"></i></span>10th</p>
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span>12th</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fa fa-clock"></i></span>3 Years Of Experience</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fa fa-building"></i></span>Kokilaben Hospital</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fa fa-map-marker-alt"></i></span>Mumbai</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fa fa-clock"></i></span>7 Years Of Experience</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fa fa-building"></i></span>Apollo Hospital</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fa fa-map-marker-alt"></i></span>Bangalore</p>
 					</div>
 					<button class="doctor_list__container__col-2__card__book">Book an appointment</button>
 					<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--002.jpg" alt="" class="doctor_list__container__col-2__card__doctor_img">
 				</div>
 				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-6">
 					<div class="doctor_list__container__col-2__card__name">
-						<h3>Deep Chandra Verma</h3>
+						<h3>Sangeeta Vikram Dev</h3>
 					</div>
 					<div class="doctor_list__container__col-2__card__other_details">
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fa fa-certificate"></i></span>10th</p>
 						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span>12th</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fa fa-clock"></i></span>3 Years Of Experience</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fa fa-building"></i></span>Kokilaben Hospital</p>
-						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fa fa-map-marker-alt"></i></span>Mumbai</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fa fa-clock"></i></span>15 Years Of Experience</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fa fa-building"></i></span>Fortis Hospital</p>
+						<p class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fa fa-map-marker-alt"></i></span>Punjab</p>
 					</div>
 					<button class="doctor_list__container__col-2__card__book">Book an appointment</button>
 					<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--003.jpg" alt="" class="doctor_list__container__col-2__card__doctor_img">
@@ -210,13 +225,14 @@
 	<div class="footer">
 		<div class="container footer__container">
 			<ul class="footer__container__menu">
-				<li>Doctors</li>
-				<li>Hospitals</li>
+				<li><a href="doctor.html">Doctors</a></li>
+				<li><a href="hospital.html">Hospitals</a></li>
 				<li>Treatment</li>
 				<li>Other Services</li>
 				<li>FAQs</li>
 			</ul>
-			<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/footer.png" class="footer__container__logo">
+			<a href="/">
+			<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/footer.png" class="footer__container__logo"></a>
 			<p class="footer__container__copyright">All Rights Reserved. &copy; tvastra 2020</p>
 			<div class="footer__container__social">
 				<i class="fab fa-facebook-f"></i>
@@ -229,5 +245,7 @@
 	</div>
 	<div class="border">
 	</div>
+
+	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>

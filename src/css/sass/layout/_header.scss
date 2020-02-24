@@ -23,11 +23,47 @@
 		font-size: 2rem;
 		align-self: center;
 	}
+	&__side_menu{
+		display: none;
+		position: fixed;
+		background-color: $background-color;
+		height: 100%;
+		width: 55%;
+		z-index: 1000;
+		right: 0;
+		top: 0;
+		padding: 2rem;
+		&__ul{
+			@include flex(column);
+			align-items: flex-end;
+			list-style-type: none;
+			&__item{
+				font-family: $nexa-light;
+				font-size: 1.5rem;
+				color: $dark-blue;
+				margin-bottom: 2rem;
+				font-weight: 600;
+				letter-spacing: 0.1rem;
+				a, a:visited, a:hover, a:active{
+					text-decoration: none;
+					color: $dark-blue;
+				}
+			}
+		}
+	}
 }
 
 @media (min-width: $bp-tablet){
 	.navbar{
 		@include container-styling-tablet;
+		&__side_menu{
+			&__ul{
+				padding-right: 2rem;
+				&__item{
+					font-size: 2rem;
+				}
+			}
+		}
 	}
 }
 
@@ -57,8 +93,13 @@
 				}
 			}
 		}
+		&__side_menu{
+			display: none;
+		}
 		&__buttons{
-			display: block;
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 1rem;
 			flex-grow: 1;
 			&-login{
 				@include button-styling-desktop;

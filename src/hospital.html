@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJBel8D54gkYQEMff_sEQQwiBvrJpK7Yo&libraries=places"></script>
 	<meta charset="UTF-8">
 	<title>Hospital</title>
 	<link rel="stylesheet" href="css/reset.css">
@@ -11,7 +12,9 @@
 <body>
 	<nav class="navbar">
 		<div class="navbar__logo">
-			<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" class="navbar__logo__img">
+			<a href="/">
+				<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" class="navbar__logo__img">
+			</a>
 		</div>
 		<div class="navbar__menu">
 			<ul class="navbar__menu__ul">
@@ -20,6 +23,16 @@
 				<li class="navbar__menu__ul__item"><a href="doctor.html">Treatment</a></li>	
 				<li class="navbar__menu__ul__item"><a href="doctor.html">Other Services</a></li>
 				<li class="navbar__menu__ul__item"><a href="doctor.html">About</a></li>
+			</ul>
+		</div>
+		<div class="navbar__side_menu">
+			<ul class="navbar__side_menu__ul">
+				<li class="navbar__side_menu__ul__item cross"><span><i class="fas fa-window-close"></i></span></li>
+				<li class="navbar__side_menu__ul__item"><a href="doctor.html" >Doctors</a></li>
+				<li class="navbar__side_menu__ul__item"><a href="hospital.html">Hospitals</a></li>
+				<li class="navbar__side_menu__ul__item">Treatment</li>	
+				<li class="navbar__side_menu__ul__item">Other Services</li>
+				<li class="navbar__side_menu__ul__item">About</li>
 			</ul>
 		</div>
 		<div class="navbar__buttons">
@@ -36,9 +49,11 @@
 	<div class="breadcrumb">
 		<div class="breadcrumb__container">
 			<p class="breadcrumb__text">Home / Hospital List</p>
-			<button class="breadcrumb__sort">
-				Sort By <span><i class="fas fa-angle-down"></i></span>
-			</button>
+			<select class="breadcrumb__sort">
+				<option value="" selected>Sort By</option>
+				<option value="name">Name</option>
+				<option value="name">No. Of Beds</option>
+			</select>
 		</div>
 	</div>
 
@@ -123,7 +138,7 @@
 						</div>
 					</div>
 					<button class="hospital_list__container__col-2__card__book">Call Now</button>
-					<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--002.jpg" alt="" class="hospital_list__container__col-2__card__hospital_img">
+					<img src="https://www.evaluate.com/sites/default/files/Belvoir%20Community%20Hospital.jpg" alt="" class="hospital_list__container__col-2__card__hospital_img">
 				</div>
 				<div class="grid hospital_list__container__col-2__card">
 					<div class="grid hospital_list__container__col-2__card__name">
@@ -144,7 +159,7 @@
 						</div>
 					</div>
 					<button class="hospital_list__container__col-2__card__book">Call Now</button>
-					<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--005.jpg" alt="" class="hospital_list__container__col-2__card__hospital_img">
+					<img src="https://www.jems.com/wp-content/uploads/sites/12/2020/02/Baptist-Hospital-Google-Maps-850x567.jpg" alt="" class="hospital_list__container__col-2__card__hospital_img">
 				</div>
 				<div class="grid hospital_list__container__col-2__card">
 					<div class="grid hospital_list__container__col-2__card__name">
@@ -152,7 +167,7 @@
 					</div>
 					<div class="hospital_list__container__col-2__card__other_details">
 						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-map-marker-alt"></i></span>Delhi Mathura Road, Sarita Vihar, Delhi 110076</p>
-						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-2"><span><i class="fas fa-bed"></i></span>100 beds</p>
+						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-2"><span><i class="fas fa-bed"></i></span>20 beds</p>
 						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__experience"><span><i class="fas fa-stethoscope"></i></span>Famous Treatments</p>
 						<div class="hospital_list__container__col-2__card__other_details__tags">
 							<span class="hospital_list__container__col-2__card__other_details__tags__tag">Multi Organ Transplant</span>
@@ -165,7 +180,7 @@
 						</div>
 					</div>
 					<button class="hospital_list__container__col-2__card__book">Call Now</button>
-					<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--003.jpg" alt="" class="hospital_list__container__col-2__card__hospital_img">
+					<img src="https://www.narayanahealth.org/sites/default/files/hospitals/narayana-multispeciality-hospital-ahmedabad.jpg" alt="" class="hospital_list__container__col-2__card__hospital_img">
 				</div>
 				<div class="grid hospital_list__container__col-2__card">
 					<div class="grid hospital_list__container__col-2__card__name">
@@ -173,7 +188,7 @@
 					</div>
 					<div class="hospital_list__container__col-2__card__other_details">
 						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-map-marker-alt"></i></span>Delhi Mathura Road, Sarita Vihar, Delhi 110076</p>
-						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-2"><span><i class="fas fa-bed"></i></span>100 beds</p>
+						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-2"><span><i class="fas fa-bed"></i></span>60 beds</p>
 						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__experience"><span><i class="fas fa-stethoscope"></i></span>Famous Treatments</p>
 						<div class="hospital_list__container__col-2__card__other_details__tags">
 							<span class="hospital_list__container__col-2__card__other_details__tags__tag">Multi Organ Transplant</span>
@@ -186,7 +201,7 @@
 						</div>
 					</div>
 					<button class="hospital_list__container__col-2__card__book">Call Now</button>
-					<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--004.jpg" alt="" class="hospital_list__container__col-2__card__hospital_img">
+					<img src="https://thumbs.dreamstime.com/b/ambulance-parked-outside-hospital-ford-truck-robert-wood-johnson-university-new-brunswick-nj-plum-street-122302435.jpg" alt="" class="hospital_list__container__col-2__card__hospital_img">
 				</div>
 			</div>
 		</div>
@@ -210,13 +225,14 @@
 	<div class="footer">
 		<div class="container footer__container">
 			<ul class="footer__container__menu">
-				<li>Doctors</li>
-				<li>Hospitals</li>
+				<li><a href="doctor.html">Doctors</a></li>
+				<li><a href="hospital.html">Hospitals</a></li>
 				<li>Treatment</li>
 				<li>Other Services</li>
 				<li>FAQs</li>
 			</ul>
-			<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/footer.png" class="footer__container__logo">
+			<a href="/">
+			<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/footer.png" class="footer__container__logo"></a>
 			<p class="footer__container__copyright">All Rights Reserved. &copy; tvastra 2020</p>
 			<div class="footer__container__social">
 				<i class="fab fa-facebook-f"></i>
@@ -229,5 +245,7 @@
 	</div>
 	<div class="border">
 	</div>
+
+	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>

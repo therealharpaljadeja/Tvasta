@@ -36,12 +36,28 @@ options.forEach(el => {
 });
 
 
-let autoComplete = new google.maps.places.Autocomplete(document.getElementById('auto-complete'), {
+/*let autoComplete = new google.maps.places.Autocomplete(document.getElementById('auto-complete'), {
 	types: ['geocode']
 });
 
 google.maps.event.addListener(autoComplete, 'place-changed', () => {
 	let nearPlace = autoComplete.getPlace();
 });
+*/
+
+let menu_burger = document.querySelector('.navbar__burger');
+let cross_button = document.querySelector('.cross');
+
+const expand_menu = (el) => {
+	let side_menu = document.querySelector('.navbar__side_menu');
+	side_menu.style.display = 'inline';
+}
+
+const collapse_menu = (el) => {
+	let side_menu = document.querySelector('.navbar__side_menu');
+	side_menu.style.display = 'none';
+}
+cross_button.addEventListener('click', collapse_menu);
+menu_burger.addEventListener('click', expand_menu);
 
 

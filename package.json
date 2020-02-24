@@ -11,5 +11,9 @@
     "url": "git@workspace.konfinity.com:html-css/css.git"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "lite-server": "^2.5.4",
+    "sass": "^1.25.0"
+  }
 }

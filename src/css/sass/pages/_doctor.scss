@@ -35,6 +35,7 @@
 			&__card{
 				display: grid;
 				border: .1rem solid #bbb;
+				height: 67.5rem;
 				&__name{
 					position: relative;
 					h3{
@@ -51,7 +52,7 @@
 						width: 4rem;
 						background-color: $bright-blue;
 						left: 0%;
-						top: 45%;
+						bottom: 50%;
 						height: .2rem; 
 					}
 				}
@@ -85,9 +86,14 @@
 					margin-top: 1rem;
 					margin: 1rem 5rem;
 				}
-				&__doctor_img{
+				&__doctor_img_wrapper{
 					width: 100%;
 					height: 40rem;
+					&__img{
+						width: 100%;
+						height: 100%;
+					}
+					
 				}
 			}
 		}
@@ -121,6 +127,7 @@
 					font-family: $nexa-light;
 					&:last-child{
 						border-bottom: none;
+						margin-top: 1.5rem;
 					}
 					&__title{
 						grid-column: 1/4;
@@ -175,13 +182,14 @@
 			}
 			&__col-2{
 				&__card{
+					height: 30rem;
 					grid-template-columns: 6fr 4fr;
 					grid-template-rows: 1fr 3fr 0fr;
 					&__name{
 						grid-column: 1/2;
 						grid-row: 1/2;
 						&:before{
-							top:45%;
+							top:38%;
 						}
 					}
 					&__other_details{
@@ -202,11 +210,17 @@
 						justify-self: start;
 						margin: 1rem;
 					}
-					&__doctor_img{
-						grid-column: 2/3;
-						grid-row: 1/4;
+					&__doctor_img_wrapper{
+					width: 100%;
+					height: 100%;
+					grid-row: 1/-1;
+					grid-column: 2/3;
+					&__img{
+						width: 100%;
 						height: 100%;
 					}
+					
+				}
 				}
 			}
 		}
@@ -228,12 +242,17 @@
 			grid-column-gap: 6rem;
 			&__col-2{
 				&__card{
+					&__name{
+						&:before{
+							top: 38%;
+						}
+					}
 					&__other_details{
 						&__para{
 							display: inline;
 						}
 					}
-					grid-template-columns: 9fr 3fr;
+					grid-template-columns: 9fr 4fr;
 				}
 			}
 		}

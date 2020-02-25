@@ -37,6 +37,7 @@
 			@include flex(column);
 			align-items: flex-end;
 			list-style-type: none;
+			margin: 1rem 0rem;
 			&__item{
 				font-family: $nexa-light;
 				font-size: 1.5rem;
@@ -50,6 +51,9 @@
 				}
 			}
 		}
+	}
+	.cross{
+		font-size: 2rem;
 	}
 }
 

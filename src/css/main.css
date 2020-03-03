@@ -430,7 +430,7 @@ html, body {
   grid-gap: 2rem;
 }
 .hero__container__heading {
-  font-size: 2.1rem;
+  font-size: 2.18rem;
   line-height: 3rem;
   text-align: center;
 }
@@ -453,7 +453,7 @@ html, body {
   height: 100%;
   padding-left: 4rem;
   font-family: "Nexa Light";
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   letter-spacing: 0.05rem;
 }
 .hero__container__field__search_location__map-marker {
@@ -479,7 +479,7 @@ html, body {
 .hero__container__field__search {
   padding-left: 1rem;
   font-family: "Nexa Light";
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   letter-spacing: 0.05rem;
 }
 .hero__container__field__search__button {
@@ -495,12 +495,12 @@ html, body {
   background-color: #2a2d3e;
   color: white;
   font-family: "Nexa Light";
-  font-size: 1.3rem;
+  font-size: 1.1rem;
   letter-spacing: 0.05rem;
 }
 
 .how_it_works {
-  height: 145rem;
+  height: 120rem;
 }
 .how_it_works__container {
   padding: 2rem 2rem;
@@ -510,8 +510,9 @@ html, body {
   grid-template-rows: 1fr 1fr 19fr;
 }
 .how_it_works__container__heading {
-  font-size: 3rem;
-  line-height: 4rem;
+  align-self: center;
+  font-size: 2rem;
+  line-height: 2rem;
   color: #2a2d3e;
 }
 .how_it_works__container__para {
@@ -550,12 +551,12 @@ html, body {
   color: #ddd;
   align-self: center;
   justify-self: center;
-  font-size: 3rem;
+  font-size: 2rem;
 }
 .how_it_works__grid__option__text {
   align-self: center;
   justify-self: start;
-  font-size: 2rem;
+  font-size: 1.5rem;
   line-height: 2rem;
   color: #eee;
 }
@@ -580,7 +581,7 @@ html, body {
   height: auto;
 }
 .how_it_works__grid__option__desc-expand h3 {
-  font-size: 2rem;
+  font-size: 1.8rem;
   line-height: 4rem;
   text-align: center;
   font-family: "Nexa Bold";
@@ -599,6 +600,7 @@ html, body {
   width: 100%;
   height: 100%;
   text-align: center;
+  grid-gap: 1rem;
 }
 .world_class_doctors__container__cards {
   margin-top: 2rem;
@@ -639,7 +641,7 @@ html, body {
   position: relative;
   font-family: "Nexa Bold";
   color: #0173b2;
-  font-size: 2rem;
+  font-size: 1.7rem;
   margin-left: 2rem;
   line-height: 2rem;
   padding-top: 1rem;
@@ -650,11 +652,11 @@ html, body {
   height: 0.2rem;
   background-color: #0173b2;
   position: absolute;
-  left: -6.5%;
+  left: -8%;
   bottom: 38%;
 }
 .world_class_doctors__container__cards__card__description__designation {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-left: 2rem;
   color: #2a2d3e;
   margin-bottom: 0;
@@ -662,7 +664,7 @@ html, body {
   letter-spacing: 0.05rem;
 }
 .world_class_doctors__container__cards__card__description__qualification {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-left: 2rem;
   color: #2a2d3e;
   margin-bottom: 0;
@@ -671,7 +673,7 @@ html, body {
   letter-spacing: 0.01rem;
 }
 .world_class_doctors__container__cards__card__description__location {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-left: 2rem;
   color: #2a2d3e;
   margin-bottom: 0;
@@ -679,7 +681,6 @@ html, body {
   letter-spacing: 0.05rem;
 }
 .world_class_doctors__container__dots {
-  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   height: 2rem;
@@ -702,8 +703,8 @@ html, body {
 .world_class_doctors__heading {
   color: white;
   font-family: "Nexa Bold";
-  font-size: 2.5rem;
-  line-height: 5rem;
+  font-size: 2rem;
+  line-height: 2rem;
 }
 .world_class_doctors__para {
   font-size: 1.4rem;
@@ -724,10 +725,13 @@ html, body {
   font-family: "Nexa Bold";
   display: block;
   text-align: center;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
 }
 .medical_treatments__heading {
-  font-size: 2.1rem;
-  line-height: 4rem;
+  font-size: 2rem;
+  line-height: 2rem;
 }
 .medical_treatments__para {
   font-size: 1.4rem;
@@ -780,7 +784,6 @@ html, body {
   font-size: 1.2rem;
 }
 .medical_treatments__dots {
-  margin-top: 2rem;
   display: flex;
   flex-direction: row;
   height: 2rem;
@@ -811,17 +814,17 @@ html, body {
   font-family: "Nexa Bold";
   text-align: center;
   color: #2a2d3e;
+  grid-gap: 1rem;
 }
 .services__heading {
-  font-size: 2.1rem;
-  line-height: 4rem;
+  font-size: 2rem;
+  line-height: 2rem;
 }
 .services__para {
   font-size: 1.4rem;
-  line-height: 2.5rem;
+  line-height: 2rem;
 }
 .services__grid {
-  margin-top: 4rem;
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
 }
@@ -833,6 +836,11 @@ html, body {
   border-radius: 0.5rem;
 }
 
+@media (min-width: 375px) {
+  .world_class_doctors__container__cards__card__description__name::after {
+    left: -6.3%;
+  }
+}
 @media (min-width: 768px) {
   .hero__container {
     padding: 2rem 5rem;
@@ -896,6 +904,7 @@ html, body {
   .how_it_works__grid__option__text {
     line-height: 2rem;
     text-align: left;
+    font-size: 1.6rem;
   }
   .how_it_works__grid__option__desc-expand {
     grid-column: 2/3;
@@ -913,8 +922,20 @@ html, body {
     grid-column-gap: 2rem;
     grid-row-gap: 1rem;
   }
+  .world_class_doctors__container__cards__card__description__name {
+    font-size: 2rem;
+  }
   .world_class_doctors__container__cards__card__description__name::after {
     top: 60%;
+  }
+  .world_class_doctors__container__cards__card__description__location {
+    font-size: 1.5rem;
+  }
+  .world_class_doctors__container__cards__card__description__designation {
+    font-size: 1.5rem;
+  }
+  .world_class_doctors__container__cards__card__description__qualification {
+    font-size: 1.5rem;
   }
   .world_class_doctors__heading {
     font-size: 3rem;
@@ -933,6 +954,7 @@ html, body {
     width: 100%;
     height: 100%;
     text-align: center;
+    grid-template-rows: 1fr 1fr 28fr 1fr;
   }
   .medical_treatments__heading {
     font-size: 3rem;
@@ -945,7 +967,7 @@ html, body {
   .medical_treatments__grid {
     grid-template-columns: repeat(2, 1fr);
     grid-template-rows: repeat(3, 1fr);
-    height: 70rem;
+    height: auto;
     grid-gap: 1rem;
   }
   .medical_treatments__grid__card-1 {
@@ -975,7 +997,7 @@ html, body {
 
   .services__heading {
     font-size: 3rem;
-    line-height: 5rem;
+    line-height: 3rem;
   }
   .services__para {
     font-size: 1.7rem;
@@ -1068,6 +1090,12 @@ html, body {
   .how_it_works__grid {
     margin-top: 0;
   }
+  .how_it_works__grid__option__number {
+    font-size: 3rem;
+  }
+  .how_it_works__grid__option__text {
+    font-size: 2rem;
+  }
   .how_it_works__grid__option__desc__heading {
     font-size: 3rem !important;
     line-height: 4rem;
@@ -1130,7 +1158,7 @@ html, body {
   }
 
   .medical_treatments {
-    height: 92rem;
+    height: 87rem;
   }
   .medical_treatments__container {
     padding: 3rem 10rem;
@@ -1185,7 +1213,7 @@ html, body {
   }
   .services__heading {
     font-size: 4rem;
-    line-height: 5rem;
+    line-height: 4rem;
   }
   .services__para {
     font-size: 1.7rem;

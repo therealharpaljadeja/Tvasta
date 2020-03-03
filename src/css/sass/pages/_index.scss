@@ -9,7 +9,7 @@
 		grid-gap: 2rem;
 
 		&__heading{
-			font-size: $mobile-heading-2-font-size;
+			font-size: 2.18rem;
 			line-height: 3rem;
 			text-align: center;
 		}
@@ -31,7 +31,7 @@
 					height: 100%;
 					padding-left: 4rem;
 					font-family: $nexa-light;
-					font-size: 1.3rem;
+					font-size: 1.1rem;
 					letter-spacing: 0.05rem;
 				}
 				&__map-marker{
@@ -57,7 +57,7 @@
 			&__search{
 				padding-left: 1rem;
 				font-family: $nexa-light;
-				font-size: 1.3rem;
+				font-size: 1.1rem;
 				letter-spacing: 0.05rem;
 			}
 			&__search__button{
@@ -67,7 +67,7 @@
 				background-color: $dark-blue;
 				color: $background-color;
 				font-family: $nexa-light;
-				font-size: 1.3rem;
+				font-size: 1.1rem;
 				letter-spacing: 0.05rem;
 			}
 		}
@@ -75,14 +75,15 @@
 }
 
 .how_it_works{
-	height: 145rem;
+	height: 120rem;
 	&__container{
 		@include container-styling-mobile;
 		text-align: center;
 		grid-template-rows: 1fr 1fr 19fr;
 		&__heading{
-			font-size: 3rem;
-			line-height: 4rem;
+			align-self: center;
+			font-size: 2rem;
+			line-height: 2rem;
 			color: $dark-blue;
 		}
 		&__para{
@@ -120,12 +121,12 @@
 				color: #ddd;
 				align-self: center;
 				justify-self: center;
-				font-size: 3rem;
+				font-size: 2rem;
 			}
 			&__text{
 				align-self: center;
 				justify-self: start;
-				font-size: 2rem;
+				font-size: 1.5rem;
 				line-height: 2rem;
 				color: #eee;
 			}
@@ -146,7 +147,7 @@
 						@include maintain-aspect-ratio(100%);
 					}
 					h3{
-						font-size: 2rem;
+						font-size: 1.8rem;
 						line-height: 4rem;
 						text-align: center;
 						font-family: $nexa-bold;
@@ -168,6 +169,7 @@
 	&__container{
 		@include container-styling-mobile;
 		text-align: center;
+		grid-gap: 1rem;
 		&__cards{
 			margin-top: 2rem;
 			grid-row-gap: 1rem;
@@ -204,7 +206,7 @@
 						position: relative;
 						font-family: $nexa-bold;
 						color: $bright-blue;
-						font-size: 2rem;
+						font-size: 1.7rem;
 						margin-left: 2rem;
 						line-height: 2rem;
 						padding-top: 1rem;
@@ -214,12 +216,12 @@
 							height: .2rem;
 							background-color: $bright-blue;
 							position: absolute;
-							left: -6.5%;
+							left: -8%;
 							bottom: 38%;
 						}
 					}
 					&__designation{
-						font-size: 1.5rem;
+						font-size: 1.3rem;
 						margin-left: 2rem;
 						color: $dark-blue;
 						margin-bottom: 0;
@@ -227,7 +229,7 @@
 						letter-spacing: 0.05rem;
 					}
 					&__qualification{
-						font-size: 1.5rem;
+						font-size: 1.3rem;
 						margin-left: 2rem;
 						color: $dark-blue;	
 						margin-bottom: 0;
@@ -236,7 +238,7 @@
 						letter-spacing: 0.01rem;
 					}
 					&__location{
-						font-size: 1.5rem;
+						font-size: 1.3rem;
 						margin-left: 2rem;
 						color: $dark-blue;
 						margin-bottom: 0;
@@ -247,7 +249,6 @@
 			}
 		}
 		&__dots{
-			margin-top: 2rem;
 			display: flex;
 			flex-direction: row;
 			height: 2rem;
@@ -271,8 +272,8 @@
 	&__heading{
 		color: $background-color;
 		font-family: $nexa-bold;
-		font-size: 2.5rem;
-		line-height: 5rem;
+		font-size: 2rem;
+		line-height: 2rem;
 	}
 	&__para{
 		font-size: 1.4rem;
@@ -293,10 +294,13 @@
 		font-family: $nexa-bold;
 		display: block;
 		text-align: center;
+		display: grid;
+		grid-template-columns: 100%;
+		grid-gap: 1rem;
 	}
 	&__heading{
-		font-size: $mobile-heading-2-font-size;
-		line-height: 4rem;
+		font-size: 2rem;
+		line-height: 2rem;
 	}	
 	&__para{
 		font-size: $mobile-para-font-size;
@@ -349,7 +353,6 @@
 		}
 	}
 	&__dots{
-		margin-top: 2rem;
 		display: flex;
 		flex-direction: row;
 		height: 2rem;
@@ -378,17 +381,17 @@
 		font-family: $nexa-bold;
 		text-align: center;
 		color: $dark-blue;
+		grid-gap: 1rem;
 	}
 	&__heading{
-		font-size: $mobile-heading-2-font-size;
-		line-height: 4rem;
+		font-size: 2rem;
+		line-height: 2rem;
 	}
 	&__para{
 		font-size: $mobile-para-font-size;
-		line-height: 2.5rem;
+		line-height: 2rem;
 	}
 	&__grid{
-		margin-top: 4rem;
 		grid-template-columns: repeat(2, 1fr);
 		grid-gap: 1rem;
 		&__choice{
@@ -401,7 +404,13 @@
 	}
 }
 
-
+@media (min-width: 375px){
+	.world_class_doctors__container__cards__card__description__name{
+		&::after{
+			left: -6.3%;
+		}
+	}
+}
 @media (min-width: $bp-tablet) {
 	.hero{
 		&__container{
@@ -461,7 +470,8 @@
 				grid-column: 1/2;
 				&__text{
 					line-height: 2rem;
-					text-align: left
+					text-align: left;
+					font-size: 1.6rem;
 				}
 				&__desc{
 					&-expand{
@@ -484,9 +494,19 @@
 				&__card{
 					&__description{
 						&__name{
+							font-size: 2rem;
 							&::after{
 								top: 60%;
 							}
+						}
+						&__location{
+							font-size: 1.5rem;
+						}
+						&__designation{
+							font-size: 1.5rem;
+						}
+						&__qualification{
+							font-size: 1.5rem;
 						}
 					}
 				}
@@ -507,6 +527,7 @@
 		&__container{
 			@include container-styling-tablet;
 			text-align: center;
+			grid-template-rows: 1fr 1fr 28fr 1fr;
 		}
 		&__heading{
 			font-size: $tablet-heading-2-font-size;
@@ -519,7 +540,7 @@
 		&__grid{
 			grid-template-columns: repeat(2,1fr);
 			grid-template-rows: repeat(3,1fr);
-			height: 70rem;
+			height: auto;
 			grid-gap: 1rem;
 			&__card{
 				&-1{
@@ -552,8 +573,8 @@
 
 	.services{
 		&__heading{
-			font-size: $tablet-heading-2-font-size;
-			line-height: 5rem;
+			font-size: 3rem;
+			line-height: 3rem;
 		}
 		&__para{
 			font-size: $tablet-para-font-size;
@@ -642,6 +663,12 @@
 		&__grid{
 				margin-top: 0;
 				&__option{	
+					&__number{
+						font-size: 3rem;
+					}
+					&__text{
+						font-size: 2rem;
+					}
 					&__desc{
 						&__heading{
 							font-size: 3rem !important;
@@ -713,7 +740,7 @@
 		}
 	}
 	.medical_treatments{
-		height: 92rem;
+		height: 87rem;
 		&__container{
 			@include container-styling-desktop;
 			text-align: left;
@@ -767,7 +794,7 @@
 		}
 		&__heading{
 			font-size: $desktop-heading-2-font-size;
-			line-height: 5rem;
+			line-height: 4rem;
 		}
 		&__para{
 			font-size: $desktop-para-font-size;

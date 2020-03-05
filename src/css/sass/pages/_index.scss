@@ -2,14 +2,12 @@
 	background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/img1.jpg');
 	background-size: cover;
 	position: relative;  
-	height: 30rem;
 	&__container{
-		@include container-styling-mobile;
+		padding: 3rem 2rem;
 		color: $dark-blue;
 		grid-gap: 2rem;
-
 		&__heading{
-			font-size: 2.18rem;
+			font-size: 2.68rem;
 			line-height: 3rem;
 			text-align: center;
 		}
@@ -20,7 +18,7 @@
 		}
 		&__field{
 			grid-template-rows: repeat(3,1fr);
-			grid-row-gap: .5rem;
+			grid-row-gap: 1rem;
 			font-family: $nexa-bold;
 			&__search_location{
 				position: relative;
@@ -62,7 +60,7 @@
 			}
 			&__search__button{
 				@include button-styling-desktop;
-				margin: 0rem 8rem;
+				margin: 0rem 11rem;
 				border-radius: 0;
 				background-color: $dark-blue;
 				color: $background-color;
@@ -82,12 +80,12 @@
 		grid-template-rows: 1fr 1fr 19fr;
 		&__heading{
 			align-self: center;
-			font-size: 2rem;
+			font-size: 2.6rem;
 			line-height: 2rem;
 			color: $dark-blue;
 		}
 		&__para{
-			font-size: 1.5rem;
+			font-size: 1.7rem;
 			line-height: 2.5rem;
 		}
 	}
@@ -97,7 +95,7 @@
 		grid-row-gap: 2rem;
 		&__option{
 			display: grid;
-			grid-template-columns: 3fr 7fr;
+			grid-template-columns: 1.3fr 7fr;
 			font-family: $nexa-bold;
 			border-radius: 1rem;
 			border: .2rem solid $grey-2;
@@ -126,7 +124,7 @@
 			&__text{
 				align-self: center;
 				justify-self: start;
-				font-size: 1.5rem;
+				font-size: 1.7rem;
 				line-height: 2rem;
 				color: #eee;
 			}
@@ -153,7 +151,8 @@
 						font-family: $nexa-bold;
 					}
 					p{
-						font-size: 1.4rem;
+						font-size: 1.7rem;
+						line-height: 2rem;
 						text-align: center;
 						font-family: $nexa-light;
 					}	
@@ -167,11 +166,11 @@
 .world_class_doctors{
 	background-color: $dark-blue;
 	&__container{
-		@include container-styling-mobile;
+		padding: 3rem 2rem;
 		text-align: center;
 		grid-gap: 1rem;
 		&__cards{
-			margin-top: 2rem;
+			margin-top: 1rem;
 			grid-row-gap: 1rem;
 			grid-template-rows: repeat(4, 1fr);
 			&__card{
@@ -272,11 +271,11 @@
 	&__heading{
 		color: $background-color;
 		font-family: $nexa-bold;
-		font-size: 2rem;
-		line-height: 2rem;
+		font-size: 2.6rem;
+		line-height: 3rem;
 	}
 	&__para{
-		font-size: 1.4rem;
+		font-size: 1.7rem;
 		line-height: 2rem;
 		color: $background-color;
 		font-family: $nexa-light;
@@ -299,11 +298,11 @@
 		grid-gap: 1rem;
 	}
 	&__heading{
-		font-size: 2rem;
+		font-size: 2.3rem;
 		line-height: 2rem;
 	}	
 	&__para{
-		font-size: $mobile-para-font-size;
+		font-size: 1.7rem;
 		line-height: 2rem;
 	}
 	&__grid{
@@ -321,6 +320,7 @@
 			&-2{
 				background-image: linear-gradient(to top, $dark-blue, transparent), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--010.jpg');
 				background-size: cover;
+				background-position: -6rem 0rem;
 			}	
 			&-3{
 				background-image: linear-gradient(to top, $dark-blue, transparent), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--011.jpg');
@@ -377,18 +377,18 @@
 .services{
 	background-color: #f5f5f5;
 	&__container{
-		@include container-styling-mobile;
+		padding: 3rem 2rem;
 		font-family: $nexa-bold;
 		text-align: center;
 		color: $dark-blue;
-		grid-gap: 1rem;
+		grid-gap: 2rem;
 	}
 	&__heading{
-		font-size: 2rem;
-		line-height: 2rem;
+		font-size: 2.6rem;
+		line-height: 2.6rem;
 	}
 	&__para{
-		font-size: $mobile-para-font-size;
+		font-size: 1.7rem;
 		line-height: 2rem;
 	}
 	&__grid{
@@ -399,7 +399,8 @@
 			padding: 1rem;
 			color: #809c99;
 			background-color: $background-color;
-			border-radius: .5rem;
+			border-radius: 1rem;
+			font-size: 1.5rem;
 		} 
 	}
 }

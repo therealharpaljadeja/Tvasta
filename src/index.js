@@ -35,14 +35,13 @@ options.forEach(el => {
 			el.addEventListener('click', expand);
 });
 
+const autoCompleteFunc = () => {
+	let autoComplete = new google.maps.places.Autocomplete(document.getElementById('auto-complete'));
+	google.maps.event.addListener(autoComplete, 'place-changed', () => {
+		let nearPlace = autoComplete.getPlacePredictions();
+	});
 
-let autoComplete = new google.maps.places.Autocomplete(document.getElementById('auto-complete'), {
-	types: ['geocode']
-});
-
-google.maps.event.addListener(autoComplete, 'place-changed', () => {
-	let nearPlace = autoComplete.getPlace();
-});
+}
 
 
 let menu_burger = document.querySelector('.navbar__burger');
@@ -60,4 +59,5 @@ const collapse_menu = (el) => {
 cross_button.addEventListener('click', collapse_menu);
 menu_burger.addEventListener('click', expand_menu);
 
+autoCompleteFunc();
 

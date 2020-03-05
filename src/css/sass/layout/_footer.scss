@@ -37,8 +37,8 @@
 				grid-row: 1/2;
 				justify-self: center;
 				align-self: center;
-				width: 20rem;
-				height: 5rem;
+				width: 16rem;
+				height: 4rem;
 		}
 		&__copyright{
 			grid-row: 4/5;
@@ -46,6 +46,7 @@
 			margin : 0;
 			justify-self: center;
 			align-self: center;
+			font-size: 1.6rem;
 		}
 		&__social{
 			justify-self: center;

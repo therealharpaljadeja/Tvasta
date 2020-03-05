@@ -1,22 +1,24 @@
 .help{
-	height: 28rem;
+	height: 22rem;
 	background-color: $light-blue;
 	&__container{
-		@include container-styling-mobile;
+		padding: 3rem 2rem;
 		text-align: center;
 		grid-template-columns: 1fr;
 		font-family: $nexa-bold;
+		grid-gap: 2rem;
 		&__col-1{
 			text-align: center;
 
 			&__heading{
-				font-size: 3.5rem;
-				line-height: 8rem;
+				font-size: 2.6rem;
+				line-height: 3.5rem;
+				margin-bottom: 1rem;
 				color: $background-color;
 			}
 			&__text{
 				line-height: 2rem;
-				font-size: 1.5rem;
+				font-size: 1.7rem;
 				line-height: 2rem;
 				color: $dark-blue;
 				letter-spacing: 0.05rem;
@@ -33,9 +35,25 @@
 
 @media (min-width: $bp-tablet){
 	.help{
-		height: 24rem;
+		height: 17rem;
 		&__container{
 			@include container-styling-tablet;
+			&__col-1{
+			text-align: center;
+				&__heading{
+					font-size: 3rem;
+					line-height: 3.5rem;
+					margin-bottom: 1rem;
+					color: $background-color;
+				}
+				&__text{
+					line-height: 2rem;
+					font-size: 1.7rem;
+					line-height: 2rem;
+					color: $dark-blue;
+					letter-spacing: 0.05rem;
+				}
+			}
 			&__col-2{
 				@include flex(column);
 				justify-content: center;
@@ -47,7 +65,7 @@
 
 @media (min-width: $bp-desktop){
 	.help{
-		height: 17rem;
+		height: 13rem;
 		&__container{
 			@include container-styling-desktop;
 			grid-template-rows: 1fr;
@@ -59,6 +77,10 @@
 				@include flex(column);
 				justify-content: center;
 				align-items: flex-end;
+				&__button{
+					padding: 2rem 2rem;
+					font-size: 2rem;
+				}
 			}
 		}
 	}

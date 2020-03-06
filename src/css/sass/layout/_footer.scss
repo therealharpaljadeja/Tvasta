@@ -21,7 +21,7 @@
 					margin-bottom: 0;
 				}
 				margin-bottom: 2rem;
-				font-size: 1.5rem;
+				font-size: 1.3rem;
 				a, a:visited, a:hover, a:active{
 					text-decoration: none;
 					color: $background-color;
@@ -85,7 +85,6 @@
 						margin-left: 0;
 					}
 					margin-left:1rem;
-					font-size: 1.5rem;
 					margin-bottom: 0;
 					a, a:visited, a:active{
 						color: $dark-blue;
@@ -118,6 +117,7 @@
 			@include container-styling-desktop;
 			&__menu{
 				li{
+					font-size: 1.5rem;
 					a, a:visited, a:active{
 						color: $dark-blue;
 					}

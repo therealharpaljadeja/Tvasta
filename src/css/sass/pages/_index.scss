@@ -428,7 +428,7 @@
 				padding: 0rem 2rem;
 			}
 			&__field{
-				margin: 0rem 15rem;
+				@include flex(row);
 				&__search_location{
 					&__district{
 						font-family: $nexa-light;
@@ -437,12 +437,14 @@
 					}
 				}
 				&__search{
+					flex-grow: 11;
 					font-family: $nexa-light;
 					font-size: 1.3rem;
 					letter-spacing: 0.05rem;
 				}
 				&__search__button{
-					margin: 0rem 10rem;
+					margin: 0;
+					flex-grow: 1;
 					font-family: $nexa-light;
 					font-size: 1.3rem;
 					letter-spacing: 0.05rem;
@@ -459,7 +461,7 @@
 			font-family: $nexa-bold;
 			&__heading{
 				font-size: $tablet-heading-2-font-size;
-				line-height: 4rem;
+				line-height: 3rem;
 			}
 		}
 		&__grid{
@@ -515,7 +517,7 @@
 		}
 		&__heading{
 			font-size: $tablet-heading-2-font-size;
-			line-height: 4rem;
+			line-height: 3rem;
 		}
 		&__para{
 			font-size: $tablet-para-font-size;
@@ -532,7 +534,7 @@
 		}
 		&__heading{
 			font-size: $tablet-heading-2-font-size;
-			line-height: 5rem;
+			line-height: 3rem;
 		}
 		&__para{
 			font-size: $tablet-para-font-size;
@@ -573,6 +575,9 @@
 	}
 
 	.services{
+		&__container{
+			@include container-styling-tablet;
+		}
 		&__heading{
 			font-size: 3rem;
 			line-height: 3rem;
@@ -584,7 +589,8 @@
 		&__grid{
 			margin-top: 1rem;
 			grid-template-columns: repeat(3,1fr);
-			padding: 0rem 5rem;
+			grid-gap: 2rem;
+			padding: 0rem;
 		}
 	}
 }

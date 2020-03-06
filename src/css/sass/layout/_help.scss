@@ -38,6 +38,7 @@
 		height: 17rem;
 		&__container{
 			@include container-styling-tablet;
+			grid-gap: 0rem;
 			&__col-1{
 			text-align: center;
 				&__heading{

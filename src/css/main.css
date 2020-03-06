@@ -46,7 +46,7 @@ html, body {
 
 @media (min-width: 768px) {
   .container {
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     width: 100%;
     height: 100%;
   }
@@ -96,7 +96,7 @@ html, body {
 }
 .footer__container__menu li {
   margin-bottom: 2rem;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 .footer__container__menu li:last-child {
   margin-bottom: 0;
@@ -142,7 +142,7 @@ html, body {
     height: 17rem;
   }
   .footer__container {
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     width: 100%;
     height: 100%;
     height: 100%;
@@ -163,7 +163,6 @@ html, body {
   }
   .footer__container__menu li {
     margin-left: 1rem;
-    font-size: 1.5rem;
     margin-bottom: 0;
   }
   .footer__container__menu li:first-child {
@@ -194,6 +193,9 @@ html, body {
     padding: 3rem 10rem;
     width: 100%;
     height: 100%;
+  }
+  .footer__container__menu li {
+    font-size: 1.5rem;
   }
   .footer__container__menu li a, .footer__container__menu li a:visited, .footer__container__menu li a:active {
     color: #2a2d3e;
@@ -266,7 +268,7 @@ html, body {
 @media (min-width: 768px) {
   .navbar {
     height: 8rem;
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     width: 100%;
     height: 100%;
   }
@@ -396,9 +398,10 @@ html, body {
     height: 17rem;
   }
   .help__container {
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     width: 100%;
     height: 100%;
+    grid-gap: 0rem;
   }
   .help__container__col-1 {
     text-align: center;
@@ -871,7 +874,7 @@ html, body {
 }
 @media (min-width: 768px) {
   .hero__container {
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     width: 100%;
     height: 100%;
     grid-gap: 1rem;
@@ -887,7 +890,8 @@ html, body {
     padding: 0rem 2rem;
   }
   .hero__container__field {
-    margin: 0rem 15rem;
+    display: flex;
+    flex-direction: row;
   }
   .hero__container__field__search_location__district {
     font-family: "Nexa Light";
@@ -895,12 +899,14 @@ html, body {
     letter-spacing: 0.05rem;
   }
   .hero__container__field__search {
+    flex-grow: 11;
     font-family: "Nexa Light";
     font-size: 1.3rem;
     letter-spacing: 0.05rem;
   }
   .hero__container__field__search__button {
-    margin: 0rem 10rem;
+    margin: 0;
+    flex-grow: 1;
     font-family: "Nexa Light";
     font-size: 1.3rem;
     letter-spacing: 0.05rem;
@@ -910,7 +916,7 @@ html, body {
     height: 78rem;
   }
   .how_it_works__container {
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     width: 100%;
     height: 100%;
     grid-template-rows: 1fr 1fr 19fr;
@@ -918,7 +924,7 @@ html, body {
   }
   .how_it_works__container__heading {
     font-size: 3rem;
-    line-height: 4rem;
+    line-height: 3rem;
   }
   .how_it_works__grid {
     grid-template-columns: 4fr 6fr;
@@ -940,7 +946,7 @@ html, body {
   }
 
   .world_class_doctors__container {
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     width: 100%;
     height: 100%;
   }
@@ -967,7 +973,7 @@ html, body {
   }
   .world_class_doctors__heading {
     font-size: 3rem;
-    line-height: 4rem;
+    line-height: 3rem;
   }
   .world_class_doctors__para {
     font-size: 1.7rem;
@@ -978,7 +984,7 @@ html, body {
     height: 90rem;
   }
   .medical_treatments__container {
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -986,7 +992,7 @@ html, body {
   }
   .medical_treatments__heading {
     font-size: 3rem;
-    line-height: 5rem;
+    line-height: 3rem;
   }
   .medical_treatments__para {
     font-size: 1.7rem;
@@ -1023,6 +1029,11 @@ html, body {
     grid-column: 2/3;
   }
 
+  .services__container {
+    padding: 2rem 3rem;
+    width: 100%;
+    height: 100%;
+  }
   .services__heading {
     font-size: 3rem;
     line-height: 3rem;
@@ -1034,7 +1045,8 @@ html, body {
   .services__grid {
     margin-top: 1rem;
     grid-template-columns: repeat(3, 1fr);
-    padding: 0rem 5rem;
+    grid-gap: 2rem;
+    padding: 0rem;
   }
 }
 @media (min-width: 1024px) {
@@ -1274,7 +1286,7 @@ html, body {
   border: none;
   background: url("http://cdn1.iconfinder.com/data/icons/cc_mono_icon_set/blacks/16x16/br_down.png") no-repeat, #ddd;
   background-size: 1rem;
-  background-position-x: 90%;
+  background-position-x: 83%;
   background-position-y: 50%;
 }
 
@@ -1293,7 +1305,8 @@ html, body {
 .doctor_list__container__col-2__card, .hospital_list__container__col-2__card {
   display: grid;
   border: 0.1rem solid #bbb;
-  height: 67.5rem;
+  height: 60rem;
+  overflow: hidden;
 }
 .doctor_list__container__col-2__card__name, .hospital_list__container__col-2__card__name {
   position: relative;
@@ -1319,6 +1332,7 @@ html, body {
   padding: 1rem;
 }
 .doctor_list__container__col-2__card__other_details__para, .hospital_list__container__col-2__card__other_details__para {
+  list-style-type: none;
   font-family: "Nexa Light";
   font-size: 1.3rem;
 }
@@ -1344,7 +1358,7 @@ html, body {
   font-size: 1.5rem;
   padding: 1rem 3rem;
   margin-top: 1rem;
-  margin: 1rem 5rem;
+  margin: 1rem 6rem;
 }
 .doctor_list__container__col-2__card__doctor_img_wrapper, .hospital_list__container__col-2__card__doctor_img_wrapper {
   width: 100%;
@@ -1357,7 +1371,7 @@ html, body {
 
 @media (min-width: 768px) {
   .breadcrumb__container {
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     width: 100%;
     height: 100%;
   }
@@ -1366,7 +1380,7 @@ html, body {
     height: 195rem;
   }
   .doctor_list__container, .hospital_list__container {
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     width: 100%;
     height: 100%;
     padding: 2rem 3rem;
@@ -1439,7 +1453,7 @@ html, body {
     margin-right: 1rem;
   }
   .doctor_list__container__col-2__card, .hospital_list__container__col-2__card {
-    height: 30rem;
+    height: 26rem;
     grid-template-columns: 6fr 4fr;
     grid-template-rows: 1fr 3fr 0fr;
   }
@@ -1447,8 +1461,11 @@ html, body {
     grid-column: 1/2;
     grid-row: 1/2;
   }
+  .doctor_list__container__col-2__card__name h3, .hospital_list__container__col-2__card__name h3 {
+    font-size: 1.7rem;
+  }
   .doctor_list__container__col-2__card__name:before, .hospital_list__container__col-2__card__name:before {
-    top: 38%;
+    top: 47%;
   }
   .doctor_list__container__col-2__card__other_details, .hospital_list__container__col-2__card__other_details {
     grid-column: 1/2;
@@ -1460,6 +1477,8 @@ html, body {
     display: grid;
     grid-template-columns: 1fr 4fr;
     align-items: center;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
   }
   .doctor_list__container__col-2__card__book, .hospital_list__container__col-2__card__book {
     grid-column: 1/2;
@@ -1492,13 +1511,18 @@ html, body {
     grid-column-gap: 6rem;
   }
   .doctor_list__container__col-2__card, .hospital_list__container__col-2__card {
-    grid-template-columns: 9fr 4fr;
+    grid-template-columns: 10fr 4fr;
+  }
+  .doctor_list__container__col-2__card__name h3, .hospital_list__container__col-2__card__name h3 {
+    font-size: 2rem;
   }
   .doctor_list__container__col-2__card__name:before, .hospital_list__container__col-2__card__name:before {
-    top: 38%;
+    top: 47%;
   }
   .doctor_list__container__col-2__card__other_details__para, .hospital_list__container__col-2__card__other_details__para {
     display: inline;
+    font-size: 1.5rem;
+    line-height: 1.7rem;
   }
 }
 .hospital_list {
@@ -1543,7 +1567,7 @@ html, body {
     height: 128rem;
   }
   .hospital_list__container {
-    padding: 2rem 5rem;
+    padding: 2rem 3rem;
     width: 100%;
     height: 100%;
     grid-template-columns: 100%;
@@ -1564,7 +1588,7 @@ html, body {
     line-height: 2rem;
   }
   .hospital_list__container__col-2__card__name::before {
-    top: 37%;
+    top: 32%;
   }
   .hospital_list__container__col-2__card__other_details {
     display: grid;
@@ -1621,13 +1645,19 @@ html, body {
     width: 100%;
     height: 100%;
   }
+  .hospital_list__container__col-2__card__other_details {
+    grid-gap: 1rem;
+  }
   .hospital_list__container__col-2__card__other_details__para {
     display: grid;
     grid-template-columns: 1fr 8fr;
     align-items: center;
   }
   .hospital_list__container__col-2__card__name:before {
-    top: 37% !important;
+    top: 47% !important;
+  }
+  .hospital_list__container__col-2__card__book {
+    margin: 0rem 0rem 1rem 1rem;
   }
 }
 

@@ -589,7 +589,7 @@
 		&__grid{
 			margin-top: 1rem;
 			grid-template-columns: repeat(3,1fr);
-			grid-gap: 2rem;
+			grid-gap: 1.5rem;
 			padding: 0rem;
 		}
 	}
@@ -810,6 +810,10 @@
 		&__grid{
 			grid-template-columns: repeat(6,1fr);
 			padding: 0;
+			grid-gap: 0.5rem;
+			&__choice{
+				border-radius: 0rem;
+			}
 		}
 	}
 }

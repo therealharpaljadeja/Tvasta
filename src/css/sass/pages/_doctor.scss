@@ -1,3 +1,7 @@
+.page-desc{
+	display :none;
+}
+
 .breadcrumb{
 	&__container{
 		@include container-styling-mobile;
@@ -20,6 +24,7 @@
 			background-size: 1rem;
 			background-position-x: 83%;
 			background-position-y: 50%;
+			font-family: $nexa-bold;
 	}
 }
 
@@ -39,6 +44,7 @@
 				overflow: hidden;
 				&__name{
 					position: relative;
+					font-family: $nexa-bold;
 					h3{
 						color: $bright-blue;
 						font-size: 2rem;
@@ -130,6 +136,9 @@
 					&:last-child{
 						border-bottom: none;
 						margin-top: 1.5rem;
+					}
+					&-by{
+						display: none;
 					}
 					&__title{
 						grid-column: 1/4;
@@ -236,33 +245,100 @@
 }
 
 @media (min-width: $bp-desktop){
-	.breadcrumb{
+	.page-desc{
+		display: block;
+		height: 25rem;
+		background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png');
+		background-size: cover;
 		&__container{
 			padding: 0rem 10rem;
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			&__heading{
+				font-family: $nexa-light;
+				font-size: 3rem;
+				color: $dark-blue;
+				span{
+					text-decoration: underline;
+					font-family: $nexa-bold;
+				}
+			}
+		}
+
+	}
+
+	.breadcrumb{
+		&__container{
+			padding: 3rem 10rem 0rem;
 		}
 	}
 
 	.doctor_list, .hospital_list{
 		&__container{
 			@include container-styling-desktop;
-			grid-template-columns: 2fr 10fr;
-			grid-column-gap: 6rem;
+			grid-template-columns: 3fr 10fr;
+			grid-column-gap: 4rem;
+			&__col-1{
+				&__filter{
+					&-by{
+						height: auto;
+						display: block;
+						border-bottom: none;
+						&__title{
+							background-color: #ddd;
+							p{
+								font-family: $nexa-bold;
+								font-size: 1.5rem;
+								line-height: 3.4rem;
+								color: $dark-blue; 
+							}
+						}
+						&__tags{
+							&__tag{
+								position: relative;
+								font-size: 1rem;
+								line-height: 3rem;
+								padding: .5rem 3rem .5rem 1rem;
+								border: 1px solid #aaa;
+								border-radius: 1rem;
+								font-family: $nexa-light;
+								white-space: nowrap; 
+								i{
+									position: absolute;
+									right: 10%;
+									top: 23%;
+									font-size: 1rem;
+									color: $bright-blue;
+									 
+								}
+							}
+						}
+					}
+				}
+			}
 			&__col-2{
 				&__card{
 					&__name{
 						h3{
 							font-size: 2rem;
+							padding-left: 4rem;
 						}
 						&:before{
 							top: 47%;
+							width: 3rem;
 						}
 					}
 					&__other_details{
+						padding: 1rem 4rem;
 						&__para{
 							display: inline;
 							font-size: 1.5rem;
 							line-height: 1.7rem;
 						}
+					}
+					&__book{
+						margin: 3rem 4rem 4rem;
 					}
 					grid-template-columns: 10fr 4fr;
 				}

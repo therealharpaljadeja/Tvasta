@@ -88,7 +88,7 @@
 						}
 					}
 					&__book{
-						padding: 1rem 6rem;
+						padding: 1rem 4rem;
 						margin: 1rem 1rem;
 					}
 				}
@@ -102,7 +102,7 @@
 		height: 130rem;
 		&__container{
 			@include container-styling-desktop;
-			grid-template-columns: 1fr 6fr;
+			grid-template-columns: 2fr 6fr;
 			&__col-1{
 				display: inline;
 			}
@@ -122,11 +122,14 @@
 						}
 					}
 					&__other_details{
-						grid-gap: 1rem;
+						grid-gap: 1.5rem;
 						&__para{
 							display: grid;
 							grid-template-columns: 1fr 8fr;
 							align-items: center;
+						}
+						&__tags{
+							margin :0;
 						}
 					}
 					&__name{
@@ -134,8 +137,8 @@
 							top: 47% !important;
 						}
 					}
-					&__book{
-						margin: 0rem 0rem 1rem 1rem;
+					&__book{ 
+						margin: 0rem 4rem 4rem;
 					}
 				}
 			}

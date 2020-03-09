@@ -245,11 +245,17 @@
 }
 
 @media (min-width: $bp-desktop){
-	.page-desc{
+	.page_desc{
 		display: block;
 		height: 25rem;
-		background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png');
 		background-size: cover;
+		background-position: 0rem -30rem;
+		&-doctor{
+			background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png');
+		}
+		&-hospital{
+			background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://www.itl.cat/pngfile/big/143-1437950_hallway-of-a-hospital.jpg');
+		}
 		&__container{
 			padding: 0rem 10rem;
 			display: flex;
@@ -281,12 +287,19 @@
 			grid-column-gap: 4rem;
 			&__col-1{
 				&__filter{
+					& > span{
+						padding-left: 0;
+					}
+					& > *{
+						padding-left: 1.5rem;
+					}
 					&-by{
 						height: auto;
 						display: block;
 						border-bottom: none;
 						&__title{
 							background-color: #ddd;
+							padding-left: 1.5rem;
 							p{
 								font-family: $nexa-bold;
 								font-size: 1.5rem;
@@ -295,6 +308,8 @@
 							}
 						}
 						&__tags{
+							margin-top: 1rem;
+							padding-left: 1.5rem;
 							&__tag{
 								position: relative;
 								font-size: 1rem;

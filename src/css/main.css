@@ -558,7 +558,7 @@ html, body {
 }
 .how_it_works__grid__option {
   display: grid;
-  grid-template-columns: 1.3fr 7fr;
+  grid-template-columns: 2.3fr 7fr;
   font-family: "Nexa Bold";
   border-radius: 1rem;
   border: 0.2rem solid #999;
@@ -821,6 +821,7 @@ html, body {
   height: 2rem;
   width: 100%;
   align-items: center;
+  align-self: center;
 }
 .medical_treatments__dots__dot {
   width: 1rem;
@@ -1118,6 +1119,8 @@ html, body {
     width: 100%;
     height: 100%;
     text-align: left;
+    align-items: center;
+    grid-gap: 1rem;
   }
   .how_it_works__container__heading {
     font-size: 4rem;
@@ -1125,10 +1128,11 @@ html, body {
   }
   .how_it_works__container__para {
     font-size: 1.7rem;
-    line-height: 3rem;
+    line-height: 2rem;
   }
   .how_it_works__grid {
     margin-top: 0;
+    height: 100%;
   }
   .how_it_works__grid__option__number {
     font-size: 3rem;
@@ -1147,19 +1151,21 @@ html, body {
   }
 
   .world_class_doctors {
-    height: 70rem;
+    height: 65rem;
   }
   .world_class_doctors__container {
     padding: 3rem 10rem;
     width: 100%;
     height: 100%;
     text-align: left;
-    grid-template-rows: 1fr 3fr 13fr 1fr;
+    grid-gap: 1rem;
+    grid-template-rows: 1fr 1fr 13fr 1fr;
+    align-items: center;
   }
   .world_class_doctors__container__cards {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-column-gap: 1rem;
-    grid-template-rows: 0;
+    grid-template-rows: 100%;
     grid-row-gap: 0;
     margin-top: 0;
   }
@@ -1169,7 +1175,7 @@ html, body {
     width: 6%;
   }
   .world_class_doctors__container__dots {
-    margin-top: 2rem;
+    margin-top: 0rem;
     display: flex;
     flex-direction: row;
     height: 2rem;
@@ -1191,6 +1197,7 @@ html, body {
   }
   .world_class_doctors__heading {
     font-size: 4rem;
+    line-height: 5rem;
   }
   .world_class_doctors__para {
     line-height: 2rem;
@@ -1198,13 +1205,16 @@ html, body {
   }
 
   .medical_treatments {
-    height: 87rem;
+    height: 75rem;
   }
   .medical_treatments__container {
     padding: 3rem 10rem;
     width: 100%;
     height: 100%;
     text-align: left;
+    align-content: center;
+    grid-gap: 1rem;
+    grid-template-rows: 1fr 1fr 13fr 1fr;
   }
   .medical_treatments__heading {
     font-size: 4rem;
@@ -1212,13 +1222,16 @@ html, body {
   }
   .medical_treatments__para {
     font-size: 1.7rem;
-    line-height: 2.5rem;
-    margin: 1rem 0rem;
+    line-height: 2rem;
+    margin: 0;
+    align-self: center;
   }
   .medical_treatments__grid {
     grid-template-columns: repeat(9, 1fr);
     grid-template-rows: repeat(9, 1fr);
-    margin-top: 2rem;
+    margin-top: 0;
+    height: 100%;
+    align-self: center;
   }
   .medical_treatments__grid__card-1 {
     grid-row: 1/4;
@@ -1250,19 +1263,22 @@ html, body {
     width: 100%;
     height: 100%;
     text-align: left;
+    align-content: center;
+    grid-gap: 1rem;
   }
   .services__heading {
     font-size: 4rem;
-    line-height: 4rem;
+    line-height: 5rem;
   }
   .services__para {
     font-size: 1.7rem;
-    line-height: 3rem;
+    line-height: 2rem;
   }
   .services__grid {
     grid-template-columns: repeat(6, 1fr);
     padding: 0;
     grid-gap: 0.5rem;
+    margin-top: 0;
   }
   .services__grid__choice {
     border-radius: 0rem;
@@ -1512,24 +1528,30 @@ html, body {
   }
 }
 @media (min-width: 1024px) {
-  .page-desc {
+  .page_desc {
     display: block;
     height: 25rem;
-    background-image: linear-gradient(to bottom, rgba(156, 191, 218, 0.9), rgba(156, 191, 218, 0.9)), url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png");
     background-size: cover;
+    background-position: 0rem -30rem;
   }
-  .page-desc__container {
+  .page_desc-doctor {
+    background-image: linear-gradient(to bottom, rgba(156, 191, 218, 0.9), rgba(156, 191, 218, 0.9)), url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png");
+  }
+  .page_desc-hospital {
+    background-image: linear-gradient(to bottom, rgba(156, 191, 218, 0.9), rgba(156, 191, 218, 0.9)), url("https://www.itl.cat/pngfile/big/143-1437950_hallway-of-a-hospital.jpg");
+  }
+  .page_desc__container {
     padding: 0rem 10rem;
     display: flex;
     flex-direction: row;
     align-items: center;
   }
-  .page-desc__container__heading {
+  .page_desc__container__heading {
     font-family: "Nexa Light";
     font-size: 3rem;
     color: #2a2d3e;
   }
-  .page-desc__container__heading span {
+  .page_desc__container__heading span {
     text-decoration: underline;
     font-family: "Nexa Bold";
   }
@@ -1545,6 +1567,12 @@ html, body {
     grid-template-columns: 3fr 10fr;
     grid-column-gap: 4rem;
   }
+  .doctor_list__container__col-1__filter > span, .hospital_list__container__col-1__filter > span {
+    padding-left: 0;
+  }
+  .doctor_list__container__col-1__filter > *, .hospital_list__container__col-1__filter > * {
+    padding-left: 1.5rem;
+  }
   .doctor_list__container__col-1__filter-by, .hospital_list__container__col-1__filter-by {
     height: auto;
     display: block;
@@ -1552,12 +1580,17 @@ html, body {
   }
   .doctor_list__container__col-1__filter-by__title, .hospital_list__container__col-1__filter-by__title {
     background-color: #ddd;
+    padding-left: 1.5rem;
   }
   .doctor_list__container__col-1__filter-by__title p, .hospital_list__container__col-1__filter-by__title p {
     font-family: "Nexa Bold";
     font-size: 1.5rem;
     line-height: 3.4rem;
     color: #2a2d3e;
+  }
+  .doctor_list__container__col-1__filter-by__tags, .hospital_list__container__col-1__filter-by__tags {
+    margin-top: 1rem;
+    padding-left: 1.5rem;
   }
   .doctor_list__container__col-1__filter-by__tags__tag, .hospital_list__container__col-1__filter-by__tags__tag {
     position: relative;

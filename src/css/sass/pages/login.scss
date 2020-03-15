@@ -1,4 +1,4 @@
-body{
+.login-body{
 	background-color: $light-blue;
 	position: relative;
 	width: 100vw;
@@ -33,6 +33,7 @@ body{
 			border-radius: 0;
 			border-style: solid;
 			border-width: 1px;
+			border-color: #ccc;
 			padding: 0rem 2rem;
 			font-family: $nexa-bold;
 			font-size: 1.2rem;

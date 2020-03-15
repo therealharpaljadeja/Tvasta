@@ -1771,7 +1771,7 @@ html, body {
     margin: 0rem 4rem 4rem;
   }
 }
-body {
+.login-body {
   background-color: #9cbfda;
   position: relative;
   width: 100vw;
@@ -1809,6 +1809,7 @@ body {
   border-radius: 0;
   border-style: solid;
   border-width: 1px;
+  border-color: #ccc;
   padding: 0rem 2rem;
   font-family: "Nexa Bold";
   font-size: 1.2rem;

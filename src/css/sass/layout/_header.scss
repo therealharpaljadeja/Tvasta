@@ -87,6 +87,7 @@
 @media (min-width: $bp-desktop){
 	.navbar{
 		@include container-styling-desktop;
+		height: 10rem;
 		&__menu{
 			display: block;
 			flex-grow: 2;

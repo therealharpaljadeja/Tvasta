@@ -1,0 +1,83 @@
+body{
+	background-color: $light-blue;
+	position: relative;
+	width: 100vw;
+	height: 100vh;
+}
+.form_container{
+	width: 35%;
+	height: 35rem;
+	background-color: white;
+	margin: auto;
+	margin: 5rem auto;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 1.5fr 5fr 1fr;
+	justify-content: center;
+	align-items: center;
+	box-shadow: 0px 0px 1.5rem rgba($dark-blue, .3);
+	&__heading{
+		font-family: $nexa-bold;
+		font-size: 2rem;
+		color: $bright-blue;
+		justify-self: center;
+	}
+	&__form{
+		border-top: 1px solid #ccc;
+		height: 100%;
+		padding: 2rem 2rem;
+		display: grid;
+		grid-template-columns: 100%;
+		grid-gap: 1rem;
+		input[type = text]{
+			border-radius: 0;
+			border-style: solid;
+			border-width: 1px;
+			padding: 0rem 2rem;
+			font-family: $nexa-bold;
+			font-size: 1.2rem;
+			color: #777;
+		}
+		&__submit{
+			position: relative;
+			border: 2px solid rgba($light-blue, .9);
+			border-radius: 5px;
+			background-color: $dark-blue;
+			&__text{
+				color: white;
+				font-family: $nexa-bold;
+				text-transform: uppercase;
+				letter-spacing: .5rem;		
+			}
+			&__icon{
+				position: absolute;
+				right: 5%;
+				color:white;
+			}
+		}	
+	}
+	&__signup{
+		font-family: $nexa-bold;
+		color: #777;
+		span{
+			a{
+				text-decoration: none;
+				color: $bright-blue;	
+			}
+		}
+		justify-self: center;
+	}
+}
+
+.copyright{
+	margin: auto;
+	position: absolute;
+	bottom: 5%;
+	left: 50%;
+	transform: translateX(-50%);
+	span{
+		text-align:center;
+		font-family: $nexa-bold;
+		font-size:1.2rem;
+	} 
+}

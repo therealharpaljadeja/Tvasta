@@ -294,6 +294,7 @@ html, body {
     padding: 3rem 10rem;
     width: 100%;
     height: 100%;
+    height: 10rem;
   }
   .navbar__menu {
     display: block;
@@ -1284,7 +1285,7 @@ html, body {
     border-radius: 0rem;
   }
 }
-.page-desc {
+.page_desc {
   display: none;
 }
 
@@ -1769,6 +1770,88 @@ html, body {
   .hospital_list__container__col-2__card__book {
     margin: 0rem 4rem 4rem;
   }
+}
+body {
+  background-color: #9cbfda;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+}
+
+.form_container {
+  width: 35%;
+  height: 35rem;
+  background-color: white;
+  margin: auto;
+  margin: 5rem auto;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 1.5fr 5fr 1fr;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 0px 1.5rem rgba(42, 45, 62, 0.3);
+}
+.form_container__heading {
+  font-family: "Nexa Bold";
+  font-size: 2rem;
+  color: #0173b2;
+  justify-self: center;
+}
+.form_container__form {
+  border-top: 1px solid #ccc;
+  height: 100%;
+  padding: 2rem 2rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.form_container__form input[type=text] {
+  border-radius: 0;
+  border-style: solid;
+  border-width: 1px;
+  padding: 0rem 2rem;
+  font-family: "Nexa Bold";
+  font-size: 1.2rem;
+  color: #777;
+}
+.form_container__form__submit {
+  position: relative;
+  border: 2px solid rgba(156, 191, 218, 0.9);
+  border-radius: 5px;
+  background-color: #2a2d3e;
+}
+.form_container__form__submit__text {
+  color: white;
+  font-family: "Nexa Bold";
+  text-transform: uppercase;
+  letter-spacing: 0.5rem;
+}
+.form_container__form__submit__icon {
+  position: absolute;
+  right: 5%;
+  color: white;
+}
+.form_container__signup {
+  font-family: "Nexa Bold";
+  color: #777;
+  justify-self: center;
+}
+.form_container__signup span a {
+  text-decoration: none;
+  color: #0173b2;
+}
+
+.copyright {
+  margin: auto;
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.copyright span {
+  text-align: center;
+  font-family: "Nexa Bold";
+  font-size: 1.2rem;
 }
 
 /*# sourceMappingURL=main.css.map */

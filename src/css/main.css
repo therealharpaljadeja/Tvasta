@@ -1936,31 +1936,31 @@ html, body {
   padding: 3rem 2rem;
   height: auto;
 }
-.vaccination_container {
+.vaccination__container {
   display: grid;
   grid-template-columns: 100%;
 }
-.vaccination_container__col--1 {
+.vaccination__container__col--1 {
   display: grid;
   width: 100%;
   grid-gap: 2rem;
 }
-.vaccination_container__col--1__heading {
+.vaccination__container__col--1__heading {
   font-size: 2.68rem;
   font-family: "Nexa Bold";
   text-align: center;
 }
-.vaccination_container__col--1__description {
+.vaccination__container__col--1__description {
   font-size: 1.4rem;
   text-align: center;
 }
-.vaccination_container__col--2 {
+.vaccination__container__col--2 {
   margin-top: 4rem;
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 1.5rem;
 }
-.vaccination_container__col--2 .sidebar_container {
+.vaccination__container__col--2 .sidebar_container {
   width: 100%;
   border: 2px solid #eee;
   border-radius: 1rem;
@@ -1969,7 +1969,7 @@ html, body {
   grid-gap: 2rem;
   position: relative;
 }
-.vaccination_container__col--2 .sidebar_container:before {
+.vaccination__container__col--2 .sidebar_container:before {
   content: "";
   width: 10%;
   height: 2px;
@@ -1978,16 +1978,16 @@ html, body {
   left: 6%;
   position: absolute;
 }
-.vaccination_container__col--2 .sidebar_container__heading {
+.vaccination__container__col--2 .sidebar_container__heading {
   font-size: 1.5rem;
   font-family: "Nexa Bold";
 }
-.vaccination_container__col--2 .sidebar_container__list {
+.vaccination__container__col--2 .sidebar_container__list {
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 1.5rem;
 }
-.vaccination_container__col--2 .sidebar_container__list__item {
+.vaccination__container__col--2 .sidebar_container__list__item {
   border-bottom: 1px solid #eee;
   line-height: 2rem;
   font-size: 1.2rem;
@@ -1997,8 +1997,48 @@ html, body {
   flex-direction: row;
   justify-content: space-between;
 }
-.vaccination_container__col--2 .sidebar_container__list__item span:first-of-type {
+.vaccination__container__col--2 .sidebar_container__list__item span:first-of-type {
   color: #2a2d3e;
+}
+
+.more_services {
+  padding: 3rem 2rem;
+}
+.more_services__container__row--1 {
+  display: grid;
+  grid-template-rows: 100%;
+  grid-gap: 2rem;
+}
+.more_services__container__row--1__heading {
+  font-size: 2.68rem;
+  font-family: "Nexa Bold";
+  text-align: center;
+}
+.more_services__container__row--1__carousel__buttons {
+  justify-self: center;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 1rem;
+}
+.more_services__container__row--1__carousel__buttons__button {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #ccc;
+  position: relative;
+}
+.more_services__container__row--1__carousel__buttons__button i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.more_services__container__row--2__carousel {
+  display: grid;
+  grid-template-columns: 100%;
+}
+.more_services__container__row--2__carousel__item__container {
+  height: 20rem;
 }
 
 @media (min-width: 768px) {
@@ -2024,6 +2064,9 @@ html, body {
 @media (min-width: 1024px) {
   .vaccination {
     padding: 3rem 10rem;
+  }
+  .vaccination_container__col--2 .sidebar_container__list__item {
+    font-size: 1.3rem;
   }
 }
 

@@ -1,7 +1,7 @@
 .vaccination{
 	padding: 3rem 2rem;
 	height: auto;
-	&_container{
+	&__container{
 		display: grid;
 		grid-template-columns: 100%;
 		&__col--1{
@@ -69,6 +69,52 @@
 	}
 }
 
+.more_services{
+	padding: 3rem 2rem;
+	&__container{
+		&__row--1{
+			display: grid;
+			grid-template-rows: 100%;
+			grid-gap: 2rem;
+			&__heading{
+				font-size: 2.68rem;
+				font-family: $nexa-bold;
+				text-align: center;
+			}
+			&__carousel__buttons{
+				justify-self: center;
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-gap: 1rem;
+				&__button{
+					width: 3rem;
+					height: 3rem;
+					border-radius: 50%;
+					background-color: #ccc;
+					position: relative;
+					i{
+						position: absolute;
+						top: 50%;
+						left: 50%;
+						transform: translate(-50%, -50%);
+					}
+				}
+			}
+		}
+		&__row--2{
+			&__carousel{
+				display: grid;
+				grid-template-columns: 100%;
+				&__item__container{
+					height: 20rem;
+					// background-image: ;
+				}
+			}
+		}
+	}
+	
+}
+
 @media(min-width: $bp-tablet){
 	.vaccination{
 		padding: 2rem 3rem;
@@ -99,5 +145,16 @@
 @media(min-width: $bp-desktop) {
 	.vaccination{
 		padding: 3rem 10rem;
+		&_container{
+			&__col--2{
+				.sidebar_container{
+					&__list{
+						&__item{
+							font-size: 1.3rem;
+						}
+					}
+				}
+			}
+		}
 	}
 }

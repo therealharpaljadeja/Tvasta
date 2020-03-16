@@ -1805,7 +1805,19 @@ html, body {
   grid-template-columns: 100%;
   grid-gap: 1rem;
 }
+.form_container__form__input_field {
+  position: relative;
+}
+.form_container__form__input_field i {
+  position: absolute;
+  right: 5%;
+  color: #ccc;
+  top: 30%;
+  font-size: 2rem;
+}
 .form_container__form input[type=text] {
+  width: 100%;
+  height: 100%;
   border-radius: 0;
   border-style: solid;
   border-width: 1px;

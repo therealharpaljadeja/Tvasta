@@ -29,7 +29,19 @@
 		display: grid;
 		grid-template-columns: 100%;
 		grid-gap: 1rem;
+		&__input_field{
+			position: relative;
+			i{
+				position: absolute;
+				right: 5%;
+				color: #ccc;
+				top: 30%;
+				font-size: 2rem;
+			}
+		}
 		input[type = text]{
+			width: 100%;
+			height: 100%;
 			border-radius: 0;
 			border-style: solid;
 			border-width: 1px;

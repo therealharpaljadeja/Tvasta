@@ -1,0 +1,103 @@
+.vaccination{
+	padding: 3rem 2rem;
+	height: auto;
+	&_container{
+		display: grid;
+		grid-template-columns: 100%;
+		&__col--1{
+			display: grid;
+			width: 100%;
+			grid-gap: 2rem;
+			&__heading{
+				font-size: 2.68rem;
+				font-family: $nexa-bold;
+				text-align: center; 
+			}
+			&__img{
+			}
+			&__description{
+				font-size: $mobile-para-font-size;
+				text-align: center;
+			}
+		}
+		&__col--2{
+			margin-top: 4rem;
+			display: grid;
+			grid-template-columns: 100%; 
+			grid-gap: 1.5rem;
+			.sidebar_container{
+				width: 100%;
+				border: 2px solid #eee;
+				border-radius: 1rem;
+				padding: 2rem;
+				display: grid;
+				grid-gap: 2rem;
+				position: relative;
+				&:before{
+					content: '';
+					width: 10%;
+					height: 2px;
+					background-color: $bright-blue;
+					top: 0%;
+					left: 6%;
+					position: absolute;
+				}
+				&__heading{
+					font-size: 1.5rem;
+					font-family: $nexa-bold;
+				}
+				&__list{
+					display: grid;
+					grid-template-columns: 100%;
+					grid-gap: 1.5rem;
+					&__item{
+						border-bottom: 1px solid #eee;
+						line-height: 2rem;
+						font-size: 1.2rem;
+						font-family: $nexa-bold;
+						color: #777;
+						display: flex;
+						flex-direction: row;
+						justify-content: space-between;
+						span:first-of-type{
+							color: $dark-blue;	
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: $bp-tablet){
+	.vaccination{
+		padding: 2rem 3rem;
+		&_container{
+			grid-template-columns: 5fr 2fr;
+			&__col--1{
+				&__heading{
+					text-align: left;
+				}
+				&__description{
+					text-align: left;
+				}
+			}
+			&__col--2{	
+				margin-top: 0;
+				.sidebar_container{
+					&__list{
+						&__item{
+							font-size: 1.1rem;	
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: $bp-desktop) {
+	.vaccination{
+		padding: 3rem 10rem;
+	}
+}

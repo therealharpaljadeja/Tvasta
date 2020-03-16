@@ -33,19 +33,18 @@
 					letter-spacing: 0.05rem;
 				}
 				&__map-marker{
-					height: 100%;
 					position: absolute;
 					top: 0;
 					left: 0;
 					font-size: 1.5rem;
 					padding-left: 1.7rem;
-					padding-top: 1rem;
+					padding-top: 0.8rem;
 				}
 				&__crosshairs{
 					position: absolute;
 					top: 0;
 					right: 0;
-					padding-top: 1rem;
+					padding-top: 0.8rem;
 					padding-right: 1.7rem;
 					img{
 						@include maintain-aspect-ratio(1.7rem);	
@@ -626,11 +625,11 @@
 						letter-spacing: 0.05rem;
 					}
 					&__map-marker{
-						padding-top: 1.6rem;
+						padding-top: 1.3rem;
 						padding-left: 2rem;
 					}
 					&__crosshairs{
-						padding-top: 1.6rem;
+						padding-top: 1.3rem;
 						padding-right: 2rem;
 						img{
 							opacity: 0.3;

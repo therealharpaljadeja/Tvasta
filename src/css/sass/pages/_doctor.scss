@@ -256,6 +256,9 @@
 		&-hospital{
 			background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://www.itl.cat/pngfile/big/143-1437950_hallway-of-a-hospital.jpg');
 		}
+		&-treatments{
+			background-image: linear-gradient(to right, rgba($light-blue,1) 0%, rgba($light-blue,0) 40%);
+		}
 		&__container{
 			padding: 0rem 10rem;
 			display: flex;

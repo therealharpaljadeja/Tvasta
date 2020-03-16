@@ -4,7 +4,7 @@
 	background-color: $background-color;
 	@include flex(row);
 	@include container-styling-mobile;
-	height: $header-height;
+	height: 6rem;
 	&__logo{
 		flex-grow: 1;
 		&__img{
@@ -37,7 +37,6 @@
 			@include flex(column);
 			align-items: flex-end;
 			list-style-type: none;
-			margin: 1rem 0rem;
 			&__item{
 				font-family: $nexa-light;
 				font-size: 1.5rem;
@@ -53,7 +52,7 @@
 		}
 	}
 	.cross{
-		font-size: 2rem;
+		font-size: 1.5rem;
 	}
 }
 
@@ -116,8 +115,11 @@
 		&__buttons{
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			grid-gap: 1rem;
 			flex-grow: 1;
+			grid-gap: 1rem;
+			&__button-link{
+				justify-self: end;
+			}
 			&-login{
 				@include button-styling-desktop;
 				background-color: $background-color;

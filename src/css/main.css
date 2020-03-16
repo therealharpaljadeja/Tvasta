@@ -247,7 +247,6 @@ html, body {
   flex-direction: column;
   align-items: flex-end;
   list-style-type: none;
-  margin: 1rem 0rem;
 }
 .navbar__side_menu__ul__item {
   font-family: "Nexa Light";
@@ -262,7 +261,7 @@ html, body {
   color: #2a2d3e;
 }
 .navbar .cross {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 @media (min-width: 768px) {
@@ -325,8 +324,11 @@ html, body {
   .navbar__buttons {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-gap: 1rem;
     flex-grow: 1;
+    grid-gap: 1rem;
+  }
+  .navbar__buttons__button-link {
+    justify-self: end;
   }
   .navbar__buttons-login {
     padding: 1rem 1.8rem;
@@ -490,19 +492,18 @@ html, body {
   letter-spacing: 0.05rem;
 }
 .hero__container__field__search_location__map-marker {
-  height: 100%;
   position: absolute;
   top: 0;
   left: 0;
   font-size: 1.5rem;
   padding-left: 1.7rem;
-  padding-top: 1rem;
+  padding-top: 0.8rem;
 }
 .hero__container__field__search_location__crosshairs {
   position: absolute;
   top: 0;
   right: 0;
-  padding-top: 1rem;
+  padding-top: 0.8rem;
   padding-right: 1.7rem;
 }
 .hero__container__field__search_location__crosshairs img {
@@ -1088,11 +1089,11 @@ html, body {
     letter-spacing: 0.05rem;
   }
   .hero__container__field__search_location__map-marker {
-    padding-top: 1.6rem;
+    padding-top: 1.3rem;
     padding-left: 2rem;
   }
   .hero__container__field__search_location__crosshairs {
-    padding-top: 1.6rem;
+    padding-top: 1.3rem;
     padding-right: 2rem;
   }
   .hero__container__field__search_location__crosshairs img {
@@ -1541,6 +1542,9 @@ html, body {
   .page_desc-hospital {
     background-image: linear-gradient(to bottom, rgba(156, 191, 218, 0.9), rgba(156, 191, 218, 0.9)), url("https://www.itl.cat/pngfile/big/143-1437950_hallway-of-a-hospital.jpg");
   }
+  .page_desc-treatments {
+    background-image: linear-gradient(to right, #9cbfda 0%, rgba(156, 191, 218, 0) 40%);
+  }
   .page_desc__container {
     padding: 0rem 10rem;
     display: flex;
@@ -1777,19 +1781,40 @@ html, body {
   width: 100vw;
   height: 100vh;
 }
+@media (min-width: 768px) {
+  .login-body .navbar {
+    height: 8rem;
+  }
+}
+@media (min-width: 1024px) {
+  .login-body .navbar {
+    height: 10rem;
+  }
+}
 
 .form_container {
-  width: 35%;
+  width: 90%;
   height: 35rem;
   background-color: white;
   margin: auto;
-  margin: 5rem auto;
+  margin: 3rem auto;
   display: grid;
   grid-template-columns: 100%;
   grid-template-rows: 1.5fr 5fr 1fr;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 0px 1.5rem rgba(42, 45, 62, 0.3);
+}
+@media (min-width: 768px) {
+  .form_container {
+    width: 60%;
+    margin: 5rem auto;
+  }
+}
+@media (min-width: 1024px) {
+  .form_container {
+    width: 35%;
+  }
 }
 .form_container__heading {
   font-family: "Nexa Bold";
@@ -1847,24 +1872,159 @@ html, body {
 .form_container__signup {
   font-family: "Nexa Bold";
   color: #777;
+  font-size: 1.2rem;
   justify-self: center;
 }
 .form_container__signup span a {
   text-decoration: none;
   color: #0173b2;
+  cursor: pointer;
 }
 
 .copyright {
-  margin: auto;
-  position: absolute;
-  bottom: 5%;
-  left: 50%;
-  transform: translateX(-50%);
+  margin-bottom: 4rem;
+  text-align: center;
 }
 .copyright span {
   text-align: center;
   font-family: "Nexa Bold";
+  font-size: 1rem;
+}
+@media (min-width: 768px) {
+  .copyright span {
+    font-size: 1.2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .copyright span {
+    font-size: 1.2rem;
+  }
+}
+
+.form_container--signup {
+  height: 60rem;
+  grid-template-rows: 1fr 5fr 0.5fr;
+}
+.form_container__form__input_field select, .form_container__form__input_field input[type=date], .form_container__form__input_field input[type=email], .form_container__form__input_field input[type=password] {
+  border-style: solid;
+  background-color: white;
+  width: 100%;
+  height: 100%;
+  color: #777;
+  padding: 0rem 1.5rem;
+  font-family: "Nexa Bold";
   font-size: 1.2rem;
+}
+.form_container__form #city {
+  width: 49%;
+}
+@media (min-width: 768px) {
+  .form_container__form #city {
+    width: 49%;
+  }
+}
+.form_container__form #state {
+  width: 49%;
+}
+@media (min-width: 768px) {
+  .form_container__form #state {
+    width: 49%;
+  }
+}
+
+.vaccination {
+  padding: 3rem 2rem;
+  height: auto;
+}
+.vaccination_container {
+  display: grid;
+  grid-template-columns: 100%;
+}
+.vaccination_container__col--1 {
+  display: grid;
+  width: 100%;
+  grid-gap: 2rem;
+}
+.vaccination_container__col--1__heading {
+  font-size: 2.68rem;
+  font-family: "Nexa Bold";
+  text-align: center;
+}
+.vaccination_container__col--1__description {
+  font-size: 1.4rem;
+  text-align: center;
+}
+.vaccination_container__col--2 {
+  margin-top: 4rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1.5rem;
+}
+.vaccination_container__col--2 .sidebar_container {
+  width: 100%;
+  border: 2px solid #eee;
+  border-radius: 1rem;
+  padding: 2rem;
+  display: grid;
+  grid-gap: 2rem;
+  position: relative;
+}
+.vaccination_container__col--2 .sidebar_container:before {
+  content: "";
+  width: 10%;
+  height: 2px;
+  background-color: #0173b2;
+  top: 0%;
+  left: 6%;
+  position: absolute;
+}
+.vaccination_container__col--2 .sidebar_container__heading {
+  font-size: 1.5rem;
+  font-family: "Nexa Bold";
+}
+.vaccination_container__col--2 .sidebar_container__list {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1.5rem;
+}
+.vaccination_container__col--2 .sidebar_container__list__item {
+  border-bottom: 1px solid #eee;
+  line-height: 2rem;
+  font-size: 1.2rem;
+  font-family: "Nexa Bold";
+  color: #777;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.vaccination_container__col--2 .sidebar_container__list__item span:first-of-type {
+  color: #2a2d3e;
+}
+
+@media (min-width: 768px) {
+  .vaccination {
+    padding: 2rem 3rem;
+  }
+  .vaccination_container {
+    grid-template-columns: 5fr 2fr;
+  }
+  .vaccination_container__col--1__heading {
+    text-align: left;
+  }
+  .vaccination_container__col--1__description {
+    text-align: left;
+  }
+  .vaccination_container__col--2 {
+    margin-top: 0;
+  }
+  .vaccination_container__col--2 .sidebar_container__list__item {
+    font-size: 1.1rem;
+  }
+}
+@media (min-width: 1024px) {
+  .vaccination {
+    padding: 3rem 10rem;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

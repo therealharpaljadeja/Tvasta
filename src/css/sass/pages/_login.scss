@@ -9,7 +9,7 @@
 		}
 		@media(min-width: $bp-desktop){
 			height: 10rem;	
-		}	
+		}	 
 	}
 }
 .form_container{
@@ -66,21 +66,38 @@
 			font-size: 1.2rem;
 			color: #777;
 		}
+		// &__submit{
+		// 	position: relative;
+		// 	border: 2px solid rgba($light-blue, .9);
+		// 	border-radius: 5px;
+		// 	background-color: $dark-blue;
+		// 	&__text{
+		// 		color: white;
+		// 		font-family: $nexa-bold;
+		// 		text-transform: uppercase;
+		// 		letter-spacing: .5rem;		
+		// 	}
+		// 	&__icon{
+		// 		position: absolute;
+		// 		right: 5%;
+		// 		color:white;
+		// 	}
+		// }
 		&__submit{
-			position: relative;
-			border: 2px solid rgba($light-blue, .9);
-			border-radius: 5px;
+			border: none;
+			margin: 0rem 0rem;
+			border-radius: 0;
 			background-color: $dark-blue;
-			&__text{
-				color: white;
-				font-family: $nexa-bold;
-				text-transform: uppercase;
-				letter-spacing: .5rem;		
-			}
+			color: $background-color;
+			font-family: $nexa-bold;
+			letter-spacing: .5rem;
+			font-size: 1.5rem;
+			text-transform: uppercase;
+			position: relative;
 			&__icon{
 				position: absolute;
 				right: 5%;
-				color:white;
+				font-size: 1.2rem;
 			}
 		}	
 	}

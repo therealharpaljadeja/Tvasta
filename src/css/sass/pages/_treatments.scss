@@ -13,7 +13,11 @@
 				font-family: $nexa-bold;
 				text-align: center; 
 			}
-			&__img{
+			&__img_wrapper{
+				width: 100%;
+				&__image{
+					width: 100%;
+				}
 			}
 			&__description{
 				font-size: $mobile-para-font-size;
@@ -72,9 +76,12 @@
 .more_services{
 	padding: 3rem 2rem;
 	&__container{
+		display: grid;
+		grid-template-columns: 100%;
+		grid-gap: 2rem;
 		&__row--1{
 			display: grid;
-			grid-template-rows: 100%;
+			grid-template-columns: 100%;
 			grid-gap: 2rem;
 			&__heading{
 				font-size: 2.68rem;
@@ -105,9 +112,48 @@
 			&__carousel{
 				display: grid;
 				grid-template-columns: 100%;
+				grid-gap: 1rem;
 				&__item__container{
-					height: 20rem;
-					// background-image: ;
+					height: 25rem;
+					background-size: 100%;
+					position: relative;
+					border-radius: 1rem;
+					box-shadow: 0px 2px 1rem rgba(0,0,0,.2);
+					&--1{
+						background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--008.jpg');
+						background-size: cover;
+					}
+					&--2{
+						background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--010.jpg');
+						background-size: cover;
+					}
+					&--3{
+						background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--011.jpg');
+						background-size: cover;
+					}
+					&__item{
+						background-color: white;
+						position: relative;
+						top: 70%;
+						border-bottom-left-radius: 1rem;
+						border-bottom-right-radius: 1rem;
+						&::before{
+							position: absolute;
+							top: 0;
+							left: 6%;
+							display: inline-block;
+							content: '';
+							width: 10%;
+							height: 4px;
+							background-color: $bright-blue;
+							padding-left: 3.5rem;
+						}
+						&__title{
+							font-size: 1.5rem;
+							padding: 3rem 2rem;
+							font-family: $nexa-bold;
+						}
+					}
 				}
 			}
 		}
@@ -118,8 +164,9 @@
 @media(min-width: $bp-tablet){
 	.vaccination{
 		padding: 2rem 3rem;
-		&_container{
+		&__container{
 			grid-template-columns: 5fr 2fr;
+			grid-gap: 2rem;
 			&__col--1{
 				&__heading{
 					text-align: left;
@@ -131,9 +178,37 @@
 			&__col--2{	
 				margin-top: 0;
 				.sidebar_container{
+					&::before{
+						left: 10%;
+					}
 					&__list{
 						&__item{
+
 							font-size: 1.1rem;	
+						}
+					}
+				}
+			}
+		}
+	}
+	.more_services{
+		padding: 2rem 3rem;
+		&__container{
+
+			&__row--1{
+				grid-template-columns: 9fr 1fr;
+				&__heading{
+					text-align: left;
+				}
+			}
+			&__row--2{
+				&__carousel{
+					grid-template-columns: 1fr 1fr 1fr;
+					&__item__container{
+						&__item{
+							&::before{
+								left: 9%;	
+							}
 						}
 					}
 				}
@@ -145,9 +220,13 @@
 @media(min-width: $bp-desktop) {
 	.vaccination{
 		padding: 3rem 10rem;
-		&_container{
+		&__container{
 			&__col--2{
 				.sidebar_container{
+					max-height: 30rem;
+					&::before{
+						left: 7%;
+					}
 					&__list{
 						&__item{
 							font-size: 1.3rem;
@@ -155,6 +234,23 @@
 					}
 				}
 			}
+		}
+	}
+	.more_services{
+		padding: 3rem 10rem;
+		width: 102rem;
+		&__container{
+			&__row--2{
+				&__carousel{
+					&__item__container{
+						&__item{
+							&::before{
+								left: 8%;	
+							}
+						}
+					}
+				}
+			}	
 		}
 	}
 }

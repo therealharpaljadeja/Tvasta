@@ -1,6 +1,33 @@
 .page_desc{
-	display :none;
-}
+		display: block;
+		height: 25rem;
+		background-size: cover;
+		&-doctor{
+			background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png');
+		}
+		&-hospital{
+			background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://www.itl.cat/pngfile/big/143-1437950_hallway-of-a-hospital.jpg');
+		}
+		&-treatments{
+			background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000');
+		}
+		&__container{
+			display: flex;
+			flex-direction: row;
+			align-items: center;
+			justify-content: center;
+			&__heading{
+				font-family: $nexa-light;
+				font-size: 3rem;
+				color: $dark-blue;
+				span{
+					text-decoration: underline;
+					font-family: $nexa-bold;
+				}
+			}
+		}
+
+	}
 
 .breadcrumb{
 	&__container{
@@ -250,29 +277,8 @@
 		height: 25rem;
 		background-size: cover;
 		background-position: 0rem -30rem;
-		&-doctor{
-			background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png');
-		}
-		&-hospital{
-			background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://www.itl.cat/pngfile/big/143-1437950_hallway-of-a-hospital.jpg');
-		}
-		&-treatments{
-			background-image: linear-gradient(to right, rgba($light-blue,1) 0%, rgba($light-blue,0) 40%);
-		}
 		&__container{
-			padding: 0rem 10rem;
-			display: flex;
-			flex-direction: row;
-			align-items: center;
-			&__heading{
-				font-family: $nexa-light;
-				font-size: 3rem;
-				color: $dark-blue;
-				span{
-					text-decoration: underline;
-					font-family: $nexa-bold;
-				}
-			}
+			justify-content: start;
 		}
 
 	}

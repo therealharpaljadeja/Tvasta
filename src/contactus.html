@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Contact Us</title>
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script async defer
+	src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJBel8D54gkYQEMff_sEQQwiBvrJpK7Yo&callback=initMap">
+</script>
+</head>
+<body>
+	<nav class="navbar">
+		<div class="navbar__logo">
+			<a href="/">
+				<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" class="navbar__logo__img">
+			</a>
+		</div>
+		<div class="navbar__menu">
+			<ul class="navbar__menu__ul">
+				<li class="navbar__menu__ul__item"><a href="doctor.html" >Doctors</a></li>
+				<li class="navbar__menu__ul__item"><a href="hospital.html">Hospitals</a></li>
+				<li class="navbar__menu__ul__item"><a href="treatments.html" >Treatment</a></li>
+				<li class="navbar__menu__ul__item"><a href="doctor.html" >Other Services</a></li>
+				<li class="navbar__menu__ul__item"><a href="doctor.html" >About</a></li>
+			</ul>
+		</div>
+		<div class="navbar__side_menu">
+			<ul class="navbar__side_menu__ul">
+				<li class="navbar__side_menu__ul__item cross"><span><i class="fas fa-window-close"></i></span></li>
+				<li class="navbar__side_menu__ul__item"><a href="doctor.html" >Doctors</a></li>
+				<li class="navbar__side_menu__ul__item"><a href="hospital.html">Hospitals</a></li>
+				<li class="navbar__side_menu__ul__item">Treatment</li>	
+				<li class="navbar__side_menu__ul__item">Other Services</li>
+				<li class="navbar__side_menu__ul__item">About</li>
+			</ul>
+		</div>
+		<div class="navbar__buttons">
+			<a href="login.html" class="navbar__buttons__button-link">
+				<button class="navbar__buttons-login">
+					Login / Sign Up
+				</button>
+			</a>
+			<a href="get-a-quote.html">
+				<button class="navbar__buttons-quote">
+					Get A Quote 
+				</button>	
+			</a>			
+		</div>
+		<i class="fa fa-bars navbar__burger"></i>	
+	</nav>
+	<section class="page_desc page_desc--contactus">
+		<div class="container page_desc__container">
+			<h1 class="page_desc__container__heading">
+				Contact Us
+			</h1>
+		</div>
+	</section>
+	<section class="location">
+		<div class="location__container">
+			<div id="map"></div>
+		</div>
+	</section>
+	<section class="address">
+		<div class="address__container">
+			<ul class="address__container__list">
+				<li class="address__container__list__item">
+					<i class="fas fa-home address__container__list__item__icon">
+					</i>
+					<div class="address__container__list__item__address">
+						<h3 class="address__container__list__item__address__title">
+							California, United States
+						</h3>
+						<h4 class="address__container__list__item__address__address">
+							Santa Monica Boulevard
+						</h4>	
+					</div>
+				</li>
+				<li class="address__container__list__item">
+					<i class="fas fa-phone-alt address__container__list__item__icon">
+					</i>
+					<div class="address__container__list__item__address">
+						<h3 class="address__container__list__item__address__title">
+							00 (440) 9865 562
+						</h3>
+						<h4 class="address__container__list__item__address__address">
+							Mon to Fri 9am to 6pm
+						</h4>	
+					</div>
+				</li>
+				<li class="address__container__list__item">
+					<i class="fas fa-home address__container__list__item__icon">
+					</i>
+					<div class="address__container__list__item__address">
+						<h3 class="address__container__list__item__address__title">
+							support@colorlib.com
+						</h3>
+						<h4 class="address__container__list__item__address__address">
+							Send us your query anytime!
+						</h4>	
+					</div>
+				</li>
+			</ul>
+		</div>
+	</section>
+	<section class="contact_us_form">
+		<div class="contact_us_form__container">
+			<div class="contact_us_form__container__form--1">
+				<form action="">
+					<div class="contact_us_form__container__form--1__fields">
+						<input type="text" placeholder="Enter your name">
+						<input type="text" placeholder="Enter email address">
+						<input type="text" placeholder="Enter subject">	
+					</div>		
+					<div class="contact_us_form__container__form--1__textarea">
+						<input rows="5" cols="50" type="textarea" placeholder="Enter Message">	
+					</div>
+				</form>
+			</div>
+			<div class="contact_us_form__container__form--2">
+				<input type="submit" value="Send Message">	
+			</div>
+		</div>
+	</section>
+	<footer class="footer">
+		<div class="container footer__container">
+			<ul class="footer__container__menu">
+				<li><a href="doctor.html">Doctors</a></li>
+				<li><a href="hospital.html">Hospitals</a></li>
+				<li>Treatment</li>
+				<li>Other Services</li>
+				<li>FAQs</li>
+			</ul>
+			<a href="/">
+			<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/footer.png" class="footer__container__logo"></a>
+			<p class="footer__container__copyright">All Rights Reserved. &copy; tvastra 2020</p>
+			<div class="footer__container__social">
+				<i class="fab fa-facebook-f"></i>
+				<i class="fab fa-pinterest-p"></i>
+				<i class="fab fa-twitter"></i>
+				<i class="fab fa-google-plus"></i>
+				<i class="fab fa-instagram"></i>
+			</div>
+		</div>
+	</footer>
+	<div class="border">
+	</div>
+</body>
+
+<script>
+	function initMap() {
+	var myLatLng = {lat: 28.5355, lng: 77.3910};
+
+	var map = new google.maps.Map(document.getElementById('map'), {
+	  zoom: 13,
+	  center: myLatLng,
+	  zoomControl: false
+	});
+
+	var marker = new google.maps.Marker({
+	  position: myLatLng,
+	  map: map,
+	  title: 'Hello World!'
+	});
+	}
+</script>
+</html>

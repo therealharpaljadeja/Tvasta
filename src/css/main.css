@@ -1291,14 +1291,17 @@ html, body {
   height: 25rem;
   background-size: cover;
 }
-.page_desc-doctor {
+.page_desc--doctor {
   background-image: linear-gradient(to bottom, rgba(156, 191, 218, 0.9), rgba(156, 191, 218, 0.9)), url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Doctors.png");
 }
-.page_desc-hospital {
+.page_desc--hospital {
   background-image: linear-gradient(to bottom, rgba(156, 191, 218, 0.9), rgba(156, 191, 218, 0.9)), url("https://www.itl.cat/pngfile/big/143-1437950_hallway-of-a-hospital.jpg");
 }
-.page_desc-treatments {
+.page_desc--treatments {
   background-image: linear-gradient(to bottom, rgba(156, 191, 218, 0.9), rgba(156, 191, 218, 0.9)), url("https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000");
+}
+.page_desc--contactus {
+  background-image: linear-gradient(to bottom, rgba(156, 191, 218, 0.9), rgba(156, 191, 218, 0.9)), url("./../../../assets/contactUs.png");
 }
 .page_desc__container {
   display: flex;
@@ -1560,7 +1563,6 @@ html, body {
     display: block;
     height: 25rem;
     background-size: cover;
-    background-position: 0rem -30rem;
   }
   .page_desc__container {
     justify-content: start;
@@ -2164,6 +2166,137 @@ html, body {
   }
   .more_services__container__row--2__carousel__item__container__item::before {
     left: 6%;
+  }
+}
+.location {
+  height: 28rem;
+}
+.location__container {
+  padding: 2rem 2rem;
+}
+.location #map {
+  height: 24rem;
+}
+
+.address__container {
+  padding: 2rem 2rem;
+  display: grid;
+  grid-template-columns: 100%;
+}
+.address__container__list {
+  display: grid;
+  grid-gap: 2rem;
+}
+.address__container__list__item {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-gap: 1rem;
+}
+.address__container__list__item__icon {
+  font-size: 2rem;
+  color: #0173b2;
+  justify-self: center;
+  align-self: center;
+}
+.address__container__list__item__address {
+  display: grid;
+  grid-gap: 1rem;
+}
+.address__container__list__item__address__title {
+  font-size: 1.5rem;
+  font-family: "Nexa Bold";
+}
+.address__container__list__item__address__address {
+  font-size: 1.2rem;
+  font-family: "Nexa Light";
+}
+
+.contact_us_form__container {
+  background-color: #9cbfda;
+  padding: 2rem 2rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.contact_us_form__container__form--1 {
+  width: 100%;
+}
+.contact_us_form__container__form--1 form {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.contact_us_form__container__form--1 form input {
+  width: 100%;
+  border-style: solid;
+  background-color: white;
+  color: #777;
+  padding: 0rem 1.5rem;
+  font-family: "Nexa Bold";
+  font-size: 1.2rem;
+  line-height: 3rem;
+}
+.contact_us_form__container__form--1__fields {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.contact_us_form__container__form--2 {
+  justify-self: end;
+}
+.contact_us_form__container__form--2 input {
+  border: none;
+  padding: 1rem 1.5rem;
+  border-radius: 0;
+  background-color: #0173b2;
+  color: white;
+  font-family: "Nexa Bold";
+  font-size: 1.5rem;
+  position: relative;
+}
+
+@media (min-width: 768px) {
+  .location {
+    height: 40rem;
+  }
+  .location__container {
+    padding: 2rem 3rem;
+  }
+  .location__container #map {
+    height: 36rem;
+  }
+
+  .address__container {
+    padding: 2rem 3rem;
+  }
+
+  .contact_us_form__container {
+    padding: 2rem 3rem;
+  }
+  .contact_us_form__container__form--1 form {
+    grid-template-columns: 1fr 1fr;
+  }
+  .contact_us_form__container__form--1__textarea input {
+    height: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .location__container {
+    padding: 3rem 10rem;
+  }
+
+  .address {
+    width: 30%;
+  }
+  .address__container {
+    padding: 3rem 10rem;
+  }
+
+  .contact_us_form {
+    width: 60%;
+  }
+  .contact_us_form__container {
+    padding: 3rem 10rem;
   }
 }
 

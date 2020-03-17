@@ -2014,6 +2014,7 @@ html, body {
 
 .more_services {
   padding: 3rem 2rem;
+  background-color: #9cbfda;
 }
 .more_services__container {
   display: grid;
@@ -2040,7 +2041,7 @@ html, body {
   width: 3rem;
   height: 3rem;
   border-radius: 50%;
-  background-color: #ccc;
+  background-color: white;
   position: relative;
 }
 .more_services__container__row--1__carousel__buttons__button i {
@@ -2130,6 +2131,9 @@ html, body {
   .more_services__container__row--1__heading {
     text-align: left;
   }
+  .more_services__container__row--1__carousel__buttons {
+    justify-self: end;
+  }
   .more_services__container__row--2__carousel {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -2140,6 +2144,9 @@ html, body {
 @media (min-width: 1024px) {
   .vaccination {
     padding: 3rem 10rem;
+  }
+  .vaccination__container__col--2 {
+    height: 48rem;
   }
   .vaccination__container__col--2 .sidebar_container {
     max-height: 30rem;
@@ -2153,10 +2160,10 @@ html, body {
 
   .more_services {
     padding: 3rem 10rem;
-    width: 102rem;
+    width: 100%;
   }
   .more_services__container__row--2__carousel__item__container__item::before {
-    left: 8%;
+    left: 6%;
   }
 }
 

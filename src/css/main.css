@@ -339,6 +339,7 @@ html, body {
     letter-spacing: 0.05rem;
     font-weight: 600;
     background-color: white;
+    font-size: 1.2rem;
   }
   .navbar__buttons-quote {
     padding: 1rem 1.8rem;
@@ -351,6 +352,7 @@ html, body {
     background-color: #2a2d3e;
     color: white;
     padding: 1rem 2.6rem;
+    font-size: 1.2rem;
   }
   .navbar .fa-bars {
     display: none;
@@ -1297,12 +1299,6 @@ html, body {
 .page_desc--hospital {
   background-image: linear-gradient(to bottom, rgba(156, 191, 218, 0.9), rgba(156, 191, 218, 0.9)), url("https://www.itl.cat/pngfile/big/143-1437950_hallway-of-a-hospital.jpg");
 }
-.page_desc--treatments {
-  background-image: linear-gradient(to bottom, rgba(156, 191, 218, 0.9), rgba(156, 191, 218, 0.9)), url("https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000");
-}
-.page_desc--contactus {
-  background-image: linear-gradient(to bottom, rgba(156, 191, 218, 0.9), rgba(156, 191, 218, 0.9)), url("./../../../assets/contactUs.png");
-}
 .page_desc__container {
   display: flex;
   flex-direction: row;
@@ -1939,6 +1935,13 @@ html, body {
   }
 }
 
+.page_desc--treatments {
+  background-image: url("https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000");
+}
+.page_desc--contactus {
+  background-image: url("./../../../assets/contactUs.png");
+}
+
 .vaccination {
   padding: 3rem 2rem;
   height: auto;
@@ -2029,6 +2032,7 @@ html, body {
   grid-gap: 2rem;
 }
 .more_services__container__row--1__heading {
+  color: white;
   font-size: 2.68rem;
   font-family: "Nexa Bold";
   text-align: center;
@@ -2269,6 +2273,9 @@ html, body {
   .address__container {
     padding: 2rem 3rem;
   }
+  .address__container__list__item {
+    grid-template-columns: 1fr 13fr;
+  }
 
   .contact_us_form__container {
     padding: 2rem 3rem;
@@ -2285,18 +2292,318 @@ html, body {
     padding: 3rem 10rem;
   }
 
-  .address {
-    width: 30%;
-  }
   .address__container {
-    padding: 3rem 10rem;
+    height: 100%;
   }
 
-  .contact_us_form {
-    width: 60%;
-  }
   .contact_us_form__container {
+    height: 100%;
+  }
+
+  .contactus_grid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
     padding: 3rem 10rem;
+  }
+}
+.values__container {
+  padding: 2rem 2rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 2rem;
+}
+.values__container__para {
+  position: relative;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  font-family: "Nexa Light";
+  text-align: center;
+}
+.values__container__para::after {
+  position: absolute;
+  content: "";
+  width: 12%;
+  left: 43%;
+  top: 100%;
+  height: 2px;
+  background-color: #0173b2;
+}
+.values__container__heading {
+  font-size: 2.68rem;
+  line-height: 3rem;
+  text-align: center;
+  font-family: "Nexa Bold";
+  text-transform: uppercase;
+}
+.values__container__values {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 2rem;
+}
+.values__container__values__value {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 0.5rem;
+}
+.values__container__values__value__icon {
+  grid-row: 1/-1;
+  grid-column: 1/2;
+  font-size: 2rem;
+  align-self: start;
+  justify-self: center;
+  color: #0173b2;
+}
+.values__container__values__value__title {
+  font-size: 1.3rem;
+  font-family: "Nexa Bold";
+  text-transform: uppercase;
+}
+.values__container__values__value__desc {
+  font-size: 1rem;
+  font-family: "Nexa Light";
+}
+
+.statistics {
+  background-color: #9cbfda;
+}
+.statistics__container {
+  padding: 2rem 2rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 2rem;
+}
+.statistics__container__img_wrapper {
+  height: 40rem;
+  justify-self: center;
+}
+.statistics__container__image {
+  height: 100%;
+  width: 100%;
+}
+.statistics__container__stats {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 2rem;
+}
+.statistics__container__stats__stat {
+  display: grid;
+  grid-template-columns: 100%;
+  text-align: center;
+  grid-gap: 1rem;
+}
+.statistics__container__stats__stat__figure {
+  font-size: 4rem;
+  font-family: "Nexa Bold";
+}
+.statistics__container__stats__stat__title {
+  font-size: 1.5rem;
+  font-family: "Nexa Bold";
+  text-transform: uppercase;
+}
+.statistics__container__stats__stat__desc {
+  font-size: 1.2rem;
+  font-family: "Nexa Light";
+}
+
+.board_of_directors {
+  background-color: #eee;
+}
+.board_of_directors__container {
+  padding: 2rem 2rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 2rem;
+}
+.board_of_directors__container__para {
+  position: relative;
+  font-size: 1.4rem;
+  line-height: 2rem;
+  font-family: "Nexa Light";
+  text-align: center;
+}
+.board_of_directors__container__para::after {
+  position: absolute;
+  content: "";
+  width: 12%;
+  left: 43%;
+  top: 100%;
+  height: 2px;
+  background-color: #0173b2;
+}
+.board_of_directors__container__heading {
+  font-size: 2.68rem;
+  line-height: 3rem;
+  text-align: center;
+  font-family: "Nexa Bold";
+  text-transform: uppercase;
+}
+.board_of_directors__container__cards {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.board_of_directors__container__cards__card {
+  width: 100%;
+  height: 54rem;
+  background-color: white;
+  display: grid;
+  grid-template-rows: 5fr 1fr;
+  grid-gap: 2rem;
+}
+.board_of_directors__container__cards__card__img_wrapper {
+  width: 100%;
+  height: 100%;
+}
+.board_of_directors__container__cards__card__image {
+  width: 100%;
+  height: 100%;
+}
+.board_of_directors__container__cards__card__desc {
+  background-color: white;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+  padding: 2rem;
+  position: relative;
+}
+.board_of_directors__container__cards__card__desc__icon {
+  position: absolute;
+  top: -20%;
+  left: 5%;
+  width: 4rem;
+  height: 4rem;
+  background-color: #0173b2;
+  border-radius: 50%;
+  border: 3px solid white;
+}
+.board_of_directors__container__cards__card__desc__icon i {
+  font-size: 2rem;
+  color: white;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.board_of_directors__container__cards__card__desc__short {
+  font-size: 1.2rem;
+  font-family: "Nexa Light";
+}
+.board_of_directors__container__cards__card__desc__name {
+  font-size: 1.7rem;
+  font-family: "Nexa Bold";
+}
+.board_of_directors__container__cards__card__desc__long {
+  font-size: 1.2rem;
+  font-family: "Nexa Light";
+}
+.board_of_directors__container__cards__card__desc__social {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 100%;
+  justify-self: end;
+  grid-gap: 1rem;
+}
+.board_of_directors__container__cards__card__desc__social li {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid #aaa;
+  border-radius: 50%;
+  position: relative;
+}
+.board_of_directors__container__cards__card__desc__social li i {
+  position: absolute;
+  font-size: 1.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #aaa;
+}
+
+@media (min-width: 768px) {
+  .values__container {
+    padding: 2rem 3rem;
+  }
+  .values__container__para {
+    text-align: left;
+    font-size: 1.5rem;
+  }
+  .values__container__para::after {
+    width: 5%;
+    left: 0;
+  }
+  .values__container__heading {
+    text-align: left;
+  }
+  .values__container__values {
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 3rem;
+  }
+
+  .statistics__container {
+    padding: 2rem 3rem;
+    grid-template-columns: 1fr 1fr;
+  }
+  .statistics__container__stats {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .board_of_directors__container {
+    padding: 2rem 3rem;
+  }
+  .board_of_directors__container__para {
+    text-align: left;
+    font-size: 1.5rem;
+  }
+  .board_of_directors__container__para::after {
+    left: 0;
+    width: 5%;
+  }
+  .board_of_directors__container__heading {
+    text-align: left;
+  }
+  .board_of_directors__container__cards {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .board_of_directors__container__cards__card__desc__icon {
+    left: 7%;
+  }
+}
+@media (min-width: 1024px) {
+  .values__container {
+    padding: 3rem 10rem;
+    grid-row-gap: 3rem;
+  }
+  .values__container__values {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-row-gap: 5rem;
+  }
+  .values__container__values__value {
+    grid-template-rows: 1fr 2fr;
+  }
+  .values__container__values__value__title {
+    font-size: 1.7rem;
+  }
+  .values__container__values__value__icon {
+    font-size: 3rem;
+  }
+  .values__container__values__value__desc {
+    font-size: 1.3rem;
+  }
+
+  .statistics__container {
+    padding: 3rem 10rem;
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .board_of_directors__container {
+    padding: 3rem 10rem;
+  }
+  .board_of_directors__container__cards__card {
+    height: 57rem;
+  }
+  .board_of_directors__container__cards__card__desc__icon {
+    left: 4%;
   }
 }
 

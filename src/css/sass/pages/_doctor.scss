@@ -8,12 +8,6 @@
 		&--hospital{
 			background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://www.itl.cat/pngfile/big/143-1437950_hallway-of-a-hospital.jpg');
 		}
-		&--treatments{
-			background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000');
-		}
-		&--contactus{
-			background-image: linear-gradient(to bottom, rgba($light-blue,.9), rgba($light-blue,.9)), url('./../../../assets/contactUs.png');	
-		}
 		&__container{
 			display: flex;
 			flex-direction: row;

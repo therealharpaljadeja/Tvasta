@@ -1,3 +1,12 @@
+.page_desc{
+	&--treatments{
+			background-image: url('https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000');
+	}
+	&--contactus{
+		background-image: url('./../../../assets/contactUs.png');
+	}
+}
+
 .vaccination{
 	padding: 3rem 2rem;
 	height: auto;
@@ -85,6 +94,7 @@
 			grid-template-columns: 100%;
 			grid-gap: 2rem;
 			&__heading{
+				color: white;
 				font-size: 2.68rem;
 				font-family: $nexa-bold;
 				text-align: center;

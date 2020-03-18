@@ -1,4 +1,10 @@
 .login-body{
+	&-flex{
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		height: 100%;
+	}
 	background-color: $light-blue;
 	position: relative;
 	width: 100vw;
@@ -117,8 +123,8 @@
 }
 
 .copyright{
-	margin-bottom: 4rem;
 	text-align: center;
+	padding-bottom: 2rem;
 	span{
 		text-align:center;
 		font-family: $nexa-bold;

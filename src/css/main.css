@@ -1784,6 +1784,12 @@ html, body {
   width: 100vw;
   height: 100vh;
 }
+.login-body-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
 @media (min-width: 768px) {
   .login-body .navbar {
     height: 8rem;
@@ -1885,8 +1891,8 @@ html, body {
 }
 
 .copyright {
-  margin-bottom: 4rem;
   text-align: center;
+  padding-bottom: 2rem;
 }
 .copyright span {
   text-align: center;

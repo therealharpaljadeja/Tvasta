@@ -1,0 +1,38 @@
+.form_container{
+	&--book{
+		height: 54rem;
+		grid-template-rows: 1.5fr 11fr 1fr; 
+	}
+	&__form{
+		grid-gap: 2rem;
+		&__input_field{
+			&--book{
+				display: grid;
+				grid-template-columns: 100%;
+				span{
+					font-size: 1.5rem;
+					font-family: $nexa-bold;
+				}
+			}
+			&__container{
+				label{
+					font-size: 1.3rem;
+					font-family: $nexa-light;
+				}
+				input{
+					font-family: $nexa-bold;
+				}
+			}
+			label[for=health_record], label[for=appointment_date]{
+				font-size: 1.5rem;
+				font-family: $nexa-bold;
+			}
+		}
+		&__submit{
+			span{
+				font-size: 1.3rem;
+				line-height: 3rem;
+			}
+		}
+	}
+}

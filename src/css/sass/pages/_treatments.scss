@@ -1,9 +1,27 @@
-.page_desc{
+.page_description{
+	height: 25rem;
 	&--treatments{
-			background-image: url('https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000');
+			background-image: linear-gradient(to right, rgba($bright-blue,1) 0%, rgba($bright-blue, 0) 30%), url('https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000');
 	}
 	&--contactus{
 		background-image: url('./../../../assets/contactUs.png');
+	}
+	&__container{
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		&__heading{
+			font-family: $nexa-bold;
+			font-size: 3rem;
+			color: $background-color;
+		}
+		&__breadcrumb{
+			font-size: 1.5rem;
+			font-family: $nexa-light;
+			color: $background-color;
+			margin-top: 2rem;
+		}
 	}
 }
 
@@ -232,6 +250,13 @@
 }
 
 @media(min-width: $bp-desktop) {
+	.page_description{
+		&__container{
+			padding: 3rem 10rem;
+			align-items: flex-start;
+		}
+	}
+	
 	.vaccination{
 		padding: 3rem 10rem;
 		&__container{

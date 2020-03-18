@@ -1935,11 +1935,31 @@ html, body {
   }
 }
 
-.page_desc--treatments {
-  background-image: url("https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000");
+.page_description {
+  height: 25rem;
 }
-.page_desc--contactus {
+.page_description--treatments {
+  background-image: linear-gradient(to right, #0173b2 0%, rgba(1, 115, 178, 0) 30%), url("https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000");
+}
+.page_description--contactus {
   background-image: url("./../../../assets/contactUs.png");
+}
+.page_description__container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.page_description__container__heading {
+  font-family: "Nexa Bold";
+  font-size: 3rem;
+  color: white;
+}
+.page_description__container__breadcrumb {
+  font-size: 1.5rem;
+  font-family: "Nexa Light";
+  color: white;
+  margin-top: 2rem;
 }
 
 .vaccination {
@@ -2148,6 +2168,11 @@ html, body {
   }
 }
 @media (min-width: 1024px) {
+  .page_description__container {
+    padding: 3rem 10rem;
+    align-items: flex-start;
+  }
+
   .vaccination {
     padding: 3rem 10rem;
   }
@@ -2294,6 +2319,19 @@ html, body {
 
   .address__container {
     height: 100%;
+    padding: 2rem 0;
+  }
+  .address__container__list {
+    height: 16rem;
+  }
+  .address__container__list__item__address {
+    grid-gap: 0;
+  }
+  .address__container__list__item__address__title {
+    align-self: start;
+  }
+  .address__container__list__item__icon {
+    align-self: start;
   }
 
   .contact_us_form__container {
@@ -2605,6 +2643,36 @@ html, body {
   .board_of_directors__container__cards__card__desc__icon {
     left: 4%;
   }
+}
+.form_container--book {
+  height: 54rem;
+  grid-template-rows: 1.5fr 11fr 1fr;
+}
+.form_container__form {
+  grid-gap: 2rem;
+}
+.form_container__form__input_field--book {
+  display: grid;
+  grid-template-columns: 100%;
+}
+.form_container__form__input_field--book span {
+  font-size: 1.5rem;
+  font-family: "Nexa Bold";
+}
+.form_container__form__input_field__container label {
+  font-size: 1.3rem;
+  font-family: "Nexa Light";
+}
+.form_container__form__input_field__container input {
+  font-family: "Nexa Bold";
+}
+.form_container__form__input_field label[for=health_record], .form_container__form__input_field label[for=appointment_date] {
+  font-size: 1.5rem;
+  font-family: "Nexa Bold";
+}
+.form_container__form__submit span {
+  font-size: 1.3rem;
+  line-height: 3rem;
 }
 
 /*# sourceMappingURL=main.css.map */

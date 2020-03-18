@@ -140,6 +140,21 @@
 	.address{
 		&__container{
 			height: 100%;
+			padding: 2rem 0;
+			&__list{
+				height: 16rem;
+				&__item{
+					&__address{
+						grid-gap: 0;
+						&__title{
+							align-self: start;
+						}
+					}
+					&__icon{
+						align-self: start;
+					}
+				}
+			}
 		}
 	}
 	.contact_us_form{

@@ -15,14 +15,43 @@ html, body{
 	@include container-styling-mobile;
 }
 
+.heading-1{
+	font-size: 2.68rem;
+	line-height: 3rem;
+	font-family: $nexa-bold;
+	@media(min-width: $bp-tablet){
+		font-size: 3rem;
+		line-height: 4rem;
+	}
+	@media(min-width: $bp-desktop){
+		font-size: 4rem;
+		line-height: 5rem;
+	}
+}
 .para{
-	@include para-styling-mobile;
+	font-size: 1.7rem;
+	line-height: 2rem;
 }
 
 .heading-2{
-	font-size: $mobile-heading-2-font-size;
-	line-height: $desktop-heading-2-line-height;
-	font-family: $nexa-bold;
+	font-size: 2.68rem;
+	line-height: 2rem;
+	@media(min-width: $bp-tablet){
+		font-size: 3rem;
+		line-height: 3rem;
+	}
+	@media(min-width: $bp-desktop){
+		font-size: 4rem;
+		line-height: 5rem;
+	}
+}
+
+.heading-3{
+	font-size: 1.7rem;
+	line-height: 2rem;
+	@media(min-width: $bp-tablet){
+		font-size: 2rem;
+	}
 }
 
 .para{
@@ -31,6 +60,12 @@ html, body{
 	font-family: $nexa-light;
 }
 
+.span{
+	font-size: 1.3rem;
+	@media(min-width: $bp-tablet){
+		font-size: 1.5rem;
+	}
+}
 @media (min-width: $bp-tablet) {
 	.container{
 		@include container-styling-tablet;

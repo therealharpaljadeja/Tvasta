@@ -1,7 +1,9 @@
 .page_description{
 	height: 25rem;
+	background-size: cover;
+	background-repeat: no-repeat;
 	&--treatments{
-			background-image: linear-gradient(to right, rgba($bright-blue,1) 0%, rgba($bright-blue, 0) 30%), url('https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000');
+			background-image: linear-gradient(to right, rgba($bright-blue,1) 0%, rgba($bright-blue, 0) 100%), url('https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000');
 	}
 	&--contactus{
 		background-image: url('./../../../assets/contactUs.png');
@@ -47,7 +49,6 @@
 				}
 			}
 			&__description{
-				font-size: $mobile-para-font-size;
 				text-align: center;
 			}
 		}
@@ -113,7 +114,6 @@
 			grid-gap: 2rem;
 			&__heading{
 				color: white;
-				font-size: 2.68rem;
 				font-family: $nexa-bold;
 				text-align: center;
 			}
@@ -178,7 +178,7 @@
 							padding-left: 3.5rem;
 						}
 						&__title{
-							font-size: 1.5rem;
+							font-size: 1.7rem;
 							padding: 3rem 2rem;
 							font-family: $nexa-bold;
 						}
@@ -199,6 +199,7 @@
 			&__col--1{
 				&__heading{
 					text-align: left;
+					font-size: 3rem;
 				}
 				&__description{
 					text-align: left;
@@ -212,7 +213,6 @@
 					}
 					&__list{
 						&__item{
-
 							font-size: 1.1rem;	
 						}
 					}
@@ -238,6 +238,9 @@
 					grid-template-columns: 1fr 1fr 1fr;
 					&__item__container{
 						&__item{
+							&__title{
+								font-size: 2rem;
+							}
 							&::before{
 								left: 9%;	
 							}
@@ -254,12 +257,23 @@
 		&__container{
 			padding: 3rem 10rem;
 			align-items: flex-start;
+			&__heading{
+				font-size: 4rem;
+			}
+			&__breadcrumb{
+				font-size: 2rem;
+			}
 		}
 	}
 	
 	.vaccination{
 		padding: 3rem 10rem;
 		&__container{
+			&__col--1{
+				&__heading{
+					font-size: 4rem;
+				}
+			}
 			&__col--2{
 				height: 48rem;
 				.sidebar_container{

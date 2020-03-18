@@ -26,22 +26,69 @@ html, body {
   height: 100%;
 }
 
+.heading-1 {
+  font-size: 2.68rem;
+  line-height: 3rem;
+  font-family: "Nexa Bold";
+}
+@media (min-width: 768px) {
+  .heading-1 {
+    font-size: 3rem;
+    line-height: 4rem;
+  }
+}
+@media (min-width: 1024px) {
+  .heading-1 {
+    font-size: 4rem;
+    line-height: 5rem;
+  }
+}
+
 .para {
-  font-family: "Nexa Light";
-  font-size: 1.4rem;
+  font-size: 1.7rem;
   line-height: 2rem;
 }
 
 .heading-2 {
-  font-size: 2.1rem;
+  font-size: 2.68rem;
   line-height: 2rem;
-  font-family: "Nexa Bold";
+}
+@media (min-width: 768px) {
+  .heading-2 {
+    font-size: 3rem;
+    line-height: 3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .heading-2 {
+    font-size: 4rem;
+    line-height: 5rem;
+  }
+}
+
+.heading-3 {
+  font-size: 1.7rem;
+  line-height: 2rem;
+}
+@media (min-width: 768px) {
+  .heading-3 {
+    font-size: 2rem;
+  }
 }
 
 .para {
   font-size: 1.7rem;
   line-height: 3rem;
   font-family: "Nexa Light";
+}
+
+.span {
+  font-size: 1.3rem;
+}
+@media (min-width: 768px) {
+  .span {
+    font-size: 1.5rem;
+  }
 }
 
 @media (min-width: 768px) {
@@ -1943,9 +1990,11 @@ html, body {
 
 .page_description {
   height: 25rem;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 .page_description--treatments {
-  background-image: linear-gradient(to right, #0173b2 0%, rgba(1, 115, 178, 0) 30%), url("https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000");
+  background-image: linear-gradient(to right, #0173b2 0%, rgba(1, 115, 178, 0) 100%), url("https://content.presspage.com/uploads/1979/1920_190514-opioid-guideline-banner-247308.jpg?10000");
 }
 .page_description--contactus {
   background-image: url("./../../../assets/contactUs.png");
@@ -1993,7 +2042,6 @@ html, body {
   width: 100%;
 }
 .vaccination__container__col--1__description {
-  font-size: 1.4rem;
   text-align: center;
 }
 .vaccination__container__col--2 {
@@ -2059,7 +2107,6 @@ html, body {
 }
 .more_services__container__row--1__heading {
   color: white;
-  font-size: 2.68rem;
   font-family: "Nexa Bold";
   text-align: center;
 }
@@ -2125,7 +2172,7 @@ html, body {
   padding-left: 3.5rem;
 }
 .more_services__container__row--2__carousel__item__container__item__title {
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   padding: 3rem 2rem;
   font-family: "Nexa Bold";
 }
@@ -2140,6 +2187,7 @@ html, body {
   }
   .vaccination__container__col--1__heading {
     text-align: left;
+    font-size: 3rem;
   }
   .vaccination__container__col--1__description {
     text-align: left;
@@ -2169,6 +2217,9 @@ html, body {
   .more_services__container__row--2__carousel {
     grid-template-columns: 1fr 1fr 1fr;
   }
+  .more_services__container__row--2__carousel__item__container__item__title {
+    font-size: 2rem;
+  }
   .more_services__container__row--2__carousel__item__container__item::before {
     left: 9%;
   }
@@ -2178,9 +2229,18 @@ html, body {
     padding: 3rem 10rem;
     align-items: flex-start;
   }
+  .page_description__container__heading {
+    font-size: 4rem;
+  }
+  .page_description__container__breadcrumb {
+    font-size: 2rem;
+  }
 
   .vaccination {
     padding: 3rem 10rem;
+  }
+  .vaccination__container__col--1__heading {
+    font-size: 4rem;
   }
   .vaccination__container__col--2 {
     height: 48rem;

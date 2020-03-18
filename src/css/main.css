@@ -33,25 +33,14 @@ html, body {
 }
 @media (min-width: 768px) {
   .heading-1 {
-    font-size: 3rem;
+    font-size: 3.5rem;
     line-height: 4rem;
   }
 }
 @media (min-width: 1024px) {
   .heading-1 {
-    font-size: 4rem;
-    line-height: 5rem;
-  }
-}
-
-.para {
-  font-size: 1.5rem;
-  line-height: 2rem;
-  font-family: "Nexa Light";
-}
-@media (min-width: 768px) {
-  .para {
-    font-size: 1.7rem;
+    font-size: 3.5rem;
+    line-height: 4rem;
   }
 }
 
@@ -61,19 +50,19 @@ html, body {
 }
 @media (min-width: 768px) {
   .heading-2 {
-    font-size: 3rem;
+    font-size: 2.68rem;
     line-height: 3rem;
   }
 }
 @media (min-width: 1024px) {
   .heading-2 {
-    font-size: 4rem;
-    line-height: 5rem;
+    font-size: 3rem;
+    line-height: 4rem;
   }
 }
 
 .heading-3 {
-  font-size: 1.7rem;
+  font-size: 2rem;
   line-height: 2rem;
 }
 @media (min-width: 768px) {
@@ -88,6 +77,28 @@ html, body {
 @media (min-width: 768px) {
   .heading-4 {
     font-size: 1.7rem;
+  }
+}
+
+.para {
+  font-size: 1.3rem;
+  line-height: 2rem;
+  font-family: "Nexa Light";
+}
+@media (min-width: 768px) {
+  .para {
+    font-size: 1.7rem;
+  }
+}
+
+.para-1 {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-family: "Nexa Light";
+}
+@media (min-width: 768px) {
+  .para-1 {
+    font-size: 1.3rem;
   }
 }
 
@@ -1990,7 +2001,6 @@ html, body {
 }
 .page_description__container__heading {
   font-family: "Nexa Bold";
-  font-size: 3rem;
   color: white;
 }
 .page_description__container__breadcrumb {
@@ -2014,7 +2024,6 @@ html, body {
   grid-gap: 2rem;
 }
 .vaccination__container__col--1__heading {
-  font-size: 2.68rem;
   font-family: "Nexa Bold";
   text-align: center;
 }
@@ -2045,7 +2054,6 @@ html, body {
   grid-gap: 1rem;
 }
 .vaccination__container__col--1__about_department__department_details__schedules__schedule {
-  font-size: 1.7rem;
   font-family: "Nexa Light";
 }
 .vaccination__container__col--1__about_department__department_details__schedules__schedule::marker {
@@ -2109,7 +2117,6 @@ html, body {
   position: absolute;
 }
 .vaccination__container__col--2 .sidebar_container__heading {
-  font-size: 1.5rem;
   font-family: "Nexa Bold";
 }
 .vaccination__container__col--2 .sidebar_container__list {
@@ -2119,8 +2126,6 @@ html, body {
 }
 .vaccination__container__col--2 .sidebar_container__list__item {
   border-bottom: 1px solid #eee;
-  line-height: 2rem;
-  font-size: 1.2rem;
   font-family: "Nexa Bold";
   color: #777;
   display: flex;
@@ -2229,7 +2234,6 @@ html, body {
   }
   .vaccination__container__col--1__heading {
     text-align: left;
-    font-size: 3rem;
   }
   .vaccination__container__col--1__description {
     text-align: left;
@@ -2263,10 +2267,6 @@ html, body {
   .vaccination__container__col--2 .sidebar_container::before {
     left: 6%;
   }
-  .vaccination__container__col--2 .sidebar_container__list__item {
-    font-size: 1.1rem;
-  }
-
   .more_services {
     padding: 2rem 3rem;
   }
@@ -2297,9 +2297,6 @@ html, body {
     padding: 3rem 10rem;
     align-items: flex-start;
   }
-  .page_description__container__heading {
-    font-size: 4rem;
-  }
   .page_description__container__breadcrumb {
     font-size: 2rem;
   }
@@ -2309,9 +2306,6 @@ html, body {
   }
   .vaccination__container {
     grid-template-columns: 5fr 2fr;
-  }
-  .vaccination__container__col--1__heading {
-    font-size: 4rem;
   }
   .vaccination__container__col--1__about_department {
     grid-template-columns: 1fr 1fr;
@@ -2336,10 +2330,6 @@ html, body {
   .vaccination__container__col--2 .sidebar_container::before {
     left: 7%;
   }
-  .vaccination__container__col--2 .sidebar_container__list__item {
-    font-size: 1.3rem;
-  }
-
   .more_services {
     padding: 3rem 10rem;
     width: 100%;

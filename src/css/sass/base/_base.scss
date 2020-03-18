@@ -20,21 +20,12 @@ html, body{
 	line-height: 3rem;
 	font-family: $nexa-bold;
 	@media(min-width: $bp-tablet){
-		font-size: 3rem;
+		font-size: 3.5rem;
 		line-height: 4rem;
 	}
 	@media(min-width: $bp-desktop){
-		font-size: 4rem;
-		line-height: 5rem;
-	}
-}
-.para{
-	font-size: 1.5rem;
-	line-height: 2rem;
-	font-family: $nexa-light;
-	@media(min-width: $bp-tablet){
-		font-size: 1.7rem;
-
+		font-size: 3.5rem;
+		line-height: 4rem;
 	}
 }
 
@@ -42,17 +33,17 @@ html, body{
 	font-size: 2.68rem;
 	line-height: 3rem;
 	@media(min-width: $bp-tablet){
-		font-size: 3rem;
+		font-size: 2.68rem;
 		line-height: 3rem;
 	}
 	@media(min-width: $bp-desktop){
-		font-size: 4rem;
-		line-height: 5rem;
+		font-size: 3rem;
+		line-height: 4rem;
 	}
 }
 
 .heading-3{
-	font-size: 1.7rem;
+	font-size: 2rem;
 	line-height: 2rem;
 	@media(min-width: $bp-tablet){
 		font-size: 2rem;
@@ -65,6 +56,26 @@ html, body{
 		font-size: 1.7rem;
 	}
 }
+
+.para{
+	font-size: 1.3rem;
+	line-height: 2rem;
+	font-family: $nexa-light;
+	@media(min-width: $bp-tablet){
+		font-size: 1.7rem;
+
+	}
+}
+
+.para-1{
+	font-size: 1rem;
+	line-height: 1.5rem;
+	font-family: $nexa-light;
+	@media(min-width: $bp-tablet){
+		font-size: 1.3rem;
+	}	
+}
+
 
 .span{
 	font-size: 1.3rem;

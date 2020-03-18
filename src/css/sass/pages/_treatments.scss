@@ -15,7 +15,6 @@
 		justify-content: center;
 		&__heading{
 			font-family: $nexa-bold;
-			font-size: 3rem;
 			color: $background-color;
 		}
 		&__breadcrumb{
@@ -38,7 +37,6 @@
 			width: 100%;
 			grid-gap: 2rem;
 			&__heading{
-				font-size: 2.68rem;
 				font-family: $nexa-bold;
 				text-align: center; 
 			}
@@ -70,7 +68,7 @@
 								color: $bright-blue;
 
 							}
-							font-size: 1.7rem;
+
 							font-family: $nexa-light;
 						}
 					}
@@ -133,7 +131,6 @@
 					position: absolute;
 				}
 				&__heading{
-					font-size: 1.5rem;
 					font-family: $nexa-bold;
 				}
 				&__list{
@@ -142,8 +139,6 @@
 					grid-gap: 1.5rem;
 					&__item{
 						border-bottom: 1px solid #eee;
-						line-height: 2rem;
-						font-size: 1.2rem;
 						font-family: $nexa-bold;
 						color: #777;
 						display: flex;
@@ -259,7 +254,6 @@
 			&__col--1{
 				&__heading{
 					text-align: left;
-					font-size: 3rem;
 				}
 				&__description{
 					text-align: left;
@@ -298,7 +292,6 @@
 					}
 					&__list{
 						&__item{
-							font-size: 1.1rem;	
 						}
 					}
 				}
@@ -344,7 +337,6 @@
 			padding: 3rem 10rem;
 			align-items: flex-start;
 			&__heading{
-				font-size: 4rem;
 			}
 			&__breadcrumb{
 				font-size: 2rem;
@@ -358,7 +350,6 @@
 			grid-template-columns: 5fr 2fr;
 			&__col--1{
 				&__heading{
-					font-size: 4rem;
 				}
 				&__about_department{
 					grid-template-columns: 1fr 1fr;
@@ -384,7 +375,6 @@
 					}
 					&__list{
 						&__item{
-							font-size: 1.3rem;
 						}
 					}
 				}

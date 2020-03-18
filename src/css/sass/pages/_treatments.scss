@@ -201,7 +201,7 @@
 				grid-template-columns: 100%;
 				grid-gap: 1rem;
 				&__item__container{
-					height: 25rem;
+					height: 27rem;
 					background-size: 100%;
 					position: relative;
 					border-radius: 1rem;
@@ -221,23 +221,22 @@
 					&__item{
 						background-color: white;
 						position: relative;
-						top: 70%;
+						top: 71.5%;
 						border-bottom-left-radius: 1rem;
 						border-bottom-right-radius: 1rem;
 						&::before{
 							position: absolute;
-							top: 0;
-							left: 6%;
+							top: 47%;
+							left: 0%;
 							display: inline-block;
 							content: '';
-							width: 10%;
-							height: 4px;
+							width: 2rem;
+							height: 2px;
 							background-color: $bright-blue;
-							padding-left: 3.5rem;
 						}
 						&__title{
 							font-size: 1.7rem;
-							padding: 3rem 2rem;
+							padding: 3rem 0rem 3rem 3rem; 
 							font-family: $nexa-bold;
 						}
 					}
@@ -324,11 +323,12 @@
 					grid-template-columns: 1fr 1fr 1fr;
 					&__item__container{
 						&__item{
+							top:70.5%;
 							&__title{
 								font-size: 2rem;
 							}
 							&::before{
-								left: 9%;	
+								left: 0%;	
 							}
 						}
 					}
@@ -355,6 +355,7 @@
 	.vaccination{
 		padding: 3rem 10rem;
 		&__container{
+			grid-template-columns: 5fr 2fr;
 			&__col--1{
 				&__heading{
 					font-size: 4rem;
@@ -375,6 +376,7 @@
 			}
 			&__col--2{
 				height: 48rem;
+				grid-template-columns: 100%;
 				.sidebar_container{
 					max-height: 30rem;
 					&::before{
@@ -398,7 +400,7 @@
 					&__item__container{
 						&__item{
 							&::before{
-								left: 6%;	
+								left: 0%;	
 							}
 						}
 					}

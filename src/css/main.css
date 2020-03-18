@@ -2175,7 +2175,7 @@ html, body {
   grid-gap: 1rem;
 }
 .more_services__container__row--2__carousel__item__container {
-  height: 25rem;
+  height: 27rem;
   background-size: 100%;
   position: relative;
   border-radius: 1rem;
@@ -2196,24 +2196,23 @@ html, body {
 .more_services__container__row--2__carousel__item__container__item {
   background-color: white;
   position: relative;
-  top: 70%;
+  top: 71.5%;
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
 }
 .more_services__container__row--2__carousel__item__container__item::before {
   position: absolute;
-  top: 0;
-  left: 6%;
+  top: 47%;
+  left: 0%;
   display: inline-block;
   content: "";
-  width: 10%;
-  height: 4px;
+  width: 2rem;
+  height: 2px;
   background-color: #0173b2;
-  padding-left: 3.5rem;
 }
 .more_services__container__row--2__carousel__item__container__item__title {
   font-size: 1.7rem;
-  padding: 3rem 2rem;
+  padding: 3rem 0rem 3rem 3rem;
   font-family: "Nexa Bold";
 }
 
@@ -2283,11 +2282,14 @@ html, body {
   .more_services__container__row--2__carousel {
     grid-template-columns: 1fr 1fr 1fr;
   }
+  .more_services__container__row--2__carousel__item__container__item {
+    top: 70.5%;
+  }
   .more_services__container__row--2__carousel__item__container__item__title {
     font-size: 2rem;
   }
   .more_services__container__row--2__carousel__item__container__item::before {
-    left: 9%;
+    left: 0%;
   }
 }
 @media (min-width: 1024px) {
@@ -2304,6 +2306,9 @@ html, body {
 
   .vaccination {
     padding: 3rem 10rem;
+  }
+  .vaccination__container {
+    grid-template-columns: 5fr 2fr;
   }
   .vaccination__container__col--1__heading {
     font-size: 4rem;
@@ -2323,6 +2328,7 @@ html, body {
   }
   .vaccination__container__col--2 {
     height: 48rem;
+    grid-template-columns: 100%;
   }
   .vaccination__container__col--2 .sidebar_container {
     max-height: 30rem;
@@ -2339,7 +2345,7 @@ html, body {
     width: 100%;
   }
   .more_services__container__row--2__carousel__item__container__item::before {
-    left: 6%;
+    left: 0%;
   }
 }
 .location {

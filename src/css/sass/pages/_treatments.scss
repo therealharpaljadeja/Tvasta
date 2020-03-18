@@ -45,7 +45,7 @@
 			&__about_department{
 				display: grid;
 				grid-template-columns: 100%;
-				grid-gap: 1.5rem;
+				grid-gap: 2rem;
 				&__img_wrapper{
 					width: 100%;
 					&__image{
@@ -55,15 +55,10 @@
 				&__department_details{
 					display: grid;
 					grid-template-columns: 100%;
-					grid-gap: 1.5rem;
+					grid-gap: 2rem;
 					align-items: center;
 					&__title{
 						font-family: $nexa-bold;
-					}
-					&__summary{
-						display: grid;
-						grid-template-columns: 100%;
-						grid-gap: 1rem;
 					}
 					&__schedules{
 						list-style: inside;
@@ -83,14 +78,14 @@
 				&__features{
 					display: grid;
 					justify-content: center;
-					grid-gap: 2rem;
+					grid-gap: 3rem;
 					&__feature{
 						display: grid;
 						justify-items: center;
 						grid-gap: 1rem;
 						&_icon{
-							width: 7rem;
-							height: 7rem;
+							width: 6rem;
+							height: 6rem;
 							background-color: rgba($bright-blue, .2);
 							border-radius: 50%;
 							position: relative;
@@ -99,7 +94,7 @@
 								left: 50%;
 								top: 50%;
 								transform: translate(-50%, -50%);
-								font-size: 4rem;
+								font-size: 3rem;
 								color: $dark-blue;
 							}
 						}
@@ -255,9 +250,12 @@
 
 @media(min-width: $bp-tablet){
 	.vaccination{
+		.schedule_container{
+			max-height: 15rem;
+		}
 		padding: 2rem 3rem;
 		&__container{
-			grid-template-columns: 5fr 2fr;
+			grid-template-columns: 100%;
 			grid-gap: 2rem;
 			&__col--1{
 				&__heading{
@@ -268,17 +266,36 @@
 					text-align: left;
 				}
 				&__about_department{
+					grid-template-columns: 3fr 5fr;
+					grid-row-gap: 3rem;
+					&__img_wrapper{
+						height: 100%;
+						&__image{
+							height: 100%;
+						}
+					}
 					&__features{
 						grid-template-columns: 1fr 1fr 1fr;
+						grid-column: 1/-1;
+						&__feature{
+							&_icon{
+								width: 7rem;
+								height: 7rem;
+								i{
+									font-size: 4rem;
+								}
+							}
+						}
 					}
 				}
 			}
 			&__col--2{	
 				margin-top: 0;
 				max-height: 40rem;
+				grid-template-columns: 1fr 1fr;
 				.sidebar_container{
 					&::before{
-						left: 10%;
+						left: 6%;
 					}
 					&__list{
 						&__item{
@@ -350,6 +367,9 @@
 					}
 					&__features{
 						grid-column: 1/-1;
+						&__feature{
+							grid-gap: 2rem;
+						}
 					}
 				}
 			}

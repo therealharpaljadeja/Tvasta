@@ -82,6 +82,15 @@ html, body {
   }
 }
 
+.heading-4 {
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .heading-4 {
+    font-size: 1.7rem;
+  }
+}
+
 .span {
   font-size: 1.3rem;
 }
@@ -2012,7 +2021,7 @@ html, body {
 .vaccination__container__col--1__about_department {
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 1.5rem;
+  grid-gap: 2rem;
 }
 .vaccination__container__col--1__about_department__img_wrapper {
   width: 100%;
@@ -2023,16 +2032,11 @@ html, body {
 .vaccination__container__col--1__about_department__department_details {
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 1.5rem;
+  grid-gap: 2rem;
   align-items: center;
 }
 .vaccination__container__col--1__about_department__department_details__title {
   font-family: "Nexa Bold";
-}
-.vaccination__container__col--1__about_department__department_details__summary {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 1rem;
 }
 .vaccination__container__col--1__about_department__department_details__schedules {
   list-style: inside;
@@ -2050,7 +2054,7 @@ html, body {
 .vaccination__container__col--1__about_department__features {
   display: grid;
   justify-content: center;
-  grid-gap: 2rem;
+  grid-gap: 3rem;
 }
 .vaccination__container__col--1__about_department__features__feature {
   display: grid;
@@ -2058,8 +2062,8 @@ html, body {
   grid-gap: 1rem;
 }
 .vaccination__container__col--1__about_department__features__feature_icon {
-  width: 7rem;
-  height: 7rem;
+  width: 6rem;
+  height: 6rem;
   background-color: rgba(1, 115, 178, 0.2);
   border-radius: 50%;
   position: relative;
@@ -2069,7 +2073,7 @@ html, body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 4rem;
+  font-size: 3rem;
   color: #2a2d3e;
 }
 .vaccination__container__col--1__about_department__features__feature_title {
@@ -2217,8 +2221,11 @@ html, body {
   .vaccination {
     padding: 2rem 3rem;
   }
+  .vaccination .schedule_container {
+    max-height: 15rem;
+  }
   .vaccination__container {
-    grid-template-columns: 5fr 2fr;
+    grid-template-columns: 100%;
     grid-gap: 2rem;
   }
   .vaccination__container__col--1__heading {
@@ -2228,15 +2235,34 @@ html, body {
   .vaccination__container__col--1__description {
     text-align: left;
   }
+  .vaccination__container__col--1__about_department {
+    grid-template-columns: 3fr 5fr;
+    grid-row-gap: 3rem;
+  }
+  .vaccination__container__col--1__about_department__img_wrapper {
+    height: 100%;
+  }
+  .vaccination__container__col--1__about_department__img_wrapper__image {
+    height: 100%;
+  }
   .vaccination__container__col--1__about_department__features {
     grid-template-columns: 1fr 1fr 1fr;
+    grid-column: 1/-1;
+  }
+  .vaccination__container__col--1__about_department__features__feature_icon {
+    width: 7rem;
+    height: 7rem;
+  }
+  .vaccination__container__col--1__about_department__features__feature_icon i {
+    font-size: 4rem;
   }
   .vaccination__container__col--2 {
     margin-top: 0;
     max-height: 40rem;
+    grid-template-columns: 1fr 1fr;
   }
   .vaccination__container__col--2 .sidebar_container::before {
-    left: 10%;
+    left: 6%;
   }
   .vaccination__container__col--2 .sidebar_container__list__item {
     font-size: 1.1rem;
@@ -2291,6 +2317,9 @@ html, body {
   }
   .vaccination__container__col--1__about_department__features {
     grid-column: 1/-1;
+  }
+  .vaccination__container__col--1__about_department__features__feature {
+    grid-gap: 2rem;
   }
   .vaccination__container__col--2 {
     height: 48rem;

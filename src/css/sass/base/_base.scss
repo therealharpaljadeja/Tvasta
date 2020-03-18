@@ -59,6 +59,12 @@ html, body{
 	}
 }
 
+.heading-4{
+	font-size: 1.5rem;
+	@media(min-width: $bp-tablet){
+		font-size: 1.7rem;
+	}
+}
 
 .span{
 	font-size: 1.3rem;

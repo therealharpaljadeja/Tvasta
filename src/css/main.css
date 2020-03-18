@@ -45,13 +45,19 @@ html, body {
 }
 
 .para {
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   line-height: 2rem;
+  font-family: "Nexa Light";
+}
+@media (min-width: 768px) {
+  .para {
+    font-size: 1.7rem;
+  }
 }
 
 .heading-2 {
   font-size: 2.68rem;
-  line-height: 2rem;
+  line-height: 3rem;
 }
 @media (min-width: 768px) {
   .heading-2 {
@@ -76,12 +82,6 @@ html, body {
   }
 }
 
-.para {
-  font-size: 1.7rem;
-  line-height: 3rem;
-  font-family: "Nexa Light";
-}
-
 .span {
   font-size: 1.3rem;
 }
@@ -91,32 +91,6 @@ html, body {
   }
 }
 
-@media (min-width: 768px) {
-  .container {
-    padding: 2rem 3rem;
-    width: 100%;
-    height: 100%;
-  }
-
-  .para {
-    font-family: "Nexa Light";
-    font-size: 1.7rem;
-    line-height: 3rem;
-  }
-}
-@media (min-width: 1024px) {
-  .container {
-    padding: 3rem 10rem;
-    width: 100%;
-    height: 100%;
-  }
-
-  .para {
-    font-family: "Nexa Light";
-    font-size: 1.7rem;
-    line-height: 3rem;
-  }
-}
 .footer {
   width: 100%;
   height: 38rem;
@@ -2035,17 +2009,79 @@ html, body {
   font-family: "Nexa Bold";
   text-align: center;
 }
-.vaccination__container__col--1__img_wrapper {
+.vaccination__container__col--1__about_department {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1.5rem;
+}
+.vaccination__container__col--1__about_department__img_wrapper {
   width: 100%;
 }
-.vaccination__container__col--1__img_wrapper__image {
+.vaccination__container__col--1__about_department__img_wrapper__image {
   width: 100%;
 }
-.vaccination__container__col--1__description {
+.vaccination__container__col--1__about_department__department_details {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1.5rem;
+  align-items: center;
+}
+.vaccination__container__col--1__about_department__department_details__title {
+  font-family: "Nexa Bold";
+}
+.vaccination__container__col--1__about_department__department_details__summary {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.vaccination__container__col--1__about_department__department_details__schedules {
+  list-style: inside;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.vaccination__container__col--1__about_department__department_details__schedules__schedule {
+  font-size: 1.7rem;
+  font-family: "Nexa Light";
+}
+.vaccination__container__col--1__about_department__department_details__schedules__schedule::marker {
+  color: #0173b2;
+}
+.vaccination__container__col--1__about_department__features {
+  display: grid;
+  justify-content: center;
+  grid-gap: 2rem;
+}
+.vaccination__container__col--1__about_department__features__feature {
+  display: grid;
+  justify-items: center;
+  grid-gap: 1rem;
+}
+.vaccination__container__col--1__about_department__features__feature_icon {
+  width: 7rem;
+  height: 7rem;
+  background-color: rgba(1, 115, 178, 0.2);
+  border-radius: 50%;
+  position: relative;
+}
+.vaccination__container__col--1__about_department__features__feature_icon i {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 4rem;
+  color: #2a2d3e;
+}
+.vaccination__container__col--1__about_department__features__feature_title {
+  font-family: "Nexa Bold";
+  text-align: center;
+}
+.vaccination__container__col--1__about_department__features__feature_desc {
+  font-family: "Nexa Light";
   text-align: center;
 }
 .vaccination__container__col--2 {
-  margin-top: 4rem;
+  margin-top: 2rem;
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 1.5rem;
@@ -2192,8 +2228,12 @@ html, body {
   .vaccination__container__col--1__description {
     text-align: left;
   }
+  .vaccination__container__col--1__about_department__features {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
   .vaccination__container__col--2 {
     margin-top: 0;
+    max-height: 40rem;
   }
   .vaccination__container__col--2 .sidebar_container::before {
     left: 10%;
@@ -2241,6 +2281,16 @@ html, body {
   }
   .vaccination__container__col--1__heading {
     font-size: 4rem;
+  }
+  .vaccination__container__col--1__about_department {
+    grid-template-columns: 1fr 1fr;
+    grid-row-gap: 3rem;
+  }
+  .vaccination__container__col--1__about_department__department_details {
+    max-height: 26rem;
+  }
+  .vaccination__container__col--1__about_department__features {
+    grid-column: 1/-1;
   }
   .vaccination__container__col--2 {
     height: 48rem;

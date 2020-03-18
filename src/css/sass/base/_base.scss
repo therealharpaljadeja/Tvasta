@@ -29,13 +29,18 @@ html, body{
 	}
 }
 .para{
-	font-size: 1.7rem;
+	font-size: 1.5rem;
 	line-height: 2rem;
+	font-family: $nexa-light;
+	@media(min-width: $bp-tablet){
+		font-size: 1.7rem;
+
+	}
 }
 
 .heading-2{
 	font-size: 2.68rem;
-	line-height: 2rem;
+	line-height: 3rem;
 	@media(min-width: $bp-tablet){
 		font-size: 3rem;
 		line-height: 3rem;
@@ -54,11 +59,6 @@ html, body{
 	}
 }
 
-.para{
-	font-size: 1.7rem;
-	line-height: 3rem;
-	font-family: $nexa-light;
-}
 
 .span{
 	font-size: 1.3rem;
@@ -66,27 +66,7 @@ html, body{
 		font-size: 1.5rem;
 	}
 }
-@media (min-width: $bp-tablet) {
-	.container{
-		@include container-styling-tablet;
-	}
-	.para{
-		@include para-styling-tablet;
-	}
-	
-}
 
 
-
-@media (min-width: $bp-desktop){
-	.container{
-		@include container-styling-desktop;
-	}
-
-	.para{
-		@include para-styling-desktop;
-	}
-
-}
 
 

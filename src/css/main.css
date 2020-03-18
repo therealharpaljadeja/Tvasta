@@ -84,17 +84,20 @@ html, body {
   font-size: 1.3rem;
   line-height: 2rem;
   font-family: "Nexa Light";
+  letter-spacing: 0.05rem;
 }
 @media (min-width: 768px) {
   .para {
     font-size: 1.7rem;
+    line-height: 2.5rem;
   }
 }
 
 .para-1 {
   font-size: 1rem;
-  line-height: 1.5rem;
+  line-height: 2rem;
   font-family: "Nexa Light";
+  letter-spacing: 0.05rem;
 }
 @media (min-width: 768px) {
   .para-1 {
@@ -2081,7 +2084,7 @@ html, body {
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
-  font-size: 3rem;
+  font-size: 2.5rem;
   color: #2a2d3e;
 }
 .vaccination__container__col--1__about_department__features__feature_title {
@@ -2102,18 +2105,18 @@ html, body {
   width: 100%;
   border: 2px solid #eee;
   border-radius: 1rem;
-  padding: 2rem;
+  padding: 2.5rem;
   display: grid;
   grid-gap: 2rem;
   position: relative;
 }
 .vaccination__container__col--2 .sidebar_container:before {
   content: "";
-  width: 10%;
+  width: 2rem;
   height: 2px;
   background-color: #0173b2;
-  top: 0%;
-  left: 6%;
+  top: 3rem;
+  left: 0%;
   position: absolute;
 }
 .vaccination__container__col--2 .sidebar_container__heading {
@@ -2216,7 +2219,6 @@ html, body {
   background-color: #0173b2;
 }
 .more_services__container__row--2__carousel__item__container__item__title {
-  font-size: 1.7rem;
   padding: 3rem 0rem 3rem 3rem;
   font-family: "Nexa Bold";
 }
@@ -2257,7 +2259,7 @@ html, body {
     height: 7rem;
   }
   .vaccination__container__col--1__about_department__features__feature_icon i {
-    font-size: 4rem;
+    font-size: 3rem;
   }
   .vaccination__container__col--2 {
     margin-top: 0;
@@ -2265,7 +2267,7 @@ html, body {
     grid-template-columns: 1fr 1fr;
   }
   .vaccination__container__col--2 .sidebar_container::before {
-    left: 6%;
+    left: 0%;
   }
   .more_services {
     padding: 2rem 3rem;
@@ -2284,9 +2286,6 @@ html, body {
   }
   .more_services__container__row--2__carousel__item__container__item {
     top: 70.5%;
-  }
-  .more_services__container__row--2__carousel__item__container__item__title {
-    font-size: 2rem;
   }
   .more_services__container__row--2__carousel__item__container__item::before {
     left: 0%;
@@ -2317,9 +2316,6 @@ html, body {
   .vaccination__container__col--1__about_department__features {
     grid-column: 1/-1;
   }
-  .vaccination__container__col--1__about_department__features__feature {
-    grid-gap: 2rem;
-  }
   .vaccination__container__col--2 {
     height: 48rem;
     grid-template-columns: 100%;
@@ -2328,7 +2324,7 @@ html, body {
     max-height: 30rem;
   }
   .vaccination__container__col--2 .sidebar_container::before {
-    left: 7%;
+    left: 0%;
   }
   .more_services {
     padding: 3rem 10rem;

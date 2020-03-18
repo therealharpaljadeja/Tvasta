@@ -92,7 +92,7 @@
 								left: 50%;
 								top: 50%;
 								transform: translate(-50%, -50%);
-								font-size: 3rem;
+								font-size: 2.5rem;
 								color: $dark-blue;
 							}
 						}
@@ -117,17 +117,17 @@
 				width: 100%;
 				border: 2px solid #eee;
 				border-radius: 1rem;
-				padding: 2rem;
+				padding: 2.5rem;
 				display: grid;
 				grid-gap: 2rem;
 				position: relative;
 				&:before{
 					content: '';
-					width: 10%;
+					width: 2rem;
 					height: 2px;
 					background-color: $bright-blue;
-					top: 0%;
-					left: 6%;
+					top: 3rem;
+					left: 0%;
 					position: absolute;
 				}
 				&__heading{
@@ -230,7 +230,6 @@
 							background-color: $bright-blue;
 						}
 						&__title{
-							font-size: 1.7rem;
 							padding: 3rem 0rem 3rem 3rem; 
 							font-family: $nexa-bold;
 						}
@@ -275,7 +274,7 @@
 								width: 7rem;
 								height: 7rem;
 								i{
-									font-size: 4rem;
+									font-size: 3rem;
 								}
 							}
 						}
@@ -288,7 +287,7 @@
 				grid-template-columns: 1fr 1fr;
 				.sidebar_container{
 					&::before{
-						left: 6%;
+						left: 0%;
 					}
 					&__list{
 						&__item{
@@ -318,7 +317,6 @@
 						&__item{
 							top:70.5%;
 							&__title{
-								font-size: 2rem;
 							}
 							&::before{
 								left: 0%;	
@@ -360,7 +358,6 @@
 					&__features{
 						grid-column: 1/-1;
 						&__feature{
-							grid-gap: 2rem;
 						}
 					}
 				}
@@ -371,7 +368,7 @@
 				.sidebar_container{
 					max-height: 30rem;
 					&::before{
-						left: 7%;
+						left: 0%;
 					}
 					&__list{
 						&__item{

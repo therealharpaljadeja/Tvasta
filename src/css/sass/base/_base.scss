@@ -61,16 +61,18 @@ html, body{
 	font-size: 1.3rem;
 	line-height: 2rem;
 	font-family: $nexa-light;
+	letter-spacing: 0.05rem;
 	@media(min-width: $bp-tablet){
 		font-size: 1.7rem;
-
+		line-height: 2.5rem;
 	}
 }
 
 .para-1{
 	font-size: 1rem;
-	line-height: 1.5rem;
+	line-height: 2rem;
 	font-family: $nexa-light;
+	letter-spacing: 0.05rem;
 	@media(min-width: $bp-tablet){
 		font-size: 1.3rem;
 	}	

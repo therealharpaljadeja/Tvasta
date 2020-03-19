@@ -17,6 +17,8 @@
 				font-family: $nexa-light;
 				font-size: 3rem;
 				color: $dark-blue;
+				text-align: center;
+				line-height: 4rem;
 				span{
 					text-decoration: underline;
 					font-family: $nexa-bold;
@@ -134,6 +136,11 @@
  
 
 @media (min-width: $bp-tablet){
+	.page_desc{
+		&__container{
+			padding: 2rem 3rem;
+		}
+	}
 	.breadcrumb{
 		&__container{
 			@include container-styling-tablet;
@@ -275,6 +282,7 @@
 		background-size: cover;
 		&__container{
 			justify-content: start;
+			padding: 3rem 10rem;
 		}
 
 	}

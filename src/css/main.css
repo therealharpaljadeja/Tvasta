@@ -511,13 +511,9 @@ html, body {
   grid-gap: 2rem;
 }
 .hero__container__heading {
-  font-size: 2.68rem;
-  line-height: 3rem;
   text-align: center;
 }
 .hero__container__para {
-  font-size: 1.4rem;
-  line-height: 2rem;
   text-align: center;
 }
 .hero__container__field {
@@ -591,13 +587,8 @@ html, body {
 }
 .how_it_works__container__heading {
   align-self: center;
-  font-size: 2.6rem;
-  line-height: 2rem;
+  font-family: "Nexa Bold";
   color: #2a2d3e;
-}
-.how_it_works__container__para {
-  font-size: 1.7rem;
-  line-height: 2.5rem;
 }
 .how_it_works__grid {
   grid-template-columns: 100%;
@@ -667,8 +658,6 @@ html, body {
   font-family: "Nexa Bold";
 }
 .how_it_works__grid__option__desc-expand p {
-  font-size: 1.7rem;
-  line-height: 2rem;
   text-align: center;
   font-family: "Nexa Light";
 }
@@ -720,9 +709,7 @@ html, body {
   position: relative;
   font-family: "Nexa Bold";
   color: #0173b2;
-  font-size: 1.7rem;
   margin-left: 2rem;
-  line-height: 2rem;
   padding-top: 1rem;
 }
 .world_class_doctors__container__cards__card__description__name::after {
@@ -735,7 +722,6 @@ html, body {
   bottom: 38%;
 }
 .world_class_doctors__container__cards__card__description__designation {
-  font-size: 1.3rem;
   margin-left: 2rem;
   color: #2a2d3e;
   margin-bottom: 0;
@@ -743,7 +729,6 @@ html, body {
   letter-spacing: 0.05rem;
 }
 .world_class_doctors__container__cards__card__description__qualification {
-  font-size: 1.3rem;
   margin-left: 2rem;
   color: #2a2d3e;
   margin-bottom: 0;
@@ -752,7 +737,6 @@ html, body {
   letter-spacing: 0.01rem;
 }
 .world_class_doctors__container__cards__card__description__location {
-  font-size: 1.3rem;
   margin-left: 2rem;
   color: #2a2d3e;
   margin-bottom: 0;
@@ -782,18 +766,14 @@ html, body {
 .world_class_doctors__heading {
   color: white;
   font-family: "Nexa Bold";
-  font-size: 2.6rem;
-  line-height: 3rem;
 }
 .world_class_doctors__para {
-  font-size: 1.7rem;
-  line-height: 2rem;
   color: white;
   font-family: "Nexa Light";
 }
 
 .medical_treatments {
-  height: 219rem;
+  height: 223rem;
   background-color: white;
 }
 .medical_treatments__container {
@@ -807,14 +787,6 @@ html, body {
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 1rem;
-}
-.medical_treatments__heading {
-  font-size: 2.3rem;
-  line-height: 2rem;
-}
-.medical_treatments__para {
-  font-size: 1.7rem;
-  line-height: 2rem;
 }
 .medical_treatments__grid {
   grid-template-columns: 100%;
@@ -895,14 +867,6 @@ html, body {
   color: #2a2d3e;
   grid-gap: 2rem;
 }
-.services__heading {
-  font-size: 2.6rem;
-  line-height: 2.6rem;
-}
-.services__para {
-  font-size: 1.7rem;
-  line-height: 2rem;
-}
 .services__grid {
   grid-template-columns: repeat(2, 1fr);
   grid-gap: 1rem;
@@ -929,12 +893,9 @@ html, body {
     grid-gap: 1rem;
   }
   .hero__container__heading {
-    font-size: 3rem;
-    line-height: 4rem;
     text-align: center;
   }
   .hero__container__para {
-    font-size: 1.7rem;
     text-align: center;
     padding: 0rem 2rem;
   }
@@ -970,10 +931,6 @@ html, body {
     height: 100%;
     grid-template-rows: 1fr 1fr 19fr;
     font-family: "Nexa Bold";
-  }
-  .how_it_works__container__heading {
-    font-size: 3rem;
-    line-height: 3rem;
   }
   .how_it_works__grid {
     grid-template-columns: 4fr 6fr;
@@ -1020,15 +977,6 @@ html, body {
   .world_class_doctors__container__cards__card__description__qualification {
     font-size: 1.5rem;
   }
-  .world_class_doctors__heading {
-    font-size: 3rem;
-    line-height: 3rem;
-  }
-  .world_class_doctors__para {
-    font-size: 1.7rem;
-    line-height: 2.5rem;
-  }
-
   .medical_treatments {
     height: 90rem;
   }
@@ -1038,14 +986,6 @@ html, body {
     height: 100%;
     text-align: center;
     grid-template-rows: 1fr 1fr 28fr 1fr;
-  }
-  .medical_treatments__heading {
-    font-size: 3rem;
-    line-height: 3rem;
-  }
-  .medical_treatments__para {
-    font-size: 1.7rem;
-    line-height: 3rem;
   }
   .medical_treatments__grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1083,14 +1023,6 @@ html, body {
     width: 100%;
     height: 100%;
   }
-  .services__heading {
-    font-size: 3rem;
-    line-height: 3rem;
-  }
-  .services__para {
-    font-size: 1.7rem;
-    line-height: 3rem;
-  }
   .services__grid {
     margin-top: 1rem;
     grid-template-columns: repeat(3, 1fr);
@@ -1111,8 +1043,6 @@ html, body {
     width: 70%;
   }
   .hero__container__heading {
-    font-size: 4rem;
-    line-height: 5rem;
     text-align: left;
   }
   .hero__container__para {
@@ -1170,14 +1100,6 @@ html, body {
     align-items: center;
     grid-gap: 1rem;
   }
-  .how_it_works__container__heading {
-    font-size: 4rem;
-    line-height: 5rem;
-  }
-  .how_it_works__container__para {
-    font-size: 1.7rem;
-    line-height: 2rem;
-  }
   .how_it_works__grid {
     margin-top: 0;
     height: 100%;
@@ -1189,15 +1111,8 @@ html, body {
     font-size: 2rem;
   }
   .how_it_works__grid__option__desc__heading {
-    font-size: 3rem !important;
-    line-height: 4rem;
     margin-top: 2rem;
   }
-  .how_it_works__grid__option__desc__para {
-    font-size: 1.5rem !important;
-    line-height: 2rem;
-  }
-
   .world_class_doctors {
     height: 65rem;
   }
@@ -1243,12 +1158,7 @@ html, body {
     background-color: #2a2d3e;
     border: 2px solid #0173b2;
   }
-  .world_class_doctors__heading {
-    font-size: 4rem;
-    line-height: 5rem;
-  }
   .world_class_doctors__para {
-    line-height: 2rem;
     align-self: center;
   }
 
@@ -1264,13 +1174,7 @@ html, body {
     grid-gap: 1rem;
     grid-template-rows: 1fr 1fr 13fr 1fr;
   }
-  .medical_treatments__heading {
-    font-size: 4rem;
-    line-height: 5rem;
-  }
   .medical_treatments__para {
-    font-size: 1.7rem;
-    line-height: 2rem;
     margin: 0;
     align-self: center;
   }
@@ -1314,14 +1218,6 @@ html, body {
     align-content: center;
     grid-gap: 1rem;
   }
-  .services__heading {
-    font-size: 4rem;
-    line-height: 5rem;
-  }
-  .services__para {
-    font-size: 1.7rem;
-    line-height: 2rem;
-  }
   .services__grid {
     grid-template-columns: repeat(6, 1fr);
     padding: 0;
@@ -1353,6 +1249,8 @@ html, body {
   font-family: "Nexa Light";
   font-size: 3rem;
   color: #2a2d3e;
+  text-align: center;
+  line-height: 4rem;
 }
 .page_desc__container__heading span {
   text-decoration: underline;
@@ -1467,6 +1365,10 @@ html, body {
 }
 
 @media (min-width: 768px) {
+  .page_desc__container {
+    padding: 2rem 3rem;
+  }
+
   .breadcrumb__container {
     padding: 2rem 3rem;
     width: 100%;
@@ -1606,6 +1508,7 @@ html, body {
   }
   .page_desc__container {
     justify-content: start;
+    padding: 3rem 10rem;
   }
 
   .breadcrumb__container {
@@ -1900,7 +1803,7 @@ html, body {
   border-style: solid;
   border-width: 1px;
   border-color: #ccc;
-  padding: 0rem 2rem;
+  padding: 1rem 2rem;
   font-family: "Nexa Bold";
   font-size: 1.2rem;
   color: #777;
@@ -1955,7 +1858,7 @@ html, body {
 }
 
 .form_container--signup {
-  height: 60rem;
+  height: 63rem;
   grid-template-rows: 1fr 5fr 0.5fr;
 }
 .form_container__form__input_field select, .form_container__form__input_field input[type=date], .form_container__form__input_field input[type=email], .form_container__form__input_field input[type=password] {
@@ -1964,7 +1867,7 @@ html, body {
   width: 100%;
   height: 100%;
   color: #777;
-  padding: 0rem 1.5rem;
+  padding: 1rem 1.5rem;
   font-family: "Nexa Bold";
   font-size: 1.2rem;
 }
@@ -2362,7 +2265,7 @@ html, body {
   font-size: 2rem;
   color: #0173b2;
   justify-self: center;
-  align-self: center;
+  align-self: start;
 }
 .address__container__list__item__address {
   display: grid;
@@ -2790,7 +2693,6 @@ html, body {
 }
 .form_container__form__input_field--book {
   display: grid;
-  grid-template-columns: 100%;
 }
 .form_container__form__input_field--book span {
   font-size: 1.5rem;
@@ -2803,6 +2705,12 @@ html, body {
 .form_container__form__input_field__container input {
   font-family: "Nexa Bold";
 }
+.form_container__form__input_field__container--date {
+  display: grid;
+  grid-column: 1/-1;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
 .form_container__form__input_field label[for=health_record], .form_container__form__input_field label[for=appointment_date] {
   font-size: 1.5rem;
   font-family: "Nexa Bold";
@@ -2810,6 +2718,38 @@ html, body {
 .form_container__form__submit span {
   font-size: 1.3rem;
   line-height: 3rem;
+}
+
+@media (min-width: 768px) {
+  .form_container__form__input_field--book {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    align-items: center;
+  }
+  .form_container__form__input_field--book span {
+    grid-column: 1/-1;
+  }
+  .form_container__form__input_field--book label, .form_container__form__input_field--book input[type=file] {
+    grid-column: 1/-1;
+  }
+  .form_container__form__input_field__container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  .form_container__form__input_field__container--date {
+    display: grid;
+    grid-column: 1/-1;
+    grid-template-columns: 100%;
+    grid-gap: 1rem;
+    height: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .form_container__form__input_field--book {
+    grid-gap: 1rem;
+    align-content: center;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

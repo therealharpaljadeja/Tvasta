@@ -7,13 +7,9 @@
 		color: $dark-blue;
 		grid-gap: 2rem;
 		&__heading{
-			font-size: 2.68rem;
-			line-height: 3rem;
 			text-align: center;
 		}
 		&__para{
-			font-size: $mobile-para-font-size;
-			line-height: $mobile-para-line-height;
 			text-align: center;
 		}
 		&__field{
@@ -79,13 +75,10 @@
 		grid-template-rows: 1fr 1fr 19fr;
 		&__heading{
 			align-self: center;
-			font-size: 2.6rem;
-			line-height: 2rem;
+			font-family: $nexa-bold;
 			color: $dark-blue;
 		}
 		&__para{
-			font-size: 1.7rem;
-			line-height: 2.5rem;
 		}
 	}
 	&__grid{
@@ -150,8 +143,6 @@
 						font-family: $nexa-bold;
 					}
 					p{
-						font-size: 1.7rem;
-						line-height: 2rem;
 						text-align: center;
 						font-family: $nexa-light;
 					}	
@@ -204,9 +195,7 @@
 						position: relative;
 						font-family: $nexa-bold;
 						color: $bright-blue;
-						font-size: 1.7rem;
 						margin-left: 2rem;
-						line-height: 2rem;
 						padding-top: 1rem;
 						&::after{
 							content: '';
@@ -219,7 +208,6 @@
 						}
 					}
 					&__designation{
-						font-size: 1.3rem;
 						margin-left: 2rem;
 						color: $dark-blue;
 						margin-bottom: 0;
@@ -227,7 +215,6 @@
 						letter-spacing: 0.05rem;
 					}
 					&__qualification{
-						font-size: 1.3rem;
 						margin-left: 2rem;
 						color: $dark-blue;	
 						margin-bottom: 0;
@@ -236,7 +223,6 @@
 						letter-spacing: 0.01rem;
 					}
 					&__location{
-						font-size: 1.3rem;
 						margin-left: 2rem;
 						color: $dark-blue;
 						margin-bottom: 0;
@@ -270,12 +256,9 @@
 	&__heading{
 		color: $background-color;
 		font-family: $nexa-bold;
-		font-size: 2.6rem;
-		line-height: 3rem;
 	}
 	&__para{
-		font-size: 1.7rem;
-		line-height: 2rem;
+
 		color: $background-color;
 		font-family: $nexa-light;
 	}
@@ -284,7 +267,7 @@
 
 
 .medical_treatments{
-	height: 219rem;
+	height: 223rem;
 	background-color: $background-color;
 	&__container{
 		@include container-styling-mobile;
@@ -297,12 +280,9 @@
 		grid-gap: 1rem;
 	}
 	&__heading{
-		font-size: 2.3rem;
-		line-height: 2rem;
 	}	
 	&__para{
-		font-size: 1.7rem;
-		line-height: 2rem;
+
 	}
 	&__grid{
 		grid-template-columns: 100%;
@@ -384,12 +364,10 @@
 		grid-gap: 2rem;
 	}
 	&__heading{
-		font-size: 2.6rem;
-		line-height: 2.6rem;
+
 	}
 	&__para{
-		font-size: 1.7rem;
-		line-height: 2rem;
+
 	}
 	&__grid{
 		grid-template-columns: repeat(2, 1fr);
@@ -418,12 +396,9 @@
 			@include container-styling-tablet;
 			grid-gap: 1rem;
 			&__heading{
-				font-size: $tablet-heading-2-font-size;
-				line-height: 4rem;
 				text-align: center;
 			}
 			&__para{
-				font-size: $tablet-para-font-size;
 				text-align: center;
 				padding: 0rem 2rem;
 			}
@@ -460,8 +435,7 @@
 			grid-template-rows: 1fr 1fr 19fr;
 			font-family: $nexa-bold;
 			&__heading{
-				font-size: $tablet-heading-2-font-size;
-				line-height: 3rem;
+
 			}
 		}
 		&__grid{
@@ -516,12 +490,10 @@
 			}
 		}
 		&__heading{
-			font-size: $tablet-heading-2-font-size;
-			line-height: 3rem;
+
 		}
 		&__para{
-			font-size: $tablet-para-font-size;
-			line-height: 2.5rem;
+
 		}
 	}
 
@@ -533,12 +505,10 @@
 			grid-template-rows: 1fr 1fr 28fr 1fr;
 		}
 		&__heading{
-			font-size: $tablet-heading-2-font-size;
-			line-height: 3rem;
+
 		}
 		&__para{
-			font-size: $tablet-para-font-size;
-			line-height: 3rem;
+
 		}
 		&__grid{
 			grid-template-columns: repeat(2,1fr);
@@ -579,12 +549,10 @@
 			@include container-styling-tablet;
 		}
 		&__heading{
-			font-size: 3rem;
-			line-height: 3rem;
+
 		}
 		&__para{
-			font-size: $tablet-para-font-size;
-			line-height: 3rem;
+
 		}
 		&__grid{
 			margin-top: 1rem;
@@ -604,8 +572,6 @@
 			grid-gap: 0rem;
 			width: 70%;
 			&__heading{
-				font-size: $desktop-heading-2-font-size;
-				line-height: 5rem;
 				text-align: left;
 			}
 			&__para{
@@ -660,12 +626,10 @@
 			align-items: center;
 			grid-gap:1rem;
 			&__heading{
-				font-size: $desktop-heading-2-font-size;
-				line-height: 5rem;
+
 			}
 			&__para{
-				font-size: $desktop-para-font-size;
-				line-height: 2rem;
+
 			}
 
 		}
@@ -681,13 +645,11 @@
 					}
 					&__desc{
 						&__heading{
-							font-size: 3rem !important;
-							line-height: 4rem;
+
 							margin-top: 2rem;
 						}
 						&__para{
-							font-size: 1.5rem !important;
-							line-height: 2rem;
+
 						}
 					}
 				}
@@ -743,11 +705,9 @@
 			}
 		}
 		&__heading{
-			font-size: $desktop-heading-2-font-size;
-			line-height: 5rem;
+
 		}
 		&__para{
-			line-height: 2rem;
 			align-self: center;
 		}
 	}
@@ -761,12 +721,10 @@
 			grid-template-rows: 1fr 1fr 13fr 1fr;
 		}
 		&__heading{
-			font-size: $desktop-heading-2-font-size;
-			line-height: 5rem;
+
 		}
 		&__para{
-			font-size: $desktop-para-font-size;
-			line-height: 2rem;
+
 			margin: 0;
 			align-self: center;
 		}
@@ -813,12 +771,9 @@
 			grid-gap: 1rem;
 		}
 		&__heading{
-			font-size: $desktop-heading-2-font-size;
-			line-height: 5rem;
+
 		}
 		&__para{
-			font-size: $desktop-para-font-size;
-			line-height: 2rem;	
 		}
 		&__grid{
 			grid-template-columns: repeat(6,1fr);

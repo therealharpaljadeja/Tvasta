@@ -2400,7 +2400,7 @@ html, body {
 }
 
 .form_container--book {
-  height: 67rem;
+  height: 70rem;
   grid-template-rows: 1.5fr 11fr;
 }
 .form_container__form {

@@ -1,19 +1,17 @@
 .form_container{
 	&--book{
-		height: 60rem;
+		height: 67rem;
 		grid-template-rows: 1.5fr 11fr; 
 	}
 	&__form{
 		grid-gap: 2rem;
 		&__input_field{
-
 			&--book{
 				display: grid;
 				grid-gap: 1rem;
 				span{
 					font-size: 1.5rem;
 					font-family: $nexa-bold;
-				
 				}
 			}
 			&__container{
@@ -40,7 +38,7 @@
 					grid-gap: 1rem; 
 				}
 			}
-			label[for=health_record], label[for=appointment_date]{
+			label[for=health_record], label[for=appointment_date], label[for=appointment_details]{
 				font-size: 1.5rem;
 				font-family: $nexa-bold;
 			}

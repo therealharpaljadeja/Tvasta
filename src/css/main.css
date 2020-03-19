@@ -1858,7 +1858,7 @@ html, body {
 }
 
 .form_container--signup {
-  height: 63rem;
+  height: 67rem;
   grid-template-rows: 1fr 5fr 0.5fr;
 }
 .form_container__form__input_field select, .form_container__form__input_field input[type=date], .form_container__form__input_field input[type=email], .form_container__form__input_field input[type=password] {
@@ -2400,7 +2400,7 @@ html, body {
 }
 
 .form_container--book {
-  height: 60rem;
+  height: 67rem;
   grid-template-rows: 1.5fr 11fr;
 }
 .form_container__form {
@@ -2437,7 +2437,7 @@ html, body {
   grid-template-columns: 100%;
   grid-gap: 1rem;
 }
-.form_container__form__input_field label[for=health_record], .form_container__form__input_field label[for=appointment_date] {
+.form_container__form__input_field label[for=health_record], .form_container__form__input_field label[for=appointment_date], .form_container__form__input_field label[for=appointment_details] {
   font-size: 1.5rem;
   font-family: "Nexa Bold";
 }

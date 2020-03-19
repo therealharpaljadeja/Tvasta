@@ -417,7 +417,7 @@
 			}
 			&__button{
 				font-size: 1.2rem;
-				background-color: $dark-blue;
+				background-color: $bright-blue;
 				color: white;
 				border: none;
 				padding: 1rem 2rem;
@@ -433,7 +433,14 @@
 			&__stat{
 				width: 100%;
 				padding: 3rem;
-				border: 2px solid white;
+				border: 2px solid rgba(255,255,255,0.2);
+				&:hover{
+					border: 2px solid white;
+					.statistics__container__col--2__stat__title{
+						color: white;
+					}
+				}
+				border-radius: .4rem;
 				display: flex;
 				flex-direction: column;
 				justify-content: center;
@@ -444,8 +451,9 @@
 				} 
 				&__title{
 					font-family: $nexa-bold;
-					color: white;
+					color: rgba(255,255,255,0.4);
 					text-align: center;
+					
 				}
 			}
 		}
@@ -501,6 +509,7 @@
 		}
 		&__container{
 			grid-template-columns: 1fr 2fr;
+			padding: 2rem 3rem;
 			&__col--1{
 				justify-items: start;
 				&__heading{
@@ -510,11 +519,14 @@
 					text-align: left;
 				}
 				&__button{
-					
+					margin: 4rem 0rem;
 				}
 			}
 			&__col--2{
 				grid-template-columns: 1fr 1fr 1fr;
+				&__stat{
+					padding: 2rem;
+				}
 			}
 		}
 	}
@@ -565,6 +577,20 @@
 					margin: 6rem 0rem; 
 				}
 			}
+			&__col--2{
+				grid-template-columns: 1fr 1fr 1fr;
+				&__stat{
+					padding: 3rem;
+				}
+			}	
+		}
+	}
+}
+
+@media(min-width: 1440px){
+	.statistics{
+		video{
+			transform: scale(2.7);
 		}
 	}
 }

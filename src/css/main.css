@@ -50,7 +50,7 @@ html, body {
 }
 @media (min-width: 768px) {
   .heading-2 {
-    font-size: 2.68rem;
+    font-size: 2.3rem;
     line-height: 3rem;
   }
 }
@@ -88,7 +88,7 @@ html, body {
 }
 @media (min-width: 768px) {
   .para {
-    font-size: 1.7rem;
+    font-size: 1.5rem;
     line-height: 2.5rem;
   }
 }
@@ -2477,7 +2477,7 @@ html, body {
 }
 .statistics__container__col--1__button {
   font-size: 1.2rem;
-  background-color: #2a2d3e;
+  background-color: #0173b2;
   color: white;
   border: none;
   padding: 1rem 2rem;
@@ -2493,11 +2493,18 @@ html, body {
 .statistics__container__col--2__stat {
   width: 100%;
   padding: 3rem;
-  border: 2px solid white;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.4rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+.statistics__container__col--2__stat:hover {
+  border: 2px solid white;
+}
+.statistics__container__col--2__stat:hover .statistics__container__col--2__stat__title {
+  color: white;
 }
 .statistics__container__col--2__stat__figure {
   font-family: "Nexa Bold";
@@ -2505,7 +2512,7 @@ html, body {
 }
 .statistics__container__col--2__stat__title {
   font-family: "Nexa Bold";
-  color: white;
+  color: rgba(255, 255, 255, 0.4);
   text-align: center;
 }
 
@@ -2550,6 +2557,7 @@ html, body {
   }
   .statistics__container {
     grid-template-columns: 1fr 2fr;
+    padding: 2rem 3rem;
   }
   .statistics__container__col--1 {
     justify-items: start;
@@ -2560,8 +2568,14 @@ html, body {
   .statistics__container__col--1__para {
     text-align: left;
   }
+  .statistics__container__col--1__button {
+    margin: 4rem 0rem;
+  }
   .statistics__container__col--2 {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  .statistics__container__col--2__stat {
+    padding: 2rem;
   }
 }
 @media (min-width: 1024px) {
@@ -2595,6 +2609,17 @@ html, body {
   }
   .statistics__container__col--1__button {
     margin: 6rem 0rem;
+  }
+  .statistics__container__col--2 {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .statistics__container__col--2__stat {
+    padding: 3rem;
+  }
+}
+@media (min-width: 1440px) {
+  .statistics video {
+    transform: scale(2.7);
   }
 }
 .form_container--book {

@@ -54,14 +54,14 @@
 			<form action="" class="form_container__form">
 				<div class="form_container__form__input_field form_container__form__input_field--book">
 					<div class="form_container__form__input_field__container form_container__form__input_field__container--date">
-						<label for="appointment_date">Select Appointment Date</label>
-						<input type="date" name="appointment_date"class="form_container__form__appointment_date">
+						<label for="appointment_date">Select Appointment Date*</label>
+						<input type="date" name="appointment_date"class="form_container__form__appointment_date" required>
 					</div>
 				</div>
 				<div class="form_container__form__input_field form_container__form__input_field--book">
-					<span>Time Interval</span>
+					<span>Time Interval*</span>
 					<div class="form_container__form__input_field__container">
-						<input id="morning" type="radio" name="time-interval" class="form_container__form__time_interval" value="morning">
+						<input id="morning" type="radio" name="time-interval" class="form_container__form__time_interval" value="morning" required>
 						<label for="morning">Morning</label>	
 					</div>
 					<div class="form_container__form__input_field__container">
@@ -74,9 +74,9 @@
 					</div>
 				</div>
 				<div class="form_container__form__input_field form_container__form__input_field--book">
-					<span>Appointment Status / Urgency</span>
+					<span>Appointment Status / Urgency*</span>
 					<div class="form_container__form__input_field__container">
-						<input id="routine" type="radio" name="appointment-status" class="form_container__form__appointment_status" value="routine">
+						<input id="routine" type="radio" name="appointment-status" class="form_container__form__appointment_status" value="routine" required>
 						<label for="routine">Routine Check-up</label>	
 					</div>
 					<div class="form_container__form__input_field__container">

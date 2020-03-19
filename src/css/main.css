@@ -1810,7 +1810,7 @@ html, body {
 }
 .form_container__form__submit {
   border: none;
-  margin: 0rem 0rem;
+  padding: 1rem 0rem;
   border-radius: 0;
   background-color: #2a2d3e;
   color: white;
@@ -2384,326 +2384,52 @@ html, body {
     padding: 3rem 10rem;
   }
 }
-.values__container {
-  padding: 2rem 2rem;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 2rem;
-}
-.values__container__para {
-  position: relative;
-  font-size: 1.4rem;
-  line-height: 2rem;
-  font-family: "Nexa Light";
-  text-align: center;
-}
-.values__container__para::after {
-  position: absolute;
-  content: "";
-  width: 12%;
-  left: 43%;
-  top: 100%;
-  height: 2px;
-  background-color: #0173b2;
-}
-.values__container__heading {
-  font-size: 2.68rem;
-  line-height: 3rem;
-  text-align: center;
-  font-family: "Nexa Bold";
-  text-transform: uppercase;
-}
-.values__container__values {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 2rem;
-}
-.values__container__values__value {
-  display: grid;
-  grid-template-columns: 1fr 7fr;
-  grid-template-rows: 1fr 1fr;
-  grid-gap: 0.5rem;
-}
-.values__container__values__value__icon {
-  grid-row: 1/-1;
-  grid-column: 1/2;
-  font-size: 2rem;
-  align-self: start;
-  justify-self: center;
-  color: #0173b2;
-}
-.values__container__values__value__title {
-  font-size: 1.3rem;
-  font-family: "Nexa Bold";
-  text-transform: uppercase;
-}
-.values__container__values__value__desc {
-  font-size: 1rem;
-  font-family: "Nexa Light";
-}
-
-.statistics {
-  background-color: #9cbfda;
-}
-.statistics__container {
-  padding: 2rem 2rem;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 2rem;
-}
-.statistics__container__img_wrapper {
+.hero--about {
   height: 40rem;
-  justify-self: center;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./../../../assets/aboutUs_hero.jpeg");
+  background-size: cover;
 }
-.statistics__container__image {
-  height: 100%;
-  width: 100%;
-}
-.statistics__container__stats {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 2rem;
-}
-.statistics__container__stats__stat {
-  display: grid;
-  grid-template-columns: 100%;
-  text-align: center;
-  grid-gap: 1rem;
-}
-.statistics__container__stats__stat__figure {
-  font-size: 4rem;
-  font-family: "Nexa Bold";
-}
-.statistics__container__stats__stat__title {
-  font-size: 1.5rem;
-  font-family: "Nexa Bold";
-  text-transform: uppercase;
-}
-.statistics__container__stats__stat__desc {
-  font-size: 1.2rem;
-  font-family: "Nexa Light";
-}
-
-.board_of_directors {
-  background-color: #eee;
-}
-.board_of_directors__container {
+.hero--about__container {
   padding: 2rem 2rem;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
-.board_of_directors__container__para {
-  position: relative;
-  font-size: 1.4rem;
-  line-height: 2rem;
-  font-family: "Nexa Light";
-  text-align: center;
-}
-.board_of_directors__container__para::after {
-  position: absolute;
-  content: "";
-  width: 12%;
-  left: 43%;
-  top: 100%;
-  height: 2px;
-  background-color: #0173b2;
-}
-.board_of_directors__container__heading {
-  font-size: 2.68rem;
-  line-height: 3rem;
-  text-align: center;
-  font-family: "Nexa Bold";
-  text-transform: uppercase;
-}
-.board_of_directors__container__cards {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 1rem;
-}
-.board_of_directors__container__cards__card {
-  width: 100%;
-  height: 54rem;
-  background-color: white;
-  display: grid;
-  grid-template-rows: 5fr 1fr;
-  grid-gap: 2rem;
-}
-.board_of_directors__container__cards__card__img_wrapper {
-  width: 100%;
-  height: 100%;
-}
-.board_of_directors__container__cards__card__image {
-  width: 100%;
-  height: 100%;
-}
-.board_of_directors__container__cards__card__desc {
-  background-color: white;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 1rem;
-  padding: 2rem;
-  position: relative;
-}
-.board_of_directors__container__cards__card__desc__icon {
-  position: absolute;
-  top: -20%;
-  left: 5%;
-  width: 4rem;
-  height: 4rem;
-  background-color: #0173b2;
-  border-radius: 50%;
-  border: 3px solid white;
-}
-.board_of_directors__container__cards__card__desc__icon i {
-  font-size: 2rem;
+.hero--about__container__heading {
   color: white;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-.board_of_directors__container__cards__card__desc__short {
-  font-size: 1.2rem;
-  font-family: "Nexa Light";
-}
-.board_of_directors__container__cards__card__desc__name {
-  font-size: 1.7rem;
-  font-family: "Nexa Bold";
-}
-.board_of_directors__container__cards__card__desc__long {
-  font-size: 1.2rem;
-  font-family: "Nexa Light";
-}
-.board_of_directors__container__cards__card__desc__social {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 100%;
-  justify-self: end;
-  grid-gap: 1rem;
-}
-.board_of_directors__container__cards__card__desc__social li {
-  width: 3rem;
-  height: 3rem;
-  border: 1px solid #aaa;
-  border-radius: 50%;
-  position: relative;
-}
-.board_of_directors__container__cards__card__desc__social li i {
-  position: absolute;
-  font-size: 1.5rem;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #aaa;
 }
 
-@media (min-width: 768px) {
-  .values__container {
-    padding: 2rem 3rem;
-  }
-  .values__container__para {
-    text-align: left;
-    font-size: 1.5rem;
-  }
-  .values__container__para::after {
-    width: 5%;
-    left: 0;
-  }
-  .values__container__heading {
-    text-align: left;
-  }
-  .values__container__values {
-    grid-template-columns: 1fr 1fr;
-    grid-row-gap: 3rem;
-  }
-
-  .statistics__container {
-    padding: 2rem 3rem;
-    grid-template-columns: 1fr 1fr;
-  }
-  .statistics__container__stats {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .board_of_directors__container {
-    padding: 2rem 3rem;
-  }
-  .board_of_directors__container__para {
-    text-align: left;
-    font-size: 1.5rem;
-  }
-  .board_of_directors__container__para::after {
-    left: 0;
-    width: 5%;
-  }
-  .board_of_directors__container__heading {
-    text-align: left;
-  }
-  .board_of_directors__container__cards {
-    grid-template-columns: 1fr 1fr 1fr;
-  }
-  .board_of_directors__container__cards__card__desc__icon {
-    left: 7%;
-  }
-}
-@media (min-width: 1024px) {
-  .values__container {
-    padding: 3rem 10rem;
-    grid-row-gap: 3rem;
-  }
-  .values__container__values {
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-row-gap: 5rem;
-  }
-  .values__container__values__value {
-    grid-template-rows: 1fr 2fr;
-  }
-  .values__container__values__value__title {
-    font-size: 1.7rem;
-  }
-  .values__container__values__value__icon {
-    font-size: 3rem;
-  }
-  .values__container__values__value__desc {
-    font-size: 1.3rem;
-  }
-
-  .statistics__container {
-    padding: 3rem 10rem;
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .board_of_directors__container {
-    padding: 3rem 10rem;
-  }
-  .board_of_directors__container__cards__card {
-    height: 57rem;
-  }
-  .board_of_directors__container__cards__card__desc__icon {
-    left: 4%;
-  }
-}
 .form_container--book {
-  height: 54rem;
-  grid-template-rows: 1.5fr 11fr 1fr;
+  height: 60rem;
+  grid-template-rows: 1.5fr 11fr;
 }
 .form_container__form {
   grid-gap: 2rem;
 }
 .form_container__form__input_field--book {
   display: grid;
+  grid-gap: 1rem;
 }
 .form_container__form__input_field--book span {
   font-size: 1.5rem;
   font-family: "Nexa Bold";
 }
+.form_container__form__input_field__container {
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 10fr;
+  align-items: center;
+}
 .form_container__form__input_field__container label {
   font-size: 1.3rem;
   font-family: "Nexa Light";
+  line-height: 1.7rem;
 }
 .form_container__form__input_field__container input {
   font-family: "Nexa Bold";
+}
+.form_container__form__input_field__container input[type=radio] {
+  margin: 0;
 }
 .form_container__form__input_field__container--date {
   display: grid;
@@ -2721,34 +2447,12 @@ html, body {
 }
 
 @media (min-width: 768px) {
-  .form_container__form__input_field--book {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    align-items: center;
-  }
-  .form_container__form__input_field--book span {
-    grid-column: 1/-1;
-  }
-  .form_container__form__input_field--book label, .form_container__form__input_field--book input[type=file] {
-    grid-column: 1/-1;
-  }
-  .form_container__form__input_field__container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-  }
   .form_container__form__input_field__container--date {
     display: grid;
     grid-column: 1/-1;
     grid-template-columns: 100%;
     grid-gap: 1rem;
     height: 100%;
-  }
-}
-@media (min-width: 1024px) {
-  .form_container__form__input_field--book {
-    grid-gap: 1rem;
-    align-content: center;
   }
 }
 

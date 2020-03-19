@@ -349,6 +349,7 @@ html, body {
     display: flex;
     flex-direction: row;
     list-style-type: none;
+    justify-content: center;
   }
   .navbar__menu__ul__item {
     font-family: "Nexa Light";
@@ -2386,7 +2387,7 @@ html, body {
 }
 .hero--about {
   height: 40rem;
-  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url("./../../../assets/aboutUs_hero.jpeg");
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.3)), url("./../../../assets/aboutUs_hero.jpeg");
   background-size: cover;
   background-position: -20rem 0rem;
 }
@@ -2558,6 +2559,7 @@ html, body {
   .statistics__container {
     grid-template-columns: 1fr 2fr;
     padding: 2rem 3rem;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
   }
   .statistics__container__col--1 {
     justify-items: start;

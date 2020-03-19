@@ -95,6 +95,7 @@
 			&__ul{
 				@include flex(row);
 				list-style-type: none;
+				justify-content: center;
 				&__item{
 					font-family: $nexa-light;
 					font-size: 1.5rem;

@@ -391,8 +391,11 @@
 
 
 .statistics{
+	video{
+		display: none;
+	}
 	&__container{
-		background-color: rgba(0,0,0,.1);
+		background-color: rgba(0,0,0,.4);
 		padding: 2rem 2rem;
 		display: grid;
 		grid-template-columns: 100%;
@@ -406,11 +409,11 @@
 			&__heading{
 				font-family: $nexa-bold;
 				text-align: center;
-				color: $dark-blue;
+				color: white;
 			}
 			&__para{
 				text-align: center;
-				color: $dark-blue;
+				color: white;
 			}
 			&__button{
 				font-size: 1.2rem;
@@ -486,6 +489,16 @@
 	}
 
 	.statistics{
+		position: relative;
+		overflow: hidden;
+		video{
+			display: block;
+			position: absolute;
+			z-index: -9999;
+			height: 100%;
+			width: 100%;
+			transform: scale(1.5);
+		}
 		&__container{
 			grid-template-columns: 1fr 2fr;
 			&__col--1{
@@ -510,6 +523,7 @@
 @media(min-width: $bp-desktop){
 	.hero{
 		&--about{
+			background-position: 0 0;
 			&__container{
 				padding: 3rem 10rem;
 			}
@@ -540,12 +554,15 @@
 	}
 
 	.statistics{
+		video{
+			transform: scale(2.5) translateY(10%);
+		}
 		&__container{
 			padding: 3rem 10rem;
 			grid-template-columns: 1fr 1fr;
 			&__col--1{
 				&__button{
-					margin: 4rem 0rem; 
+					margin: 6rem 0rem; 
 				}
 			}
 		}

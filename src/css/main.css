@@ -2449,8 +2449,11 @@ html, body {
   transform: translateX(-50%);
 }
 
+.statistics video {
+  display: none;
+}
 .statistics__container {
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.4);
   padding: 2rem 2rem;
   display: grid;
   grid-template-columns: 100%;
@@ -2466,11 +2469,11 @@ html, body {
 .statistics__container__col--1__heading {
   font-family: "Nexa Bold";
   text-align: center;
-  color: #2a2d3e;
+  color: white;
 }
 .statistics__container__col--1__para {
   text-align: center;
-  color: #2a2d3e;
+  color: white;
 }
 .statistics__container__col--1__button {
   font-size: 1.2rem;
@@ -2533,6 +2536,18 @@ html, body {
     max-height: 40rem;
   }
 
+  .statistics {
+    position: relative;
+    overflow: hidden;
+  }
+  .statistics video {
+    display: block;
+    position: absolute;
+    z-index: -9999;
+    height: 100%;
+    width: 100%;
+    transform: scale(1.5);
+  }
   .statistics__container {
     grid-template-columns: 1fr 2fr;
   }
@@ -2550,6 +2565,9 @@ html, body {
   }
 }
 @media (min-width: 1024px) {
+  .hero--about {
+    background-position: 0 0;
+  }
   .hero--about__container {
     padding: 3rem 10rem;
   }
@@ -2568,12 +2586,15 @@ html, body {
     transform: translateX(-50%);
   }
 
+  .statistics video {
+    transform: scale(2.5) translateY(10%);
+  }
   .statistics__container {
     padding: 3rem 10rem;
     grid-template-columns: 1fr 1fr;
   }
   .statistics__container__col--1__button {
-    margin: 4rem 0rem;
+    margin: 6rem 0rem;
   }
 }
 .form_container--book {

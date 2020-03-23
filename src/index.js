@@ -35,13 +35,13 @@ options.forEach(el => {
 			el.addEventListener('click', expand);
 });
 
-const autoCompleteFunc = () => {
-	let autoComplete = new google.maps.places.Autocomplete(document.getElementById('auto-complete'));
-	google.maps.event.addListener(autoComplete, 'place-changed', () => {
-		let nearPlace = autoComplete.getPlacePredictions();
-	});
+// const autoCompleteFunc = () => {
+// 	let autoComplete = new google.maps.places.Autocomplete(document.getElementById('auto-complete'));
+// 	google.maps.event.addListener(autoComplete, 'place-changed', () => {
+// 		let nearPlace = autoComplete.getPlacePredictions();
+// 	});
 
-}
+// }
 
 
 let menu_burger = document.querySelector('.navbar__burger');
@@ -59,5 +59,20 @@ const collapse_menu = (el) => {
 cross_button.addEventListener('click', collapse_menu);
 menu_burger.addEventListener('click', expand_menu);
 
-autoCompleteFunc();
+// autoCompleteFunc();
+
+const activeDot = (el) => {
+	for(let i = 0; i < dots.length; i++){
+		dots[i].classList.remove('dot_active');
+		el.target.classList.add('dot_active');
+	}
+}
+
+
+let dots = Array.from(document.querySelectorAll('.world_class_doctors__container__dots__dot'));
+for(let i = 0; i < dots.length; i++){
+	dots[i].addEventListener('click', el => {
+		activeDot(el);
+	});
+}
 

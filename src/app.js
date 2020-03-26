@@ -18,42 +18,46 @@ const dev_data_json = JSON.parse(dev_data_string);
 
 app.get('/doctors', (req, res) => {
 	res.render('views/doctor.ejs', doctors = dev_data_json.doctors);
-})
+});
 
 app.get('/hospitals', (req, res) => {
 	res.render('views/hospital.ejs', hospital = dev_data_json.hospitals);
-})
+});
 
 app.get('/about', (req, res) => {
 	res.render('views/about.ejs');
-})
+});
 
 app.get('/treatments', (req, res) => {
 	res.render('views/treatments.ejs');
-})
+});
 
 app.get('/login', (req, res) => {
 	res.render('views/login.ejs');
-})
+});
 
 
 app.get('/signup', (req, res) => {
 	res.render('views/signup.ejs');
-})
+});
 
 app.get('/contactus', (req, res) => {
 	res.render('views/contactus.ejs');
-})
+});
 
 
 app.get('/hospital_details', (req, res) => {
 	res.render('views/hospital_details.ejs');
-})
+});
 
 
 app.get('/doctor_details', (req, res) => {
 	res.render('views/doctor_details.ejs');
-})
+});
+
+app.get('/faq', (req, res) => {
+	res.render('views/faq.ejs');
+});
 
 module.exports = app;
 

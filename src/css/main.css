@@ -2866,5 +2866,19 @@ html, body {
     grid-template-columns: 1fr 1fr;
   }
 }
+.faq_accordian__container {
+  padding: 2rem 2rem;
+}
+
+@media (min-width: 768px) {
+  .faq_accordian__container {
+    padding: 2rem 3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .faq_accordian__container {
+    padding: 2rem 10rem;
+  }
+}
 
 /*# sourceMappingURL=main.css.map */

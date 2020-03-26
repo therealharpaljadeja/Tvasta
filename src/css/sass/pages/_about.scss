@@ -508,7 +508,7 @@
 			transform: scale(1.5);
 		}
 		&__container{
-			grid-template-columns: 1fr 2fr;
+			grid-template-columns: 100%;
 			padding: 2rem 3rem;
 			background-image: linear-gradient(to right, rgba(0,0,0,0.4), rgba(0,0,0,.4));
 			&__col--1{
@@ -526,7 +526,7 @@
 			&__col--2{
 				grid-template-columns: 1fr 1fr 1fr;
 				&__stat{
-					padding: 2rem;
+					padding: 4rem;
 				}
 			}
 		}

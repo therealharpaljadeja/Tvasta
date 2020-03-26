@@ -2561,7 +2561,7 @@ html, body {
     transform: scale(1.5);
   }
   .statistics__container {
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 100%;
     padding: 2rem 3rem;
     background-image: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4));
   }
@@ -2581,7 +2581,7 @@ html, body {
     grid-template-columns: 1fr 1fr 1fr;
   }
   .statistics__container__col--2__stat {
-    padding: 2rem;
+    padding: 4rem;
   }
 }
 @media (min-width: 1024px) {

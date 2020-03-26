@@ -9,15 +9,6 @@
 			border: 1px solid #ccc;
 			padding: 1rem;
 			position: relative;
-			&::after{
-				content: '';
-				position: absolute;
-				width: 50px;
-				height: 2px;
-				top: 42%;
-				left: 0;
-				background-color: $bright-blue;
-			}
 		}
 
 		&__col--1{
@@ -26,8 +17,18 @@
 			grid-gap: 2rem;
 			order: 2;
 			&__heading{
+				&::before{
+					content: '';
+					position: absolute;
+					width: 30px;
+					height: 2px;
+					top: 42%;
+					left: -10px;
+					background-color: $bright-blue;
+				}
 				color: $bright-blue;
 				text-align: center;
+				position: relative;
 			}	
 			&__summary{
 				text-align: center;
@@ -136,15 +137,17 @@
 			.inner_container{
 				grid-template-columns: 2fr 1fr;
 				padding: 2rem;
-				&::after{
-					top: 4%;
-					width: 15px;
-				}	
+					
 			}
 			&__col--1{
 				order: 1;
 				&__heading{
 					text-align: left;
+					&::before{
+					top: 14px;
+					width: 15px;
+					left: -20px;
+					}
 				}
 				&__summary{
 					text-align: left;
@@ -173,11 +176,16 @@
 			padding: 3rem 10rem;
 			.inner_container{
 				grid-template-columns: 3fr 1fr;
-				padding: 4rem;
-				&::after{
-					top: 7.5%;
-					width: 30px;
-				}	
+				padding: 4rem;	
+			}
+			&__col--1{
+				&__heading{
+					&::before{
+						top: 14px;
+						width: 30px;
+						left: -40px;
+					}
+				}
 			}
 		}
 	}

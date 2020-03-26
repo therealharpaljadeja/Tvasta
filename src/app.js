@@ -9,7 +9,7 @@ app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-	res.render('views/index.html');
+	res.render('views/index.ejs');
 });
 
 const dev_data_string = fs.readFileSync('dev_data.json').toString();
@@ -22,6 +22,37 @@ app.get('/doctors', (req, res) => {
 
 app.get('/hospitals', (req, res) => {
 	res.render('views/hospital.ejs', hospital = dev_data_json.hospitals);
+})
+
+app.get('/about', (req, res) => {
+	res.render('views/about.ejs');
+})
+
+app.get('/treatments', (req, res) => {
+	res.render('views/treatments.ejs');
+})
+
+app.get('/login', (req, res) => {
+	res.render('views/login.ejs');
+})
+
+
+app.get('/signup', (req, res) => {
+	res.render('views/signup.ejs');
+})
+
+app.get('/contactus', (req, res) => {
+	res.render('views/contactus.ejs');
+})
+
+
+app.get('/hospital_details', (req, res) => {
+	res.render('views/hospital_details.ejs');
+})
+
+
+app.get('/doctor_details', (req, res) => {
+	res.render('views/doctor_details.ejs');
 })
 
 module.exports = app;

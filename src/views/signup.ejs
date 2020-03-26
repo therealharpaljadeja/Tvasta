@@ -2,52 +2,13 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.0/css/all.min.css">
+	<%- include('partials/head.ejs') %>
 	<title>Sign Up</title>
 </head>
 <body class="login-body">
-	<nav class="navbar">
-		<div class="navbar__logo">
-			<a href="/">
-				<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" class="navbar__logo__img">
-			</a>
-		</div>
-		<div class="navbar__menu">
-			<ul class="navbar__menu__ul">
-				<li class="navbar__menu__ul__item"><a href="doctor.html">Doctors</a></li>
-				<li class="navbar__menu__ul__item"><a href="hospital.html">Hospitals</a></li>
-				<li class="navbar__menu__ul__item"><a href="treatments.html">Treatment</a></li>	
-				<li class="navbar__menu__ul__item">Other Services</li>
-				<li class="navbar__menu__ul__item"><a href="about.html">About</a></li>
-			</ul>
-		</div>
-		<div class="navbar__side_menu">
-			<ul class="navbar__side_menu__ul">
-				<li class="navbar__side_menu__ul__item cross"><span><i class="fas fa-window-close"></i></span></li>
-				<li class="navbar__side_menu__ul__item"><a href="doctor.html" >Doctors</a></li>
-				<li class="navbar__side_menu__ul__item"><a href="hospital.html">Hospitals</a></li>
-				<li class="navbar__side_menu__ul__item">Treatment</li>	
-				<li class="navbar__side_menu__ul__item">Other Services</li>
-				<li class="navbar__side_menu__ul__item">About</li>
-			</ul>
-		</div>
-		<div class="navbar__buttons">
-			<a href="login.html" class="navbar__buttons__button-link">
-				<button class="navbar__buttons-login">
-					Login / Sign Up
-				</button>
-			</a>
-			<a href="get-a-quote.html">
-				<button class="navbar__buttons-quote">
-					Get A Quote 
-				</button>	
-			</a>	
-		</div>
-		<i class="fa fa-bars navbar__burger"></i>	
-	</nav>
+	<header>
+		<%- include('partials/header.ejs') %>
+	</header>
 	<section class="form_container form_container--signup">
 		<h1 class="form_container__heading">Sign Up</h1>
 		<form action="" class="form_container__form">
@@ -91,7 +52,7 @@
 				<span class="form_container__form__submit__icon"><i class="fas fa-arrow-right"></i></span>
 			</button>
 		</form>
-		<span class="form_container__signup">Already Registered? <span><a href="login.html">Login</a></span></span>
+		<span class="form_container__signup">Already Registered? <span><a href="/login">Login</a></span></span>
 	</section>
 	<section class="copyright">
 		<span>All Rights Reserved &copy; Tvastra 2020</span>

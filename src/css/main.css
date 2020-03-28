@@ -45,7 +45,7 @@ html, body {
 }
 
 .heading-2 {
-  font-size: 2.68rem;
+  font-size: 2.4rem;
   line-height: 3rem;
 }
 @media (min-width: 768px) {
@@ -2890,6 +2890,299 @@ html, body {
   .faq_accordian__container {
     padding: 2rem 10rem;
   }
+}
+.hero {
+  height: 40rem;
+}
+.hero--plus {
+  background-image: url("./../../../assets/tvastraPlus_heroSection.png");
+}
+.hero--plus .plus {
+  padding: 1rem;
+  background-color: #0173b2;
+  color: white;
+  font-family: "Nexa Bold";
+  font-size: 1.2rem;
+  width: 16%;
+  letter-spacing: 0.1rem;
+  border-radius: 0.5rem;
+  display: block;
+  margin-bottom: 2rem;
+}
+.hero--plus .page_heading {
+  color: #2a2d3e;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+.hero--plus .page_description--plus {
+  color: #2a2d3e;
+  text-align: center;
+}
+.hero--plus .container--flex {
+  height: 100%;
+  display: flex;
+  padding-top: 4rem;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.pricing__container {
+  height: 100rem;
+  position: relative;
+  background-image: linear-gradient(to bottom, rgba(1, 115, 178, 0.4), rgba(1, 115, 178, 0) 70%);
+}
+.pricing .pricing__card {
+  margin: 0rem 2rem;
+  top: -16%;
+  position: absolute;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  background-color: white;
+  box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.2);
+}
+.pricing__heading__div {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 1rem 0rem;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.pricing__heading__div__heading {
+  font-family: "Nexa Bold";
+  color: #2a2d3e;
+  text-align: center;
+}
+.pricing__heading__div__para {
+  text-align: center;
+}
+.pricing__table {
+  display: grid;
+  grid-template-columns: 100%;
+}
+.pricing__table__basic_plan {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 2rem;
+}
+.pricing__table__basic_plan__heading {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 2rem 0rem;
+}
+.pricing__table__basic_plan__heading h3 {
+  font-family: "Nexa Bold";
+  text-align: center;
+}
+.pricing__table__basic_plan__benefits {
+  display: grid;
+  grid-template-columns: 100%;
+}
+.pricing__table__basic_plan__benefits__list {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.pricing__table__basic_plan__benefits__list__item {
+  text-align: center;
+}
+.pricing__table__basic_plan__price {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: center;
+  grid-gap: 0.5rem;
+}
+.pricing__table__basic_plan__price__amount h2 {
+  font-family: "Nexa Bold";
+  color: #2a2d3e;
+  text-align: center;
+}
+.pricing__table__basic_plan__price__amount h2 span {
+  font-size: 1.5rem;
+}
+.pricing__table__basic_plan__price__details {
+  text-align: center;
+}
+.pricing__table__basic_plan__price__details a {
+  text-decoration: none;
+}
+.pricing__table__basic_plan__price__details a span {
+  font-family: "Nexa Bold";
+  color: #0173b2;
+  text-align: center;
+}
+.pricing__table__basic_plan__buy {
+  text-align: center;
+}
+.pricing__table__basic_plan__buy__btn {
+  padding: 1rem 1.5rem;
+  border: none;
+  border-radius: 0.5rem;
+  color: white;
+  font-size: 1.5rem;
+  font-family: "Nexa Bold";
+  background-color: #0173b2;
+}
+
+.trust__container {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 3rem;
+}
+.trust__heading {
+  font-family: "Nexa Bold";
+  color: #2a2d3e;
+  text-align: center;
+}
+.trust__para {
+  text-align: center;
+}
+.trust__rating {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: center;
+  grid-gap: 1rem;
+}
+.trust__rating__count {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.trust__rating__count__figure {
+  font-family: "Nexa Bold";
+  color: #2a2d3e;
+  text-align: center;
+}
+.trust__rating__count__desc {
+  text-align: center;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.trust__rating__bars {
+  display: grid;
+  grid-template-columns: 100%;
+}
+.trust__rating__bars__list {
+  margin: auto;
+  width: 70%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.trust__rating__bars__list__bar {
+  display: grid;
+  grid-template-columns: 1fr 7fr;
+  justify-content: center;
+}
+.trust__rating__bars__list__bar__number {
+  font-family: "Nexa Bold";
+  justify-self: center;
+  align-self: center;
+}
+.trust__rating__bars__list__bar__container {
+  width: 100%;
+  background-color: #ccc;
+  height: 70%;
+  border-radius: 1rem;
+  justify-self: center;
+  align-self: center;
+}
+.trust__rating__bars__list__bar__container__bar {
+  height: 100%;
+  background-color: #2a2d3e;
+  border-radius: 1rem;
+}
+.trust__rating__bars__list__bar__container__bar--1 {
+  width: 10%;
+}
+.trust__rating__bars__list__bar__container__bar--2 {
+  width: 20%;
+}
+.trust__rating__bars__list__bar__container__bar--3 {
+  width: 30%;
+}
+.trust__rating__bars__list__bar__container__bar--4 {
+  width: 30%;
+}
+.trust__rating__bars__list__bar__container__bar--5 {
+  width: 70%;
+}
+.trust__statistics {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 2rem;
+  justify-content: center;
+}
+.trust__statistics__stat {
+  display: grid;
+  grid-template-columns: 100%;
+  justify-content: center;
+  grid-gap: 1rem;
+}
+.trust__statistics__stat__icon {
+  font-size: 4rem;
+  color: #2a2d3e;
+  text-align: center;
+}
+.trust__statistics__stat__heading {
+  font-family: "Nexa Bold";
+  text-align: center;
+}
+.trust__statistics__stat__desc {
+  font-family: "Nexa Light";
+  text-align: center;
+}
+
+.benefits__container {
+  grid-template-columns: 100%;
+  grid-gap: 2rem;
+}
+.benefits__heading {
+  text-align: center;
+  font-family: "Nexa Light";
+}
+.benefits__grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 2rem;
+}
+.benefits__grid .col {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.benefits__grid .col .col-heading {
+  font-family: "Nexa Bold";
+  color: #2a2d3e;
+  text-align: center;
+}
+.benefits__grid .col .col-points {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1.5rem;
+}
+.benefits__grid .col .point {
+  display: grid;
+  grid-template-columns: 1fr 6fr;
+  justify-items: center;
+  align-items: start;
+}
+.benefits__grid .col i {
+  font-size: 2rem;
+  color: rgba(1, 115, 178, 0.5);
+}
+.benefits__grid__col--2 .hospitals_grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 1rem;
+}
+.benefits__grid__col--2 .hospitals_grid .image_container {
+  width: 100%;
+  height: 15rem;
+}
+.benefits__grid__col--2 .hospitals_grid .image_container .image {
+  width: 100%;
+  height: 100%;
 }
 
 /*# sourceMappingURL=main.css.map */

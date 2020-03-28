@@ -41,22 +41,26 @@ app.get('/signup', (req, res) => {
 	res.render('views/signup.ejs');
 });
 
-app.get('/contactus', (req, res) => {
+app.get('/contact-us', (req, res) => {
 	res.render('views/contactus.ejs');
 });
 
 
-app.get('/hospital_details', (req, res) => {
+app.get('/hospital-details', (req, res) => {
 	res.render('views/hospital_details.ejs');
 });
 
 
-app.get('/doctor_details', (req, res) => {
+app.get('/doctor-details', (req, res) => {
 	res.render('views/doctor_details.ejs');
 });
 
 app.get('/faq', (req, res) => {
 	res.render('views/faq.ejs');
+});
+
+app.get('/tvastra-plus', (req, res) => {
+	res.render('views/tvastra-plus.ejs');
 });
 
 module.exports = app;

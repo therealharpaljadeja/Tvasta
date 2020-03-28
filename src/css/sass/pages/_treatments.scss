@@ -7,6 +7,10 @@
 	}
 	&--contactus{
 		background-image: url('./../../../assets/contactUs.png');
+		background-position: -50rem 0rem;
+		@media(min-width: $bp-desktop){
+			background-position: 0;
+		}
 	}
 	&__container{
 		display: flex;

@@ -73,6 +73,8 @@ html, body {
 
 .heading-4 {
   font-size: 1.5rem;
+  line-height: 2rem;
+  letter-spacing: 0.05rem;
 }
 @media (min-width: 768px) {
   .heading-4 {
@@ -1903,6 +1905,12 @@ html, body {
 }
 .page_description--contactus {
   background-image: url("./../../../assets/contactUs.png");
+  background-position: -50rem 0rem;
+}
+@media (min-width: 1024px) {
+  .page_description--contactus {
+    background-position: 0;
+  }
 }
 .page_description__container {
   display: flex;

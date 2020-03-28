@@ -41,24 +41,20 @@
 					display: grid;
 					grid-template-columns: 100%;
 					&__item{
+						& > * {
+							pointer-events: none;
+						}
 						&:first-of-type{
-							a{
+							.about_doctor__container__col--1__more_details__accordian__item__btn{
 								border-top: 1px dashed #ccc;
 							}
 						}
-						&:target{
-							.about_doctor__container__col--1__more_details__accordian__item{
-								&__content{
-									max-height: 20rem;	
-									padding: 1rem;
-								}
-								&__btn{
-									.down_arrow{
-										transform: rotate(180deg);
-									}
-								}
-
-							}
+						.expandCollapse{
+							max-height: 20rem;	
+							padding: 1rem;
+						}	
+						.rotate_arrow{
+								transform: rotate(180deg);
 						}
 						&__btn{
 							padding: 1rem 0rem;

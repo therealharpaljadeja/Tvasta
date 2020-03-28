@@ -76,3 +76,17 @@ for(let i = 0; i < dots.length; i++){
 	});
 }
 
+
+const toggleAccordian = element => {
+	const item = element.target;
+	const chevron = item.children[0].children[1];
+	const content = item.children[1];
+	content.classList.toggle('expandCollapse');
+	chevron.classList.toggle('rotate_arrow');
+}
+
+
+const accordianItem = Array.from(document.querySelectorAll('.about_doctor__container__col--1__more_details__accordian__item'));
+accordianItem.forEach(el => {
+	el.addEventListener('click', toggleAccordian);
+})

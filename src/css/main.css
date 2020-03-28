@@ -2727,14 +2727,17 @@ html, body {
   display: grid;
   grid-template-columns: 100%;
 }
-.about_doctor__container__col--1__more_details__accordian__item:first-of-type a {
+.about_doctor__container__col--1__more_details__accordian__item > * {
+  pointer-events: none;
+}
+.about_doctor__container__col--1__more_details__accordian__item:first-of-type .about_doctor__container__col--1__more_details__accordian__item__btn {
   border-top: 1px dashed #ccc;
 }
-.about_doctor__container__col--1__more_details__accordian__item:target .about_doctor__container__col--1__more_details__accordian__item__content {
+.about_doctor__container__col--1__more_details__accordian__item .expandCollapse {
   max-height: 20rem;
   padding: 1rem;
 }
-.about_doctor__container__col--1__more_details__accordian__item:target .about_doctor__container__col--1__more_details__accordian__item__btn .down_arrow {
+.about_doctor__container__col--1__more_details__accordian__item .rotate_arrow {
   transform: rotate(180deg);
 }
 .about_doctor__container__col--1__more_details__accordian__item__btn {

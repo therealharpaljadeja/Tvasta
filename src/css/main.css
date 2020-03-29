@@ -3133,7 +3133,7 @@ html, body {
 }
 .trust__statistics {
   display: grid;
-  grid-template-columns: 100%;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 2rem;
   justify-content: center;
 }
@@ -3164,8 +3164,25 @@ html, body {
 .benefits__heading {
   text-align: center;
   font-family: "Nexa Light";
+  position: relative;
+}
+.benefits__heading::after {
+  content: "";
+  position: absolute;
+  width: 80%;
+  height: 0.5rem;
+  background-color: rgba(1, 115, 178, 0.2);
+  top: 100%;
+  left: 50%;
+  border-radius: 1rem;
+  transform: translateX(-50%);
 }
 .benefits__grid {
+  display: grid;
+  grid-template-columns: 100%;
+  grid-gap: 4rem;
+}
+.benefits__grid .row {
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 2rem;
@@ -3210,11 +3227,26 @@ html, body {
 .benefits__grid__col--2 .hospitals_grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap: 1rem;
 }
 .benefits__grid__col--2 .hospitals_grid .image_container {
   width: 100%;
   height: 10rem;
+  padding: 1rem;
+}
+.benefits__grid__col--2 .hospitals_grid .image_container:nth-of-type(odd) {
+  border-right: 1px solid rgba(1, 115, 178, 0.3);
+}
+.benefits__grid__col--2 .hospitals_grid .image_container:nth-of-type(odd) {
+  border-bottom: 1px solid rgba(1, 115, 178, 0.3);
+}
+.benefits__grid__col--2 .hospitals_grid .image_container:nth-of-type(even) {
+  border-bottom: 1px solid rgba(1, 115, 178, 0.3);
+}
+.benefits__grid__col--2 .hospitals_grid .image_container:nth-last-of-type(1) {
+  border-bottom: 0;
+}
+.benefits__grid__col--2 .hospitals_grid .image_container:nth-last-of-type(2) {
+  border-bottom: 0;
 }
 .benefits__grid__col--2 .hospitals_grid .image_container .image {
   width: 100%;
@@ -3242,7 +3274,7 @@ html, body {
 }
 .tests__grid {
   display: grid;
-  grid-template-columns: 100%;
+  grid-template-columns: 1fr 1fr;
   grid-gap: 1rem;
 }
 .tests__grid__card {
@@ -3252,6 +3284,8 @@ html, body {
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 1rem;
+  align-items: center;
+  justify-items: center;
 }
 .tests__grid__card__icon {
   height: 5rem;
@@ -3259,6 +3293,7 @@ html, body {
 }
 .tests__grid__card__title {
   font-family: "Nexa Bold";
+  text-align: center;
 }
 .tests__dots {
   display: flex;
@@ -3371,9 +3406,10 @@ html, body {
   }
 
   .pricing__container {
-    height: 50rem;
+    height: 47rem;
   }
   .pricing__container .pricing__card {
+    width: 91.5%;
     grid-template-columns: 1fr 1fr 1fr;
     top: -34%;
   }
@@ -3401,12 +3437,33 @@ html, body {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 
+  .benefits__container {
+    grid-gap: 4rem;
+  }
+  .benefits__heading::after {
+    width: 40%;
+  }
   .benefits__grid {
-    grid-template-columns: 1fr 1fr;
     grid-gap: 5rem;
   }
   .benefits__grid__col--2 {
     max-height: 28rem;
+  }
+  .benefits__grid__col--2 #top-hospitals {
+    text-align: center;
+  }
+  .benefits__grid .row {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+  }
+  .benefits__grid .row--1 {
+    height: 40rem;
+  }
+  .benefits__grid .row--1 .benefits__grid__col--1 {
+    max-height: 30rem;
+  }
+  .benefits__grid .row:nth-of-type(even) .benefits__grid__col--1 {
+    order: 2;
   }
   .benefits__grid .col .col-heading {
     text-align: left;
@@ -3422,7 +3479,7 @@ html, body {
     text-align: left;
   }
   .tests__grid {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 
   .testimonials__heading {
@@ -3436,7 +3493,7 @@ html, body {
     grid-template-columns: 1fr 1fr 1fr;
   }
   .testimonials__grid__card__user_info {
-    max-height: 8rem;
+    max-height: 12rem;
   }
 
   .faq_accordian__heading {
@@ -3459,10 +3516,31 @@ html, body {
   }
 
   .benefits__grid {
-    grid-template-columns: 2fr 1fr;
+    grid-template-columns: 100%;
+  }
+  .benefits__grid .row {
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 4rem;
+  }
+  .benefits__grid .row--1 .benefits__grid__col--1 {
+    max-height: 20rem;
+  }
+  .benefits__grid__col--2 {
+    grid-column: span 1;
+  }
+  .benefits__grid__col--1 {
+    grid-column: span 2;
   }
   .benefits__grid .col .col-points .point {
     grid-template-columns: 1fr 20fr;
+  }
+
+  .tests__grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+  .tests__grid__card {
+    justify-items: start;
+    align-items: start;
   }
 }
 

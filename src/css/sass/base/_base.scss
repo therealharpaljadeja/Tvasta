@@ -13,6 +13,12 @@ html, body{
 .container{
 	display: grid;
 	@include container-styling-mobile;
+	@media(min-width: $bp-tablet){
+		padding: 2rem 3rem;
+	}
+	@media(min-width: $bp-desktop){
+		padding: 3rem 10rem;
+	}
 }
 
 .heading-1{

@@ -25,6 +25,16 @@ html, body {
   width: 100%;
   height: 100%;
 }
+@media (min-width: 768px) {
+  .container {
+    padding: 2rem 3rem;
+  }
+}
+@media (min-width: 1024px) {
+  .container {
+    padding: 3rem 10rem;
+  }
+}
 
 .heading-1 {
   font-size: 2.68rem;
@@ -2903,7 +2913,7 @@ html, body {
   color: white;
   font-family: "Nexa Bold";
   font-size: 1.2rem;
-  width: 16%;
+  align-self: center;
   letter-spacing: 0.1rem;
   border-radius: 0.5rem;
   display: block;
@@ -2928,18 +2938,22 @@ html, body {
 }
 
 .pricing__container {
-  height: 100rem;
+  height: 114rem;
   position: relative;
   background-image: linear-gradient(to bottom, rgba(1, 115, 178, 0.4), rgba(1, 115, 178, 0) 70%);
 }
 .pricing .pricing__card {
-  margin: 0rem 2rem;
   top: -16%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
   position: absolute;
-  padding: 1rem;
+  padding: 2rem 1rem;
   border-radius: 0.5rem;
   background-color: white;
   box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.2);
+  display: grid;
+  grid-template-columns: 100%;
 }
 .pricing__heading__div {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -2965,6 +2979,15 @@ html, body {
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 2rem;
+}
+.pricing__table__basic_plan:nth-of-type(1) .pricing__table__basic_plan__benefits__list__item--4 {
+  visibility: hidden;
+}
+.pricing__table__basic_plan:nth-of-type(1) .pricing__table__basic_plan__benefits__list__item--5 {
+  visibility: hidden;
+}
+.pricing__table__basic_plan:nth-of-type(2) .pricing__table__basic_plan__benefits__list__item--5 {
+  visibility: hidden;
 }
 .pricing__table__basic_plan__heading {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -3173,6 +3196,17 @@ html, body {
   color: rgba(1, 115, 178, 0.5);
   justify-self: center;
 }
+.benefits__grid .col .benefits__image_container {
+  width: 100%;
+  height: 100%;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+}
+.benefits__grid .col .benefits__image_container img {
+  width: 100%;
+  height: 100%;
+}
 .benefits__grid__col--2 .hospitals_grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -3309,7 +3343,6 @@ html, body {
   color: #0173b2;
   padding: 1rem;
   border-radius: 0.5rem;
-  font-size: 1rem;
 }
 
 .faq_accordian__container {
@@ -3317,10 +3350,120 @@ html, body {
   grid-template-columns: 100%;
   grid-gap: 2rem;
 }
+.faq_accordian__container .about_doctor__container__col--1__more_details__accordian__item__btn .down_arrow {
+  margin-left: 1rem;
+}
 .faq_accordian__heading {
   font-family: "Nexa Bold";
   text-align: center;
   color: #2a2d3e;
+}
+
+@media (min-width: 768px) {
+  .hero--plus .container--flex {
+    align-items: flex-start;
+  }
+  .hero--plus .container--flex .page_heading {
+    text-align: left;
+  }
+  .hero--plus .container--flex .plus {
+    align-self: flex-start;
+  }
+
+  .pricing__container {
+    height: 50rem;
+  }
+  .pricing__container .pricing__card {
+    grid-template-columns: 1fr 1fr 1fr;
+    top: -34%;
+  }
+  .pricing__container .pricing__table {
+    grid-column: 1/-1;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .pricing__heading__div {
+    grid-column: 1/-1;
+  }
+
+  .trust__container {
+    grid-gap: 4rem;
+  }
+  .trust__rating {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0;
+    align-self: center;
+  }
+  .trust__rating__count {
+    max-height: 10rem;
+    align-self: center;
+  }
+  .trust__statistics {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .benefits__grid {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 5rem;
+  }
+  .benefits__grid__col--2 {
+    max-height: 28rem;
+  }
+  .benefits__grid .col .col-heading {
+    text-align: left;
+  }
+  .benefits__grid .col .col-points .point {
+    grid-template-columns: 1fr 8fr;
+  }
+  .benefits__grid .col .col-points .point .point-icon {
+    justify-self: start;
+  }
+
+  .tests__heading {
+    text-align: left;
+  }
+  .tests__grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
+
+  .testimonials__heading {
+    text-align: left;
+  }
+  .testimonials__heading span {
+    padding: 0.7rem;
+    display: inline;
+  }
+  .testimonials__grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .testimonials__grid__card__user_info {
+    max-height: 8rem;
+  }
+
+  .faq_accordian__heading {
+    text-align: left;
+  }
+}
+@media (min-width: 1024px) {
+  .pricing__container {
+    height: 47rem;
+  }
+  .pricing__container .pricing__card {
+    width: 85%;
+    padding: 4rem 4rem 6rem 4rem;
+  }
+  .pricing__heading__div__heading {
+    text-align: left;
+  }
+  .pricing__heading__div span {
+    text-align: left;
+  }
+
+  .benefits__grid {
+    grid-template-columns: 2fr 1fr;
+  }
+  .benefits__grid .col .col-points .point {
+    grid-template-columns: 1fr 20fr;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -8,7 +8,7 @@
 			color: $background-color;
 			font-family: $nexa-bold;
 			font-size: 1.2rem;
-			width: 16%;
+			align-self: center;
 			letter-spacing: .1rem;
 			border-radius: 0.5rem;
 			display: block;
@@ -38,18 +38,22 @@
 
 .pricing{
 	&__container{
-		height: 100rem;
+		height: 114rem;
 		position: relative;
 		background-image: linear-gradient(to bottom, rgba($bright-blue,.4) ,rgba($bright-blue,0) 70%);
 	}
 	.pricing__card{
-		margin: 0rem 2rem;
 		top: -16%;
+		left: 50%;
+		transform: translateX(-50%);
+		width: 90%;
 		position: absolute;
-		padding: 1rem;
+		padding: 2rem 1rem;
 		border-radius: .5rem;
 		background-color: $background-color;
 		box-shadow: 0rem 0rem 2rem rgba(0,0,0,.2);
+		display: grid;
+		grid-template-columns: 100%;
 	}
 	&__heading__div{
 		border-bottom: 1px solid rgba(0,0,0,.1);;
@@ -74,6 +78,31 @@
 			display: grid;
 			grid-template-columns: 100%;
 			grid-gap: 2rem;
+			&:nth-of-type(1){
+				.pricing__table__basic_plan__benefits{
+					&__list{
+						&__item{
+							&--4{
+								visibility: hidden;	
+							}
+							&--5{
+								visibility: hidden;	
+							}
+						}
+					}
+				}
+			}
+			&:nth-of-type(2){
+				.pricing__table__basic_plan__benefits{
+					&__list{
+						&__item{
+							&--5{
+								visibility: hidden;	
+							}
+						}
+					}
+				}
+			}
 			&__heading{
 				border-bottom: 1px solid rgba(0,0,0,.1);
 				padding: 2rem 0rem;
@@ -287,6 +316,17 @@
 				font-size: 2rem;
 				color: rgba($bright-blue,.5);
 				justify-self: center;
+			}
+			& .benefits__image_container{
+				width: 100%;
+				height: 100%;
+				border-radius: 1rem;
+				overflow: hidden;
+				box-shadow: 0 0 1rem rgba(0,0,0,.2);
+					img{
+						width: 100%;
+						height: 100%;
+					}
 			}			
 		}
 		&__col--2{
@@ -433,7 +473,7 @@
 					color: $bright-blue;
 					padding: 1rem;
 					border-radius: .5rem;
-					font-size: 1rem;
+
 				}
 			}
 		}
@@ -445,10 +485,168 @@
 		display: grid;
 		grid-template-columns: 100%;
 		grid-gap: 2rem;
+		.about_doctor{
+			&__container{
+				&__col--1__more_details__accordian__item__btn{
+					.down_arrow{
+						margin-left: 1rem;
+					}
+				}
+			}
+		}
 	}
 	&__heading{
 		font-family: $nexa-bold;
 		text-align: center;
 		color: $dark-blue;
+	}
+}
+
+@media(min-width: $bp-tablet){
+	.hero{
+		&--plus{
+			.container--flex{
+				align-items: flex-start;
+				.page_heading{
+					text-align: left;
+				}		
+				.plus{
+					align-self: flex-start;
+				}
+			}
+			
+		}
+	}
+	.pricing{
+		&__container{
+			height: 50rem;
+			.pricing__card{
+				
+				grid-template-columns: 1fr 1fr 1fr;	
+				top: -34%;
+			}
+			.pricing__table{
+				grid-column: 1/-1;
+				grid-template-columns: 1fr 1fr 1fr;
+			}
+		}
+		&__heading__div{
+			grid-column: 1/-1;
+		}
+	}
+	.trust{
+		&__container{
+			grid-gap: 4rem;
+		}
+		&__rating{
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 0;
+			align-self: center;
+			&__count{
+				max-height: 10rem;
+				align-self: center;
+			}
+			&__bars{
+			}
+		}
+		&__statistics{
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+	}
+	.benefits{
+		&__grid{
+			grid-template-columns: 1fr 1fr;
+			grid-gap: 5rem;
+			&__col--1{
+
+			}
+			&__col--2{
+				max-height: 28rem;
+			}
+			.col{
+				.col-heading{
+					text-align: left;
+				}
+				.col-points{
+					.point{
+						grid-template-columns: 1fr 8fr;
+						.point-icon{
+							justify-self: start;
+						}
+					}
+				}
+			}
+		}
+	}
+	.tests{
+		&__container{
+
+		}
+		&__heading{
+			text-align: left;
+		}
+		&__grid{
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+	}
+	.testimonials{
+		&__container{
+
+		}
+		&__heading{
+			text-align: left;
+			span{
+				padding: 0.7rem;
+				display: inline;
+			}
+		}
+		&__grid{
+			grid-template-columns: 1fr 1fr 1fr;
+			&__card{
+				&__user_info{
+					max-height: 8rem;
+				}
+			}
+		}
+	}
+	.faq_accordian{
+		&__heading{
+			text-align: left;
+		}
+	}
+}
+
+@media(min-width: $bp-desktop){
+	.hero{
+	}
+	.pricing{
+		&__container{
+			height: 47rem;
+			.pricing__card{
+				width: 85%;
+				padding: 4rem 4rem 6rem 4rem;
+			}
+
+		}
+		&__heading__div{
+			&__heading{
+				text-align: left;
+			}
+			span{
+				text-align: left;	
+			}
+		}
+	}
+	.benefits{
+		&__grid{
+			grid-template-columns: 2fr 1fr;
+			.col{
+				.col-points{
+					.point{
+						grid-template-columns: 1fr 20fr;
+					}
+				}
+			}
+		}
 	}
 }

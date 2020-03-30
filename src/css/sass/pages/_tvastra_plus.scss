@@ -350,38 +350,79 @@
 			.hospitals_grid{
 				display: grid;
 				grid-template-columns: 1fr 1fr;
-				.image_container{
-					width: 100%;
-					height: 10rem;
-					padding: 1rem;
+				
+				.benefit_image_container{
 					&:nth-of-type(odd){
 						border-right: 1px solid rgba($bright-blue,.3);
 					}
 					&:nth-of-type(odd){
 						border-bottom: 1px solid rgba($bright-blue,.3);	
 					}
-
 					&:nth-of-type(even){
 						border-bottom: 1px solid rgba($bright-blue,.3);	
 					}
-					&:nth-last-of-type(1){
-						border-bottom: 0;
-					}
-					&:nth-last-of-type(2){
-						border-bottom: 0;
-					}
+					
+				}
+
+				.image_container{
+					width: 100%;
+					height: 10rem;
+					padding: 1rem;
+					
 					.image{
 						width: 100%;
 						height: 100%;
+					}
+					&:nth-last-of-type(2){
+						border-bottom: none;
+					}
+					&:nth-last-of-type(1){
+						border-bottom: none;
+					}
+					
+				}
+				.more_hospital_hidden{
+					display: none;	
+					&:nth-of-type(odd){
+						border-right: 1px solid rgba($bright-blue,.3);
+					}
+					&:nth-of-type(odd){
+						border-bottom: 1px solid rgba($bright-blue,.3);
+					}
+					&:nth-of-type(even){
+						border-bottom: 1px solid rgba($bright-blue,.3);
+					}
+					&:nth-last-of-type(1){
+						border-bottom: none;
+					}
+					&:nth-last-of-type(2){
+						border-bottom: none;
+					}
+				}
+				.more_hospital_display{
+					display: block;
+					&:nth-of-type(odd){
+						border-right: 1px solid rgba($bright-blue,.3);
+					}
+					&:nth-of-type(odd){
+						border-bottom: 1px solid rgba($bright-blue,.3);
+					}
+					&:nth-of-type(even){
+						border-bottom: 1px solid rgba($bright-blue,.3);
+					}
+					&:nth-last-of-type(1){
+						border-bottom: none;
+					}
+					&:nth-last-of-type(2){
+						border-bottom: none;
 					}
 				}
 			}
 			.more_hospitals{
 				text-align: center;
-				a{
-					&:visited, &:active, &:focus{
-						color: $dark-blue;
-					}
+				button{
+					border: none;
+					background-color: $background-color;
 				}
 				span{
 					font-family: $nexa-bold;
@@ -699,6 +740,11 @@
 		}
 	}
 	.benefits{
+		&__heading{
+			&::after{
+				width: 30%;
+			}
+		}
 		&__grid{
 			grid-template-columns: 100%;
 			.row{

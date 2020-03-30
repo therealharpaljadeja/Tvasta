@@ -90,3 +90,30 @@ const accordianItem = Array.from(document.querySelectorAll('.about_doctor__conta
 accordianItem.forEach(el => {
 	el.addEventListener('click', toggleAccordian);
 })
+
+const toggleHospitals = (el) => {
+	invisible_image_containers.forEach(el => {
+		el.classList.toggle('more_hospital_display');
+		console.log(el);
+	})
+	if(hospitals.children[0].children[0].textContent !== '- Less Hospitals')
+	hospitals.children[0].children[0].textContent  = '- Less Hospitals';
+	else
+	hospitals.children[0].children[0].textContent = '+ More Hospitals';	
+	// = '- Less Hospitals';
+	if(window.matchMedia('(max-width: 767px)').matches){
+
+	}
+	else{
+		if(row_1.style.height !== '60rem')
+		row_1.style.height = '60rem';
+		else
+		row_1.style.height = '35rem';	
+	}
+}
+
+
+const row_1 = document.querySelector('.row--1');
+const hospitals = document.querySelector('.more_hospitals');
+hospitals.addEventListener('click', toggleHospitals);
+const invisible_image_containers = Array.from(document.querySelectorAll('.more_hospital_hidden'));

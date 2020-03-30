@@ -3228,35 +3228,72 @@ html, body {
   display: grid;
   grid-template-columns: 1fr 1fr;
 }
+.benefits__grid__col--2 .hospitals_grid .benefit_image_container:nth-of-type(odd) {
+  border-right: 1px solid rgba(1, 115, 178, 0.3);
+}
+.benefits__grid__col--2 .hospitals_grid .benefit_image_container:nth-of-type(odd) {
+  border-bottom: 1px solid rgba(1, 115, 178, 0.3);
+}
+.benefits__grid__col--2 .hospitals_grid .benefit_image_container:nth-of-type(even) {
+  border-bottom: 1px solid rgba(1, 115, 178, 0.3);
+}
 .benefits__grid__col--2 .hospitals_grid .image_container {
   width: 100%;
   height: 10rem;
   padding: 1rem;
 }
-.benefits__grid__col--2 .hospitals_grid .image_container:nth-of-type(odd) {
-  border-right: 1px solid rgba(1, 115, 178, 0.3);
-}
-.benefits__grid__col--2 .hospitals_grid .image_container:nth-of-type(odd) {
-  border-bottom: 1px solid rgba(1, 115, 178, 0.3);
-}
-.benefits__grid__col--2 .hospitals_grid .image_container:nth-of-type(even) {
-  border-bottom: 1px solid rgba(1, 115, 178, 0.3);
-}
-.benefits__grid__col--2 .hospitals_grid .image_container:nth-last-of-type(1) {
-  border-bottom: 0;
-}
-.benefits__grid__col--2 .hospitals_grid .image_container:nth-last-of-type(2) {
-  border-bottom: 0;
-}
 .benefits__grid__col--2 .hospitals_grid .image_container .image {
   width: 100%;
   height: 100%;
 }
+.benefits__grid__col--2 .hospitals_grid .image_container:nth-last-of-type(2) {
+  border-bottom: none;
+}
+.benefits__grid__col--2 .hospitals_grid .image_container:nth-last-of-type(1) {
+  border-bottom: none;
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_hidden {
+  display: none;
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_hidden:nth-of-type(odd) {
+  border-right: 1px solid rgba(1, 115, 178, 0.3);
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_hidden:nth-of-type(odd) {
+  border-bottom: 1px solid rgba(1, 115, 178, 0.3);
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_hidden:nth-of-type(even) {
+  border-bottom: 1px solid rgba(1, 115, 178, 0.3);
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_hidden:nth-last-of-type(1) {
+  border-bottom: none;
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_hidden:nth-last-of-type(2) {
+  border-bottom: none;
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_display {
+  display: block;
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_display:nth-of-type(odd) {
+  border-right: 1px solid rgba(1, 115, 178, 0.3);
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_display:nth-of-type(odd) {
+  border-bottom: 1px solid rgba(1, 115, 178, 0.3);
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_display:nth-of-type(even) {
+  border-bottom: 1px solid rgba(1, 115, 178, 0.3);
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_display:nth-last-of-type(1) {
+  border-bottom: none;
+}
+.benefits__grid__col--2 .hospitals_grid .more_hospital_display:nth-last-of-type(2) {
+  border-bottom: none;
+}
 .benefits__grid__col--2 .more_hospitals {
   text-align: center;
 }
-.benefits__grid__col--2 .more_hospitals a:visited, .benefits__grid__col--2 .more_hospitals a:active, .benefits__grid__col--2 .more_hospitals a:focus {
-  color: #2a2d3e;
+.benefits__grid__col--2 .more_hospitals button {
+  border: none;
+  background-color: white;
 }
 .benefits__grid__col--2 .more_hospitals span {
   font-family: "Nexa Bold";
@@ -3515,6 +3552,9 @@ html, body {
     text-align: left;
   }
 
+  .benefits__heading::after {
+    width: 30%;
+  }
   .benefits__grid {
     grid-template-columns: 100%;
   }

@@ -11,7 +11,7 @@
 		}
 		&__para{
 			text-align: center;
-		}
+		} 
 		&__field{
 			grid-template-rows: repeat(3,1fr);
 			grid-row-gap: 1rem;
@@ -170,6 +170,7 @@
 				background-size: cover;
 				background-position: -2rem -2rem;
 				position: relative;
+				display: none;
 				&-1{
 					background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--002.jpg');
 				}
@@ -182,6 +183,18 @@
 					background-position: .6rem;
 				}
 				&-4{
+					background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--005.jpg');
+				}
+				&-5{
+					background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--005.jpg');
+				}
+				&-6{
+					background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--005.jpg');
+				}
+				&-7{
+					background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--005.jpg');
+				}
+				&-8{
 					background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--005.jpg');
 				}
 				&__description{

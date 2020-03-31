@@ -447,6 +447,7 @@
 		display: grid;
 		grid-template-columns: 1fr 1fr;
 		grid-gap: 1rem;	
+		grid-auto-flow: columns;
 		&__card{
 			background-color: $background-color;
 			box-shadow: 0 0 1rem rgba(0,0,0,.1);
@@ -773,7 +774,10 @@
 	}
 	.tests{
 		&__grid{
-			grid-template-columns: 1fr 1fr 1fr 1fr;
+			grid-template-columns: repeat(4, minmax(25%, auto));
+			grid-auto-flow: column;
+			grid-template-rows: 100%;
+			overflow: hidden;
 			&__card{
 				justify-items: start;
 				align-items: start;	

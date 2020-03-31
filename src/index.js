@@ -66,15 +66,41 @@ const activeDot = (el) => {
 		dots[i].classList.remove('dot_active');
 		el.target.classList.add('dot_active');
 	}
+	return el.target.classList[1].split('-')[1];
+}
+
+const orderingCards = (start) => {
+	let cardsToAppend = '';
+	for(let i = 0; i < cards.length; i++){
+		cards[i].style.display = 'none';
+	}
+	let formula = (4 * start);
+	console.log(formula);
+	cards[formula].style.display = 'grid';
+	cards[formula + 1].style.display = 'grid';
+	cards[formula + 2].style.display = 'grid';
+	cards[formula + 3].style.display = 'grid';
 }
 
 
-let dots = Array.from(document.querySelectorAll('.world_class_doctors__container__dots__dot'));
+let cards = Array.from(document.querySelectorAll('.carousel_item'));
+cards[1].style.display = 'grid';
+cards[0].style.display = 'grid';
+cards[2].style.display = 'grid';
+cards[3].style.display = 'grid';
+let cards_container = document.querySelector('.carousel_container');
+let dots = Array.from(document.querySelectorAll('.carousel_dot'));
 for(let i = 0; i < dots.length; i++){
 	dots[i].addEventListener('click', el => {
 		activeDot(el);
+		let dot_number = parseInt(dots[i].dataset.number);
+		orderingCards(dot_number);
 	});
 }
+
+
+
+
 
 
 const toggleAccordian = element => {
@@ -91,10 +117,13 @@ accordianItem.forEach(el => {
 	el.addEventListener('click', toggleAccordian);
 })
 
+
+
+
+
 const toggleHospitals = (el) => {
 	invisible_image_containers.forEach(el => {
 		el.classList.toggle('more_hospital_display');
-		console.log(el);
 	})
 	if(hospitals.children[0].children[0].textContent !== '- Less Hospitals')
 	hospitals.children[0].children[0].textContent  = '- Less Hospitals';

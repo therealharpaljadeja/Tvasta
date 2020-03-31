@@ -2131,14 +2131,22 @@ html, body {
 .more_services__container__row--2__carousel__item__container--1 {
   background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--008.jpg");
   background-size: cover;
+  order: 1;
 }
 .more_services__container__row--2__carousel__item__container--2 {
   background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--010.jpg");
   background-size: cover;
+  order: 2;
 }
 .more_services__container__row--2__carousel__item__container--3 {
   background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--011.jpg");
   background-size: cover;
+  order: 3;
+}
+.more_services__container__row--2__carousel__item__container--4 {
+  background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--011.jpg");
+  background-size: cover;
+  order: 4;
 }
 .more_services__container__row--2__carousel__item__container__item {
   background-color: white;
@@ -2221,7 +2229,9 @@ html, body {
     justify-self: end;
   }
   .more_services__container__row--2__carousel {
-    grid-template-columns: 1fr 1fr 1fr;
+    overflow: hidden;
+    grid-template-columns: repeat(2, minmax(calc(33.33% - 1rem), auto)) 33.33%;
+    grid-auto-flow: column;
   }
   .more_services__container__row--2__carousel__item__container__item {
     top: 70.5%;

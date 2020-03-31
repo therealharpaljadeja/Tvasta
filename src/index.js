@@ -146,3 +146,5 @@ const row_1 = document.querySelector('.row--1');
 const hospitals = document.querySelector('.more_hospitals');
 hospitals.addEventListener('click', toggleHospitals);
 const invisible_image_containers = Array.from(document.querySelectorAll('.more_hospital_hidden'));
+
+

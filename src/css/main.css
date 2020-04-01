@@ -2957,7 +2957,7 @@ html, body {
 }
 
 .pricing__container {
-  height: 114rem;
+  height: 125rem;
   position: relative;
   background-image: linear-gradient(to bottom, rgba(1, 115, 178, 0.4), rgba(1, 115, 178, 0) 70%);
 }
@@ -3498,7 +3498,7 @@ html, body {
   }
 
   .pricing__container {
-    height: 47rem;
+    height: 61rem;
   }
   .pricing__container .pricing__card {
     width: 91.5%;
@@ -3543,7 +3543,7 @@ html, body {
     width: 40%;
   }
   .benefits__grid {
-    grid-gap: 5rem;
+    grid-gap: 6rem;
   }
   .benefits__grid__col--2 {
     max-height: 28rem;
@@ -3597,7 +3597,7 @@ html, body {
 }
 @media (min-width: 1024px) {
   .pricing__container {
-    height: 47rem;
+    height: 50rem;
   }
   .pricing__container .pricing__card {
     width: 85%;
@@ -3615,6 +3615,7 @@ html, body {
   }
   .benefits__grid {
     grid-template-columns: 100%;
+    grid-gap: 8rem;
   }
   .benefits__grid .row {
     grid-template-columns: 1fr 1fr 1fr;

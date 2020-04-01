@@ -38,7 +38,7 @@
 
 .pricing{
 	&__container{
-		height: 114rem;
+		height: 125rem;
 		position: relative;
 		background-image: linear-gradient(to bottom, rgba($bright-blue,.4) ,rgba($bright-blue,0) 70%);
 	}
@@ -635,7 +635,7 @@
 	}
 	.pricing{
 		&__container{
-			height: 47rem;
+			height: 61rem;
 			.pricing__card{
 				width: 91.5%;
 				grid-template-columns: 1fr 1fr 1fr;	
@@ -686,7 +686,7 @@
 			}
 		}
 		&__grid{
-			grid-gap: 5rem;
+			grid-gap: 6rem;
 			&__col--1{
 
 			}
@@ -769,7 +769,7 @@
 	}
 	.pricing{
 		&__container{
-			height: 47rem;
+			height: 50rem;
 			.pricing__card{
 				width: 85%;
 				padding: 4rem 4rem 6rem 4rem;
@@ -793,6 +793,7 @@
 		}
 		&__grid{
 			grid-template-columns: 100%;
+			grid-gap: 8rem;
 			.row{
 				grid-template-columns: 1fr 1fr 1fr;
 				grid-gap: 10rem;

@@ -54,9 +54,9 @@
 		box-shadow: 0rem 0rem 2rem rgba(0,0,0,.2);
 		display: grid;
 		grid-template-columns: 100%;
+		grid-gap: 2rem;
 	}
 	&__heading__div{
-		border-bottom: 1px solid rgba(0,0,0,.1);;
 		padding: 1rem 0rem;
 		display: grid;
 		grid-template-columns: 100%;
@@ -71,13 +71,35 @@
 		}
 	}
 	&__table{
+		border-top: 1px solid rgba(0,0,0,.1);
 		display: grid;
 		grid-template-columns: 100%;
-		grid-gap: 5rem;
+		grid-gap: 4rem;
+		.plan-advanced{
+			position: relative;
+			padding: 0rem 5rem;
+			background-image: linear-gradient(to bottom, rgba($bright-blue, .3) , rgba($bright-blue, 0)); 
+			&::before{
+				content: 'Popular';
+				position: absolute;
+				top: -10px;
+				left: 50%;
+				font-size: 1.2rem;
+				text-align: center;
+				transform: translateX(-50%);
+				padding: .5rem 1rem;
+				font-family: $nexa-bold;
+				color: $background-color;
+				background-color: green;
+				border-radius: 1rem;
+			}
+		}
 		&__basic_plan{
+			padding: 0rem 5rem;
 			display: grid;
 			grid-template-columns: 100%;
 			grid-gap: 2rem;
+			
 			&:nth-of-type(1){
 				.pricing__table__basic_plan__benefits{
 					&__list{
@@ -315,7 +337,7 @@
 		.col{
 			display: grid;
 			grid-template-columns: 100%;
-			grid-gap: 1rem;
+			grid-gap: 2rem;
 
 			.col-heading{
 				font-family: $nexa-bold;
@@ -565,7 +587,7 @@
 					font-family: $nexa-bold;
 					background-color: rgba($bright-blue, .2);
 					color: $bright-blue;
-					padding: 1rem;
+					padding: .5rem 1rem;
 					border-radius: .5rem;
 
 				}
@@ -620,14 +642,13 @@
 				top: -34%;
 			}
 			.pricing__table{
+				grid-gap: 0;
 				grid-column: 1/-1;
 				grid-template-columns: 1fr 1fr 1fr;
 				&__basic_plan{
-					&__benefits{
-						border-right: 1px solid rgba($bright-blue,.4);
-						&:last-of-type{
-							border: none;
-						}
+					border-right: 1px solid rgba($bright-blue,.4);
+					&:last-of-type{
+						border: none;
 					}
 				}
 			}
@@ -774,7 +795,7 @@
 			grid-template-columns: 100%;
 			.row{
 				grid-template-columns: 1fr 1fr 1fr;
-				grid-gap: 6rem;
+				grid-gap: 10rem;
 				&--1{
 					.benefits__grid__col--1{
 						max-height: 20rem;

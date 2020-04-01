@@ -2973,9 +2973,9 @@ html, body {
   box-shadow: 0rem 0rem 2rem rgba(0, 0, 0, 0.2);
   display: grid;
   grid-template-columns: 100%;
+  grid-gap: 2rem;
 }
 .pricing__heading__div {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   padding: 1rem 0rem;
   display: grid;
   grid-template-columns: 100%;
@@ -2990,11 +2990,32 @@ html, body {
   text-align: center;
 }
 .pricing__table {
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 5rem;
+  grid-gap: 4rem;
+}
+.pricing__table .plan-advanced {
+  position: relative;
+  padding: 0rem 5rem;
+  background-image: linear-gradient(to bottom, rgba(1, 115, 178, 0.3), rgba(1, 115, 178, 0));
+}
+.pricing__table .plan-advanced::before {
+  content: "Popular";
+  position: absolute;
+  top: -10px;
+  left: 50%;
+  font-size: 1.2rem;
+  text-align: center;
+  transform: translateX(-50%);
+  padding: 0.5rem 1rem;
+  font-family: "Nexa Bold";
+  color: white;
+  background-color: green;
+  border-radius: 1rem;
 }
 .pricing__table__basic_plan {
+  padding: 0rem 5rem;
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 2rem;
@@ -3213,7 +3234,7 @@ html, body {
 .benefits__grid .col {
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
 }
 .benefits__grid .col .col-heading {
   font-family: "Nexa Bold";
@@ -3447,7 +3468,7 @@ html, body {
   font-family: "Nexa Bold";
   background-color: rgba(1, 115, 178, 0.2);
   color: #0173b2;
-  padding: 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 0.5rem;
 }
 
@@ -3485,13 +3506,14 @@ html, body {
     top: -34%;
   }
   .pricing__container .pricing__table {
+    grid-gap: 0;
     grid-column: 1/-1;
     grid-template-columns: 1fr 1fr 1fr;
   }
-  .pricing__container .pricing__table__basic_plan__benefits {
+  .pricing__container .pricing__table__basic_plan {
     border-right: 1px solid rgba(1, 115, 178, 0.4);
   }
-  .pricing__container .pricing__table__basic_plan__benefits:last-of-type {
+  .pricing__container .pricing__table__basic_plan:last-of-type {
     border: none;
   }
   .pricing__heading__div {
@@ -3596,7 +3618,7 @@ html, body {
   }
   .benefits__grid .row {
     grid-template-columns: 1fr 1fr 1fr;
-    grid-gap: 6rem;
+    grid-gap: 10rem;
   }
   .benefits__grid .row--1 .benefits__grid__col--1 {
     max-height: 20rem;

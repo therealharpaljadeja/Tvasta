@@ -1,7 +1,7 @@
 .hero{
 	height: 40rem;
 	&--plus{
-		background-image: url('./../../../assets/tvastraPlus_heroSection.png');
+		background-image: linear-gradient(to top, rgba(0,0,0,.5), rgba(0,0,0,0) 10%), url('./../../../assets/tvastraPlus_heroSection.png');
 		.plus{
 			padding: 1rem;
 			background-color: $bright-blue;
@@ -191,7 +191,7 @@
 			grid-gap: 1rem;
 			&__figure{
 				font-family: $nexa-bold;
-				color: $dark-blue;
+				color: $bright-blue;
 				text-align: center;
 			}
 			&__desc{
@@ -199,6 +199,7 @@
 				display: grid;
 				grid-template-columns: 100%;
 				grid-gap: 1rem;
+				color: $bright-blue;
 			}
 		}
 		&__bars{
@@ -228,7 +229,7 @@
 						align-self: center;
 						&__bar{
 							height: 100%;
-							background-color: $dark-blue;
+							background-color: $bright-blue;
 							border-radius: 1rem;
 							&--1{
 								width: 10%;
@@ -263,16 +264,18 @@
 			grid-gap: 1rem;
 			&__icon{
 				font-size: 4rem;
-				color: $dark-blue;
+				color: $bright-blue;
 				text-align: center;
 			}
 			&__heading{
 				font-family: $nexa-bold;
 				text-align: center;
+				color: $bright-blue;
 			}
 			&__desc{
 				font-family: $nexa-light;
 				text-align: center;
+				color: $bright-blue;
 			}
 		}
 	}
@@ -287,6 +290,7 @@
 		text-align: center;
 		font-family: $nexa-light;
 		position: relative;
+		padding: 1.5rem 0rem;
 		&::after{
 			content: '';
 			position: absolute;
@@ -445,15 +449,19 @@
 	}
 	&__grid{
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: repeat(2, calc(50% - .5rem));
 		grid-gap: 1rem;	
-		grid-auto-flow: columns;
+		grid-template-rows: 1fr 1fr;
+		grid-auto-flow: column;
+		width: 100%;
+		overflow: hidden;
 		&__card{
+			width: 100%;
 			background-color: $background-color;
 			box-shadow: 0 0 1rem rgba(0,0,0,.1);
 			padding: 2rem;
 			display: grid;
-			grid-template-columns: 100%;
+			// grid-template-columns: 100%;
 			grid-gap: 1rem;
 			align-items: center;
 			justify-items: center;
@@ -495,23 +503,30 @@
 		grid-template-columns: 100%;
 		grid-gap: 2rem;
 	}
-	&__heading{
-		font-family: $nexa-bold;
-		text-align: center;
-		color: $dark-blue;
+	&_heading_container{
+		display: flex;
+		align-items: center;
+		justify-content: flex-start;
+		flex-direction: row;
 		span{
+			margin-left: 1rem;
 			justify-self: center;
 			align-self: center;
 			background-color: $bright-blue;
 			color: $background-color;
 			font-family: $nexa-bold;
 			font-size: 1.2rem;
-			width: 16%;
 			letter-spacing: .1rem;
 			border-radius: 0.5rem;
 			display: block;
-			margin: auto;
+			padding: 1rem;
 		}
+	}
+	&__heading{
+		font-family: $nexa-bold;
+		text-align: center;
+		color: $dark-blue;
+		
 	}
 	&__grid{
 		display: grid;
@@ -521,8 +536,9 @@
 			background-color: $background-color;
 			box-shadow: 0 0 1rem rgba(0,0,0,.1);
 			padding: 2rem;
-			display: grid;
-			grid-gap: 3rem;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
 			&__testimonial{
 				font-family: $nexa-bold;
 			}
@@ -606,6 +622,14 @@
 			.pricing__table{
 				grid-column: 1/-1;
 				grid-template-columns: 1fr 1fr 1fr;
+				&__basic_plan{
+					&__benefits{
+						border-right: 1px solid rgba($bright-blue,.4);
+						&:last-of-type{
+							border: none;
+						}
+					}
+				}
 			}
 		}
 		&__heading__div{
@@ -689,7 +713,7 @@
 			text-align: left;
 		}
 		&__grid{
-			grid-template-columns: 1fr 1fr;
+			// grid-template-columns: repeat(2, calc);
 		}
 	}
 	.testimonials{
@@ -733,10 +757,10 @@
 		}
 		&__heading__div{
 			&__heading{
-				text-align: left;
+				text-align: center;
 			}
 			span{
-				text-align: left;	
+				text-align: center;	
 			}
 		}
 	}
@@ -750,7 +774,7 @@
 			grid-template-columns: 100%;
 			.row{
 				grid-template-columns: 1fr 1fr 1fr;
-				grid-gap: 4rem;
+				grid-gap: 6rem;
 				&--1{
 					.benefits__grid__col--1{
 						max-height: 20rem;
@@ -774,7 +798,7 @@
 	}
 	.tests{
 		&__grid{
-			grid-template-columns: repeat(4, minmax(25%, auto));
+			grid-template-columns: repeat(4, minmax(calc(25% - .75rem), auto));
 			grid-auto-flow: column;
 			grid-template-rows: 100%;
 			overflow: hidden;

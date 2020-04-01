@@ -46,7 +46,6 @@
 						}
 						&:first-of-type{
 							.about_doctor__container__col--1__more_details__accordian__item__btn{
-								border-top: 1px dashed #ccc;
 							}
 						}
 						.expandCollapse{
@@ -58,7 +57,7 @@
 						}
 						&__btn{
 							padding: 1rem 0rem;
-							border-bottom: 1px dashed #ccc;
+							// border-bottom: 1px dashed #ccc;
 							text-decoration: none;
 							color: $bright-blue;
 							font-family: $nexa-bold;

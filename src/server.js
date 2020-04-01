@@ -3,8 +3,8 @@ const dotenv = require('dotenv');
 dotenv.config({path: './config.env'});
 const mongoose = require('mongoose');
 
-// const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DB_PASSWORD);
-const DB = 'mongodb://localhost:27017/myapp';
+const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DB_PASSWORD);
+// const DB = 'mongodb://localhost:27017/myapp';
 
 mongoose
 .connect(DB, {

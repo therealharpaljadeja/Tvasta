@@ -2684,6 +2684,10 @@ html, body {
   font-size: 1.5rem;
   font-family: "Nexa Bold";
 }
+.form_container__form__input_field textarea {
+  font-family: "Nexa Bold";
+  width: 100%;
+}
 .form_container__form__input_field__container {
   height: 100%;
   display: grid;

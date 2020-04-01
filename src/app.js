@@ -63,6 +63,14 @@ app.get('/tvastra-plus', (req, res) => {
 	res.render('views/tvastra-plus.ejs');
 });
 
+app.get('/submit-your-query', (req, res) => {
+	res.render('views/submit_your_query.ejs');
+});
+
+app.get('/book-an-appointment', (req, res) => {
+	res.render('views/bookappointment.ejs');
+});
+
 module.exports = app;
 
 

@@ -2,13 +2,33 @@ const express = require('express');
 const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
+const session = require('express-session');
+const authenticationController = require('./controllers/authenticationController');
+const User = require('./models/userModel');
+
+
+// Middlewares
 app = express();
-app.set('views', __dirname);
+app.use(express.json());
+
+app.use(session({
+	secret: 'TvastraApp',
+	resave: false,
+	saveUninitialized: false,
+	cookie: {
+		maxAge: 1000 * 60 * 60 * 24 * 90,
+		sameSite: true,
+		secure: false
+	}
+}));
+
+app.use(express.urlencoded( {extended: true} ));
+app.set('views', __dirname); 
 app.use(express.static(path.join(__dirname)));
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
+app.get('/', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/index.ejs');
 });
 
@@ -32,14 +52,20 @@ app.get('/treatments', (req, res) => {
 	res.render('views/treatments.ejs');
 });
 
-app.get('/login', (req, res) => {
+app.get('/login', authenticationController.redirectHome ,(req, res) => {
 	res.render('views/login.ejs');
 });
 
+app.post('/login', authenticationController.redirectHome, authenticationController.login);
 
-app.get('/signup', (req, res) => {
+
+app.get('/signup', authenticationController.redirectHome, (req, res) => {
 	res.render('views/signup.ejs');
 });
+
+
+app.post('/signup', authenticationController.redirectHome, authenticationController.signUp);
+
 
 app.get('/contact-us', (req, res) => {
 	res.render('views/contactus.ejs');

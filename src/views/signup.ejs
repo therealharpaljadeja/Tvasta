@@ -11,36 +11,35 @@
 	</header>
 	<section class="form_container form_container--signup">
 		<h1 class="form_container__heading">Sign Up</h1>
-		<form action="" class="form_container__form">
+		<form method="POST" action="/signup" class="form_container__form">
 			<div class="form_container__form__input_field">
-				<input type="text" placeholder="Enter Name" class="form_container__form__name" required>
+				<input name="name" type="text" placeholder="Enter Name" class="form_container__form__name" required>
 			</div>
 			<div class="form_container__form__input_field">
-				<select required id="gender" type="text" class="form_container__form__gender">
-					<option value="not-selected" selected>Select your gender</option>
-					<option value="male">Male</option>
-					<option value="female">Female</option>
-					<option value="other">Other</option>
+				<select name="gender"  required id="gender" type="text" class="form_container__form__gender">
+					<option value="Male">Male</option>
+					<option value="Female">Female</option>
+					<option value="Other">Other</option>
 				</select>
 			</div>
 			<div class="form_container__form__input_field">
-				<input type="date" placeholder="Enter DOB" class="form_container__form__dob" required>
+				<input type="date" name="dob" placeholder="Enter DOB" class="form_container__form__dob" required>
 			</div>
 			<div class="form_container__form__input_field">
-				<input type="text" placeholder="Enter Phone Number" class="form_container__form__phone" required>
+				<input name="phoneNumber" type="text" placeholder="Enter Phone Number" class="form_container__form__phone" required>
 			</div>
 			<div class="form_container__form__input_field">
-				<input type="email" placeholder="Enter Email" class="form_container__form__email" required>
+				<input name="email" type="email" placeholder="Enter Email" class="form_container__form__email" required>
 			</div>
 			<div class="form_container__form__input_field">
-				<input type="password" placeholder="Enter Password" class="form_container__form__password" required>
+				<input name="password" type="password" placeholder="Enter Password" class="form_container__form__password" required>
 			</div>
 			<div class="form_container__form__input_field">
-				<input type="text" id="city" placeholder="Enter City" class="form_container__form__city">
-				<input type="text" id="state" placeholder="Enter State" class="form_container__form__state">
+				<input name="city" type="text" id="city" placeholder="Enter City" class="form_container__form__city">
+				<input name="state" type="text" id="state" placeholder="Enter State" class="form_container__form__state">
 			</div>
 			<div class="form_container__form__input_field">
-				<select id="country" type="text" class="form_container__form__gender">
+				<select name="country" id="country" type="text" class="form_container__form__gender">
 					<option value="not-selected" selected>Select your Country</option>
 					<option value="male">India</option>
 					<option value="female">USA</option>

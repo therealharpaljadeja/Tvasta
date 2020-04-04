@@ -477,6 +477,7 @@
 		grid-auto-flow: column;
 		width: 100%;
 		overflow: hidden;
+		padding: 1rem;
 		&__card{
 			width: 100%;
 			background-color: $background-color;
@@ -760,7 +761,7 @@
 			}
 		}
 		&__grid{
-			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-columns: 1fr 1fr;
 			&__card{
 				&__user_info{
 					max-height: 12rem;
@@ -859,6 +860,8 @@
 		}
 	}
 	.testimonials{
-
+		&__grid{
+			grid-template-columns: 1fr 1fr 1fr;
+		}
 	}
 }

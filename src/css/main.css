@@ -3376,6 +3376,7 @@ html, body {
   grid-auto-flow: column;
   width: 100%;
   overflow: hidden;
+  padding: 1rem;
 }
 .tests__grid__card {
   width: 100%;
@@ -3614,7 +3615,7 @@ html, body {
     display: inline;
   }
   .testimonials__grid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
   .testimonials__grid__card__user_info {
     max-height: 12rem;
@@ -3684,6 +3685,10 @@ html, body {
   .tests__grid__card {
     justify-items: start;
     align-items: start;
+  }
+
+  .testimonials__grid {
+    grid-template-columns: 1fr 1fr 1fr;
   }
 }
 

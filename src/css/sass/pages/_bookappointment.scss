@@ -11,12 +11,18 @@
 				grid-gap: 1rem;
 				span{
 					font-size: 1.5rem;
-					font-family: $nexa-light;
+					font-family: $nexa-bold;
 				}
 			}
 			textarea{
-				font-family: $nexa-light;
+				&::placeholder{
+					color: #777;
+					font-size: 1.2rem;
+				}
+				font-family: $nexa-bold;
 				width: 100%;
+/* 				font-size: 1.5rem; */
+				// color: #777;
 			}
 			&__container{
 				height: 100%;
@@ -26,11 +32,11 @@
 				// grid-gap: 1rem;
 				label{
 					font-size: 1.3rem;
-					font-family: $nexa-light;
+					font-family: $nexa-bold;
 					line-height: 1.7rem;
 				}
 				input{
-					font-family: $nexa-light;
+					font-family: $nexa-bold;
 				}
 				input[type=radio]{
 					margin: 0;

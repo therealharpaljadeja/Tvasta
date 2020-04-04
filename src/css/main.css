@@ -2690,11 +2690,16 @@ html, body {
 }
 .form_container__form__input_field--book span {
   font-size: 1.5rem;
-  font-family: "Nexa Light";
+  font-family: "Nexa Bold";
 }
 .form_container__form__input_field textarea {
-  font-family: "Nexa Light";
+  font-family: "Nexa Bold";
   width: 100%;
+  /* 				font-size: 1.5rem; */
+}
+.form_container__form__input_field textarea::placeholder {
+  color: #777;
+  font-size: 1.2rem;
 }
 .form_container__form__input_field__container {
   height: 100%;
@@ -2704,11 +2709,11 @@ html, body {
 }
 .form_container__form__input_field__container label {
   font-size: 1.3rem;
-  font-family: "Nexa Light";
+  font-family: "Nexa Bold";
   line-height: 1.7rem;
 }
 .form_container__form__input_field__container input {
-  font-family: "Nexa Light";
+  font-family: "Nexa Bold";
 }
 .form_container__form__input_field__container input[type=radio] {
   margin: 0;

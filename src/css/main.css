@@ -3663,7 +3663,7 @@ html, body {
   .benefits__grid__col--1 {
     grid-column: span 2;
     grid-template-rows: 1fr 2fr;
-    max-width: 70rem;
+    max-width: 60rem;
     max-height: 25rem;
   }
   .benefits__grid .col .col-points .point {

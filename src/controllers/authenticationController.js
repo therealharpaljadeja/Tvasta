@@ -46,6 +46,7 @@ const login = async (req, res, next) => {
 		if(user){
 			if(passwordCorrect){
 				console.log(passwordCorrect);
+				req.session.userId = user.id;
 				res.redirect('/otp');	
 			} 
 			else {

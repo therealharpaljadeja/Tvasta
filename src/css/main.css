@@ -2708,7 +2708,7 @@ html, body {
   line-height: 1.7rem;
 }
 .form_container__form__input_field__container input {
-  font-family: "Nexa Bold";
+  font-family: "Nexa Light";
 }
 .form_container__form__input_field__container input[type=radio] {
   margin: 0;
@@ -3113,10 +3113,10 @@ html, body {
   text-align: center;
 }
 .trust__rating {
-  display: grid;
-  grid-template-columns: 100%;
+  display: flex;
+  flex-direction: column;
   justify-content: center;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
 }
 .trust__rating__count {
   display: grid;
@@ -3127,6 +3127,7 @@ html, body {
   font-family: "Nexa Bold";
   color: #0173b2;
   text-align: center;
+  font-size: 4rem;
 }
 .trust__rating__count__desc {
   text-align: center;
@@ -3244,17 +3245,13 @@ html, body {
   grid-template-columns: 100%;
   grid-gap: 2rem;
 }
-.benefits__grid .col {
-  display: grid;
-  grid-template-columns: 100%;
-  grid-gap: 2rem;
-}
 .benefits__grid .col .col-heading {
   font-family: "Nexa Bold";
   color: #2a2d3e;
   text-align: center;
 }
 .benefits__grid .col .col-points {
+  margin-top: 3rem;
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 1.5rem;
@@ -3542,13 +3539,19 @@ html, body {
   }
   .trust__rating {
     width: 100%;
-    grid-template-columns: 1fr 1fr;
+    flex-direction: row;
+    justify-content: center;
     grid-gap: 0;
-    align-self: center;
   }
   .trust__rating__count {
     max-height: 10rem;
     align-self: center;
+  }
+  .trust__rating__count__figure {
+    font-size: 5rem;
+  }
+  .trust__rating__bars {
+    width: 35rem;
   }
   .trust__statistics {
     grid-template-columns: 1fr 1fr 1fr 1fr;
@@ -3634,6 +3637,10 @@ html, body {
   }
   .pricing__heading__div span {
     text-align: center;
+  }
+
+  .trust__rating__bars {
+    width: 45rem;
   }
 
   .benefits__heading::after {

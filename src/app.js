@@ -71,7 +71,6 @@ app.get('/otp', (req, res) => {
 })
 
 app.post('/otp', (req, res) => {
-	
 	res.redirect('/');
 })
 

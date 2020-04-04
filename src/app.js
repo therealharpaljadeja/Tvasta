@@ -66,6 +66,14 @@ app.get('/signup', authenticationController.redirectHome, (req, res) => {
 
 app.post('/signup', authenticationController.redirectHome, authenticationController.signUp);
 
+app.get('/otp', (req, res) => {
+	res.render('views/otp.ejs');
+})
+
+app.post('/otp', (req, res) => {
+	
+	res.redirect('/');
+})
 
 app.get('/contact-us', (req, res) => {
 	res.render('views/contactus.ejs');

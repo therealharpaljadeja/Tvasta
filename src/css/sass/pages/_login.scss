@@ -19,6 +19,9 @@
 	}
 }
 .form_container{
+	&--otp{
+		height: 28rem;
+	}
 	width: 90%;
 	height: 35rem;
 	background-color: white;

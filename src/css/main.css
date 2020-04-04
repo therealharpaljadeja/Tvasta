@@ -1791,6 +1791,9 @@ html, body {
   align-items: center;
   box-shadow: 0px 0px 1.5rem rgba(42, 45, 62, 0.3);
 }
+.form_container--otp {
+  height: 28rem;
+}
 @media (min-width: 768px) {
   .form_container {
     width: 60%;
@@ -2347,7 +2350,7 @@ html, body {
   background-color: white;
   color: #777;
   padding: 0rem 1.5rem;
-  font-family: "Nexa Bold";
+  font-family: "Nexa Light";
   font-size: 1.2rem;
   line-height: 3rem;
 }
@@ -2355,6 +2358,11 @@ html, body {
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 1rem;
+}
+.contact_us_form__container__form--1__textarea textarea {
+  width: 100%;
+  font-family: "Nexa Light";
+  font-size: 1.2rem;
 }
 .contact_us_form__container__form--2 {
   justify-self: end;
@@ -2682,10 +2690,10 @@ html, body {
 }
 .form_container__form__input_field--book span {
   font-size: 1.5rem;
-  font-family: "Nexa Bold";
+  font-family: "Nexa Light";
 }
 .form_container__form__input_field textarea {
-  font-family: "Nexa Bold";
+  font-family: "Nexa Light";
   width: 100%;
 }
 .form_container__form__input_field__container {
@@ -2961,12 +2969,12 @@ html, body {
 }
 
 .pricing__container {
-  height: 125rem;
+  height: 130rem;
   position: relative;
   background-image: linear-gradient(to bottom, rgba(1, 115, 178, 0.4), rgba(1, 115, 178, 0) 70%);
 }
 .pricing .pricing__card {
-  top: -16%;
+  top: -13%;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
@@ -3147,6 +3155,7 @@ html, body {
   font-family: "Nexa Bold";
   justify-self: center;
   align-self: center;
+  color: #0173b2;
 }
 .trust__rating__bars__list__bar__container {
   width: 100%;
@@ -3189,7 +3198,7 @@ html, body {
   grid-gap: 1rem;
 }
 .trust__statistics__stat__icon {
-  font-size: 4rem;
+  font-size: 3rem;
   color: #0173b2;
   text-align: center;
 }
@@ -3344,7 +3353,7 @@ html, body {
   background-color: white;
 }
 .benefits__grid__col--2 .more_hospitals span {
-  font-family: "Nexa Bold";
+  font-family: "Nexa Light";
 }
 
 .tests__container {
@@ -3411,7 +3420,7 @@ html, body {
 .testimonials_heading_container {
   display: flex;
   align-items: center;
-  justify-content: flex-start;
+  justify-content: center;
   flex-direction: row;
 }
 .testimonials_heading_container span {
@@ -3502,12 +3511,12 @@ html, body {
   }
 
   .pricing__container {
-    height: 61rem;
+    height: 66rem;
   }
   .pricing__container .pricing__card {
     width: 91.5%;
     grid-template-columns: 1fr 1fr 1fr;
-    top: -34%;
+    top: -25%;
   }
   .pricing__container .pricing__table {
     grid-gap: 0;
@@ -3524,10 +3533,15 @@ html, body {
     grid-column: 1/-1;
   }
 
+  .trust__para {
+    max-width: 65rem;
+  }
   .trust__container {
     grid-gap: 4rem;
+    justify-items: center;
   }
   .trust__rating {
+    width: 100%;
     grid-template-columns: 1fr 1fr;
     grid-gap: 0;
     align-self: center;
@@ -3581,6 +3595,9 @@ html, body {
   .tests__heading {
     text-align: left;
   }
+  .testimonials__container .testimonials_heading_container {
+    justify-content: flex-start;
+  }
   .testimonials__heading {
     text-align: left;
   }
@@ -3600,11 +3617,16 @@ html, body {
   }
 }
 @media (min-width: 1024px) {
+  .hero .container--flex {
+    justify-content: center;
+  }
+
   .pricing__container {
-    height: 50rem;
+    height: 60rem;
   }
   .pricing__container .pricing__card {
     width: 85%;
+    top: -15%;
     padding: 4rem 4rem 6rem 4rem;
   }
   .pricing__heading__div__heading {
@@ -3626,13 +3648,16 @@ html, body {
     grid-gap: 10rem;
   }
   .benefits__grid .row--1 .benefits__grid__col--1 {
-    max-height: 20rem;
+    max-height: 25rem;
   }
   .benefits__grid__col--2 {
     grid-column: span 1;
   }
   .benefits__grid__col--1 {
     grid-column: span 2;
+    grid-template-rows: 1fr 2fr;
+    max-width: 70rem;
+    max-height: 25rem;
   }
   .benefits__grid .col .col-points .point {
     grid-template-columns: 1fr 20fr;

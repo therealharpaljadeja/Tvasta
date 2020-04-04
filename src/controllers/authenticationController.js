@@ -1,5 +1,5 @@
 const User = require('./../models/userModel');
-
+const bcrypt = require('bcryptjs');
 
 
 // Check if user is logged in if he is not then redirect to login page. 
@@ -40,11 +40,17 @@ const signUp = async (req, res, next) => {
 
 const login = async (req, res, next) => {
 	
-	if(req.body.phoneNumber && req.body.otp){
+	if(req.body.phoneNumber && req.body.password){
 		const user = await User.findOne({ phoneNumber: req.body.phoneNumber });
-		if(user) {
-			req.session.userId = user.id;
-			res.status(200).redirect('/');	
+		const passwordCorrect = await user.comparePassword(req.body.password, user.password); 
+		if(user){
+			if(passwordCorrect){
+				console.log(passwordCorrect);
+				res.redirect('/otp');	
+			} 
+			else {
+				res.redirect('/login');
+			}
 		}
 		else res.redirect('/login');
 	} 

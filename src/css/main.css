@@ -1780,7 +1780,7 @@ html, body {
 
 .form_container {
   width: 90%;
-  height: 35rem;
+  height: 40rem;
   background-color: white;
   margin: auto;
   margin: 3rem auto;
@@ -1793,6 +1793,9 @@ html, body {
 }
 .form_container--otp {
   height: 28rem;
+}
+.form_container--phone {
+  height: 30rem;
 }
 @media (min-width: 768px) {
   .form_container {
@@ -1818,6 +1821,16 @@ html, body {
   display: grid;
   grid-template-columns: 100%;
   grid-gap: 1rem;
+}
+.form_container__form .try_another_method {
+  text-align: center;
+}
+.form_container__form .try_another_method a {
+  text-decoration: none;
+  color: #0173b2;
+}
+.form_container__form .try_another_method a span {
+  font-family: "Nexa Bold";
 }
 .form_container__form__input_field {
   position: relative;

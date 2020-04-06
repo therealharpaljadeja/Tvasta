@@ -3,7 +3,7 @@
 <head>
 	<meta charset="UTF-8">
 	<%- include('partials/head.ejs') %>
-	<title>Login</title>
+	<title>Email Login</title>
 </head>
 <body class="login-body">
 	<div class="login-body-flex">
@@ -11,15 +11,16 @@
 		<%- include('partials/header.ejs') %>
 	</header>
 		<section class="form_container">
-			<h1 class="form_container__heading">Login</h1>
-			<form method="POST" action="/login" class="form_container__form">
+			<h1 class="form_container__heading">Email Login</h1>
+			<form method="POST" action="/email-login" class="form_container__form">
 				<div class="form_container__form__input_field">
-					<input name="phoneNumber" type="text" placeholder="Enter Mobile Number" class="form_container__form__phone_number" required>
+					<input name="email" type="email" placeholder="Enter Email Address" class="form_container__form__phone_number" required>
 					<i class="fas fa-question-circle"></i>
 				</div>
 				<div class="form_container__form__input_field">
 					<input type="text" name="password" placeholder="Enter Password" class="form_container__form__password" required>
 				</div>
+				<div class="try_another_method"><a href="/phone-login"><span class="para-1">Try Another Method</span></a></div>
 				<button type="submit" class="form_container__form__submit">
 					<span class="form_container__form__submit__text">Login</span>
 					<span class="form_container__form__submit__icon"><i class="fas fa-arrow-right"></i></span>

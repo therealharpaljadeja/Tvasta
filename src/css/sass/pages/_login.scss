@@ -22,8 +22,11 @@
 	&--otp{
 		height: 28rem;
 	}
+	&--phone{
+		height: 30rem;
+	}
 	width: 90%;
-	height: 35rem;
+	height: 40rem;
 	background-color: white;
 	margin: auto;
 	margin: 3rem auto;
@@ -53,6 +56,16 @@
 		display: grid;
 		grid-template-columns: 100%;
 		grid-gap: 1rem;
+		.try_another_method{
+			text-align: center;
+			a{
+				text-decoration: none;
+				color: $bright-blue;
+				span{
+					font-family: $nexa-bold;	
+				}
+			}
+		}
 		&__input_field{
 			position: relative;
 			i{

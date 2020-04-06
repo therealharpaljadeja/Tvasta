@@ -52,11 +52,18 @@ app.get('/treatments', (req, res) => {
 	res.render('views/treatments.ejs');
 });
 
-app.get('/login', authenticationController.redirectHome ,(req, res) => {
-	res.render('views/login.ejs');
+app.get('/email-login', authenticationController.redirectHome ,(req, res) => {
+	res.render('views/email-login.ejs');
 });
 
-app.post('/login', authenticationController.redirectHome, authenticationController.login);
+app.post('/email-login', authenticationController.redirectHome, authenticationController.emailLogin);
+
+
+app.get('/phone-login', authenticationController.checkCancel, authenticationController.redirectHome ,(req, res) => {
+	res.render('views/phone-login.ejs');
+});
+
+app.post('/phone-login', authenticationController.redirectHome, authenticationController.phoneLogin);
 
 
 app.get('/signup', authenticationController.redirectHome, (req, res) => {
@@ -70,9 +77,11 @@ app.get('/otp', (req, res) => {
 	res.render('views/otp.ejs');
 })
 
-app.post('/otp', (req, res) => {
+app.post('/otp', authenticationController.checkOTP, (req, res) => {
 	res.redirect('/');
 })
+
+// app.post('/cancel-otp', authenticationController.cancelOtp);
 
 app.get('/contact-us', (req, res) => {
 	res.render('views/contactus.ejs');

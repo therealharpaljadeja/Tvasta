@@ -81,7 +81,7 @@ app.post('/otp', authenticationController.checkOTP, (req, res) => {
 	res.redirect('/');
 })
 
-// app.post('/cancel-otp', authenticationController.cancelOtp);
+app.post('/cancel-otp', authenticationController.cancelOTP);
 
 app.get('/contact-us', (req, res) => {
 	res.render('views/contactus.ejs');

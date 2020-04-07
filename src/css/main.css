@@ -1833,7 +1833,13 @@ html, body {
   font-family: "Nexa Bold";
 }
 .form_container__form__input_field {
+  text-align: center;
   position: relative;
+}
+.form_container__form__input_field #cancelLogin {
+  color: #0173b2;
+  text-align: center;
+  font-family: "Nexa Bold";
 }
 .form_container__form__input_field i {
   position: absolute;

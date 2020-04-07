@@ -16,7 +16,7 @@ app.use(session({
 	resave: false,
 	saveUninitialized: false,
 	cookie: {
-		maxAge: 1000 * 60 * 60 * 24 * 90,
+		maxAge: 1000 * 60 * 60 * 24,
 		sameSite: true,
 		secure: false
 	}
@@ -80,8 +80,6 @@ app.get('/otp', (req, res) => {
 app.post('/otp', authenticationController.checkOTP, (req, res) => {
 	res.redirect('/');
 })
-
-app.post('/cancel-otp', authenticationController.cancelOTP);
 
 app.get('/contact-us', (req, res) => {
 	res.render('views/contactus.ejs');

@@ -65,25 +65,25 @@ const phoneLogin = async (req, res, next) => {
 	
 	if(req.body.phoneNumber){
 		const user = await User.findOne({ phoneNumber: req.body.phoneNumber });
-		console.log(user);
 		// const passwordCorrect = await user.comparePassword(req.body.password, user.password); 
+		const nexmoRequestOTPCallback = (err, result) => {
+			if(err) console.log(err);
+			else{
+				req.session.request_id = result.request_id;
+				console.log(req.session);
+				req.session.user = user;
+				res.redirect('/otp');	
+			}
+		}
 		if(user){
 				nexmo.verify.request({
 					number: '91' + req.body.phoneNumber,
 					brand: 'Tvastra',
 					code_length: '4',
-				}, (err, result) => {
-					if(err) console.log(err);
-					else {
-						console.log(result);
-						console.log(req.session);
-						req.session.request_id = result.request_id;
-						console.log('request_id', req.session.request_id);
-						console.log(req.session);
-					}
-				});
+					workflow_id: '6',
+					pin_expiry: '60'
+				}, nexmoRequestOTPCallback);
 				// console.log('91' + req.body.phoneNumber);
-				res.redirect('/otp');	
 		} else {
 			res.redirect('/phone-login');
 		}
@@ -92,45 +92,31 @@ const phoneLogin = async (req, res, next) => {
 
 // This function requests OTP for the user number from nexmo.
 const checkOTP = async (req, res, next) => {
+	const nexmoVerifyCallback = (err, result) => {
+		if(err) console.log(err);
+		else {
+			req.session.userId = req.session.user._id;
+			req.session.request_id = null;
+			req.session.save();
+			console.log(req.session);
+			next();
+		}
+
+	}
+
 	if(req.body.otp.length === 4){
 		nexmo.verify.check({
 			request_id: req.session.request_id,
 			code: req.body.otp
-		},(err, result) => {
-			if(err) console.log(err);
-			else {
-				console.log(result);
-				req.session.userId = user.id;
-				req.user = user;
-				req.session.request_id = null;
-				next();
-			}
-		})	
+		}, nexmoVerifyCallback);	
 	} else {
 		res.redirect('/otp');
 	}
 }
 
-const cancelOTP = async (req, res, next) => {
-	console.log(req.session);
-	nexmo.verify.control({
-		request_id: req.session.request_id,
-		cmd: 'cancel',
-	}, (err, result) => {
-		if(err) console.log(err);
-		else {
-			req.session.destroy((err) => {
-				if(err) console.log(err);
-				else console.log('Session destroyed Successfully');
-			});
-			console.log('Login Cancelled by User');
-			res.redirect('/phone-login');	
-		}
-	});
-}
 
 const checkCancel = (req, res, next) => {
-	if(req.request_id) res.redirect('/otp');
+	if(req.session.request_id) res.redirect('/otp');
 	next();
 }
 
@@ -141,6 +127,5 @@ module.exports = {
 	phoneLogin: phoneLogin,
 	emailLogin: emailLogin,
 	checkOTP: checkOTP,
-	cancelOTP: cancelOTP,
 	checkCancel: checkCancel
 }

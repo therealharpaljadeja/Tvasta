@@ -67,6 +67,12 @@
 			}
 		}
 		&__input_field{
+			text-align: center;
+			#cancelLogin{
+				color: $bright-blue;
+				text-align: center;
+				font-family: $nexa-bold;
+			}
 			position: relative;
 			i{
 				position: absolute;

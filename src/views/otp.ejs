@@ -10,15 +10,32 @@
 		<header>
 		<%- include('partials/header.ejs') %>
 	</header>
+	<% if(error) {%>
+	<div class="error_container">
+		<div class="col--1">
+			<div class="error_container__icon">
+				<i class="fas fa-times-circle"></i>
+			</div>	
+		</div>
+		<div class="col--2">
+			<div class="error_container__title heading-3">
+				Failure
+			</div>
+			<span class="para-1 error" id="cancelLogin"><%= error %> <!-- Valid Only for 60 Seconds. --></span>	
+		</div>
+		<div class="col--3">
+			<div class="error_container__icon" id="cross">
+				<i class="fas fa-times"></i>
+			</div>		
+		</div>
+	</div>
+	<% } %>
 		<section class="form_container form_container--otp">
 			<h1 class="form_container__heading">OTP</h1>
 			<form method="POST" action="/otp" class="form_container__form">
 				<div class="form_container__form__input_field">
 					<input name="otp" type="text" placeholder="Enter OTP" class="form_container__form__otp" required>
 					<i class="fas fa-question-circle"></i>
-				</div>
-				<div class="form_container__form__input_field">
-					<span class="para-1" id="cancelLogin"><%= error %> <!-- Valid Only for 60 Seconds. --></span>
 				</div>
 				<button type="submit" class="form_container__form__submit">
 					<span class="form_container__form__submit__text">Submit</span>
@@ -31,5 +48,6 @@
 		</section>	
 	</div>
 	<script type="text/javascript" src="bundle.js"></script>
+	<script src="error.js"></script>
 </body>
 </html>

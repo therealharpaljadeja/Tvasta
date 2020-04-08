@@ -10,15 +10,32 @@
 		<header>
 		<%- include('partials/header.ejs') %>
 	</header>
+	<% if(error) {%>
+	<div class="error_container">
+		<div class="col--1">
+			<div class="error_container__icon">
+				<i class="fas fa-times-circle"></i>
+			</div>	
+		</div>
+		<div class="col--2">
+			<div class="error_container__title heading-3">
+				Failure
+			</div>
+			<span class="para-1 error" id="cancelLogin"><%= error %> <!-- Valid Only for 60 Seconds. --></span>	
+		</div>
+		<div class="col--3">
+			<div class="error_container__icon" id="cross">
+				<i class="fas fa-times"></i>
+			</div>		
+		</div>
+	</div>
+	<% } %>
 		<section class="form_container form_container--phone">
 			<h1 class="form_container__heading">Phone Login</h1>
 			<form method="POST" action="/phone-login" class="form_container__form">
 				<div class="form_container__form__input_field">
 					<input name="phoneNumber" type="text" placeholder="Enter Mobile Number" class="form_container__form__phone_number" required>
 					<i class="fas fa-question-circle"></i>
-				</div>
-				<div class="form_container__form__input_field">
-					<span class="para-1 error" id="cancelLogin"><%= error %></span>
 				</div>
 				<div class="try_another_method"><a href="/email-login"><span class="para-1">Try Another Method</span></a></div>
 				<button type="submit" class="form_container__form__submit">
@@ -33,5 +50,6 @@
 		</section>	
 	</div>
 	<script type="text/javascript" src="index.js"></script>
+	<script src="error.js"></script>
 </body>
 </html>

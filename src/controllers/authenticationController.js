@@ -59,12 +59,10 @@ const emailLogin = async (req, res, next) => {
 				res.redirect('/');	
 			} else {
 				req.session.error = "Incorrect Email or Password."
-				console.log(req.session.error);
 				res.redirect('/email-login');	
 			}
 		} else {
-			req.session.error = "Incorrect Email or Password."
-			console.log(req.session.error);
+			req.session.error = "Email Not Registered"
 			res.redirect('/email-login');
 		}
 	}
@@ -79,7 +77,6 @@ const phoneLogin = async (req, res, next) => {
 			if(err) console.log(err);
 			else{
 				req.session.request_id = result.request_id;
-				console.log(req.session);
 				req.session.user = user;
 				res.redirect('/otp');	
 			}
@@ -104,15 +101,12 @@ const phoneLogin = async (req, res, next) => {
 const checkOTP = async (req, res, next) => {
 	const nexmoVerifyCallback = (err, result) => {
 		if(err) {
-			console.log(err)
 			req.session.error('Please try again after some time.');
 			res.redirect('/otp');
 		}
 		else {
-			console.log(result);
 			if(result.error_text == 'The code provided does not match the expected value'){
 				req.session.error = 'Incorrect OTP';
-				console.log(req.session);
 				res.redirect('/otp');
 			} else {
 				req.session.error = '';
@@ -142,11 +136,9 @@ const checkCancel = (req, res, next) => {
 }
 
 const logout = (req, res, next) => {
-	console.log(req.session);
 	req.session.userId = undefined;
 	req.session.user = undefined;
 	req.session.error = '';
-	console.log(req.session);
 	res.redirect('/email-login');
 }
 

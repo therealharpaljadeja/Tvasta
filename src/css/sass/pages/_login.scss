@@ -1,3 +1,46 @@
+.error_container{
+	@media(min-width: $bp-mobile){
+		width: 30rem;
+	}
+	&--success{
+		border-left: 4px solid green;
+		color: green;
+		.col--2{
+			#cancelLogin{
+				color: green;
+			}	
+		}
+	}
+	display: grid;
+	grid-template-columns: 1fr 10fr 1fr;
+	align-items: center;
+	grid-gap: 2rem;
+	padding: 2rem;
+	background-color: $background-color;
+	width: 40rem;
+	color: red;
+	position: absolute;
+	top: 11rem;
+	right: 1rem;
+	border-left: 4px solid red;
+	box-shadow: 0px 0px 2rem rgba(0,0,0,.2);
+	&__icon{
+		font-size: 3rem;
+		.fa-times{
+			font-size: 2rem;
+			color: $grey-1;
+		}
+	}
+	&__title{
+		font-family: $nexa-bold;
+	}
+	#cancelLogin{
+		color: red;
+		text-align: center;
+		font-family: $nexa-bold;
+	}
+}
+
 .login-body{
 	&-flex{
 		display: flex;
@@ -16,39 +59,6 @@
 		@media(min-width: $bp-desktop){
 			height: 10rem;	
 		}	 
-	}
-	.error_container{
-		@media(min-width: $bp-mobile){
-			width: 30rem;
-		}
-		display: grid;
-		grid-template-columns: 1fr 10fr 1fr;
-		align-items: center;
-		grid-gap: 2rem;
-		padding: 2rem;
-		background-color: $background-color;
-		width: 40rem;
-		color: red;
-		position: absolute;
-		top: 11rem;
-		right: 1rem;
-		border-left: 4px solid red;
-		box-shadow: 0px 0px 2rem rgba(0,0,0,.2);
-		&__icon{
-			font-size: 3rem;
-			.fa-times{
-				font-size: 2rem;
-				color: $grey-1;
-			}
-		}
-		&__title{
-			font-family: $nexa-bold;
-		}
-		#cancelLogin{
-			color: red;
-			text-align: center;
-			font-family: $nexa-bold;
-		}
 	}
 }
 .form_container{

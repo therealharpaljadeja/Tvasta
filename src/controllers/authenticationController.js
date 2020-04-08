@@ -55,7 +55,7 @@ const emailLogin = async (req, res, next) => {
 			if(passwordCorrect){
 				req.session.userId = user.id;
 				req.user = user;
-				req.session.error = '';
+				req.session.error = 'Login Successful';
 				res.redirect('/');	
 			} else {
 				req.session.error = "Incorrect Email or Password."
@@ -109,7 +109,7 @@ const checkOTP = async (req, res, next) => {
 				req.session.error = 'Incorrect OTP';
 				res.redirect('/otp');
 			} else {
-				req.session.error = '';
+				req.session.error = 'Login Successful';
 				req.session.userId = req.session.user._id;
 				req.session.request_id = null;
 				req.session.save();

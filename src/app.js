@@ -29,7 +29,7 @@ app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
 
 app.get('/', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/index.ejs', {session: req.session});
+	res.render('views/index.ejs', {error: req.session.error, session: req.session});
 });
 
 const dev_data_string = fs.readFileSync('dev_data.json').toString();

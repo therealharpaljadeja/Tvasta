@@ -1755,6 +1755,49 @@ html, body {
     margin: 0rem 4rem 4rem;
   }
 }
+.error_container {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  align-items: center;
+  grid-gap: 2rem;
+  padding: 2rem;
+  background-color: white;
+  width: 40rem;
+  color: red;
+  position: absolute;
+  top: 11rem;
+  right: 1rem;
+  border-left: 4px solid red;
+  box-shadow: 0px 0px 2rem rgba(0, 0, 0, 0.2);
+}
+@media (min-width: 375px) {
+  .error_container {
+    width: 30rem;
+  }
+}
+.error_container--success {
+  border-left: 4px solid green;
+  color: green;
+}
+.error_container--success .col--2 #cancelLogin {
+  color: green;
+}
+.error_container__icon {
+  font-size: 3rem;
+}
+.error_container__icon .fa-times {
+  font-size: 2rem;
+  color: #525659;
+}
+.error_container__title {
+  font-family: "Nexa Bold";
+}
+.error_container #cancelLogin {
+  color: red;
+  text-align: center;
+  font-family: "Nexa Bold";
+}
+
 .login-body {
   background-color: #9cbfda;
   position: relative;
@@ -1776,41 +1819,6 @@ html, body {
   .login-body .navbar {
     height: 10rem;
   }
-}
-.login-body .error_container {
-  display: grid;
-  grid-template-columns: 1fr 10fr 1fr;
-  align-items: center;
-  grid-gap: 2rem;
-  padding: 2rem;
-  background-color: white;
-  width: 40rem;
-  color: red;
-  position: absolute;
-  top: 11rem;
-  right: 1rem;
-  border-left: 4px solid red;
-  box-shadow: 0px 0px 2rem rgba(0, 0, 0, 0.2);
-}
-@media (min-width: 375px) {
-  .login-body .error_container {
-    width: 30rem;
-  }
-}
-.login-body .error_container__icon {
-  font-size: 3rem;
-}
-.login-body .error_container__icon .fa-times {
-  font-size: 2rem;
-  color: #525659;
-}
-.login-body .error_container__title {
-  font-family: "Nexa Bold";
-}
-.login-body .error_container #cancelLogin {
-  color: red;
-  text-align: center;
-  font-family: "Nexa Bold";
 }
 
 .form_container {

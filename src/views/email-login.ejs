@@ -18,7 +18,10 @@
 					<i class="fas fa-question-circle"></i>
 				</div>
 				<div class="form_container__form__input_field">
-					<input type="text" name="password" placeholder="Enter Password" class="form_container__form__password" required>
+					<input type="password" name="password" placeholder="Enter Password" class="form_container__form__password" required>
+				</div>
+				<div class="form_container__form__input_field">
+					<span class="para-1 error" id="cancelLogin"><%= error %> <!-- Valid Only for 60 Seconds. --></span>
 				</div>
 				<div class="try_another_method"><a href="/phone-login"><span class="para-1">Try Another Method</span></a></div>
 				<button type="submit" class="form_container__form__submit">

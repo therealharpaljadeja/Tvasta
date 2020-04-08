@@ -36,31 +36,31 @@ const dev_data_string = fs.readFileSync('dev_data.json').toString();
 const dev_data_json = JSON.parse(dev_data_string);
 
 
-app.get('/doctors', (req, res) => {
+app.get('/doctors', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/doctor.ejs', doctors = dev_data_json.doctors);
 });
 
-app.get('/hospitals', (req, res) => {
+app.get('/hospitals', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/hospital.ejs', hospital = dev_data_json.hospitals);
 });
 
-app.get('/about', (req, res) => {
+app.get('/about', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/about.ejs');
 });
 
-app.get('/treatments', (req, res) => {
+app.get('/treatments', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/treatments.ejs');
 });
 
-app.get('/email-login', authenticationController.redirectHome ,(req, res) => {
-	res.render('views/email-login.ejs');
+app.get('/email-login', authenticationController.redirectHome, (req, res) => {
+	res.render('views/email-login.ejs', {error: req.session.error || '' });
 });
 
 app.post('/email-login', authenticationController.redirectHome, authenticationController.emailLogin);
 
 
 app.get('/phone-login', authenticationController.checkCancel, authenticationController.redirectHome ,(req, res) => {
-	res.render('views/phone-login.ejs');
+	res.render('views/phone-login.ejs', {error: req.session.error || '' });
 });
 
 app.post('/phone-login', authenticationController.redirectHome, authenticationController.phoneLogin);
@@ -74,14 +74,14 @@ app.get('/signup', authenticationController.redirectHome, (req, res) => {
 app.post('/signup', authenticationController.redirectHome, authenticationController.signUp);
 
 app.get('/otp', (req, res) => {
-	res.render('views/otp.ejs');
+	res.render('views/otp.ejs', {error: req.session.error || 'Valid Only for 60 secs'});
 })
 
 app.post('/otp', authenticationController.checkOTP, (req, res) => {
 	res.redirect('/');
 })
 
-app.get('/contact-us', (req, res) => {
+app.get('/contact-us', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/contactus.ejs');
 });
 
@@ -110,6 +110,8 @@ app.get('/submit-your-query', (req, res) => {
 app.get('/book-an-appointment', (req, res) => {
 	res.render('views/bookappointment.ejs');
 });
+
+app.get('/logout', authenticationController.logout);
 
 module.exports = app;
 

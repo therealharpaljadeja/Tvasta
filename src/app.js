@@ -29,7 +29,7 @@ app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
 
 app.get('/', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/index.ejs');
+	res.render('views/index.ejs', {session: req.session});
 });
 
 const dev_data_string = fs.readFileSync('dev_data.json').toString();
@@ -37,44 +37,44 @@ const dev_data_json = JSON.parse(dev_data_string);
 
 
 app.get('/doctors', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/doctor.ejs', doctors = dev_data_json.doctors);
+	res.render('views/doctor.ejs', {doctors : dev_data_json.doctors, session: req.session});
 });
 
 app.get('/hospitals', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/hospital.ejs', hospital = dev_data_json.hospitals);
+	res.render('views/hospital.ejs', {hospital : dev_data_json.hospitals, session: req.session});
 });
 
 app.get('/about', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/about.ejs');
+	res.render('views/about.ejs', {session: req.session});
 });
 
 app.get('/treatments', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/treatments.ejs');
+	res.render('views/treatments.ejs', {session: req.session});
 });
 
 app.get('/email-login', authenticationController.redirectHome, (req, res) => {
-	res.render('views/email-login.ejs', {error: req.session.error || '' });
+	res.render('views/email-login.ejs', {error: req.session.error || '', session: req.session });
 });
 
 app.post('/email-login', authenticationController.redirectHome, authenticationController.emailLogin);
 
 
 app.get('/phone-login', authenticationController.checkCancel, authenticationController.redirectHome ,(req, res) => {
-	res.render('views/phone-login.ejs', {error: req.session.error || '' });
+	res.render('views/phone-login.ejs', {error: req.session.error || '', session: req.session});
 });
 
 app.post('/phone-login', authenticationController.redirectHome, authenticationController.phoneLogin);
 
 
 app.get('/signup', authenticationController.redirectHome, (req, res) => {
-	res.render('views/signup.ejs');
+	res.render('views/signup.ejs', {session: req.session});
 });
 
 
 app.post('/signup', authenticationController.redirectHome, authenticationController.signUp);
 
 app.get('/otp', (req, res) => {
-	res.render('views/otp.ejs', {error: req.session.error || 'Valid Only for 60 secs'});
+	res.render('views/otp.ejs', {error: req.session.error || 'Valid Only for 60 secs', session: req.session});
 })
 
 app.post('/otp', authenticationController.checkOTP, (req, res) => {
@@ -82,33 +82,33 @@ app.post('/otp', authenticationController.checkOTP, (req, res) => {
 })
 
 app.get('/contact-us', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/contactus.ejs');
+	res.render('views/contactus.ejs', {session: req.session});
 });
 
 
 app.get('/hospital-details', (req, res) => {
-	res.render('views/hospital_details.ejs');
+	res.render('views/hospital_details.ejs', {session: req.session});
 });
 
 
 app.get('/doctor-details', (req, res) => {
-	res.render('views/doctor_details.ejs');
+	res.render('views/doctor_details.ejs', {session: req.session});
 });
 
 app.get('/faq', (req, res) => {
-	res.render('views/faq.ejs');
+	res.render('views/faq.ejs', {session: req.session});
 });
 
 app.get('/tvastra-plus', (req, res) => {
-	res.render('views/tvastra-plus.ejs');
+	res.render('views/tvastra-plus.ejs', {session: req.session});
 });
 
 app.get('/submit-your-query', (req, res) => {
-	res.render('views/submit_your_query.ejs');
+	res.render('views/submit_your_query.ejs', {session: req.session});
 });
 
 app.get('/book-an-appointment', (req, res) => {
-	res.render('views/bookappointment.ejs');
+	res.render('views/bookappointment.ejs', {session: req.session});
 });
 
 app.get('/logout', authenticationController.logout);

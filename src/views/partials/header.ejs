@@ -24,11 +24,13 @@
 		</ul>
 	</div>
 	<div class="navbar__buttons">
+		<% if(session.userId) { %>
 		<a href="/logout" class="navbar__buttons__button-link">
 			<button class="navbar__buttons-login">
 				Logout
 			</button>
 		</a>
+		<% } %>
 		<a href="get-a-quote.html">
 			<button class="navbar__buttons-quote">
 				Get A Quote 

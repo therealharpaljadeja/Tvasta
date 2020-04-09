@@ -35,6 +35,7 @@ app.get('/', authenticationController.redirectLogin, (req, res) => {
 const dev_data_string = fs.readFileSync('dev_data.json').toString();
 const dev_data_json = JSON.parse(dev_data_string);
 
+app.put('/disable-error', authenticationController.clearError);
 
 app.get('/doctors', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/doctor.ejs', {doctors : dev_data_json.doctors, session: req.session});
@@ -54,6 +55,7 @@ app.get('/treatments', authenticationController.redirectLogin, (req, res) => {
 
 app.get('/email-login', authenticationController.redirectHome, (req, res) => {
 	res.render('views/email-login.ejs', {error: req.session.error || '', session: req.session });
+	req.session.error = "";
 });
 
 app.post('/email-login', authenticationController.redirectHome, authenticationController.emailLogin);
@@ -61,6 +63,7 @@ app.post('/email-login', authenticationController.redirectHome, authenticationCo
 
 app.get('/phone-login', authenticationController.checkCancel, authenticationController.redirectHome ,(req, res) => {
 	res.render('views/phone-login.ejs', {error: req.session.error || '', session: req.session});
+	req.session.error = "";
 });
 
 app.post('/phone-login', authenticationController.redirectHome, authenticationController.phoneLogin);

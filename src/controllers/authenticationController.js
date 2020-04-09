@@ -20,11 +20,18 @@ const redirectLogin = (req, res, next) => {
 	}
 }
 
+const clearError = (req, res, next) => {
+	req.session.error = "";
+	console.log('Error cleared');
+	next();
+}
+
+
 
 // Check if user is logged in if he is then redirect to home page.
 const redirectHome = (req, res, next) => {
 	if(req.session.userId){
-		res.redirect('/')
+		res.redirect('/');
 	} else {
 		next();
 	}
@@ -56,6 +63,7 @@ const emailLogin = async (req, res, next) => {
 				req.session.userId = user.id;
 				req.user = user;
 				req.session.error = 'Login Successful';
+				console.log(req.session.error);
 				res.redirect('/');	
 			} else {
 				req.session.error = "Incorrect Email or Password."
@@ -150,5 +158,6 @@ module.exports = {
 	emailLogin: emailLogin,
 	checkOTP: checkOTP,
 	checkCancel: checkCancel,
-	logout: logout
+	logout: logout,
+	clearError: clearError
 }

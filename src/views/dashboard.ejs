@@ -6,25 +6,124 @@
 	<%- include('partials/head.ejs') %>
 </head>
 <body>
-	<header>
-		<div class="admin_header">
-			<div class="logo_container">
-				<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" alt="" class="logo">
-			</div>
-			<div class="menu_container">
-				<ul class="menu">
-					<li class="menu-item">
-						<i class="item-icon"></i>
-						<p class="para-1"><a href="/admin-dashboard">Dashboard</a></p>
-					</li>
-					<li class="menu-item"></li>
-					<li class="menu-item"></li>
-					<li class="menu-item"></li>
-					<li class="menu-item"></li>
-					<li class="menu-item"></li>
-				</ul>
-			</div>
+	<sidebar class="admin_sidebar">
+		<div class="cross-sidebar">
+			<i class="fas fa-times"></i>
+		</div>
+		<div class="logo_container">
+			<a href="/admin"><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" alt="" class="logo"></a>
+		</div>
+		<div class="menu_container">
+			<ul class="menu">
+				<li class="menu-title para">
+					Medicine
+				</li>
+				<li class="menu-item">
+					<i class="item-icon fas fa-thermometer"></i>
+					<p class="para"><a href="/admin-dashboard">Dashboard</a></p>
+				</li>
+				<li class="menu-item">
+					<i class="item-icon fas fa-stethoscope"></i>
+					<p class="para"><a href="/admin-dashboard">Appointments</a></p>
+				</li>
+				<li class="menu-item">
+					<i class="item-icon fas fa-user-md"></i>
+					<p class="para"><a href="/admin-dashboard">Doctors</a></p>
+				</li>
+				<li class="menu-item">
+					<i class="item-icon fas fa-user-nurse"></i>
+					<p class="para"><a href="/admin-dashboard">Departments</a></p>
+				</li>
+				<li class="menu-item">
+					<i class="item-icon fas fa-user-injured"></i>
+					<p class="para"><a href="/admin-dashboard">Patients</a></p>
+				</li>	
+				<li class="menu-item">
+					<i class="item-icon fas fa-money-check-alt"></i>
+					<p class="para"><a href="/admin-dashboard">Payments</a></p>
+				</li>	
+
+			</ul>
+		</div>
+	</sidebar>
+	<header class="admin_header">
+		<div class="menu-burger">
+			<i class="fas fa-bars navbar__burger"></i>
+		</div>
+		<div class="bell-icon">
+			<i class="fas fa-bell"></i>
+		</div>
+		<div class="display-picture">
+			<img src="./../assets/femaleDoc.png" alt="">
+			<i class="fas fa-chevron-down"></i>
 		</div>
 	</header>
+	<section class="statistics_site">
+		<div class="statistics_site__grid">
+			<div class="statistics_site__grid__item">
+				<div class="statistics_site__grid__item__col--1">
+					<div class="statistics_site__grid__item__icon">
+						<i class="fas fa-medkit"></i>
+					</div>	
+				</div>
+				<div class="statistics_site__grid__item__col--2">
+					<div class="statistics_site__grid__item__title">
+						<h4 class="heading-4">Appointments</h4>
+					</div>
+					<div class="statistics_site__grid__item__figure">
+						<h4 class="heading-4">213</h4>
+					</div>	
+				</div>
+				
+			</div>
+			<div class="statistics_site__grid__item">
+				<div class="statistics_site__grid__item__col--1">
+					<div class="statistics_site__grid__item__icon">
+						<i class="fas fa-syringe"></i>
+					</div>	
+				</div>
+				<div class="statistics_site__grid__item__col--2">
+					<div class="statistics_site__grid__item__title">
+						<h4 class="heading-4">Operations</h4>
+					</div>
+					<div class="statistics_site__grid__item__figure">
+						<h4 class="heading-4">12</h4>
+					</div>	
+				</div>
+			</div>
+			<div class="statistics_site__grid__item">
+				<div class="statistics_site__grid__item__col--1">
+					<div class="statistics_site__grid__item__icon">
+						<i class="fas fa-user-injured"></i>
+					</div>	
+				</div>
+				<div class="statistics_site__grid__item__col--2">
+					<div class="statistics_site__grid__item__title">
+						<h4 class="heading-4">Patients</h4>
+					</div>
+					<div class="statistics_site__grid__item__figure">
+						<h4 class="heading-4">13</h4>
+					</div>	
+				</div>
+			</div>
+			<div class="statistics_site__grid__item">
+				<div class="statistics_site__grid__item__col--1">
+					<div class="statistics_site__grid__item__icon">
+						<i class="fas fa-rupee-sign"></i>
+					</div>	
+				</div>
+				<div class="statistics_site__grid__item__col--2">
+					<div class="statistics_site__grid__item__title">
+						<h4 class="heading-4">Hospital Earnings</h4>
+					</div>
+					<div class="statistics_site__grid__item__figure">
+						<h4 class="heading-4">₹ 21313</h4>
+					</div>	
+				</div>
+				
+			</div>
+		</div>
+	</section>
+	<script src="./../dashboard.js"></script>
 </body>
 </html>

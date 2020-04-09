@@ -5,7 +5,7 @@ const path = require('path');
 const session = require('express-session');
 const authenticationController = require('./controllers/authenticationController');
 const User = require('./models/userModel');
-
+const adminRoutes = require('./routes/adminRoutes');
 
 // Middlewares
 app = express();
@@ -28,11 +28,10 @@ app.use(express.static(path.join(__dirname)));
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
 
-app.get('/admin-dashboard', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
-	res.render('views/dashboard.ejs', {session: req.session});
-})
+app.use('/admin', adminRoutes);
 
-app.get('/', authenticationController.redirectLogin2, (req, res) => {
+
+app.get('/', authenticationController.redirectLogin2, authenticationController.redirectAdmin, (req, res) => {
 	res.render('views/index.ejs', {error: req.session.error, session: req.session});
 });
 

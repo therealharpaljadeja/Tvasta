@@ -41,7 +41,7 @@ const clearError = (req, res, next) => {
 // Check if user is logged in if he is then redirect to home page.
 const redirectHome = (req, res, next) => {
 	if(req.session.userId){
-		if(req.session.user.role === 'admin') res.redirect('/admin-dashboard');
+		if(req.session.user.role === 'admin') res.redirect('/admin');
 		else res.redirect('/');
 	} else {
 		next();
@@ -77,7 +77,7 @@ const emailLogin = async (req, res, next) => {
 				req.session.error = 'Login Successful';
 				console.log(req.session.error);
 				console.log(req.session);
-				if(req.session.user.role === 'admin') res.redirect('/admin-dashboard');
+				if(req.session.user.role === 'admin') res.redirect('/admin');
 				else res.redirect('/');	
 			} else {
 				req.session.error = "Incorrect Email or Password."
@@ -165,14 +165,14 @@ const checkAdmin = (req, res, next) => {
 	} else {
 		req.session.error = 'Not Authorized';
 		console.log(req.session.error);
-		res.redirect('/email-login');
-	}
+		next();
+	} 
 }
 
 const redirectAdmin = (req, res, next) => {
 	if(req.session.userId){
 		if(req.session.user.role === 'admin'){
-			res.redirect('/admin-dashboard');
+			res.redirect('/admin');
 		} else {
 			res.redirect('/');
 		}	

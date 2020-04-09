@@ -9,11 +9,11 @@ const hideError = () => {
 }
 
 if(error){
+	fetch('/disable-error', {
+		method: 'put'
+	});
 	setTimeout(() => {
 		error.style.display = 'none';
-		fetch('/disable-error', {
-			method: 'put'
-		});
 	},5000);	
 } 
 cross.addEventListener('click', hideError);

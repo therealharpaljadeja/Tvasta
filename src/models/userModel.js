@@ -41,6 +41,11 @@ const userSchema = new mongoose.Schema({
 	country: {
 		type: String,
 		// required: [true, 'Every user must provide a country name']
+	},
+	role: {
+		type: String,
+		enum: ['admin', 'user'],
+		default: 'user'
 	}
 });
 

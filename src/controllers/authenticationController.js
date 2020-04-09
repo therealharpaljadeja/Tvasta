@@ -20,6 +20,16 @@ const redirectLogin = (req, res, next) => {
 	}
 }
 
+const redirectLogin2 = (req, res, next) => {
+	if(!req.session.userId){
+		res.redirect('/email-login');
+	} else {
+		next();
+	}
+}
+
+
+
 const clearError = (req, res, next) => {
 	req.session.error = "";
 	console.log('Error cleared');
@@ -31,7 +41,8 @@ const clearError = (req, res, next) => {
 // Check if user is logged in if he is then redirect to home page.
 const redirectHome = (req, res, next) => {
 	if(req.session.userId){
-		res.redirect('/');
+		if(req.session.user.role === 'admin') res.redirect('/admin-dashboard');
+		else res.redirect('/');
 	} else {
 		next();
 	}
@@ -50,6 +61,7 @@ const signUp = async (req, res, next) => {
 		country: req.body.country,	
 	});
 	req.session.userId = newUser.id;
+	req.session.error = 'Login Successful';
 	res.redirect('/');
 }
 
@@ -61,10 +73,12 @@ const emailLogin = async (req, res, next) => {
 			const passwordCorrect = await user.comparePassword(req.body.password, user.password);
 			if(passwordCorrect){
 				req.session.userId = user.id;
-				req.user = user;
+				req.session.user = user;
 				req.session.error = 'Login Successful';
 				console.log(req.session.error);
-				res.redirect('/');	
+				console.log(req.session);
+				if(req.session.user.role === 'admin') res.redirect('/admin-dashboard');
+				else res.redirect('/');	
 			} else {
 				req.session.error = "Incorrect Email or Password."
 				res.redirect('/email-login');	
@@ -143,15 +157,39 @@ const checkCancel = (req, res, next) => {
 	next();
 }
 
+
+
+const checkAdmin = (req, res, next) => {
+	if(req.session.user.role === 'admin') {
+		next();
+	} else {
+		req.session.error = 'Not Authorized';
+		console.log(req.session.error);
+		res.redirect('/email-login');
+	}
+}
+
+const redirectAdmin = (req, res, next) => {
+	if(req.session.userId){
+		if(req.session.user.role === 'admin'){
+			res.redirect('/admin-dashboard');
+		} else {
+			res.redirect('/');
+		}	
+	} 
+	
+}
+
 const logout = (req, res, next) => {
-	req.session.userId = undefined;
-	req.session.user = undefined;
+	delete req.session.userId;
+	delete req.session.user;
 	req.session.error = '';
 	res.redirect('/email-login');
 }
 
 module.exports = {
 	redirectLogin: redirectLogin,
+	redirectLogin2: redirectLogin2,
 	signUp: signUp,
 	redirectHome: redirectHome,
 	phoneLogin: phoneLogin,
@@ -159,5 +197,7 @@ module.exports = {
 	checkOTP: checkOTP,
 	checkCancel: checkCancel,
 	logout: logout,
-	clearError: clearError
+	clearError: clearError,
+	checkAdmin: checkAdmin,
+	redirectAdmin: redirectAdmin
 }

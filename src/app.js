@@ -28,7 +28,11 @@ app.use(express.static(path.join(__dirname)));
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
 
-app.get('/', authenticationController.redirectLogin, (req, res) => {
+app.get('/admin-dashboard', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
+	res.render('views/dashboard.ejs', {session: req.session});
+})
+
+app.get('/', authenticationController.redirectLogin2, (req, res) => {
 	res.render('views/index.ejs', {error: req.session.error, session: req.session});
 });
 
@@ -80,9 +84,7 @@ app.get('/otp', (req, res) => {
 	res.render('views/otp.ejs', {error: req.session.error || 'Valid Only for 60 secs', session: req.session});
 })
 
-app.post('/otp', authenticationController.checkOTP, (req, res) => {
-	res.redirect('/');
-})
+app.post('/otp', authenticationController.checkOTP, authenticationController.redirectHome);
 
 app.get('/contact-us', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/contactus.ejs', {session: req.session});

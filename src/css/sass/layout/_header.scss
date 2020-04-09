@@ -16,6 +16,9 @@
 	}
 	&__buttons{
 		display: none;
+		#get-a-quote{
+			grid-column: 2/3;
+		}
 	}
 	&__burger{
 		color: $grey-1;

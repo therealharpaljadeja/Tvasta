@@ -107,11 +107,14 @@ const phoneLogin = async (req, res, next) => {
 	
 	if(req.body.phoneNumber){
 		const user = await User.findOne({ phoneNumber: req.body.phoneNumber });
+		console.log(user);
 		// const passwordCorrect = await user.comparePassword(req.body.password, user.password); 
 		const nexmoRequestOTPCallback = (err, result) => {
 			if(err) console.log(err);
 			else{
 				req.session.request_id = result.request_id;
+				console.log('Requesting OTP');
+				console.log(req.session.request_id);
 				req.session.user = user;
 				req.session.error = 'Valid Only for 60 Secs';
 				req.session.errorType = 'Info';
@@ -124,8 +127,7 @@ const phoneLogin = async (req, res, next) => {
 					brand: 'Tvastra',
 					code_length: '4',
 					workflow_id: '6',
-					pin_expiry: '60',
-					next_event_wait: '60'
+					pin_expiry: '60'
 				}, nexmoRequestOTPCallback);
 				// console.log('91' + req.body.phoneNumber);
 		} else {
@@ -177,25 +179,41 @@ const checkCancel = (req, res, next) => {
 	next();
 }
 
-const resendOTP = (req, res, next) => {
-	console.log(req.session);
-	if(req.session.request_id){
-		const requestOTPAgain = (err, result) => {
-			if(err) console.log(err);
-			else {
-				phoneLogin(req, res, next);
+const cancelOldOTP = async (req, res, next) => {
+	const cancelRequestCallback = (err, result) => {
+		if(err) console.log(err);
+		else {
+			console.log(result);
+			console.log(req.session);
+			const nexmoRequestOTPCallback = (err, result) => {
+				if(err) console.log(err);
+				else{
+					req.session.request_id = result.request_id;
+					console.log('Requesting OTP');
+					console.log(req.session);
+					console.log(req.session.request_id);
+					req.session.error = 'Valid Only for 60 Secs';
+					req.session.errorType = 'Info';
+					res.redirect('/otp');	
+				}
 			}
+
+
+
+			nexmo.verify.request({
+				number: '91' + req.session.user.phoneNumber,
+				brand: 'Tvastra',
+				code_length: '4',
+				workflow_id: '6',
+				pin_expiry: '60'
+			}, nexmoRequestOTPCallback);
 		}
-		nexmo.verify.control({
-			request_id: req.session.request_id,
-			cmd: 'cancel',
-		}, requestOTPAgain);
-	} else {
-		req.session.error = 'Please Enter Phone Number';
-		req.session.errorType = 'Failure';
-		console.log('resend');
-		res.redirect('/phone-login');
 	}
+
+	nexmo.verify.control({
+		request_id: req.session.request_id,
+		cmd: 'cancel'
+	}, cancelRequestCallback);	
 }
 
 
@@ -243,5 +261,5 @@ module.exports = {
 	checkAdmin: checkAdmin,
 	redirectAdmin: redirectAdmin,
 	redirectToRespectiveHome: redirectToRespectiveHome,
-	resendOTP: resendOTP
+	cancelOldOTP: cancelOldOTP
 }

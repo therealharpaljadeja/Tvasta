@@ -1,16 +1,23 @@
 const otpField = document.querySelector('input[name="otp"]');
 const submit = document.querySelector('.form_container__form__submit');
 const timer = document.querySelector('.timer').children[0].children[0];
-const resendOTPBtn = document.querySelector('.resend-otp');
+const resendOTPBtn = document.querySelector('.resend-otp').children[0];
 
-email_login.style.color = 'grey';
+resendOTPBtn.style.color = 'grey';
 
 let timerCount = parseInt(timer.innerHTML.split(' ')[2]);
 
 const countDown = setInterval(() => {
-	if(timerCount === 0) {
+	if(timerCount === 25) {
 		timer.innerHTML = 'Resend';
-		email_login.style.color = '#0173b2';
+		resendOTPBtn.style.color = '#0173b2';
+		resendOTPBtn.addEventListener('click', (el) => {
+			console.log(el);
+			fetch('/resend-otp', {
+				method: 'put'
+			});
+			event.preventDefault();
+		});
 		clearInterval(countDown);
 	} else {
 		timerCount--;
@@ -25,10 +32,5 @@ function moveOnMax(field, nextField) {
   	}
 }
 
-resendOTPBtn.addEventListener('click', (el) => {
-	console.log(el);
-	fetch('/resend-otp', {
-		method: 'put'
-	});
-});
+
 

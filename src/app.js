@@ -90,7 +90,7 @@ app.get('/otp', (req, res) => {
 
 app.post('/otp', authenticationController.checkOTP, authenticationController.redirectToRespectiveHome);
 
-app.put('/resend-otp', authenticationController.resendOTP);
+app.put('/resend-otp', authenticationController.cancelOldOTP);
 
 app.get('/contact-us', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/contactus.ejs', {session: req.session});

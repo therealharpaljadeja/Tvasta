@@ -29,3 +29,10 @@
 		padding: 2rem 3rem;
 	}
 }
+
+@media(min-width: $bp-desktop){
+	.admin_doctors{
+	 	transform: translateX(30rem);
+		width: calc(100% - 30rem);
+	}
+}

@@ -80,8 +80,8 @@
 					<input name="otp" id="otp" type="text" class="form_container__form__otp" required onKeyPress="if(this.value.length==4) return false;" maxlength="4">
 					<!-- <i class="fas fa-question-circle"></i> -->
 				</div>
-				<div class="try_another_method timer"><a href="/email-login"><span class="para-1">Resend in 60</span></a></div>
-				<button type="submit" id="otpSubmit" class="form_container__form__submit" onkeyup="moveOnMax(this,'#otp')">
+				<div class="try_another_method timer resend-otp"><a href=""><span class="para-1">Resend in 60</span></a></div>
+				<button type="submit" id="otpSubmit" class="form_container__form__submit">
 					<span class="form_container__form__submit__text">Submit</span>
 					<span class="form_container__form__submit__icon"><i class="fas fa-arrow-right"></i></span>
 				</button>

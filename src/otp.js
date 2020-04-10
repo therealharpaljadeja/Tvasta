@@ -1,7 +1,7 @@
 const otpField = document.querySelector('input[name="otp"]');
 const submit = document.querySelector('.form_container__form__submit');
 const timer = document.querySelector('.timer').children[0].children[0];
-const email_login = document.querySelector('a[href="/email-login"]');
+const resendOTPBtn = document.querySelector('.resend-otp');
 
 email_login.style.color = 'grey';
 
@@ -24,3 +24,11 @@ function moveOnMax(field, nextField) {
     	document.querySelector(nextField).focus();
   	}
 }
+
+resendOTPBtn.addEventListener('click', (el) => {
+	console.log(el);
+	fetch('/resend-otp', {
+		method: 'put'
+	});
+});
+

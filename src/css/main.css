@@ -4004,5 +4004,11 @@ html, body {
     padding: 2rem 3rem;
   }
 }
+@media (min-width: 1024px) {
+  .admin_doctors {
+    transform: translateX(30rem);
+    width: calc(100% - 30rem);
+  }
+}
 
 /*# sourceMappingURL=main.css.map */

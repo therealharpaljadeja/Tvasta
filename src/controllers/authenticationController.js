@@ -177,6 +177,27 @@ const checkCancel = (req, res, next) => {
 	next();
 }
 
+const resendOTP = (req, res, next) => {
+	console.log(req.session);
+	if(req.session.request_id){
+		const requestOTPAgain = (err, result) => {
+			if(err) console.log(err);
+			else {
+				phoneLogin(req, res, next);
+			}
+		}
+		nexmo.verify.control({
+			request_id: req.session.request_id,
+			cmd: 'cancel',
+		}, requestOTPAgain);
+	} else {
+		req.session.error = 'Please Enter Phone Number';
+		req.session.errorType = 'Failure';
+		console.log('resend');
+		res.redirect('/phone-login');
+	}
+}
+
 
 
 const checkAdmin = (req, res, next) => {
@@ -221,5 +242,6 @@ module.exports = {
 	clearError: clearError,
 	checkAdmin: checkAdmin,
 	redirectAdmin: redirectAdmin,
-	redirectToRespectiveHome: redirectToRespectiveHome
+	redirectToRespectiveHome: redirectToRespectiveHome,
+	resendOTP: resendOTP
 }

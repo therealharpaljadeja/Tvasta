@@ -70,6 +70,7 @@ const signUp = async (req, res, next) => {
 		country: req.body.country,	
 	});
 	req.session.userId = newUser.id;
+	req.session.user = newUser;
 	req.session.errorType = 'Success';
 	req.session.error = 'Login Successful';
 	res.redirect('/');

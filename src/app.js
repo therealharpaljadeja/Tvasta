@@ -5,7 +5,7 @@ const path = require('path');
 const session = require('express-session');
 const authenticationController = require('./controllers/authenticationController');
 const User = require('./models/userModel');
-const adminRoutes = require('./routes/adminRoutes');
+
 
 // Middlewares
 app = express();
@@ -28,8 +28,13 @@ app.use(express.static(path.join(__dirname)));
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
 
-app.use('/admin', adminRoutes);
+app.get('/admin', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
+	res.render('views/dashboard.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
+});
 
+app.get('/admin-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
+	res.render('views/dashboard_doctors.ejs', {session: req.session, doctors: dev_data_json.doctors});
+});
 
 app.get('/', authenticationController.redirectLogin2, authenticationController.redirectAdmin, (req, res) => {
 	res.render('views/index.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
@@ -78,7 +83,7 @@ app.get('/signup', authenticationController.redirectToRespectiveHome, (req, res)
 
 
 app.post('/signup', authenticationController.redirectToRespectiveHome, authenticationController.signUp);
-
+ 
 app.get('/otp', (req, res) => {
 	res.render('views/otp.ejs', {error: req.session.error, session: req.session, errorType: req.session.errorType});
 })

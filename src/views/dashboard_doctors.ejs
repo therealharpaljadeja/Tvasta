@@ -60,70 +60,26 @@
 	</header> -->
 	<%- include('partials/admin_sidebar.ejs') %>
 	<%- include('partials/admin_header.ejs') %>
-	<section class="statistics_site">
-		<div class="statistics_site__grid">
-			<div class="statistics_site__grid__item">
-				<div class="statistics_site__grid__item__col--1">
-					<div class="statistics_site__grid__item__icon">
-						<i class="fas fa-medkit"></i>
-					</div>	
+	<section class="admin_doctors">
+		<div class="admin_doctors__grid">
+			<% for(let i = 0; i < doctors.length; i++){ %>
+			<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-1">
+				<div class="doctor_list__container__col-2__card__name">
+					<h3><%= doctors[i].name %></h3>
 				</div>
-				<div class="statistics_site__grid__item__col--2">
-					<div class="statistics_site__grid__item__title">
-						<h4 class="heading-4">Appointments</h4>
-					</div>
-					<div class="statistics_site__grid__item__figure">
-						<h4 class="heading-4">213</h4>
-					</div>	
+				<div class="doctor_list__container__col-2__card__other_details">
+					<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-certificate"></i></span><%= doctors[i].achievement_1 %></li>
+					<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span><%= doctors[i].achievement_2 %></li>
+					<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fas fa-clock"></i></span><%= doctors[i].experience %> Years Of Experience</li>
+					<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fas fa-building"></i></span><%= doctors[i].hospital %></li>
+					<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fas fa-map-marker-alt"></i></span><%= doctors[i].location %></li>
 				</div>
-				
-			</div>
-			<div class="statistics_site__grid__item">
-				<div class="statistics_site__grid__item__col--1">
-					<div class="statistics_site__grid__item__icon">
-						<i class="fas fa-syringe"></i>
-					</div>	
-				</div>
-				<div class="statistics_site__grid__item__col--2">
-					<div class="statistics_site__grid__item__title">
-						<h4 class="heading-4">Operations</h4>
-					</div>
-					<div class="statistics_site__grid__item__figure">
-						<h4 class="heading-4">12</h4>
-					</div>	
+				<button class="doctor_list__container__col-2__card__book">View Profile</button>
+				<div class="doctor_list__container__col-2__card__doctor_img_wrapper">
+					<img src="<%= doctors[i].imageSrc %>" alt="" class="doctor_list__container__col-2__card__doctor_img_wrapper__img">	
 				</div>
 			</div>
-			<div class="statistics_site__grid__item">
-				<div class="statistics_site__grid__item__col--1">
-					<div class="statistics_site__grid__item__icon">
-						<i class="fas fa-user-injured"></i>
-					</div>	
-				</div>
-				<div class="statistics_site__grid__item__col--2">
-					<div class="statistics_site__grid__item__title">
-						<h4 class="heading-4">Patients</h4>
-					</div>
-					<div class="statistics_site__grid__item__figure">
-						<h4 class="heading-4">13</h4>
-					</div>	
-				</div>
-			</div>
-			<div class="statistics_site__grid__item">
-				<div class="statistics_site__grid__item__col--1">
-					<div class="statistics_site__grid__item__icon">
-						<i class="fas fa-rupee-sign"></i>
-					</div>	
-				</div>
-				<div class="statistics_site__grid__item__col--2">
-					<div class="statistics_site__grid__item__title">
-						<h4 class="heading-4">Hospital Earnings</h4>
-					</div>
-					<div class="statistics_site__grid__item__figure">
-						<h4 class="heading-4">₹ 21313</h4>
-					</div>	
-				</div>
-				
-			</div>
+			<% } %>
 		</div>
 	</section>
 	<script src="./../dashboard.js"></script>

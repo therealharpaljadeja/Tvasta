@@ -76,8 +76,28 @@
 }
 .form_container{
 	position: relative;
+	overflow: hidden;
 	&--otp{
-		height: 28rem;
+		height: 34rem;
+		position: sticky;
+		.form_container__form__input_field{
+			input[name='otp']{
+				background-color: transparent;
+				border: none;
+				letter-spacing: 8rem;
+				font-size: 4rem;
+				width: 100%;
+				padding-left: 15px;
+				letter-spacing: 8rem;
+				border: 0;
+				background-image: linear-gradient(to left, $bright-blue 70%, rgba(255, 255, 255, 0) 0%);
+				background-position: bottom;
+				background-size: 118px 2px;
+				background-repeat: repeat-x;
+				background-position-x: 80px;
+				// -moz-appearance: textfield;
+			}
+		}
 	}
 	&--phone{
 		height: 35rem;
@@ -113,6 +133,9 @@
 		display: grid;
 		grid-template-columns: 100%;
 		grid-gap: 1rem;
+		.otp-message{
+			text-align: center;
+		}
 		.try_another_method{
 			text-align: center;
 			a{

@@ -124,7 +124,8 @@ const phoneLogin = async (req, res, next) => {
 					brand: 'Tvastra',
 					code_length: '4',
 					workflow_id: '6',
-					pin_expiry: '60'
+					pin_expiry: '60',
+					next_event_wait: '60'
 				}, nexmoRequestOTPCallback);
 				// console.log('91' + req.body.phoneNumber);
 		} else {

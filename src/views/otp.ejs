@@ -6,7 +6,7 @@
 	<title>OTP</title>
 </head>
 <body class="login-body">
-	<div class="login-body-flex">
+	<div class="login-body-flex"> 
 		<header>
 		<%- include('partials/header.ejs') %>
 	</header>
@@ -75,11 +75,13 @@
 		<section class="form_container form_container--otp">
 			<h1 class="form_container__heading">OTP</h1>
 			<form method="POST" action="/otp" class="form_container__form">
+				<h3 class="para-1 otp-message">We have sent One Time Password (OTP) to you registered Phone Number.</h3>
 				<div class="form_container__form__input_field">
-					<input name="otp" type="text" placeholder="Enter OTP" class="form_container__form__otp" required>
-					<i class="fas fa-question-circle"></i>
+					<input name="otp" id="otp" type="text" class="form_container__form__otp" required onKeyPress="if(this.value.length==4) return false;" maxlength="4">
+					<!-- <i class="fas fa-question-circle"></i> -->
 				</div>
-				<button type="submit" class="form_container__form__submit">
+				<div class="try_another_method timer"><a href="/email-login"><span class="para-1">Resend in 60</span></a></div>
+				<button type="submit" id="otpSubmit" class="form_container__form__submit" onkeyup="moveOnMax(this,'#otp')">
 					<span class="form_container__form__submit__text">Submit</span>
 					<span class="form_container__form__submit__icon"><i class="fas fa-arrow-right"></i></span>
 				</button>
@@ -89,7 +91,7 @@
 			<span>All Rights Reserved &copy; Tvastra 2020</span>
 		</section>	
 	</div>
-	<script type="text/javascript" src="bundle.js"></script>
+	<script type="text/javascript" src="otp.js"></script>
 	<script src="error.js"></script>
 </body>
 </html>

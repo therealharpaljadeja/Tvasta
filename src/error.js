@@ -5,7 +5,6 @@ const hideError = () => {
 	fetch('/disable-error', {
 		method: 'put'
 	});
-	console.log(error);
 }
 
 if(error){
@@ -16,4 +15,5 @@ if(error){
 		error.style.display = 'none';
 	},5000);	
 } 
-cross.addEventListener('click', hideError);
+
+cross.addEventListener('click', hideError);	

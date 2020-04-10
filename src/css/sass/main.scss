@@ -19,4 +19,7 @@
 @import 'pages/hospital_details';
 @import 'pages/faq';
 @import 'pages/tvastra_plus';
-@import 'pages/dashboard.scss';
+@import 'layout/admin_sidebar';
+@import 'layout/admin_header';
+@import 'pages/dashboard';
+@import 'pages/dashboard_doctors';

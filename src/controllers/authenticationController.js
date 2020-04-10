@@ -2,7 +2,7 @@ const User = require('./../models/userModel');
 const bcrypt = require('bcryptjs');
 const Nexmo = require('nexmo');
 require('dotenv').config( { path: __dirname + '/../config.env' } );
-
+ 
 
 // Nexmo used for OTP.
 const nexmo = new Nexmo({
@@ -13,6 +13,7 @@ const nexmo = new Nexmo({
 // Check if user is logged in if he is not then redirect to login page. 
 const redirectLogin = (req, res, next) => {
 	if(!req.session.userId){
+		req.session.errorType = 'Failure';
 		req.session.error = "Please Login First";
 		res.redirect('/email-login');
 	} else {
@@ -41,6 +42,14 @@ const clearError = (req, res, next) => {
 // Check if user is logged in if he is then redirect to home page.
 const redirectHome = (req, res, next) => {
 	if(req.session.userId){
+		if(req.session.user.role === 'user') res.redirect('/home');
+	} else {
+		next();
+	}
+}
+
+const redirectToRespectiveHome = (req, res, next) => {
+	if(req.session.userId){
 		if(req.session.user.role === 'admin') res.redirect('/admin');
 		else res.redirect('/');
 	} else {
@@ -61,6 +70,7 @@ const signUp = async (req, res, next) => {
 		country: req.body.country,	
 	});
 	req.session.userId = newUser.id;
+	req.session.errorType = 'Success';
 	req.session.error = 'Login Successful';
 	res.redirect('/');
 }
@@ -68,22 +78,24 @@ const signUp = async (req, res, next) => {
 const emailLogin = async (req, res, next) => {
 	if(req.body.email && req.body.password){
 		const user = await User.findOne({ email: req.body.email });
-		
 		if(user){
 			const passwordCorrect = await user.comparePassword(req.body.password, user.password);
 			if(passwordCorrect){
 				req.session.userId = user.id;
 				req.session.user = user;
+				req.session.errorType = 'Success';
 				req.session.error = 'Login Successful';
 				console.log(req.session.error);
 				console.log(req.session);
 				if(req.session.user.role === 'admin') res.redirect('/admin');
 				else res.redirect('/');	
 			} else {
+				req.session.errorType = 'Failure';
 				req.session.error = "Incorrect Email or Password."
 				res.redirect('/email-login');	
 			}
 		} else {
+			req.session.errorType = 'Failure';
 			req.session.error = "Email Not Registered"
 			res.redirect('/email-login');
 		}
@@ -100,6 +112,8 @@ const phoneLogin = async (req, res, next) => {
 			else{
 				req.session.request_id = result.request_id;
 				req.session.user = user;
+				req.session.error = 'Valid Only for 60 Secs';
+				req.session.errorType = 'Info';
 				res.redirect('/otp');	
 			}
 		}
@@ -113,6 +127,7 @@ const phoneLogin = async (req, res, next) => {
 				}, nexmoRequestOTPCallback);
 				// console.log('91' + req.body.phoneNumber);
 		} else {
+			req.session.errorType = 'Failure';
 			req.session.error = 'Number not associated with any user.';
 			res.redirect('/phone-login');
 		}
@@ -123,14 +138,17 @@ const phoneLogin = async (req, res, next) => {
 const checkOTP = async (req, res, next) => {
 	const nexmoVerifyCallback = (err, result) => {
 		if(err) {
-			req.session.error('Please try again after some time.');
+			req.session.errorType = 'Failure';
+			req.session.error = 'Please try again after some time.';
 			res.redirect('/otp');
 		}
 		else {
 			if(result.error_text == 'The code provided does not match the expected value'){
+				req.session.errorType = 'Failure';
 				req.session.error = 'Incorrect OTP';
 				res.redirect('/otp');
 			} else {
+				req.session.errorType = 'Success';
 				req.session.error = 'Login Successful';
 				req.session.userId = req.session.user._id;
 				req.session.request_id = null;
@@ -163,9 +181,10 @@ const checkAdmin = (req, res, next) => {
 	if(req.session.user.role === 'admin') {
 		next();
 	} else {
+		req.session.errorType = 'Failure';
 		req.session.error = 'Not Authorized';
 		console.log(req.session.error);
-		next();
+		res.redirect('/');
 	} 
 }
 
@@ -174,7 +193,7 @@ const redirectAdmin = (req, res, next) => {
 		if(req.session.user.role === 'admin'){
 			res.redirect('/admin');
 		} else {
-			res.redirect('/');
+			next();
 		}	
 	} 
 	
@@ -199,5 +218,6 @@ module.exports = {
 	logout: logout,
 	clearError: clearError,
 	checkAdmin: checkAdmin,
-	redirectAdmin: redirectAdmin
+	redirectAdmin: redirectAdmin,
+	redirectToRespectiveHome: redirectToRespectiveHome
 }

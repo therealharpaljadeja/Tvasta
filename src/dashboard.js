@@ -1,11 +1,11 @@
-const cross = document.querySelector('.cross-sidebar');
+const cross_sidebar = document.querySelector('.cross-sidebar');
 const burger = document.querySelector('.navbar__burger');
 const sidebar = document.querySelector('.admin_sidebar');
 
 if(window.matchMedia('(min-width: 1024px)').matches){
 	sidebar.style.display = 'flex';
 	burger.style.display = 'none';
-	cross.style.display = 'none';
+	cross_sidebar.style.display = 'none';
 }
 
 const hideSidebar = () => {
@@ -18,5 +18,5 @@ const showSidebar = () => {
 }
 
 
-cross.addEventListener('click', hideSidebar);
+cross_sidebar.addEventListener('click', hideSidebar);
 burger.addEventListener('click', showSidebar);

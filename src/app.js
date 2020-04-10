@@ -32,7 +32,7 @@ app.use('/admin', adminRoutes);
 
 
 app.get('/', authenticationController.redirectLogin2, authenticationController.redirectAdmin, (req, res) => {
-	res.render('views/index.ejs', {error: req.session.error, session: req.session});
+	res.render('views/index.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
 });
 
 const dev_data_string = fs.readFileSync('dev_data.json').toString();
@@ -56,34 +56,34 @@ app.get('/treatments', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/treatments.ejs', {session: req.session});
 });
 
-app.get('/email-login', authenticationController.redirectHome, (req, res) => {
-	res.render('views/email-login.ejs', {error: req.session.error || '', session: req.session });
+app.get('/email-login', authenticationController.redirectToRespectiveHome, (req, res) => {
+	res.render('views/email-login.ejs', {error: req.session.error || '', session: req.session, errorType: req.session.errorType });
 	req.session.error = "";
 });
 
-app.post('/email-login', authenticationController.redirectHome, authenticationController.emailLogin);
+app.post('/email-login', authenticationController.redirectToRespectiveHome, authenticationController.emailLogin);
 
 
-app.get('/phone-login', authenticationController.checkCancel, authenticationController.redirectHome ,(req, res) => {
-	res.render('views/phone-login.ejs', {error: req.session.error || '', session: req.session});
+app.get('/phone-login', authenticationController.checkCancel, authenticationController.redirectToRespectiveHome, (req, res) => {
+	res.render('views/phone-login.ejs', {error: req.session.error || '', session: req.session, errorType: req.session.errorType});
 	req.session.error = "";
 });
 
-app.post('/phone-login', authenticationController.redirectHome, authenticationController.phoneLogin);
+app.post('/phone-login', authenticationController.redirectToRespectiveHome, authenticationController.phoneLogin);
 
 
-app.get('/signup', authenticationController.redirectHome, (req, res) => {
+app.get('/signup', authenticationController.redirectToRespectiveHome, (req, res) => {
 	res.render('views/signup.ejs', {session: req.session});
 });
 
 
-app.post('/signup', authenticationController.redirectHome, authenticationController.signUp);
+app.post('/signup', authenticationController.redirectToRespectiveHome, authenticationController.signUp);
 
 app.get('/otp', (req, res) => {
-	res.render('views/otp.ejs', {error: req.session.error || 'Valid Only for 60 secs', session: req.session});
+	res.render('views/otp.ejs', {error: req.session.error, session: req.session, errorType: req.session.errorType});
 })
 
-app.post('/otp', authenticationController.checkOTP, authenticationController.redirectHome);
+app.post('/otp', authenticationController.checkOTP, authenticationController.redirectToRespectiveHome);
 
 app.get('/contact-us', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/contactus.ejs', {session: req.session});

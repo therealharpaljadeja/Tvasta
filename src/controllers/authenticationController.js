@@ -127,7 +127,7 @@ const phoneLogin = async (req, res, next) => {
 					brand: 'Tvastra',
 					code_length: '4',
 					workflow_id: '6',
-					pin_expiry: '60'
+					pin_expiry: '120'
 				}, nexmoRequestOTPCallback);
 				// console.log('91' + req.body.phoneNumber);
 		} else {
@@ -152,13 +152,19 @@ const checkOTP = async (req, res, next) => {
 				req.session.error = 'Incorrect OTP';
 				res.redirect('/otp');
 			} else {
-				req.session.errorType = 'Success';
-				req.session.error = 'Login Successful';
-				req.session.userId = req.session.user._id;
-				req.session.request_id = null;
-				req.session.save();
-				// console.log(req.session);
-				next();	
+				if(req.session.forgetPassword){
+					console.log(req.session)
+					res.redirect('/create-new-password');
+				} else {
+					req.session.errorType = 'Success';
+					req.session.error = 'Login Successful';
+					req.session.userId = req.session.user._id;
+					req.session.request_id = null;
+					req.session.save();
+					// console.log(req.session);
+					next();	
+				}
+					
 			}
 		}
 	}
@@ -247,6 +253,43 @@ const logout = (req, res, next) => {
 	res.redirect('/email-login');
 }
 
+const checkIfUserExists = async (req, res, next) => {
+	console.log('Checking if user exists');
+	console.log(req.body.email);
+	if(req.body.email){
+		const user = await User.findOne({ email: req.body.email });
+		console.log(user);
+		if(user){
+			req.body.phoneNumber = user.phoneNumber;
+			req.session.forgetPassword = true;
+			next();
+		} else {
+			req.session.error = 'Email Not registered';
+			req.session.errorType = 'Failure';
+			res.redirect('/email-login');
+		}
+	} else {
+		req.session.error = 'Please provide your email',
+		req.session.errorType = 'Failure',
+		res.redirect('/email-login');
+	}
+}
+
+const changePassword = async (req, res, next) => {
+	if(req.body.newPassword === req.body.newPasswordConfirm){
+		const user = await User.findOne({ email: req.session.user.email });
+		user.password = req.body.newPassword;
+		await user.save();
+		req.session.error = 'Password Changed Successfully';
+		req.session.errorType = 'Success';
+		res.redirect('/email-login'); 
+	} else {
+		req.session.error = 'Passwords do not match';
+		req.session.errorType = 'Failure';
+		res.redirect('/create-new-password');
+	}
+}
+
 module.exports = {
 	redirectLogin: redirectLogin,
 	redirectLogin2: redirectLogin2,
@@ -261,5 +304,7 @@ module.exports = {
 	checkAdmin: checkAdmin,
 	redirectAdmin: redirectAdmin,
 	redirectToRespectiveHome: redirectToRespectiveHome,
-	cancelOldOTP: cancelOldOTP
+	cancelOldOTP: cancelOldOTP,
+	checkIfUserExists: checkIfUserExists,
+	changePassword: changePassword
 }

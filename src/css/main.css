@@ -1869,6 +1869,9 @@ html, body {
   background-repeat: repeat-x;
   background-position-x: 80px;
 }
+.form_container--forgot_password {
+  height: 27rem;
+}
 .form_container--phone {
   height: 35rem;
 }
@@ -1902,6 +1905,11 @@ html, body {
 }
 .form_container__form .try_another_method {
   text-align: center;
+}
+.form_container__form .try_another_method--email {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 .form_container__form .try_another_method a {
   text-decoration: none;

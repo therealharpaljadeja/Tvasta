@@ -99,6 +99,9 @@
 			}
 		}
 	}
+	&--forgot_password{
+		height: 27rem;
+	}
 	&--phone{
 		height: 35rem;
 	}
@@ -137,6 +140,11 @@
 			text-align: center;
 		}
 		.try_another_method{
+			&--email{
+				display: flex;
+				flex-direction: row;
+				justify-content: space-between;
+			}
 			text-align: center;
 			a{
 				text-decoration: none;

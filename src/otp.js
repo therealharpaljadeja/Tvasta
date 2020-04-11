@@ -8,7 +8,7 @@ resendOTPBtn.style.color = 'grey';
 let timerCount = parseInt(timer.innerHTML.split(' ')[2]);
 
 const countDown = setInterval(() => {
-	if(timerCount === 25) {
+	if(timerCount === 0) {
 		timer.innerHTML = 'Resend';
 		resendOTPBtn.style.color = '#0173b2';
 		resendOTPBtn.addEventListener('click', (el) => {

@@ -62,8 +62,7 @@ app.get('/treatments', authenticationController.redirectLogin, (req, res) => {
 });
 
 app.get('/email-login', authenticationController.redirectToRespectiveHome, (req, res) => {
-	res.render('views/email-login.ejs', {error: req.session.error || '', session: req.session, errorType: req.session.errorType });
-	req.session.error = "";
+	res.render('views/email-login.ejs', {error: req.session.error, session: req.session, errorType: req.session.errorType });
 });
 
 app.post('/email-login', authenticationController.redirectToRespectiveHome, authenticationController.emailLogin);
@@ -91,6 +90,15 @@ app.get('/otp', (req, res) => {
 app.post('/otp', authenticationController.checkOTP, authenticationController.redirectToRespectiveHome);
 
 app.put('/resend-otp', authenticationController.cancelOldOTP);
+
+
+app.post('/forgot-password', authenticationController.checkIfUserExists, authenticationController.phoneLogin)
+
+app.get('/create-new-password', authenticationController.redirectToRespectiveHome, (req, res) => {
+	res.render('views/create_new_password.ejs', {error: req.session.error, session: req.session, errorType: req.session.errorType});
+})
+
+app.post('/create-new-password', authenticationController.changePassword);
 
 app.get('/contact-us', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/contactus.ejs', {session: req.session});

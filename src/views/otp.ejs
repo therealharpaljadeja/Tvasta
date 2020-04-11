@@ -77,8 +77,14 @@
 			<form method="POST" action="/otp" class="form_container__form">
 				<h3 class="para-1 otp-message">We have sent One Time Password (OTP) to your registered Phone Number.</h3>
 				<div class="form_container__form__input_field">
-					<input name="otp" id="otp" type="text" class="form_container__form__otp" required onKeyPress="if(this.value.length==4) return false;" maxlength="4">
+					<!-- <input name="otp" id="otp" type="text" class="form_container__form__otp" required onKeyPress="if(this.value.length==4) return false;" maxlength="4"> -->
 					<!-- <i class="fas fa-question-circle"></i> -->
+
+					<input class="otpField" name="otp_1" id="codeBox1" type="number" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)" required>
+					<input class="otpField" name="otp_2" id="codeBox2" type="number" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)" required>
+					<input class="otpField" name="otp_3" id="codeBox3" type="number" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)" required>
+					<input class="otpField" name="otp_4" id="codeBox4" type="number" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)" required>
+
 				</div>
 				<div class="try_another_method timer resend-otp"><a href="#"><span class="para-1">Resend in 35</span></a></div>
 				<button type="submit" id="otpSubmit" class="form_container__form__submit">

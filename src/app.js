@@ -130,6 +130,10 @@ app.get('/book-an-appointment', (req, res) => {
 	res.render('views/bookappointment.ejs', {session: req.session});
 });
 
+app.get('/get-a-quote', (req, res) => {
+	res.render('views/get-a-quote.ejs', {session: req.session});
+})
+
 app.get('/logout', authenticationController.logout);
 
 module.exports = app;

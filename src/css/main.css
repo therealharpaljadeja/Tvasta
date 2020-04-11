@@ -1875,6 +1875,9 @@ html, body {
 .form_container--phone {
   height: 35rem;
 }
+.form_container--get_a_quote {
+  height: 77rem;
+}
 @media (min-width: 768px) {
   .form_container {
     width: 60%;

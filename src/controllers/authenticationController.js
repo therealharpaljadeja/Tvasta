@@ -168,7 +168,7 @@ const checkOTP = async (req, res, next) => {
 			}
 		}
 	}
-
+	req.body.otp = `${req.body.otp_1 + req.body.otp_2 + req.body.otp_3 + req.body.otp_4}`; 
 	if(req.body.otp.length === 4){
 		nexmo.verify.check({
 			request_id: req.session.request_id,

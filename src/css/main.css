@@ -1912,6 +1912,7 @@ html, body {
   justify-content: space-between;
 }
 .form_container__form .try_another_method a {
+  cursor: pointer;
   text-decoration: none;
   color: #0173b2;
 }
@@ -3791,6 +3792,30 @@ html, body {
     grid-template-columns: 1fr 1fr 1fr;
   }
 }
+.otpField {
+  width: 50px;
+  height: 50px;
+  padding: 0;
+  margin-right: 25px;
+  text-align: center;
+  border: none;
+  border-bottom: 2px solid #0173b2;
+  -moz-appearance: textfield;
+}
+.otpField:last-child {
+  margin-right: 0;
+}
+.otpField::-webkit-inner-spin-button, .otpField::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+.otpField:focus, .otpField.focus {
+  border-color: #0173b2;
+  outline: none;
+  box-shadow: none;
+}
+
 .admin_sidebar {
   z-index: 9999;
   background-color: white;

@@ -1869,9 +1869,6 @@ html, body {
   background-repeat: repeat-x;
   background-position-x: 80px;
 }
-.form_container--forgot_password {
-  height: 27rem;
-}
 .form_container--phone {
   height: 35rem;
 }
@@ -1920,6 +1917,14 @@ html, body {
   color: #0173b2;
 }
 .form_container__form .try_another_method a span {
+  font-family: "Nexa Bold";
+}
+.form_container__form .try_another_method span {
+  cursor: pointer;
+  text-decoration: none;
+  color: #0173b2;
+}
+.form_container__form .try_another_method span span {
   font-family: "Nexa Bold";
 }
 .form_container__form__input_field {

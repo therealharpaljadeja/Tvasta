@@ -99,9 +99,6 @@
 			}
 		}
 	}
-	&--forgot_password{
-		height: 27rem;
-	}
 	&--phone{
 		height: 35rem;
 	}
@@ -150,6 +147,14 @@
 			}
 			text-align: center;
 			a{
+				cursor: pointer;
+				text-decoration: none;
+				color: $bright-blue;
+				span{
+					font-family: $nexa-bold;	
+				}
+			}
+			span{
 				cursor: pointer;
 				text-decoration: none;
 				color: $bright-blue;

@@ -91,12 +91,12 @@
 			flex-direction: column;
 			justify-content: center;
 			align-items: flex-start;
-			.name{
-				a{
-					text-decoration: none;
-					font-family: $nexa-bold;
-					color: $bright-blue;	
-				}
+			a{
+				text-decoration: none;
+				font-family: $nexa-bold;
+				color: $bright-blue;	
+			}
+			.name{	
 				margin-bottom: 1rem;
 			}
 			.phoneNumber{

@@ -46,13 +46,13 @@
 			<img src="./../assets/user.jpeg" class="profile_picture">
 		</div>
 		<div class="name_and_phone">
-			<h4 class="name"><a href=""><%= session.user.name %></a></h4>
+			<a href="/user-dashboard"><h4 class="name"><%= session.user.name %></h4></a>
 			<span class="phoneNumber"><%= session.user.phoneNumber %></span> 
 		</div>
 	</div>
 	<ul class="profile_menu">
-		<li class="profile_menu__item"><a href="">My Profile</a></li>
-		<li class="profile_menu__item"><a href="">My Profile</a></li>
+		<a href="/user-dashboard-appointments"><li class="profile_menu__item">My Appointments</li></a>
+		<a href="/user-dashboard-lab-tests"><li class="profile_menu__item">My Lab Tests</li></a>
 		<a href="/logout"><li class="profile_menu__item">Logout</li></a>
 	</ul>
 </div>

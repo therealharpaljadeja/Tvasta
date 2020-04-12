@@ -1,0 +1,28 @@
+.page-flex{
+	display: flex;
+	flex-direction: row;
+
+}
+.page-content{
+	max-height: 100%;
+	background-color: $background-color;
+	margin: 1rem 2rem;
+	.page-content-container{
+		width: 100%;
+	}
+}
+
+@media(min-width: $bp-tablet){
+	.page-content{
+		width: calc(100% - 26rem);
+		margin: 0rem 0rem 0rem 0rem;
+	}
+	.page-flex{
+	}
+}
+
+@media(min-width: $bp-desktop){
+	.page-content{
+		width: calc(100% - 40rem)
+	}
+}

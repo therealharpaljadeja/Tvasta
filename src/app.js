@@ -130,8 +130,16 @@ app.get('/book-an-appointment', (req, res) => {
 	res.render('views/bookappointment.ejs', {session: req.session});
 });
 
-app.get('/get-a-quote', (req, res) => {
+app.get('/get-a-quote', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/get-a-quote.ejs', {session: req.session});
+})
+
+app.get('/user-dashboard-appointments', authenticationController.redirectLogin, (req, res) => {
+	res.render('views/user_dashboard_appointments.ejs', {session: req.session});
+})
+
+app.get('/user-dashboard-lab-tests', authenticationController.redirectLogin, (req, res) => {
+	res.render('views/user_dashboard_lab_tests.ejs', {session: req.session});
 })
 
 app.get('/logout', authenticationController.logout);

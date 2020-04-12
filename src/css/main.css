@@ -357,13 +357,13 @@ html, body {
   justify-content: center;
   align-items: flex-start;
 }
-.profile_menu_container .profile_small_details .name_and_phone .name {
-  margin-bottom: 1rem;
-}
-.profile_menu_container .profile_small_details .name_and_phone .name a {
+.profile_menu_container .profile_small_details .name_and_phone a {
   text-decoration: none;
   font-family: "Nexa Bold";
   color: #0173b2;
+}
+.profile_menu_container .profile_small_details .name_and_phone .name {
+  margin-bottom: 1rem;
 }
 .profile_menu_container .profile_small_details .name_and_phone .phoneNumber {
   font-family: "Nexa Light";
@@ -4037,6 +4037,114 @@ html, body {
     right: 0;
   }
 }
+.profile_detail {
+  display: none;
+}
+
+.profile_dashboard__sidebar_menu_container {
+  display: none;
+}
+
+.page-title {
+  padding: 2rem;
+}
+.page-title span {
+  font-size: 1.5rem;
+  font-family: "Nexa Bold";
+}
+
+@media (min-width: 768px) {
+  .page-title {
+    display: none;
+  }
+
+  .user-dashboard {
+    background-color: #eee;
+  }
+
+  .profile_detail {
+    display: block;
+    background-color: white;
+    height: 7rem;
+    padding: 1rem;
+    margin: 3rem 3rem 0rem 3rem;
+    border-bottom: 1px solid #ddd;
+  }
+  .profile_detail .profile_small_details {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    width: 20rem;
+  }
+  .profile_detail .profile_small_details .profile_picture__container {
+    width: 5rem;
+    height: 5rem;
+    align-self: center;
+    justify-self: start;
+    border-radius: 0.5rem;
+    overflow: hidden;
+  }
+  .profile_detail .profile_small_details .profile_picture__container img {
+    width: 100%;
+    height: 100%;
+  }
+  .profile_detail .profile_small_details .name_and_phone {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .profile_detail .profile_small_details .name_and_phone a {
+    text-decoration: none;
+    font-family: "Nexa Bold";
+    color: #525659;
+  }
+  .profile_detail .profile_small_details .name_and_phone .name {
+    margin-bottom: 1rem;
+  }
+  .profile_detail .profile_small_details .name_and_phone .phoneNumber {
+    font-family: "Nexa Light";
+  }
+
+  .profile_dashboard__sidebar_menu_container {
+    background-color: white;
+    display: block;
+    width: 20rem;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    margin: 0rem 0rem 0rem 3rem;
+  }
+  .profile_dashboard__sidebar_menu_container .profile_dashboard__sidebar_menu {
+    display: flex;
+    flex-direction: column;
+  }
+  .profile_dashboard__sidebar_menu_container .profile_dashboard__sidebar_menu a {
+    text-decoration: none;
+  }
+  .profile_dashboard__sidebar_menu_container .profile_dashboard__sidebar_menu__item {
+    font-family: "Nexa Bold";
+    color: #525659;
+    font-size: 1.4rem;
+    padding: 2rem 2rem;
+  }
+  .profile_dashboard__sidebar_menu_container .profile_dashboard__sidebar_menu__item:hover {
+    background-color: rgba(0, 0, 0, 0.01);
+    border-left: 2px solid #0173b2;
+  }
+  .profile_dashboard__sidebar_menu_container .profile_dashboard__sidebar_menu .active {
+    background-color: #0173b2;
+    color: white;
+  }
+}
+@media (min-width: 1024px) {
+  .profile_detail {
+    margin: 3rem 10rem 0rem 10rem;
+  }
+
+  .profile_dashboard__sidebar_menu_container {
+    margin: 0rem 0rem 0rem 10rem;
+  }
+}
 .statistics_site {
   padding: 2rem 2rem;
   margin-top: 7rem;
@@ -4126,6 +4234,31 @@ html, body {
   .admin_doctors {
     transform: translateX(30rem);
     width: calc(100% - 30rem);
+  }
+}
+.page-flex {
+  display: flex;
+  flex-direction: row;
+}
+
+.page-content {
+  max-height: 100%;
+  background-color: white;
+  margin: 1rem 2rem;
+}
+.page-content .page-content-container {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .page-content {
+    width: calc(100% - 26rem);
+    margin: 0rem 0rem 0rem 0rem;
+  }
+}
+@media (min-width: 1024px) {
+  .page-content {
+    width: calc(100% - 40rem);
   }
 }
 

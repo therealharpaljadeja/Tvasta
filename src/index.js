@@ -1,3 +1,7 @@
+const profileChevron = document.querySelector('.navbar__profile');
+const profile_menu = document.querySelector('.profile_menu_container');
+
+profileChevron.addEventListener('click', () => {profile_menu.classList.toggle('display_none')});
 
 const expand = (element) => { 
 	// remove active class from any element.

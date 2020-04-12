@@ -29,7 +29,7 @@ const redirectLogin2 = (req, res, next) => {
 	}
 }
 
-
+ 
 
 const clearError = (req, res, next) => {
 	req.session.error = "";
@@ -104,7 +104,6 @@ const emailLogin = async (req, res, next) => {
 }
 
 const phoneLogin = async (req, res, next) => {
-	
 	if(req.body.phoneNumber){
 		const user = await User.findOne({ phoneNumber: req.body.phoneNumber });
 		console.log(user);
@@ -182,7 +181,7 @@ const checkOTP = async (req, res, next) => {
 
 const checkCancel = (req, res, next) => {
 	if(req.session.request_id) res.redirect('/otp');
-	next();
+	else next();
 }
 
 const cancelOldOTP = async (req, res, next) => {
@@ -280,8 +279,12 @@ const changePassword = async (req, res, next) => {
 		const user = await User.findOne({ email: req.session.user.email });
 		user.password = req.body.newPassword;
 		await user.save();
+		req.session.forgetPassword = false;
 		req.session.error = 'Password Changed Successfully';
 		req.session.errorType = 'Success';
+		req.session.request_id = null;
+		delete req.session.user;
+		delete req.session.userId;
 		res.redirect('/email-login'); 
 	} else {
 		req.session.error = 'Passwords do not match';

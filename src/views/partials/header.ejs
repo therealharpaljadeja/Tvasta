@@ -21,21 +21,39 @@
 			<li class="navbar__side_menu__ul__item"><a href="/treatments">Treatment</a></li>	
 			<li class="navbar__side_menu__ul__item"><a href="#">Other Services</a></li>
 			<li class="navbar__side_menu__ul__item"><a href="/about">About</a></li>
+			<li class="navbar__side_menu__ul__item"><a href="/profile">My Profile</a></li>
 		</ul>
 	</div>
 	<div class="navbar__buttons">
-		<% if(session.userId) { %>
-		<a href="/logout" class="navbar__buttons__button-link">
-			<button class="navbar__buttons-login">
-				Logout
-			</button>
-		</a>
-		<% } %>
 		<a href="/get-a-quote" id="get-a-quote">
 			<button class="navbar__buttons-quote">
 				Get A Quote 
 			</button>	
 		</a>			
 	</div>
+	<% if(session.userId) { %>
+	<div class="navbar__profile">
+		<h4 class="user-name"><%= session.user.name %></h4>
+		<i id="moreOptions" class="fas fa-chevron-down"></i>
+	</div>
+	<% } %> 
 	<i class="fa fa-bars navbar__burger"></i>	
 </nav>
+<% if(session.user) { %>
+<div class="profile_menu_container display_none">
+	<div class="profile_small_details">
+		<div class="profile_picture__container">
+			<img src="./../assets/user.jpeg" class="profile_picture">
+		</div>
+		<div class="name_and_phone">
+			<h4 class="name"><a href=""><%= session.user.name %></a></h4>
+			<span class="phoneNumber"><%= session.user.phoneNumber %></span> 
+		</div>
+	</div>
+	<ul class="profile_menu">
+		<li class="profile_menu__item"><a href="">My Profile</a></li>
+		<li class="profile_menu__item"><a href="">My Profile</a></li>
+		<a href="/logout"><li class="profile_menu__item">Logout</li></a>
+	</ul>
+</div>
+<% } %>

@@ -1,6 +1,6 @@
 .hero{
-	height: 40rem;
 	&--plus{
+		height: 40rem;
 		background-image: linear-gradient(to top, rgba(0,0,0,.5), rgba(0,0,0,0) 10%), url('./../../../assets/tvastraPlus_heroSection.png');
 		.plus{
 			padding: 1rem;

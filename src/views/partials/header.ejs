@@ -8,8 +8,7 @@
 		<ul class="navbar__menu__ul">
 			<li class="navbar__menu__ul__item"><a href="/doctors">Doctors</a></li>
 			<li class="navbar__menu__ul__item"><a href="/hospitals">Hospitals</a></li>
-			<li class="navbar__menu__ul__item"><a href="/treatments">Treatment</a></li>	
-			<li class="navbar__menu__ul__item"><a href="/contact-us">Contact Us</a></li>
+			<li class="navbar__menu__ul__item" id="treatments">Treatment <i class="fas fa-chevron-down"></i></li>	
 			<li class="navbar__menu__ul__item"><a href="/about">About</a></li>
 		</ul>
 	</div>
@@ -25,11 +24,18 @@
 		</ul>
 	</div>
 	<div class="navbar__buttons">
+		<% if(session.userId) { %>
+			<a href="/tvastra-plus" id="tvastra-plus">
+				<button class="navbar__buttons-tvastra-plus">
+					Tvastra Plus 
+				</button>	
+			</a>
+		<% } %>
 		<a href="/get-a-quote" id="get-a-quote">
 			<button class="navbar__buttons-quote">
 				Get A Quote 
 			</button>	
-		</a>			
+		</a>	
 	</div>
 	<% if(session.userId) { %>
 	<div class="navbar__profile">
@@ -46,7 +52,7 @@
 			<img src="./../assets/user.jpeg" class="profile_picture">
 		</div>
 		<div class="name_and_phone">
-			<a href="/user-dashboard"><h4 class="name"><%= session.user.name %></h4></a>
+			<a href="/edit-profile"><h4 class="name"><%= session.user.name %></h4></a>
 			<span class="phoneNumber"><%= session.user.phoneNumber %></span> 
 		</div>
 	</div>
@@ -57,3 +63,14 @@
 	</ul>
 </div>
 <% } %>
+<div class="treatment_menu_container display_none">
+	<ul class="profile_menu">
+		<a href="/treatments"><li class="profile_menu__item">Dentistry</li></a>
+		<a href="/treatments"><li class="profile_menu__item">Cancer</li></a>
+		<a href="/treatments"><li class="profile_menu__item">Cardiology</li></a>
+		<a href="/treatments"><li class="profile_menu__item">Multi Organ Transplant</li></a>
+		<a href="/treatments"><li class="profile_menu__item">Orthopedics Surgery</li></a>
+		<a href="/treatments"><li class="profile_menu__item">Multi Organ Transplant</li></a>
+		<a href="/treatments"><li class="profile_menu__item">Infertility Treatment</li></a>
+	</ul>
+</div>

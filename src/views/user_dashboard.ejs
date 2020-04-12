@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title><%= session.user.name %></title>
+	<%- include('partials/head.ejs') %>		
+</head>
+<body class="user-dashboard">
+	<%- include('partials/header.ejs') %>
+	<section class="edit_profile">
+		<form action="/save-changes" method="POST">
+		<div class="edit_profile_container">
+			<div class="save_button">
+				<button>
+					<span>
+						Save Changes
+					</span>
+				</button>
+			</div>
+			<div class="photo_and_name">
+				<div class="edit_profile_photo">
+					<label for="display_picture">Upload Your Profile Photo</label>
+					<input type="file" name="display_picture" accept="image/*" id="display_picture">
+				</div>
+				<div class="edit_name">
+					<label for="name">Name</label>
+					<input type="text" name="name" value="<%= session.user.name %>" placeholder="Enter your name">
+				</div>
+			</div>
+			<div class="edit_other_details">
+				<div class="edit_field">
+					<label for="phoneNumber">Phone Number</label>
+					<input type="text" name="phoneNumber" value="<%= session.user.phoneNumber %>" placeholder="Enter your phone number">	
+				</div>
+				<div class="edit_field">
+					<label for="email">Email</label>
+					<input type="email" name="email" value="<%= session.user.email %>" placeholder="Enter your email">			
+				</div>
+				<div class="edit_field">
+					<label for="gender">Gender</label>
+					<select name="gender" id="gender" type="text" class="form_container__form__gender" value="<%= session.user.gender %>">
+						<option value="not-selected">Select your Gender</option>
+						<option value="Male">Male</option>
+						<option value="Female">Female</option>
+						<option value="Other">Other</option>
+					</select>
+				</div>
+				<div class="edit_field">
+					<label for="dob">DOB</label>
+					<input type="date" name="dob" value="<%= session.user.dob %>" placeholder="DOB">			
+				</div>
+				<div class="edit_field">
+					<label for="bloodGroup">Blood Group</label>
+					<select name="bloodGroup" id="bloodGroup" type="text" class="form_container__form__gender" value="<%= session.user.gender %>">
+						<option value="not-selected">Select your Blood Group</option>
+						<option value="O+">O+</option>
+						<option value="O-">O-</option>
+						<option value="A+">A+</option>
+						<option value="A-">A-</option>
+						<option value="B+">B+</option>
+						<option value="B-">B-</option>
+						<option value="AB+">AB+</option>
+						<option value="AB-">AB-</option>
+					</select>
+				</div>
+				<div class="edit_field">
+					<label for="timeZone">Time Zone</label>
+					<select name="timeZone" id="timezone" type="text" class="form_container__form__gender" value="<%= session.user.gender %>">
+						<option value="not-selected">Select your Time Zone</option>
+						<option value="Kolkata">Asia/Kolkata</option>
+						<option value="Karachi">Asia/Karachi</option>
+						<option value="Bogota">America/Bogota</option>
+						<option value="Los Angles">America/Los Angles</option>
+					</select>
+				</div>
+				<!-- <label for="dob">DOB</label>
+				<input type="date" name="dob" placeholder="Enter DOB" class="form_container__form__dob"> -->
+			</div>
+			<div class="edit_address">
+				<div class="edit_field">
+					<label for="city">City</label>
+					<input type="text" class="city" value="<%= session.user.city %>">	
+				</div>
+				<div class="edit_field">
+					<label for="state">State</label>
+					<input type="text" class="state" value="<%= session.user.state %>">	
+				</div>
+				<div class="edit_field">
+					<label for="country">Country</label>
+					<select name="country" id="country" type="text" class="form_container__form__gender">
+						<option value="not-selected" selected>Select your Country</option>
+						<option value="male">India</option>
+						<option value="female">USA</option>
+						<option value="other">Sri Lanka</option>
+					</select>	
+				</div>
+			</div>
+		</div>
+	</form>
+	</section>
+	<script src="./../index.js"></script>
+</body>
+</html>

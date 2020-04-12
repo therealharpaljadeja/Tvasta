@@ -1,0 +1,95 @@
+.edit_profile{
+	&_container{
+		margin: 2rem;
+		background-color: white;
+		padding: 2rem;
+		input{
+			margin: 1rem 0rem;
+			display: block;
+			border: 1px solid #ccc;
+			padding: 1rem 1rem;
+			font-family: $nexa-bold;
+			font-size: 1.2rem;
+			color: #777;
+		}
+		label{
+			margin-bottom: 1rem;
+			font-family: $nexa-bold;
+			font-size: 1.5rem;
+		}
+		select{
+			display: block;
+			margin-bottom: 1rem;
+			margin-top: 1rem;
+			border: 1px solid #ccc;
+			color: #777;
+			padding: 1rem 1.5rem;
+			font-family: $nexa-bold;
+			font-size: 1.2rem;
+			background-color: white;
+		}
+		.save_button{
+			border-bottom: 1px solid #ddd;
+			padding: 2rem 0rem;
+			text-align: right;
+			button{
+				background-color: $bright-blue;
+				padding: 1rem 2rem;
+				border: none;
+			    span{
+			    	font-family: $nexa-bold;
+			    	color: $background-color;
+			    }
+			}
+		}
+		.photo_and_name{
+			padding: 2rem 0rem 0rem 0rem;	
+			margin-bottom: 2rem;
+			border-bottom: 1px solid #ddd;
+			.edit_profile_photo{
+				margin-bottom: 2rem;
+			}
+		}
+		.edit_other_details{
+			margin-bottom: 2rem;
+			border-bottom: 1px solid #ddd;
+		}
+	}
+}
+
+@media(min-width: $bp-tablet){
+	.edit_profile{
+		&_container{
+			margin: 3rem;
+		}
+		.photo_and_name{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+		}
+		.edit_other_details{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-row-gap: 2rem;
+		}
+		.edit_address{
+			display: grid;
+			grid-template-columns: 1fr 1fr;
+			grid-row-gap: 2rem;
+		}
+	}
+}
+
+@media(min-width: $bp-desktop){
+	.edit_profile{
+		&_container{
+			margin: 3rem 10rem;
+		}
+		.edit_other_details{
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+		.edit_address{
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+	}
+	
+}

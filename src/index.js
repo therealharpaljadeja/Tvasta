@@ -1,3 +1,7 @@
+const treatmentChevron = document.querySelector('#treatments');
+const treatment_menu = document.querySelector('.treatment_menu_container');
+
+treatmentChevron.addEventListener('click', () => {treatment_menu.classList.toggle('display_none')});
 const profileChevron = document.querySelector('.navbar__profile');
 const profile_menu = document.querySelector('.profile_menu_container');
 

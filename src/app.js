@@ -118,7 +118,7 @@ app.get('/faq', (req, res) => {
 	res.render('views/faq.ejs', {session: req.session});
 });
 
-app.get('/tvastra-plus', (req, res) => {
+app.get('/tvastra-plus', authenticationController.redirectAdmin ,(req, res) => {
 	res.render('views/tvastra-plus.ejs', {session: req.session});
 });
 
@@ -134,11 +134,15 @@ app.get('/get-a-quote', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/get-a-quote.ejs', {session: req.session});
 })
 
-app.get('/user-dashboard-appointments', authenticationController.redirectLogin, (req, res) => {
+app.get('/edit-profile', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
+	res.render('views/user_dashboard.ejs', {session: req.session});
+})
+
+app.get('/user-dashboard-appointments', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
 	res.render('views/user_dashboard_appointments.ejs', {session: req.session});
 })
 
-app.get('/user-dashboard-lab-tests', authenticationController.redirectLogin, (req, res) => {
+app.get('/user-dashboard-lab-tests', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
 	res.render('views/user_dashboard_lab_tests.ejs', {session: req.session});
 })
 

@@ -20,6 +20,7 @@
 	}
 	&__buttons{
 		display: none;
+		max-width: 28rem;
 		#get-a-quote{
 			grid-column: 2/3;
 		}
@@ -63,22 +64,24 @@
 	}
 }
 
-.profile_menu_container{
+.profile_menu_container, .treatment_menu_container{
 	background-color: $background-color;
+	border: 1px solid #ddd;
 	position: absolute;
-	top: 10rem;
+	top: 7rem;
 	z-index: 10;
-	width: 20rem;
+	width: 25rem;
 	right: 10rem;
 	.profile_small_details{
 		display: grid;
-		grid-template-columns: 1fr 1fr;
-		height: 5rem;	
+		grid-template-columns: 1fr 2fr;
+		padding: 1rem;
+		border-bottom: 1px solid #ddd;
 		.profile_picture__container{
 			width: 5rem;
 			height: 5rem;
 			align-self: center;
-			justify-self: center;
+			justify-self: start;
 			border-radius: .5rem;
 			overflow: hidden;
 			img{
@@ -98,9 +101,11 @@
 			}
 			.name{	
 				margin-bottom: 1rem;
+				font-size: 1.5rem;
 			}
 			.phoneNumber{
 				font-family: $nexa-light;
+				font-size: 1.2rem;
 			}
 		}
 	}
@@ -114,9 +119,9 @@
 				background-color: rgba(grey,.1);
 			}
 			padding: 2rem 1rem;
-			text-align: right;
+			text-align: left;
 			font-family: $nexa-bold;
-			font-size: 1.2rem;
+			font-size: 1.5rem;
 		}
 		a{
 			text-decoration: none;
@@ -128,6 +133,17 @@
 .display_none{
 	display: none;
 }
+
+
+.treatment_menu_container{
+	right: 63rem;
+	.profile_menu{
+		&__item{
+			text-align: center;
+		}
+	}
+}
+
 
 @media (min-width: $bp-tablet){
 	.navbar{
@@ -162,6 +178,9 @@
 		@include container-styling-desktop;
 		height: 10rem;
 		&__profile{
+			// box-shadow: 0px 0px 1rem rgba(black,.4);
+			// border: 1px solid $bright-blue;
+			padding: 1rem;
 			cursor: pointer;
 			margin-left: 1rem;
 			display: flex;
@@ -180,6 +199,11 @@
 				@include flex(row);
 				list-style-type: none;
 				justify-content: center;
+				#treatments{
+					i{
+						font-size: 1.2rem;
+					}
+				}
 				&__item{
 					font-family: $nexa-light;
 					font-size: 1.5rem;
@@ -187,6 +211,7 @@
 					margin-left: 3rem;
 					font-weight: 600;
 					letter-spacing: 0.1rem;
+					
 					a, a:visited, a:hover, a:active{
 						text-decoration: none;
 						color: $dark-blue;
@@ -206,10 +231,13 @@
 				justify-self: end;
 
 			}
-			&-login{
+			&-tvastra-plus{
 				@include button-styling-desktop;
-				background-color: $background-color;
+				background-color: $bright-blue;
+				color: $background-color;
 				font-size: 1.2rem;
+				padding: 1rem 2.6rem;
+				border-color: $bright-blue;
 			}
 			&-quote{
 				@include button-styling-desktop;

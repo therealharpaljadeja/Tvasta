@@ -145,27 +145,46 @@
 			<div class="edit_address">
 				<div class="edit_field">
 					<label for="city">City</label>
-					<input type="text" class="city" value="<%= session.user.city %>">	
+					<input type="text" name="city" value="<%= session.user.city %>">	
 				</div>
 				<div class="edit_field">
 					<label for="state">State</label>
-					<input type="text" class="state" value="<%= session.user.state %>">	
+					<input type="text" name="state" value="<%= session.user.state %>">	
 				</div>
 				<div class="edit_field">
 					<label for="country">Country</label>
 					<select name="country" id="country" type="text" class="form_container__form__gender">
-						<option value="male">India</option>
-						<option value="female">USA</option>
-						<option value="other">Sri Lanka</option>
+						<option value="India">India</option>
+						<option value="USA">USA</option>
+						<option value="Other">Sri Lanka</option>
 					</select>	
 				</div>
 			</div>
 		</div>
 	</form>
 	</section>
-	<script src="./../editProfile.js"></script>
+	<script>
+		const gender = document.querySelector('select[name="gender"]');
+		const country = document.querySelector('select[name="country"]');
+		const bloodGroup = document.querySelector('select[name="bloodGroup"]');
+		const timeZone = document.querySelector('select[name="timeZone"]');
+
+		function selectOptionFromBackend (optionsList, value){
+			for(var i=0; i < optionsList.options.length; i++){
+				option = optionsList.options[i];
+				if(option.value == value){
+					console.log(value);
+					option.selected = 'selected';
+				}
+			}	
+		}
+
+		selectOptionFromBackend(gender, '<%= session.user.gender %>');
+		selectOptionFromBackend(country, '<%= session.user.country %>');
+		selectOptionFromBackend(bloodGroup, '<%= session.user.bloodGroup %>');
+		selectOptionFromBackend(timeZone, '<%= session.user.timeZone %>');
+	</script>
 	<script src="./../index.js"></script>
 	<script src="./../error.js"></script>
-
 </body>
 </html>

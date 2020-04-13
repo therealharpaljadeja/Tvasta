@@ -60,6 +60,17 @@ const userSchema = new mongoose.Schema({
 });
 
 
+userSchema.pre('save', async function(next){
+	const passwordValidator = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;
+	if(this.isModified('password')){
+		if(passwordValidator.test(this.password)) next();
+		else {
+			const err = new Error('Password must contain One Uppercase, One lowercase and One number character');
+			next(err);
+		}
+	}
+})
+
 userSchema.pre('save', async function(next) {
 	if(this.isModified('password')){
 		this.password = await bcrypt.hash(this.password, 12);

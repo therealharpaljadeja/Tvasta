@@ -6,6 +6,9 @@
 	&__form{
 		&__input_field{
 			select, input[type=date], input[type=email], input[type=password]{
+				&:focus{
+					outline: 1px solid $bright-blue;
+				}
 				border-style: solid;
 				background-color: white;
 				width: 100%;

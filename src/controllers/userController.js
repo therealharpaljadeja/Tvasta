@@ -7,7 +7,7 @@ const path = require('path');
 const fileStorage = multer.diskStorage({
 	destination: 'public/uploads/',
 	filename: function(req, file, callback){
-		callback(null, `${req.session.user.name}'s Profile Picture${path.extname(file.originalname)}`);
+		callback(null, `${req.session.user._id}${path.extname(file.originalname)}`);
 	}
 })
 
@@ -38,11 +38,9 @@ const editProfile = (req, res, next) => {
 			user.city = req.body.city;
 			user.state = req.body.state;
 			user.country = req.body.country;
-			user.editMode
-			console.log(req.file);
-			console.log(user.password);
 			await user.save();
 			req.session.user = user;
+			console.log(req.session.user);
 			req.session.error = 'Profile Updated';
 			req.session.errorType = 'Success';
 			res.redirect('/edit-profile');

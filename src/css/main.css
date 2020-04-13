@@ -2032,7 +2032,7 @@ html, body {
 .form_container__form__input_field i {
   position: absolute;
   right: 5%;
-  color: #ccc;
+  color: #0173b2;
   top: 30%;
   font-size: 2rem;
 }
@@ -2047,6 +2047,9 @@ html, body {
   font-family: "Nexa Bold";
   font-size: 1.2rem;
   color: #777;
+}
+.form_container__form input[type=text]:focus {
+  outline: 1px solid #0173b2;
 }
 .form_container__form__submit {
   border: none;
@@ -2110,6 +2113,9 @@ html, body {
   padding: 1rem 1.5rem;
   font-family: "Nexa Bold";
   font-size: 1.2rem;
+}
+.form_container__form__input_field select:focus, .form_container__form__input_field input[type=date]:focus, .form_container__form__input_field input[type=email]:focus, .form_container__form__input_field input[type=password]:focus {
+  outline: 1px solid #0173b2;
 }
 .form_container__form #city {
   width: 49%;

@@ -11,6 +11,7 @@
 			font-family: $nexa-bold;
 			font-size: 1.2rem;
 			color: #777;
+			width: 100%;
 		}
 		label{
 			margin-bottom: 1rem;
@@ -19,6 +20,7 @@
 		}
 		select{
 			display: block;
+			width: 100%;
 			margin-bottom: 1rem;
 			margin-top: 1rem;
 			border: 1px solid #ccc;
@@ -47,7 +49,21 @@
 			margin-bottom: 2rem;
 			border-bottom: 1px solid #ddd;
 			.edit_profile_photo{
+				display: flex;
+				flex-direction: column;
+				grid-gap: 2rem;
 				margin-bottom: 2rem;
+				.upload_photo_image_container{
+					width: 8rem;
+					height: 8rem;
+					align-self: center;
+					border-radius: 50%;
+					overflow: hidden;
+					img{
+						width: 100%;
+						height: 100%;
+					}
+				}
 			}
 		}
 		.edit_other_details{
@@ -65,16 +81,21 @@
 		.photo_and_name{
 			display: grid;
 			grid-template-columns: 1fr 1fr;
+			.edit_profile_photo{
+				flex-direction: row;
+				.upload_photo_image_container{
+				}
+			}
 		}
 		.edit_other_details{
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			grid-row-gap: 2rem;
+			grid-gap: 2rem;
 		}
 		.edit_address{
 			display: grid;
 			grid-template-columns: 1fr 1fr;
-			grid-row-gap: 2rem;
+			grid-gap: 2rem;
 		}
 	}
 }

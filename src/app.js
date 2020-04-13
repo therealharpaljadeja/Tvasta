@@ -2,6 +2,7 @@ const express = require('express');
 const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
+const multer = require('multer');
 const session = require('express-session');
 const authenticationController = require('./controllers/authenticationController');
 const User = require('./models/userModel');
@@ -25,42 +26,39 @@ app.use(session({
 app.use(express.urlencoded( {extended: true} ));
 app.set('views', __dirname); 
 app.use(express.static(path.join(__dirname)));
+
+// Public Folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+
+// File Storage
+const fileStorage = multer.diskStorage({
+	destination: 'public/uploads/',
+	filename: function(req, file, callback){
+		callback(null, `${req.session.user.name}'s Profile Picture${path.extname(file.originalname)}`);
+	}
+})
+
+// Init Upload
+const upload = multer({
+	storage: fileStorage,
+	limits: {fileSize: 1000000},
+}).single('display_picture');
+
+// Check File Type
+
+// EJS
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
 
-app.get('/admin', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
-	res.render('views/dashboard.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
-});
 
-app.get('/admin-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
-	res.render('views/dashboard_doctors.ejs', {session: req.session, doctors: dev_data_json.doctors});
-});
 
-app.get('/', authenticationController.redirectLogin2, authenticationController.redirectAdmin, (req, res) => {
-	res.render('views/index.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
-});
 
+// Development Data
 const dev_data_string = fs.readFileSync('dev_data.json').toString();
 const dev_data_json = JSON.parse(dev_data_string);
 
-app.put('/disable-error', authenticationController.clearError);
-
-app.get('/doctors', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/doctor.ejs', {doctors : dev_data_json.doctors, session: req.session});
-});
-
-app.get('/hospitals', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/hospital.ejs', {hospital : dev_data_json.hospitals, session: req.session});
-});
-
-app.get('/about', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/about.ejs', {session: req.session});
-});
-
-app.get('/treatments', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/treatments.ejs', {session: req.session});
-});
-
+// Authentication Routes
 app.get('/email-login', authenticationController.redirectToRespectiveHome, (req, res) => {
 	res.render('views/email-login.ejs', {error: req.session.error, session: req.session, errorType: req.session.errorType });
 });
@@ -100,6 +98,45 @@ app.get('/create-new-password', authenticationController.redirectToRespectiveHom
 
 app.post('/create-new-password', authenticationController.changePassword);
 
+app.get('/logout', authenticationController.logout);
+
+// Admin Routes
+
+app.get('/admin', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
+	res.render('views/dashboard.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
+});
+
+app.get('/admin-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
+	res.render('views/dashboard_doctors.ejs', {session: req.session, doctors: dev_data_json.doctors});
+});
+
+
+
+// User Routes
+
+app.get('/', authenticationController.redirectLogin2, authenticationController.redirectAdmin, (req, res) => {
+	res.render('views/index.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
+});
+
+app.put('/disable-error', authenticationController.clearError);
+
+app.get('/doctors', authenticationController.redirectLogin, (req, res) => {
+	res.render('views/doctor.ejs', {doctors : dev_data_json.doctors, session: req.session});
+});
+
+app.get('/hospitals', authenticationController.redirectLogin, (req, res) => {
+	res.render('views/hospital.ejs', {hospital : dev_data_json.hospitals, session: req.session});
+});
+
+app.get('/about', authenticationController.redirectLogin, (req, res) => {
+	res.render('views/about.ejs', {session: req.session});
+});
+
+app.get('/treatments', authenticationController.redirectLogin, (req, res) => {
+	res.render('views/treatments.ejs', {session: req.session});
+});
+
+
 app.get('/contact-us', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/contactus.ejs', {session: req.session});
 });
@@ -135,7 +172,7 @@ app.get('/get-a-quote', authenticationController.redirectLogin, (req, res) => {
 })
 
 app.get('/edit-profile', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
-	res.render('views/user_dashboard.ejs', {session: req.session});
+	res.render('views/edit_profile.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
 })
 
 app.get('/user-dashboard-appointments', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
@@ -146,7 +183,20 @@ app.get('/user-dashboard-lab-tests', authenticationController.redirectLogin, aut
 	res.render('views/user_dashboard_lab_tests.ejs', {session: req.session});
 })
 
-app.get('/logout', authenticationController.logout);
+app.post('/save-changes', (req, res) => {
+	console.log(req.body);
+	upload(req, res, (err) => {
+	if(err) {
+		req.session.error = err;
+		req.session.errorType = 'Failure';
+		res.redirect('/edit-profile');
+	} else {
+		console.log(req.file);
+		req.session.error = 'Profile Picture Updated';
+		req.session.errorType = 'Success';
+		res.redirect('/edit-profile');
+	}
+})});
 
 module.exports = app;
 

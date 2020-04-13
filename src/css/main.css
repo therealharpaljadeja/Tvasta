@@ -4293,6 +4293,7 @@ html, body {
   font-family: "Nexa Bold";
   font-size: 1.2rem;
   color: #777;
+  width: 100%;
 }
 .edit_profile_container label {
   margin-bottom: 1rem;
@@ -4301,6 +4302,7 @@ html, body {
 }
 .edit_profile_container select {
   display: block;
+  width: 100%;
   margin-bottom: 1rem;
   margin-top: 1rem;
   border: 1px solid #ccc;
@@ -4330,7 +4332,21 @@ html, body {
   border-bottom: 1px solid #ddd;
 }
 .edit_profile_container .photo_and_name .edit_profile_photo {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 2rem;
   margin-bottom: 2rem;
+}
+.edit_profile_container .photo_and_name .edit_profile_photo .upload_photo_image_container {
+  width: 8rem;
+  height: 8rem;
+  align-self: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+.edit_profile_container .photo_and_name .edit_profile_photo .upload_photo_image_container img {
+  width: 100%;
+  height: 100%;
 }
 .edit_profile_container .edit_other_details {
   margin-bottom: 2rem;
@@ -4345,15 +4361,18 @@ html, body {
     display: grid;
     grid-template-columns: 1fr 1fr;
   }
+  .edit_profile .photo_and_name .edit_profile_photo {
+    flex-direction: row;
+  }
   .edit_profile .edit_other_details {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-row-gap: 2rem;
+    grid-gap: 2rem;
   }
   .edit_profile .edit_address {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    grid-row-gap: 2rem;
+    grid-gap: 2rem;
   }
 }
 @media (min-width: 1024px) {

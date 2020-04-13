@@ -5,6 +5,7 @@ const path = require('path');
 const multer = require('multer');
 const session = require('express-session');
 const authenticationController = require('./controllers/authenticationController');
+const userController = require('./controllers/userController');
 const User = require('./models/userModel');
 
 
@@ -29,23 +30,6 @@ app.use(express.static(path.join(__dirname)));
 
 // Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
-
-
-// File Storage
-const fileStorage = multer.diskStorage({
-	destination: 'public/uploads/',
-	filename: function(req, file, callback){
-		callback(null, `${req.session.user.name}'s Profile Picture${path.extname(file.originalname)}`);
-	}
-})
-
-// Init Upload
-const upload = multer({
-	storage: fileStorage,
-	limits: {fileSize: 1000000},
-}).single('display_picture');
-
-// Check File Type
 
 // EJS
 app.engine('html', ejs.renderFile);
@@ -183,20 +167,7 @@ app.get('/user-dashboard-lab-tests', authenticationController.redirectLogin, aut
 	res.render('views/user_dashboard_lab_tests.ejs', {session: req.session});
 })
 
-app.post('/save-changes', (req, res) => {
-	console.log(req.body);
-	upload(req, res, (err) => {
-	if(err) {
-		req.session.error = err;
-		req.session.errorType = 'Failure';
-		res.redirect('/edit-profile');
-	} else {
-		console.log(req.file);
-		req.session.error = 'Profile Picture Updated';
-		req.session.errorType = 'Success';
-		res.redirect('/edit-profile');
-	}
-})});
+app.post('/save-changes', userController.editProfile);
 
 module.exports = app;
 

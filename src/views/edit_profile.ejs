@@ -70,7 +70,7 @@
 		<% } %>
 	<% } %>
 	<section class="edit_profile">
-		<form action="/save-changes" id="edit-profile" method="POST">
+		<form action="/save-changes" id="edit-profile" method="POST" enctype="multipart/form-data">
 		<div class="edit_profile_container">
 			<div class="save_button">
 				<button type="submit" form="edit-profile">
@@ -82,7 +82,7 @@
 			<div class="photo_and_name">
 				<div class="edit_profile_photo">
 					<div class="upload_photo_image_container">
-						<img src="./../public/uploads/Rajdeep Jadeja's Profile Picture.jpeg" alt="">.upload_photo_image
+						<img src="<%= session.user.display_picture ? session.user.display_picture : 'public/uploads/user.jpeg'  %>" alt="">
 					</div>
 					<div class="upload_image_container">
 						<label for="display_picture">Upload Your Profile Photo</label>
@@ -105,8 +105,7 @@
 				</div>
 				<div class="edit_field">
 					<label for="gender">Gender</label>
-					<select required name="gender" id="gender" type="text" class="form_container__form__gender" value="<%= session.user.gender %>">
-						<option value="not-selected">Select your Gender</option>
+					<select data-selected="" required name="gender" id="gender" type="text" class="form_container__form__gender">
 						<option value="Male">Male</option>
 						<option value="Female">Female</option>
 						<option value="Other">Other</option>
@@ -114,12 +113,12 @@
 				</div>
 				<div class="edit_field">
 					<label for="dob">DOB</label>
-					<input type="date" name="dob" value="<%= session.user.dob %>" placeholder="DOB" ng-value="<%= session.user.dob %>">			
+					<input type="date" name="dob" value="<%= session.user.dob.split('T')[0] %>" placeholder="DOB">			
 				</div>
 				<div class="edit_field">
 					<label for="bloodGroup">Blood Group</label>
-					<select name="bloodGroup" id="bloodGroup" type="text" class="form_container__form__gender" value="<%= session.user.gender %>">
-						<option value="not-selected">Select your Blood Group</option>
+					<select name="bloodGroup" id="bloodGroup" type="text" class="form_container__form__gender">
+						<option value=undefined>Select your Blood Group</option>
 						<option value="O+">O+</option>
 						<option value="O-">O-</option>
 						<option value="A+">A+</option>
@@ -132,8 +131,8 @@
 				</div>
 				<div class="edit_field">
 					<label for="timeZone">Time Zone</label>
-					<select name="timeZone" id="timezone" type="text" class="form_container__form__gender" value="<%= session.user.gender %>">
-						<option value="not-selected">Select your Time Zone</option>
+					<select name="timeZone" id="timezone" type="text" class="form_container__form__gender">
+						<option value=undefined>Select your Time Zone</option>
 						<option value="Kolkata">Asia/Kolkata</option>
 						<option value="Karachi">Asia/Karachi</option>
 						<option value="Bogota">America/Bogota</option>
@@ -155,7 +154,6 @@
 				<div class="edit_field">
 					<label for="country">Country</label>
 					<select name="country" id="country" type="text" class="form_container__form__gender">
-						<option value="not-selected" selected>Select your Country</option>
 						<option value="male">India</option>
 						<option value="female">USA</option>
 						<option value="other">Sri Lanka</option>
@@ -165,7 +163,9 @@
 		</div>
 	</form>
 	</section>
+	<script src="./../editProfile.js"></script>
 	<script src="./../index.js"></script>
 	<script src="./../error.js"></script>
+
 </body>
 </html>

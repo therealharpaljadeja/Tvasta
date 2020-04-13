@@ -45,6 +45,13 @@ const userSchema = new mongoose.Schema({
 	display_picture: {
 		type: String
 	},
+	bloodGroup: {
+		type: String,
+		enum: ['undefined', 'O+', 'O-', 'A+', 'A-', 'B+', 'B-', 'AB+', 'AB-']
+	},
+	timeZone: {
+		type: String
+	},
 	role: {
 		type: String,
 		enum: ['admin', 'user'],
@@ -54,8 +61,10 @@ const userSchema = new mongoose.Schema({
 
 
 userSchema.pre('save', async function(next) {
-	this.password = await bcrypt.hash(this.password, 12);
-	next();
+	if(this.isModified('password')){
+		this.password = await bcrypt.hash(this.password, 12);
+		next();	
+	}
 });
 
 userSchema.methods.comparePassword = async function(hashedPassword, enteredPassword) {

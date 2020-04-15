@@ -6,8 +6,14 @@ const hospitalSchema = new mongoose.Schema({
 	location: { type: String, required: true },
 	beds: { type: Number },
 	display_picture: { type: String },
-	address: { type: String }
-
+	address: { type: String },
+	description: { type: String },
+	mobile: { type: Number },
+	email: { type: String },
+	yearsOfEstablishment: { type: Number },
+	treatments: { type: [String] },
+	services: { type: [String] },
+	avg_fees: { type: [String] },
 });
 
 const Hospital = mongoose.model('Hospital', hospitalSchema);

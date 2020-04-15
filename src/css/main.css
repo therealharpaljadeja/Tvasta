@@ -1430,7 +1430,6 @@ html, body {
 .doctor_list__container__col-2__card, .hospital_list__container__col-2__card {
   display: grid;
   border: 0.1rem solid #bbb;
-  height: 60rem;
   overflow: hidden;
 }
 .doctor_list__container__col-2__card__name, .hospital_list__container__col-2__card__name {
@@ -1493,6 +1492,30 @@ html, body {
 .doctor_list__container__col-2__card__doctor_img_wrapper__img, .hospital_list__container__col-2__card__doctor_img_wrapper__img {
   width: 100%;
   height: 100%;
+}
+.doctor_list__container__col-2__card__time_slot, .hospital_list__container__col-2__card__time_slot {
+  display: none;
+  flex-direction: column;
+  grid-gap: 1rem;
+  padding: 1rem 4rem;
+  border-top: 1px solid #ccc;
+  grid-column: 1/-1;
+}
+.doctor_list__container__col-2__card__time_slot h4, .hospital_list__container__col-2__card__time_slot h4 {
+  font-family: "Nexa Bold";
+  color: #0173b2;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots a, .hospital_list__container__col-2__card__time_slot .time-slots a {
+  text-decoration: none;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots a .slot, .hospital_list__container__col-2__card__time_slot .time-slots a .slot {
+  display: inline;
+  line-height: 3rem;
+  border-radius: 0.5rem;
+  border: 1px solid #0173b2;
+  padding: 0.7rem;
+  font-family: "Nexa Bold";
+  color: #0173b2;
 }
 
 @media (min-width: 768px) {
@@ -1586,9 +1609,7 @@ html, body {
     margin-right: 1rem;
   }
   .doctor_list__container__col-2__card, .hospital_list__container__col-2__card {
-    height: 26rem;
     grid-template-columns: 6fr 4fr;
-    grid-template-rows: 1fr 3fr 0fr;
   }
   .doctor_list__container__col-2__card__name, .hospital_list__container__col-2__card__name {
     grid-column: 1/2;
@@ -1622,7 +1643,7 @@ html, body {
   }
   .doctor_list__container__col-2__card__doctor_img_wrapper, .hospital_list__container__col-2__card__doctor_img_wrapper {
     width: 100%;
-    height: 100%;
+    height: 26rem;
     grid-row: 1/-1;
     grid-column: 2/3;
   }
@@ -4295,11 +4316,96 @@ html, body {
 
 .page-content {
   max-height: 100%;
-  background-color: white;
+  background-color: #ddd;
   margin: 1rem 2rem;
 }
 .page-content .page-content-container {
   width: 100%;
+  padding: 2rem;
+}
+.page-content .page-content-container .appointment_heading {
+  font-family: "Nexa Bold";
+  color: #777;
+}
+.page-content .page-content-container .appointment_container .appointment {
+  display: flex;
+  flex-direction: row;
+  grid-gap: 1rem;
+  background-color: white;
+  border: 1px solid #ddd;
+  padding: 1rem 1.5rem;
+  margin: 1rem 0rem;
+}
+.page-content .page-content-container .appointment_container .appointment_date {
+  background-color: #ccc;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 0.5rem;
+  align-items: center;
+  justify-content: center;
+}
+.page-content .page-content-container .appointment_container .appointment_date_date {
+  font-family: "Nexa Bold";
+  color: #666;
+  font-size: 2rem;
+}
+.page-content .page-content-container .appointment_container .appointment_date_month {
+  text-transform: uppercase;
+  font-family: "Nexa Bold";
+  font-size: 1.5rem;
+  color: #666;
+}
+.page-content .page-content-container .appointment_container .appointment_details {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 0.5rem;
+  flex-grow: 2;
+  justify-content: center;
+}
+.page-content .page-content-container .appointment_container .appointment_details_doctor_name {
+  font-family: "Nexa Bold";
+  font-size: 1.4rem;
+  color: #555;
+}
+.page-content .page-content-container .appointment_container .appointment_details_time {
+  font-family: "Nexa Bold";
+  color: #999;
+}
+.page-content .page-content-container .appointment_container .appointment_details_clinic {
+  font-family: "Nexa Bold";
+  color: #999;
+}
+.page-content .page-content-container .appointment_container .appointment_details_status .approved {
+  line-height: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-family: "Nexa Bold";
+  background-color: rgba(0, 128, 0, 0.4);
+  color: green;
+}
+.page-content .page-content-container .appointment_container .appointment_details_status .cancelled {
+  line-height: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  font-family: "Nexa Bold";
+  background-color: rgba(255, 0, 0, 0.4);
+  color: red;
+}
+.page-content .page-content-container .appointment_container .appointment_view_details {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  grid-gap: 1rem;
+}
+.page-content .page-content-container .appointment_container .appointment_view_details_btn {
+  background-color: white;
+  border: 1px solid #0173b2;
+  border-radius: 0.5rem;
+  color: #0173b2;
+  font-family: "Nexa Bold";
+  padding: 1rem;
 }
 
 @media (min-width: 768px) {

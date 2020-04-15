@@ -66,7 +66,6 @@
 			&__card{
 				display: grid;
 				border: .1rem solid #bbb;
-				height: 60rem;
 				overflow: hidden;
 				&__name{
 					position: relative;
@@ -127,7 +126,33 @@
 						width: 100%;
 						height: 100%;
 					}
-					
+				}
+				&__time_slot{
+					display: none;
+					flex-direction: column;
+					grid-gap: 1rem;
+					padding: 1rem 4rem;
+					border-top: 1px solid #ccc;
+					grid-column: 1/-1;
+					h4{
+						font-family: $nexa-bold;
+						color: $bright-blue;
+					}
+					.time-slots{
+						a{
+							text-decoration: none;
+							.slot{
+								display: inline;
+								line-height: 3rem;
+								border-radius: .5rem;
+								border: 1px solid $bright-blue;
+								padding: .7rem;
+								font-family: $nexa-bold;
+								color: $bright-blue;
+							}	
+						}
+						
+					}
 				}
 			}
 		}
@@ -224,9 +249,7 @@
 			}
 			&__col-2{
 				&__card{
-					height: 26rem;
 					grid-template-columns: 6fr 4fr;
-					grid-template-rows: 1fr 3fr 0fr;
 					&__name{
 						grid-column: 1/2;
 						grid-row: 1/2;
@@ -259,7 +282,7 @@
 					}
 					&__doctor_img_wrapper{
 					width: 100%;
-					height: 100%;
+					height: 26rem;
 					grid-row: 1/-1;
 					grid-column: 2/3;
 					&__img{

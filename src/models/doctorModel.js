@@ -13,7 +13,15 @@ const doctorSchema = new mongoose.Schema({
 	experience: Number,
 	hospital: String,
 	location: String,
-	display_picture: String
+	display_picture: String,
+	description: String,
+	email: { type: String },
+	mobile: { type: Number },
+	specializations: { type: [String] },
+	qualifications: { type: [String] },
+	awards: { type: [String] },
+	avg_fees: { type: Number },
+	hospitalList: { type: [mongoose.Schema.ObjectId] }
 });
 
 

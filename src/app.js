@@ -163,6 +163,10 @@ app.get('/user-dashboard-appointments', authenticationController.redirectLogin, 
 	res.render('views/user_dashboard_appointments.ejs', {session: req.session});
 })
 
+app.get('/user-dashboard-medicines', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
+	res.render('views/user_dashboard_medicines.ejs', {session: req.session});
+})
+
 app.get('/user-dashboard-lab-tests', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
 	res.render('views/user_dashboard_lab_tests.ejs', {session: req.session});
 })

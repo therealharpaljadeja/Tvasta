@@ -1678,6 +1678,33 @@ html, body {
     margin-top: 1rem;
     padding-left: 1.5rem;
   }
+  .doctor_list__container__col-1__filter-by__tags .filter_button, .hospital_list__container__col-1__filter-by__tags .filter_button {
+    border: 1px solid #0173b2;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    display: inline;
+    line-height: 3rem;
+    white-space: nowrap;
+  }
+  .doctor_list__container__col-1__filter-by__tags .filter_button p, .hospital_list__container__col-1__filter-by__tags .filter_button p {
+    font-size: 1rem;
+    font-family: "Nexa Bold";
+    color: #0173b2;
+    display: inline-block;
+  }
+  .doctor_list__container__col-1__filter-by__tags .filter_button button, .hospital_list__container__col-1__filter-by__tags .filter_button button {
+    background-color: #0173b2;
+    border: none;
+    border-radius: 50%;
+    width: 1.5rem;
+    position: relative;
+  }
+  .doctor_list__container__col-1__filter-by__tags .filter_button button i, .hospital_list__container__col-1__filter-by__tags .filter_button button i {
+    position: relative;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.25rem;
+  }
   .doctor_list__container__col-1__filter-by__tags__tag, .hospital_list__container__col-1__filter-by__tags__tag {
     position: relative;
     font-size: 1rem;

@@ -39,12 +39,8 @@
 					<div class="doctor_list__container__col-1__filter-by__title">
 						<p>Filter By</p>
 					</div>
-					<div class="doctor_list__container__col-1__filter-by__tags">
-						<span class="doctor_list__container__col-1__filter-by__tags__tag">DLF Cyber City<i class="fas fa-times"></i></span>
-						<span class="doctor_list__container__col-1__filter-by__tags__tag">30+<i class="fas fa-times"></i></span>
-						<span class="doctor_list__container__col-1__filter-by__tags__tag">Apollo Hospital<i class="fas fa-times"></i></span>
-						<span class="doctor_list__container__col-1__filter-by__tags__tag">DLF Cyber City<i class="fas fa-times"></i></span>
-						<span class="doctor_list__container__col-1__filter-by__tags__tag">DLF Cyber City<i class="fas fa-times"></i></span>
+					<div class="doctor_list__container__col-1__filter-by__tags" id="doctor_list__container__col-1__filter-by__tags">
+						
 					</div>
 				</div>
 				<div class="grid hospital_list__container__col-1__filter hospital_list__container__col-1__filter-1">
@@ -52,12 +48,12 @@
 					<span class="hospital_list__container__col-1__filter__search"><i class="fas fa-search"></i></span>
 					<span class="hospital_list__container__col-1__filter__collapse"><i class="fas fa-minus"></i></span>
 					<div class="hospital_list__container__col-1__filter__options">
-						<label for="DLF"><input type="checkbox" name="DLF">DLF Cyber City</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Dwarka</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Lajpat Nagar</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Palam Vihar</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Punjabi Bhag</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Pusa Road</label>
+						<label class="checkbox_container" for="DLF Cyber City"><input onclick="add(this)" id="DLF Cyber City" value="DLF Cyber City" type="checkbox" name="location">DLF Cyber City</label>
+						<label class="checkbox_container" for="Dwarka"><input onclick="add(this)" id="Dwarka" value="Dwarka" type="checkbox" name="location">Dwarka</label>
+						<label class="checkbox_container" for="Lajpat Nagar"><input onclick="add(this)" id="Lajpat Nagar" value="Lajpat Nagar" type="checkbox" name="location">Lajpat Nagar</label>
+						<label class="checkbox_container" for="Palam Vihar"><input onclick="add(this)" id="Palam Vihar" value="Palam Vihar" type="checkbox" name="location">Palam Vihar</label>
+						<label class="checkbox_container" for="Punjabi Bhag"><input onclick="add(this)" id="Punjabi Bhag" value="Punjabi Bhag" type="checkbox" name="location">Punjabi Bhag</label>
+						<label class="checkbox_container" for="Pusa Road"><input onclick="add(this)" id="Pusa Road" value="Pusa Road" type="checkbox" name="location">Pusa Road</label>
 					</div>
 					<div class="hospital_list__container__col-1__filter__show_more"><span><i class="fas fa-plus"></i></span>Show More</div>
 				</div>
@@ -66,12 +62,12 @@
 					<span class="hospital_list__container__col-1__filter__search"><i class="fas fa-search"></i></span>
 					<span class="hospital_list__container__col-1__filter__collapse"><i class="fas fa-minus"></i></span>
 					<div class="hospital_list__container__col-1__filter__options">
-						<label for="DLF"><input type="checkbox" name="DLF">Multi Organ Transplant</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Orthopedic Surgery</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Infertility Treatment</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Dentistry</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Cardiology</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Cancer</label>
+						<label class="checkbox_container" for="Multi Organ Transplant"><input onclick="add(this)" id="Multi Organ Transplant" value="Multi Organ Transplant" type="checkbox" name="treatment">Multi Organ Transplant</label>
+						<label class="checkbox_container" for="Orthopedic Surgery"><input onclick="add(this)" id="Orthopedic Surgery" value="Orthopedic Surgery" type="checkbox" name="treatment">Orthopedic Surgery</label>
+						<label class="checkbox_container" for="Infertility Treatment"><input onclick="add(this)" id="Infertility Treatment" value="Infertility Treatment" type="checkbox" name="treatment">Infertility Treatment</label>
+						<label class="checkbox_container" for="Dentistry"><input onclick="add(this)" id="Dentistry" value="Dentistry" type="checkbox" name="treatment">Dentistry</label>
+						<label class="checkbox_container" for="Cardiology"><input onclick="add(this)" id="Cardiology" value="Cardiology" type="checkbox" name="treatment">Cardiology</label>
+						<label class="checkbox_container" for="Cancer"><input onclick="add(this)" id="Cancer" value="Cancer" type="checkbox" name="treatment">Cancer</label>
 					</div>
 					<div class="hospital_list__container__col-1__filter__show_more"><span><i class="fas fa-plus"></i></span> Show More</div>
 				</div>
@@ -80,26 +76,26 @@
 					<span class="hospital_list__container__col-1__filter__search"><i class="fas fa-search"></i></span>
 					<span class="hospital_list__container__col-1__filter__collapse"><i class="fas fa-minus"></i></span>
 					<div class="hospital_list__container__col-1__filter__options">
-						<label for="DLF"><input type="checkbox" name="DLF">Apollo Hospital</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Manipal North Side Hospital</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Northstar</label>
-						<label for="DLF"><input type="checkbox" name="DLF">AIIMS</label>
-						<label for="DLF"><input type="checkbox" name="DLF">Fortis Hospital</label>
+						<label for="Apollo "><input id="" value="" type="checkbox" name="DLF">Apollo Hospital</label>
+						<label for="DLF"><input id="" value="" type="checkbox" name="DLF">Manipal North Side Hospital</label>
+						<label for="DLF"><input id="" value="" type="checkbox" name="DLF">Northstar</label>
+						<label for="DLF"><input id="" value="" type="checkbox" name="DLF">AIIMS</label>
+						<label for="DLF"><input id="" value="" type="checkbox" name="DLF">Fortis Hospital</label>
 						<label for="DLF"><input type="checkbox" name="DLF">Elbit Diagnostics</label>
 					</div>
 					<div class="hospital_list__container__col-1__filter__show_more"><span><i class="fas fa-plus"></i></span> Show More</div>
 				</div>
 				<div class="grid hospital_list__container__col-1__filter hospital_list__container__col-1__filter-4">
-					<p class="hospital_list__container__col-1__filter__title">Years Of Experience</p>
+					<p class="hospital_list__container__col-1__filter__title">No Of Beds</p>
 					<span class="hospital_list__container__col-1__filter__search"><i class="fas fa-search"></i></span>
 					<span class="hospital_list__container__col-1__filter__collapse"><i class="fas fa-minus"></i></span>
 					<div class="hospital_list__container__col-1__filter__options">
-						<label for="DLF"><input type="checkbox" name="DLF">30+</label>
-						<label for="DLF"><input type="checkbox" name="DLF">25+</label>
-						<label for="DLF"><input type="checkbox" name="DLF">20+</label>
-						<label for="DLF"><input type="checkbox" name="DLF">15+</label>
-						<label for="DLF"><input type="checkbox" name="DLF">10+</label>
-						<label for="DLF"><input type="checkbox" name="DLF">5+</label>
+						<label class="checkbox_container" for="30"><input onclick="add(this)" id="30" value="30" type="checkbox" name="beds">30+</label>
+						<label class="checkbox_container" for="25"><input onclick="add(this)" id="25" value="25" type="checkbox" name="beds">25+</label>
+						<label class="checkbox_container" for="20"><input onclick="add(this)" id="20" value="20" type="checkbox" name="beds">20+</label>
+						<label class="checkbox_container" for="15"><input onclick="add(this)" id="15" value="15" type="checkbox" name="beds">15+</label>
+						<label class="checkbox_container" for="10"><input onclick="add(this)" id="10" value="10" type="checkbox" name="beds">10+</label>
+						<label class="checkbox_container" for="5"><input onclick="add(this)" id="5" value="5" type="checkbox" name="beds">5+</label>
 					</div>
 					<div class="hospital_list__container__col-1__filter__show_more"><span><i class="fas fa-plus"></i></span> Show More</div>
 				</div>
@@ -116,8 +112,8 @@
 						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-2"><span><i class="fas fa-bed"></i></span><%= hospital[i].beds %> beds</p>
 						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__experience"><span><i class="fas fa-stethoscope"></i></span>Famous Treatments</p>
 						<div class="hospital_list__container__col-2__card__other_details__tags">
-							<% for(let j = 0; j < hospital[i].tags.length; j++){ %>
-							<span class="hospital_list__container__col-2__card__other_details__tags__tag"><%= hospital[i].tags[j] %></span>
+							<% for(let j = 0; j < hospital[i].listOfTreatment.length; j++){ %>
+							<span class="hospital_list__container__col-2__card__other_details__tags__tag"><%= hospital[i].listOfTreatment[j] %></span>
 							<% } %>
 							<!-- <span class="hospital_list__container__col-2__card__other_details__tags__tag">Orthopedic Surgery</span>
 							<span class="hospital_list__container__col-2__card__other_details__tags__tag">Infertility Treatment</span>
@@ -129,7 +125,7 @@
 					</div>
 					<button class="hospital_list__container__col-2__card__book">Call Now</button>
 					<div class="hospital_list__container__col-2__card__hospital_img_wrapper">
-						<img src="<%= hospital[i].imageSrc %>" alt="" class="hospital_list__container__col-2__card__hospital_img_wrapper__img">	
+						<img src="<%= hospital[i].display_picture %>" alt="" class="hospital_list__container__col-2__card__hospital_img_wrapper__img">	
 					</div>
 				</div>
 				<% } %>
@@ -237,7 +233,77 @@
 	</footer>
 	<div class="border">
 	</div>
+	<script>
+		 let url = window.location.search;
+		  console.log(url);
+		  url = url.split('%20').join(' ');
+		  const checkboxes = document.getElementsByClassName('checkbox_container');
+		  // console.log(checkboxes);
 
+		  console.log(url);
+		  [...checkboxes].forEach(checkbox => {
+		    if (url.indexOf(checkbox.firstChild.getAttribute('value')) > -1) {
+		      checkbox.firstChild.checked = true;
+		      document.getElementById("doctor_list__container__col-1__filter-by__tags").innerHTML +=
+		        `<div class='filter_button'>
+		        <p>${checkbox.firstChild.getAttribute('value')}</p>
+		        <button 
+		          name='${checkbox.firstChild.getAttribute('name')}'
+		          value='${checkbox.firstChild.getAttribute('value')}' 
+		          onclick='remove(this)'
+		        >
+		          <i class='fa fa-times'></i>
+		        </button>
+		      </div>`;
+		    }
+		  });
+
+
+		function add(some) {
+		    let newUrl = window.location.href;
+		    console.log(some.checked);
+		    if (some.checked) {
+		      //add query
+		      if (newUrl.indexOf('?') == -1) {
+		        newUrl += `?${some.getAttribute('name')}=${some.getAttribute('value')}`;
+		      }
+		      else {
+		        newUrl += `&${some.getAttribute('name')}=${some.getAttribute('value')}`
+		      }
+		    }
+		    else {
+		      //remove query
+		      newUrl = newUrl.split('%20').join(' ');
+		      const query = `${some.getAttribute('name')}=${some.getAttribute('value')}`;
+		      const inx = newUrl.indexOf(query);
+		      if (newUrl.indexOf(`${some.getAttribute('name')}=${some.getAttribute('value')}`) > -1) {
+		        if (newUrl[inx - 1] === '&') {
+		          newUrl = newUrl.replace('&' + query, '');
+		        }
+		        else {
+		          newUrl = newUrl.replace(query, '');
+		        }
+		      }
+		    }
+		    window.location.href = newUrl; //this line will redirect to new location
+		}
+		function remove(ele) {
+		    let newUrl = window.location.href;
+		    newUrl = newUrl.split('%20').join(' ');
+		    const query = `${ele.getAttribute('name')}=${ele.getAttribute('value')}`;
+		    const inx = newUrl.indexOf(query);
+		    if (newUrl.indexOf(`${ele.getAttribute('name')}=${ele.getAttribute('value')}`) > -1) {
+		      if (newUrl[inx - 1] === '&') {
+		        newUrl = newUrl.replace('&' + query, '');
+		      }
+		      else {
+		        newUrl = newUrl.replace(query, '');
+		      }
+		      window.location.href = newUrl; //this line will redirect to new location
+		    }
+		}
+
+	</script>
 	<script type="text/javascript" src="index.js"></script>
 </body>
 </html>

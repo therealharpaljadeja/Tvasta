@@ -6,8 +6,10 @@ const multer = require('multer');
 const session = require('express-session');
 const authenticationController = require('./controllers/authenticationController');
 const userController = require('./controllers/userController');
+const doctorController = require('./controllers/doctorController');
+const hospitalController = require('./controllers/hospitalController.js');
 const User = require('./models/userModel');
-
+const Doctor = require('./models/doctorModel');
 
 // Middlewares
 app = express();
@@ -34,8 +36,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 // EJS
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
-
-
 
 
 // Development Data
@@ -90,8 +90,8 @@ app.get('/admin', authenticationController.redirectLogin, authenticationControll
 	res.render('views/dashboard.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
 });
 
-app.get('/admin-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
-	res.render('views/dashboard_doctors.ejs', {session: req.session, doctors: dev_data_json.doctors});
+app.get('/admin-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, doctorController.getAllDoctors, (req, res) => {
+	res.render('views/dashboard_doctors.ejs', {session: req.session, doctors: res.locals.doctors});
 });
 
 
@@ -104,12 +104,12 @@ app.get('/', authenticationController.redirectLogin2, authenticationController.r
 
 app.put('/disable-error', authenticationController.clearError);
 
-app.get('/doctors', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/doctor.ejs', {doctors : dev_data_json.doctors, session: req.session});
+app.get('/doctors', authenticationController.redirectLogin, doctorController.getAllDoctors, (req, res) => {
+	res.render('views/doctor.ejs', {doctors : res.locals.doctors, session: req.session});
 });
 
-app.get('/hospitals', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/hospital.ejs', {hospital : dev_data_json.hospitals, session: req.session});
+app.get('/hospitals', authenticationController.redirectLogin, hospitalController.getAllHospitals, (req, res) => {
+	res.render('views/hospital.ejs', {hospital : res.locals.hospitals, session: req.session});
 });
 
 app.get('/about', authenticationController.redirectLogin, (req, res) => {
@@ -169,6 +169,20 @@ app.get('/user-dashboard-lab-tests', authenticationController.redirectLogin, aut
 
 app.post('/save-changes', userController.editProfile);
 
+// Reload Method
+// app.post('/doctors', (req, res) => {
+// 	console.log('post req');
+// 	let query = '';
+// 	for(var i of Object.keys(req.query)){
+// 		query += `${i}=${req.query[i]}&`;
+// 	}
+// 	console.log(`/doctors?${query}`);
+// 	res.redirect(`/doctors?${query}`);
+// });
+
+
+// XMLHTTPRequest Method
+// app.post('/doctors', doctorController.filterDoctor);
 module.exports = app;
 
 

@@ -1,4 +1,3 @@
-
 const carousel = document.querySelector(".more_services__container__row--2__carousel");
 const slides = Array.from(carousel.querySelectorAll(".more_services__container__row--2__carousel__item__container"));
 const leftButton = document.querySelector(".more_services__container__row--1__carousel__buttons__button--left");

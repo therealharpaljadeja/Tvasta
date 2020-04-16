@@ -119,12 +119,12 @@
 					<div class="doctor_list__container__col-2__card__time_slot">
 						<h4 class="heading-4">Select a Time Slot</h4>
 							
-						<div class="time-slots-header">
-							<div class="time-slots-header-controls time-slots-header-left">
+						<div class="time-slots-header carousel">
+							<div class="time-slots-header-controls time-slots-header-left left">
 								<i class="fas fa-chevron-left"></i>
 							</div>
-							<div class="carousel-dates">
-								<div class="date-heading">
+							<div class="carousel-dates slides">
+								<div class="date-heading date-heading--active current slide">
 									<div class="day-date">
 										<span>Sat, 9 May</span>
 									</div>
@@ -132,24 +132,32 @@
 										15 Slots Available
 									</div>
 								</div>
-								<div class="date-heading">
+								<div class="date-heading slide">
 									<div class="day-date">
-										<span>Sat, 9 May</span>
+										<span>Sat, 10 May</span>
 									</div>
 									<div class="day-slots-available">
 										15 Slots Available
 									</div>
 								</div>
-								<div class="date-heading">
+								<div class="date-heading slide">
 									<div class="day-date">
-										<span>Sat, 9 May</span>
+										<span>Sat, 11 May</span>
+									</div>
+									<div class="day-slots-available">
+										15 Slots Available
+									</div>
+								</div>
+								<div class="date-heading slide">
+									<div class="day-date">
+										<span>Sun, 12 May</span>
 									</div>
 									<div class="day-slots-available">
 										15 Slots Available
 									</div>
 								</div>
 							</div>
-							<div class="time-slots-header-controls time-slots-header-right">
+							<div class="time-slots-header-controls time-slots-header-right right">
 								<i class="fas fa-chevron-right"></i>
 							</div>
 						</div>	
@@ -270,7 +278,69 @@
 	</footer>
 	<div class="border">
 	</div>
-	<script src="./../doctors.js"></script>
+	<script>
+		const carousel = document.querySelector(".carousel");
+		const slides = Array.from(carousel.querySelectorAll(".slide"));
+		const leftButton = document.querySelector(".left");
+		const rightButton = document.querySelector(".right");
+		let current = slides[0];
+
+		const getOrder = elem => {
+		  const styles = getComputedStyle(elem);
+		  const orderValue = styles.order;
+		  const order = parseInt(orderValue);
+		  return order;
+		}
+
+		for(i = 1; i <= slides.length; i++){
+			slides[i-1].style.order = i;
+		}
+
+		const moveRight = _ => {
+		  slides.forEach(function(slide) {
+		    order = getOrder(slide);
+		    if (order < slides.length) {
+		      slide.style.order = order += 1;
+		    } else {
+		      slide.style.order = 1;
+		    }
+		  });
+		  current.classList.remove('date-heading--active');
+		  slides.forEach(slide => {
+		  	if(slide.style.order === '1') {
+		  		current = slide;
+		  	}
+		  });
+		  current.classList.add('date-heading--active');
+		}
+
+		const moveLeft = _ => {
+		  slides.forEach(function(slide) {
+		    order = getOrder(slide)
+		    
+		    if (order > 1) {
+		      slide.style.order = order -= 1;
+		    } else {
+		      slide.style.order = slides.length;
+		    }
+		  });
+		  current.classList.remove('date-heading--active');
+		  slides.forEach(slide => {
+		  	if(slide.style.order === '1') current = slide;
+		  });
+		  current.classList.add('date-heading--active');
+		}
+
+
+		rightButton.addEventListener('click', _ => {
+		  moveRight();
+		});
+
+		leftButton.addEventListener('click', _ => {
+		  moveLeft();
+		});
+	</script>
+	<!-- <script src="./../doctors.js"></script> -->
 	<script>
 		 let url = window.location.search;
 		  console.log(url);

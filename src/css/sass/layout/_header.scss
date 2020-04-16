@@ -31,6 +31,9 @@
 		font-size: 1.5rem;
 		align-self: center;
 	}
+	.profile_section{
+		display: none;
+	}
 	&__side_menu{
 		display: none;
 		position: fixed;
@@ -55,6 +58,11 @@
 				a, a:visited, a:hover, a:active{
 					text-decoration: none;
 					color: $dark-blue;
+				}
+				.treatments_side_menu{
+					li{
+						text-align: right;
+					}
 				}
 			}
 		}
@@ -140,12 +148,14 @@
 
 
 .treatment_menu_container{
-	display: none;
-	right: 63rem;
+	right: 56rem;
 	.profile_menu{
 		&__item{
 			text-align: center;
 		}
+	}
+	&:hover{
+		display: block;
 	}
 }
 
@@ -198,7 +208,7 @@
 		&__menu{
 			display: block;
 			flex-grow: 2;
-			padding-left: 7rem;
+			// padding-left: 7rem;
 			align-self: center;
 			&__ul{
 				@include flex(row);
@@ -206,8 +216,9 @@
 				justify-content: center;
 				#treatments{
 					&:hover{
-						.navbar .treatment_menu_container{
-							display: flex;
+						color: $bright-blue;
+						#treatment_menu_container{
+							display: block;
 						}
 					}
 					i{
@@ -221,6 +232,7 @@
 					margin-left: 3rem;
 					font-weight: 600;
 					letter-spacing: 0.1rem;
+					padding: 4rem 0rem;
 					
 					a, a:visited, a:hover, a:active{
 						text-decoration: none;
@@ -231,6 +243,12 @@
 		}
 		&__side_menu{
 			display: none;
+		}
+		.profile_section{
+			display: flex;
+			justify-content: center;
+			flex-direction: row;
+			grid-gap: 1rem;
 		}
 		&__buttons{
 			display: grid;

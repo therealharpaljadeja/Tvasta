@@ -17,7 +17,18 @@
 			<li class="navbar__side_menu__ul__item cross"><span><i class="fas fa-window-close"></i></span></li>
 			<li class="navbar__side_menu__ul__item"><a href="/doctors" >Doctors</a></li>
 			<li class="navbar__side_menu__ul__item"><a href="/hospitals">Hospitals</a></li>
-			<li class="navbar__side_menu__ul__item"><a href="/treatments">Treatment</a></li>	
+			<li class="navbar__side_menu__ul__item">Treatment <i class="fas fa-chevron-down"></i></li>
+			<li class="navbar__side_menu__ul__item">
+				<ul class="treatments_side_menu">
+					<li class="navbar__side_menu__ul__item"><a href="/treatments">Dentistry</a></li>
+					<li class="navbar__side_menu__ul__item"><a href="/treatments">Cancer</a></li>
+					<li class="navbar__side_menu__ul__item"><a href="/treatments">Cardiology</a></li>
+					<li class="navbar__side_menu__ul__item"><a href="/treatments">Multi Organ Transplant</a></li>
+					<li class="navbar__side_menu__ul__item"><a href="/treatments">Orthopedic Surgery</a></li>
+					<li class="navbar__side_menu__ul__item"><a href="/treatments">Infertility Treatment</a></li>
+				</ul>
+			</li>
+				
 			<li class="navbar__side_menu__ul__item"><a href="#">Other Services</a></li>
 			<li class="navbar__side_menu__ul__item"><a href="/about">About</a></li>
 			<li class="navbar__side_menu__ul__item"><a href="/edit-profile">My Profile</a></li>
@@ -28,7 +39,7 @@
 			<li class="navbar__side_menu__ul__item"><a href="/logout">Logout</a></li>
 		</ul>
 	</div>
-	<div class="navbar__buttons">
+	<div class="profile_section">
 		<% if(session.userId) { %>
 			<a href="/tvastra-plus" id="tvastra-plus">
 				<button class="navbar__buttons-tvastra-plus">
@@ -41,14 +52,14 @@
 				Get A Quote 
 			</button>	
 		</a>	
+		<% if(session.userId) { %>
+		<div class="navbar__profile">
+			<h4 class="user-name"><%= session.user.name %></h4>
+			<i id="moreOptions" class="fas fa-chevron-down"></i>
+		</div>
+		<% } %> 
 	</div>
-	<% if(session.userId) { %>
-	<div class="navbar__profile">
-		<h4 class="user-name"><%= session.user.name %></h4>
-		<i id="moreOptions" class="fas fa-chevron-down"></i>
-	</div>
-	<% } %> 
-	<i class="fa fa-bars navbar__burger"></i>	
+		<i class="fa fa-bars navbar__burger"></i>
 </nav>
 <% if(session.user) { %>
 <div class="profile_menu_container display_none">
@@ -70,7 +81,7 @@
 	</ul>
 </div>
 <% } %>
-<div class="treatment_menu_container">
+<div class="treatment_menu_container display_none" id="treatment_menu_container">
 	<ul class="profile_menu">
 		<a href="/treatments"><li class="profile_menu__item">Dentistry</li></a>
 		<a href="/treatments"><li class="profile_menu__item">Cancer</li></a>

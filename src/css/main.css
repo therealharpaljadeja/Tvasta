@@ -294,6 +294,9 @@ html, body {
   font-size: 1.5rem;
   align-self: center;
 }
+.navbar .profile_section {
+  display: none;
+}
 .navbar__side_menu {
   display: none;
   position: fixed;
@@ -322,6 +325,9 @@ html, body {
 .navbar__side_menu__ul__item a, .navbar__side_menu__ul__item a:visited, .navbar__side_menu__ul__item a:hover, .navbar__side_menu__ul__item a:active {
   text-decoration: none;
   color: #2a2d3e;
+}
+.navbar__side_menu__ul__item .treatments_side_menu li {
+  text-align: right;
 }
 .navbar .cross {
   font-size: 1.5rem;
@@ -402,11 +408,13 @@ html, body {
 }
 
 .treatment_menu_container {
-  display: none;
-  right: 63rem;
+  right: 56rem;
 }
 .treatment_menu_container .profile_menu__item {
   text-align: center;
+}
+.treatment_menu_container:hover {
+  display: block;
 }
 
 @media (min-width: 768px) {
@@ -454,7 +462,6 @@ html, body {
   .navbar__menu {
     display: block;
     flex-grow: 2;
-    padding-left: 7rem;
     align-self: center;
   }
   .navbar__menu__ul {
@@ -463,8 +470,11 @@ html, body {
     list-style-type: none;
     justify-content: center;
   }
-  .navbar__menu__ul #treatments:hover .navbar .treatment_menu_container {
-    display: flex;
+  .navbar__menu__ul #treatments:hover {
+    color: #0173b2;
+  }
+  .navbar__menu__ul #treatments:hover #treatment_menu_container {
+    display: block;
   }
   .navbar__menu__ul #treatments i {
     font-size: 1.2rem;
@@ -476,6 +486,7 @@ html, body {
     margin-left: 3rem;
     font-weight: 600;
     letter-spacing: 0.1rem;
+    padding: 4rem 0rem;
   }
   .navbar__menu__ul__item a, .navbar__menu__ul__item a:visited, .navbar__menu__ul__item a:hover, .navbar__menu__ul__item a:active {
     text-decoration: none;
@@ -483,6 +494,12 @@ html, body {
   }
   .navbar__side_menu {
     display: none;
+  }
+  .navbar .profile_section {
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    grid-gap: 1rem;
   }
   .navbar__buttons {
     display: grid;

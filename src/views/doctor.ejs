@@ -118,7 +118,9 @@
 					</div>
 					<div class="doctor_list__container__col-2__card__time_slot">
 						<h4 class="heading-4">Select a Time Slot</h4>
+						
 						<div class="time-slots">
+
 							<a href=""><span class="slot">10:30 AM</span></a>
 						</div>
 					</div>
@@ -305,7 +307,7 @@
 		const bookBtn = document.querySelectorAll('.doctor_list__container__col-2__card__book');
 		bookBtn.forEach(el => {
 			el.addEventListener('click', () => {
-				console.log(el);
+				const timeSlots = el.parentElement.parentElement.children[2];
 				if(timeSlots.style.display == 'flex'){
 					timeSlots.style.display = 'none';
 				} else {

@@ -336,6 +336,10 @@ html, body {
   width: 25rem;
   right: 10rem;
 }
+.profile_menu_container--admin, .treatment_menu_container--admin {
+  right: 3rem;
+  top: 5rem;
+}
 .profile_menu_container .profile_small_details, .treatment_menu_container .profile_small_details {
   display: grid;
   grid-template-columns: 1fr 2fr;
@@ -398,6 +402,7 @@ html, body {
 }
 
 .treatment_menu_container {
+  display: none;
   right: 63rem;
 }
 .treatment_menu_container .profile_menu__item {
@@ -457,6 +462,9 @@ html, body {
     flex-direction: row;
     list-style-type: none;
     justify-content: center;
+  }
+  .navbar__menu__ul #treatments:hover .navbar .treatment_menu_container {
+    display: flex;
   }
   .navbar__menu__ul #treatments i {
     font-size: 1.2rem;
@@ -1483,7 +1491,7 @@ html, body {
   font-size: 1.5rem;
   padding: 1rem 3rem;
   margin-top: 1rem;
-  margin: 1rem 6rem;
+  margin: 1rem calc(25%);
 }
 .doctor_list__container__col-2__card__doctor_img_wrapper, .hospital_list__container__col-2__card__doctor_img_wrapper {
   width: 100%;
@@ -2021,6 +2029,9 @@ html, body {
 .form_container--get_a_quote {
   height: 77rem;
 }
+.form_container--add-doctors {
+  height: 80rem;
+}
 @media (min-width: 768px) {
   .form_container {
     width: 60%;
@@ -2084,7 +2095,8 @@ html, body {
   top: 30%;
   font-size: 2rem;
 }
-.form_container__form input[type=text] {
+.form_container__form input[type=text], .form_container__form .form_container__form__phone_number {
+  -moz-appearance: textfield;
   width: 100%;
   height: 100%;
   border-radius: 0;
@@ -2096,7 +2108,12 @@ html, body {
   font-size: 1.2rem;
   color: #777;
 }
-.form_container__form input[type=text]:focus {
+.form_container__form input[type=text]::-webkit-inner-spin-button, .form_container__form input[type=text]::-webkit-outer-spin-button, .form_container__form .form_container__form__phone_number::-webkit-inner-spin-button, .form_container__form .form_container__form__phone_number::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+.form_container__form input[type=text]:focus, .form_container__form .form_container__form__phone_number:focus {
   outline: 1px solid #0173b2;
 }
 .form_container__form__submit {
@@ -3957,6 +3974,8 @@ html, body {
   margin-right: 25px;
   text-align: center;
   border: none;
+  font-family: "Nexa Bold";
+  font-size: 2rem;
   border-bottom: 2px solid #0173b2;
   -moz-appearance: textfield;
 }
@@ -4272,6 +4291,25 @@ html, body {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }
+.add_doctors {
+  position: fixed;
+  bottom: 5rem;
+  right: 5rem;
+  height: 5rem;
+  width: 5rem;
+  background-color: black;
+  z-index: 1000;
+  border: none;
+  border-radius: 50%;
+}
+.add_doctors i {
+  color: white;
+}
+
+.add-doctors {
+  background-color: #9cbfda;
+}
+
 .admin_doctors {
   padding: 2rem 2rem;
   margin-top: 7rem;

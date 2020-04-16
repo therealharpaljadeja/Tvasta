@@ -95,6 +95,9 @@ app.get('/admin-doctors', authenticationController.redirectLogin, authentication
 });
 
 
+app.get('/add-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, doctorController.getAllDoctors, (req, res) => {
+	res.render('views/dashboard_addDoctor.ejs', {session: req.session, doctors: res.locals.doctors});
+});
 
 // User Routes
 

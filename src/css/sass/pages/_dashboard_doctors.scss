@@ -1,3 +1,20 @@
+.add_doctors{
+	position: fixed;
+	bottom: 5rem;
+	right: 5rem;
+	height: 5rem;
+	width: 5rem;
+	background-color: black;
+	z-index: 1000;
+	border: none;
+	border-radius: 50%;
+	i{
+		color: white;
+	}
+}
+.add-doctors{
+	background-color: $light-blue;
+}
 .admin_doctors{
 	padding: 2rem 2rem;
 	margin-top: 7rem;

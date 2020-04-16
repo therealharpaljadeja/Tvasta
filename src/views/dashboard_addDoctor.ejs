@@ -60,11 +60,11 @@
 	</header> -->
 	<%- include('partials/admin_sidebar.ejs') %>
 	<%- include('partials/admin_header.ejs') %>
-	<a href="/add-doctors"><button class="add_doctors">
+	<a href="/add_doctors"><button class="add_doctors">
 		<i class="fas fa-plus"></i>
 	</button></a>
-	<section class="admin_doctors">
-		<div class="admin_doctors__grid">
+	<section class="admin_doctors add-doctors">
+		<!-- <div class="admin_doctors__grid">
 			<% for(let i = 0; i < doctors.length; i++){ %>
 			<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-1">
 				<div>
@@ -86,7 +86,53 @@
 				</div>
 			</div>
 			<% } %>
-		</div>
+		</div> -->
+			<div class="form_container form_container--add-doctors">
+				<h1 class="form_container__heading">Add Doctor</h1>
+				<form method="POST" action="/signup" class="form_container__form">
+					<div class="form_container__form__input_field">
+						<input name="name" type="text" placeholder="Enter Name" class="form_container__form__name" required>
+					</div>
+					<div class="form_container__form__input_field">
+						<select name="gender"  required id="gender" type="text" class="form_container__form__gender">
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+					<div class="form_container__form__input_field">
+						<input type="date" name="dob" placeholder="Enter DOB" class="form_container__form__dob" required>
+					</div>
+					<div class="form_container__form__input_field">
+						<input name="phoneNumber" type="text" placeholder="Enter Phone Number" class="form_container__form__phone" required>
+					</div>
+					<div class="form_container__form__input_field">
+						<input name="email" type="email" placeholder="Enter Email" class="form_container__form__email" required>
+					</div>
+					<div class="form_container__form__input_field">
+						<input type="password" name="password" placeholder="Enter Password" class="form_container__form__password" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" id="passwordField" required>
+						<i class="fas fa-eye fa-eye-slash" id="showPassword"></i>
+					</div>
+					<div class="form_container__form__input_field">
+						<input name="city" type="text" id="city" placeholder="Enter City" class="form_container__form__city">
+						<input name="state" type="text" id="state" placeholder="Enter State" class="form_container__form__state">
+					</div>
+					<div class="form_container__form__input_field">
+						<select name="country" id="country" type="text" class="form_container__form__gender">
+							<option value="not-selected" selected>Select your Country</option>
+							<option value="India">India</option>
+							<option value="USA">USA</option>
+							<option value="Sri Lanka">Sri Lanka</option>
+						</select>
+					</div>
+					<button type="submit" class="form_container__form__submit">
+						<span class="form_container__form__submit__text">Sign Up</span>
+						<span class="form_container__form__submit__icon"><i class="fas fa-arrow-right"></i></span>
+					</button>
+				</form>
+				<span class="form_container__signup">Already Registered? <span><a href="/phone-login">Login</a></span></span>
+			</div>
+		
 	</section>
 	<script src="./../dashboard.js"></script>
 	<script src="./../error.js"></script>

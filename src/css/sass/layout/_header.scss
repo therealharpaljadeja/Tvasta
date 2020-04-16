@@ -72,6 +72,10 @@
 	z-index: 10;
 	width: 25rem;
 	right: 10rem;
+	&--admin{
+		right: 3rem;
+		top: 5rem;
+	}
 	.profile_small_details{
 		display: grid;
 		grid-template-columns: 1fr 2fr;
@@ -136,6 +140,7 @@
 
 
 .treatment_menu_container{
+	display: none;
 	right: 63rem;
 	.profile_menu{
 		&__item{
@@ -200,6 +205,11 @@
 				list-style-type: none;
 				justify-content: center;
 				#treatments{
+					&:hover{
+						.navbar .treatment_menu_container{
+							display: flex;
+						}
+					}
 					i{
 						font-size: 1.2rem;
 					}

@@ -105,6 +105,9 @@
 	&--get_a_quote{
 		height: 77rem;
 	}
+	&--add-doctors{
+		height: 80rem;
+	}
 	width: 90%;
 	height: 40rem;
 	background-color: white;
@@ -175,7 +178,14 @@
 				font-size: 2rem;
 			}
 		}
-		input[type = text]{
+		input[type = text], .form_container__form__phone_number{
+			-moz-appearance: textfield;
+			&::-webkit-inner-spin-button, 
+			&::-webkit-outer-spin-button { 
+				-webkit-appearance: none;
+				appearance: none;
+				margin: 0;	
+			}
 			&:focus{
 				outline: 1px solid $bright-blue;
 			}

@@ -12,7 +12,7 @@
 			display: flex;
 			flex-direction: row;
 			align-items: center;
-			justify-content: center;
+			justify-content: center; 
 			&__heading{
 				font-family: $nexa-light;
 				font-size: 3rem;
@@ -137,6 +137,63 @@
 					h4{
 						font-family: $nexa-bold;
 						color: $bright-blue;
+					}
+					.time-slots-header{
+						width: 100%;
+						display: flex;
+						flex-direction: row;
+						grid-gap: 2rem;
+						margin-bottom: 1rem;
+						justify-content: space-between;
+						align-items: center;
+						&-controls{
+							width: 3rem;
+							height: 3rem;
+							border: 1px solid #777;
+							border-radius: 50%;
+							position: relative;
+							i{
+								position: relative;
+								left: 50%;
+								top: 50%;
+								transform: translate(-50%, -50%);
+								font-size: 1.5rem;
+								color: $bright-blue;
+							}
+						}
+						.carousel-dates{
+							display: flex;
+							flex-direction: row;
+							justify-content: space-between;
+							width: 100%;
+							overflow: hidden;
+							.date-heading{
+								display: flex;
+								flex-direction: column;
+								justify-content: center;
+								grid-gap: 1rem;
+								padding: 1rem 0rem;
+								border-bottom: 2px solid #ccc;
+								flex-basis: 33%;
+								min-width: 33%;
+								.day-date{
+									text-align: center;
+									color: #777;
+									font-family: $nexa-bold;
+								}
+								.day-slots-available{
+									text-align: center;
+									color: green;
+									font-family: $nexa-bold;
+								}
+								&--active{
+									border-bottom: 2px solid $bright-blue;
+									.day-date{
+										color: $bright-blue;
+									}
+								}
+							}
+						}
 					}
 					.time-slots{
 						a{

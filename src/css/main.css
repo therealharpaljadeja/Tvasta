@@ -1513,6 +1513,63 @@ html, body {
   font-family: "Nexa Bold";
   color: #0173b2;
 }
+.doctor_list__container__col-2__card__time_slot .time-slots-header, .hospital_list__container__col-2__card__time_slot .time-slots-header {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  grid-gap: 2rem;
+  margin-bottom: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots-header-controls, .hospital_list__container__col-2__card__time_slot .time-slots-header-controls {
+  width: 3rem;
+  height: 3rem;
+  border: 1px solid #777;
+  border-radius: 50%;
+  position: relative;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots-header-controls i, .hospital_list__container__col-2__card__time_slot .time-slots-header-controls i {
+  position: relative;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.5rem;
+  color: #0173b2;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots-header .carousel-dates, .hospital_list__container__col-2__card__time_slot .time-slots-header .carousel-dates {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  overflow: hidden;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading, .hospital_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  grid-gap: 1rem;
+  padding: 1rem 0rem;
+  border-bottom: 2px solid #ccc;
+  flex-basis: 33%;
+  min-width: 33%;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading .day-date, .hospital_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading .day-date {
+  text-align: center;
+  color: #777;
+  font-family: "Nexa Bold";
+}
+.doctor_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading .day-slots-available, .hospital_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading .day-slots-available {
+  text-align: center;
+  color: green;
+  font-family: "Nexa Bold";
+}
+.doctor_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading--active, .hospital_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading--active {
+  border-bottom: 2px solid #0173b2;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading--active .day-date, .hospital_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading--active .day-date {
+  color: #0173b2;
+}
 .doctor_list__container__col-2__card__time_slot .time-slots a, .hospital_list__container__col-2__card__time_slot .time-slots a {
   text-decoration: none;
 }

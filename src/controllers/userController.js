@@ -4,22 +4,22 @@ const path = require('path');
 
 
 // File Storage
-const fileStorage = multer.diskStorage({
-	destination: 'public/uploads/',
+const userFileStorage = multer.diskStorage({
+	destination: 'public/uploads/users',
 	filename: function(req, file, callback){
 		callback(null, `${req.session.user._id}${path.extname(file.originalname)}`);
 	}
 })
 
 // Init Upload
-const upload = multer({
-	storage: fileStorage,
+const uploadUser = multer({
+	storage: userFileStorage,
 	limits: {fileSize: 1000000},
 }).single('display_picture');
 
 
 const editProfile = (req, res, next) => {
-	upload(req, res, async (err) => {
+	uploadUser(req, res, async (err) => {
 		if(err) {
 			req.session.error = err;
 			req.session.errorType = 'Failure';

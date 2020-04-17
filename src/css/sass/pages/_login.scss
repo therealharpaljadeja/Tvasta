@@ -105,9 +105,7 @@
 	&--get_a_quote{
 		height: 77rem;
 	}
-	&--add-doctors{
-		height: 80rem;
-	}
+
 	width: 90%;
 	height: 40rem;
 	background-color: white;
@@ -233,7 +231,7 @@
 				right: 5%;
 				font-size: 1.2rem;
 			}
-		}	
+		}
 	}
 	&__signup{
 		font-family: $nexa-bold;
@@ -248,6 +246,10 @@
 		}
 		justify-self: center;
 	}
+	&--add-doctors{
+		height: 125rem;
+		width: 50%;
+	}	
 }
 
 .copyright{

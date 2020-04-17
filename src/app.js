@@ -96,8 +96,10 @@ app.get('/admin-doctors', authenticationController.redirectLogin, authentication
 
 
 app.get('/add-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, doctorController.getAllDoctors, (req, res) => {
-	res.render('views/dashboard_addDoctor.ejs', {session: req.session, doctors: res.locals.doctors});
+	res.render('views/dashboard_addDoctor.ejs', {session: req.session, error:req.session.error, errorType: req.session.errorType, doctors: res.locals.doctors});
 });
+
+app.post('/add-doctors', doctorController.addDoctor);
 
 // User Routes
 
@@ -175,6 +177,8 @@ app.get('/user-dashboard-lab-tests', authenticationController.redirectLogin, aut
 })
 
 app.post('/save-changes', userController.editProfile);
+
+app.get('/autoCompleteHospital', hospitalController.autoCompleteHospitals);
 
 // Reload Method
 // app.post('/doctors', (req, res) => {

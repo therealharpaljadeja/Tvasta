@@ -37,8 +37,15 @@ const getAllHospitals = async (req, res, next) => {
     next();
 }
 
+const autoCompleteHospitals = async (req, res, next) => {
+    const hospitals = await Hospital.find({}, {'name': 1, "_id": 1});
+    res.json({
+        data: hospitals
+    });
+} 
 
 
 module.exports = {
 	getAllHospitals: getAllHospitals,
+    autoCompleteHospitals: autoCompleteHospitals
 }

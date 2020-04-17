@@ -299,6 +299,7 @@
 		const moveRight = _ => {
 		  slides.forEach(function(slide) {
 		    order = getOrder(slide);
+		    
 		    if (order < slides.length) {
 		      slide.style.order = order += 1;
 		    } else {

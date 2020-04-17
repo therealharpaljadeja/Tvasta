@@ -18,6 +18,10 @@ const doctorSchema = new mongoose.Schema({
 		type: String,
 		unique: true 
 	},
+	password: {
+		type: String,
+		required: [true, 'Every user must have a password.']
+	},
 	mobile: { 
 		type: Number,
 		unique: true

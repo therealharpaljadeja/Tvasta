@@ -97,6 +97,7 @@ const addDoctor = async (req, res, next) => {
                 display_picture: req.file.path,
                 description: req.body.description,
                 email: req.body.email,
+                password: req.body.password,
                 mobile: req.body.phoneNumber,
                 specializations: specializations,
                 qualifications: qualifications,

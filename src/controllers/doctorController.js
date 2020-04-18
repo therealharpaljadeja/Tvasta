@@ -12,7 +12,7 @@ const path = require('path');
 const doctorFileStorage = multer.diskStorage({
     destination: 'public/uploads/doctors',
     filename: function(req, file, callback){
-        callback(null, `${req.session.user._id}${path.extname(file.originalname)}`);
+        callback(null, `${req.body.phoneNumber}${path.extname(file.originalname)}`);
     }
 })
 

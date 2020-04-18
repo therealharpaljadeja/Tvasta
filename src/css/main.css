@@ -2156,8 +2156,17 @@ html, body {
   font-family: "Nexa Bold";
 }
 .form_container__form__input_field {
-  text-align: center;
+  text-align: left;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
+}
+.form_container__form__input_field--city-state {
+  flex-direction: row;
+}
+.form_container__form__input_field--city-state input {
+  width: 100%;
 }
 .form_container__form__input_field i {
   position: absolute;
@@ -2165,6 +2174,16 @@ html, body {
   color: #0173b2;
   top: 30%;
   font-size: 2rem;
+}
+.form_container__form__input_field label {
+  font-size: 1.3rem;
+  font-family: "Nexa Bold";
+  color: #0173b2;
+}
+.form_container__form__input_field .tagify {
+  font-size: 1.4rem;
+  font-family: "Nexa Bold";
+  color: #777;
 }
 .form_container__form input[type=text], .form_container__form .form_container__form__phone_number {
   -moz-appearance: textfield;
@@ -2176,7 +2195,7 @@ html, body {
   border-color: #ccc;
   padding: 1rem 2rem;
   font-family: "Nexa Bold";
-  font-size: 1.2rem;
+  font-size: 1.4rem;
   color: #777;
 }
 .form_container__form input[type=text]::-webkit-inner-spin-button, .form_container__form input[type=text]::-webkit-outer-spin-button, .form_container__form .form_container__form__phone_number::-webkit-inner-spin-button, .form_container__form .form_container__form__phone_number::-webkit-outer-spin-button {
@@ -2216,7 +2235,7 @@ html, body {
   cursor: pointer;
 }
 .form_container--add-doctors {
-  height: 125rem;
+  height: 175rem;
   width: 50%;
 }
 
@@ -2252,26 +2271,10 @@ html, body {
   color: #777;
   padding: 1rem 1.5rem;
   font-family: "Nexa Bold";
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 .form_container__form__input_field select:focus, .form_container__form__input_field input[type=date]:focus, .form_container__form__input_field input[type=email]:focus, .form_container__form__input_field input[type=password]:focus {
   outline: 1px solid #0173b2;
-}
-.form_container__form #city {
-  width: 49%;
-}
-@media (min-width: 768px) {
-  .form_container__form #city {
-    width: 49%;
-  }
-}
-.form_container__form #state {
-  width: 49%;
-}
-@media (min-width: 768px) {
-  .form_container__form #state {
-    width: 49%;
-  }
 }
 
 .page_description {
@@ -4641,6 +4644,10 @@ html, body {
 .upload_dp {
   width: 100%;
   font-size: "Nexa Bold";
+}
+
+#doctor_description {
+  font-family: "Nexa Bold";
 }
 
 .upload_display_picture_container {

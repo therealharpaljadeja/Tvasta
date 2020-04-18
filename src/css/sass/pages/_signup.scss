@@ -16,20 +16,8 @@
 				color: #777;
 				padding: 1rem 1.5rem;
 				font-family: $nexa-bold;
-				font-size: 1.2rem;
+				font-size: 1.4rem;
 			}
-		}
-		#city{
-			@media(min-width: $bp-tablet){
-				width: 49%;
-			}
-			width: 49%;
-		}
-		#state{
-			@media(min-width: $bp-tablet){
-				width: 49%;
-			}
-			width: 49%;
 		}
 	}
 }

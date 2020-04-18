@@ -165,15 +165,33 @@
 			}
 		}
 		&__input_field{
-			text-align: center;
-			
+			text-align: left;
 			position: relative;
+			display: flex;
+			flex-direction: column;
+			grid-gap: 1rem;
+			&--city-state{
+				flex-direction: row;
+				input{
+					width: 100%;
+				}
+			}
 			i{
 				position: absolute;
 				right: 5%;
 				color: $bright-blue;
 				top: 30%;
 				font-size: 2rem;
+			}
+			label{
+				font-size: 1.3rem;
+				font-family: $nexa-bold;
+				color: $bright-blue;
+			}
+			.tagify{
+				font-size: 1.4rem;
+				font-family: $nexa-bold;
+				color: #777;
 			}
 		}
 		input[type = text], .form_container__form__phone_number{
@@ -195,7 +213,7 @@
 			border-color: #ccc;
 			padding: 1rem 2rem;
 			font-family: $nexa-bold;
-			font-size: 1.2rem;
+			font-size: 1.4rem;
 			color: #777;
 		}
 		// &__submit{
@@ -247,7 +265,7 @@
 		justify-self: center;
 	}
 	&--add-doctors{
-		height: 125rem;
+		height: 175rem;
 		width: 50%;
 	}	
 }

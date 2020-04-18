@@ -266,7 +266,13 @@
 	}
 	&--add-doctors{
 		height: 175rem;
-		width: 50%;
+		width: 90%;
+		@media(min-width: $bp-tablet){
+			width: 70%;
+		}
+		@media(min-width: $bp-desktop){
+			width: 50%;
+		}
 	}	
 }
 

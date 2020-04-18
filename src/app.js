@@ -152,8 +152,8 @@ app.get('/submit-your-query', (req, res) => {
 	res.render('views/submit_your_query.ejs', {session: req.session});
 });
 
-app.get('/book-an-appointment', (req, res) => {
-	res.render('views/bookappointment.ejs', {session: req.session});
+app.get('/appointment', (req, res) => {
+	res.render('views/appointment.ejs', {session: req.session});
 });
 
 app.get('/get-a-quote', authenticationController.redirectLogin, (req, res) => {

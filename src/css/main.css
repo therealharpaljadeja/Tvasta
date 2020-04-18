@@ -404,7 +404,7 @@ html, body {
 }
 
 .display_none {
-  display: none;
+  display: none !important;
 }
 
 .treatment_menu_container {
@@ -2236,7 +2236,17 @@ html, body {
 }
 .form_container--add-doctors {
   height: 175rem;
-  width: 50%;
+  width: 90%;
+}
+@media (min-width: 768px) {
+  .form_container--add-doctors {
+    width: 70%;
+  }
+}
+@media (min-width: 1024px) {
+  .form_container--add-doctors {
+    width: 50%;
+  }
 }
 
 .copyright {
@@ -3033,71 +3043,177 @@ html, body {
     transform: scale(2.7);
   }
 }
-.form_container--book {
-  height: 70rem;
-  grid-template-rows: 1.5fr 11fr;
+.appointment-page {
+  display: flex;
+  width: 65%;
+  justify-content: center;
+  margin: 2rem auto;
+  flex-direction: row;
 }
-.form_container__form {
+.appointment-page .appointment__col--1 {
+  width: 50%;
+  display: flex;
+}
+.appointment-page .appointment__col--1 .appointment_details {
+  width: 40rem;
+  height: 23rem;
+  background-color: white;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_type {
+  font-size: 2rem;
+  font-family: "Nexa Bold";
+  padding: 2rem;
+  border-bottom: 1px solid #ccc;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_schedule {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  grid-gap: 1rem;
+  border-bottom: 1px solid #ccc;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_schedule .appointment_date_and_time {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_schedule .appointment_date_and_time .appointment_date {
+  width: 50%;
+  font-family: "Nexa Bold";
+  font-size: 1.4rem;
+  color: #2a2d3e;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_schedule .appointment_date_and_time .appointment_date span:first-of-type {
+  font-family: "Nexa Light";
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_schedule .appointment_date_and_time .appointment_time {
+  width: 50%;
+  text-align: right;
+  font-family: "Nexa Bold";
+  font-size: 1.4rem;
+  color: #2a2d3e;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_schedule .appointment_date_and_time .appointment_time span:first-of-type {
+  font-family: "Nexa Light";
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_schedule .appointment_date_and_time .appointment_change_schedule {
+  font-size: 1.4rem;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_schedule .appointment_change_schedule a {
+  text-decoration: none;
+  font-family: "Nexa Bold";
+  color: #0173b2;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_doctor_details__info_card {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
   grid-gap: 2rem;
 }
-.form_container__form__input_field--book {
-  display: grid;
-  grid-gap: 1rem;
+.appointment-page .appointment__col--1 .appointment_details .appointment_doctor_details__info_card .doctor_display_picture_container {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
 }
-.form_container__form__input_field--book span {
-  font-size: 1.5rem;
-  font-family: "Nexa Bold";
-}
-.form_container__form__input_field textarea {
-  font-family: "Nexa Bold";
-  width: 100%;
-  /* 				font-size: 1.5rem; */
-}
-.form_container__form__input_field textarea::placeholder {
-  color: #777;
-  font-size: 1.2rem;
-}
-.form_container__form__input_field__container {
+.appointment-page .appointment__col--1 .appointment_details .appointment_doctor_details__info_card .doctor_display_picture_container img {
   height: 100%;
-  display: grid;
-  grid-template-columns: 1fr 10fr;
+  width: 100%;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_doctor_details__info_card .doctor_info {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 0.5rem;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_doctor_details__info_card .doctor_info .doctor_name {
+  font-family: "Nexa Bold";
+  font-size: 1.4rem;
+  color: #2a2d3e;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_doctor_details__info_card .doctor_info .doctor_qualifications {
+  font-family: "Nexa Bold";
+  font-size: 1rem;
+  color: #0173b2;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_doctor_details__info_card .doctor_info .doctor_specializations {
+  font-family: "Nexa Bold";
+  font-size: 1rem;
+  color: #0173b2;
+}
+.appointment-page .appointment__col--2 {
+  width: 50%;
+  background-color: white;
+}
+.appointment-page .appointment__col--2 .appointment_form_title {
+  padding: 2rem;
+  font-family: "Nexa Bold";
+  font-size: 2rem;
+  border-bottom: 1px solid #ccc;
+}
+.appointment-page .appointment__col--2 .appointment_form_patient {
+  padding: 2rem;
+}
+.appointment-page .appointment__col--2 .appointment_form_patient form {
+  display: flex;
+  flex-direction: column;
+}
+.appointment-page .appointment__col--2 .appointment_form_patient_title {
+  font-family: "Nexa Bold";
+  font-size: 1.3rem;
+  padding: 0.5rem 0rem;
+}
+.appointment-page .appointment__col--2 .appointment_form_patient_select {
+  border: 1px solid #0173b2;
+  border-radius: 0.5rem;
+  margin: 0.5rem 0rem 2rem 0rem;
+}
+.appointment-page .appointment__col--2 .appointment_form_patient_select_item {
+  padding: 1rem;
+  display: flex;
+  flex-direction: row;
   align-items: center;
 }
-.form_container__form__input_field__container label {
+.appointment-page .appointment__col--2 .appointment_form_patient_select_item label {
+  font-family: "Nexa Bold";
   font-size: 1.3rem;
-  font-family: "Nexa Bold";
-  line-height: 1.7rem;
+  color: #0173b2;
 }
-.form_container__form__input_field__container input {
-  font-family: "Nexa Bold";
+.appointment-page .appointment__col--2 .appointment_form_patient_select_item:first-of-type {
+  border-bottom: 1px solid #ccc;
 }
-.form_container__form__input_field__container input[type=radio] {
-  margin: 0;
-}
-.form_container__form__input_field__container--date {
-  display: grid;
-  grid-column: 1/-1;
-  grid-template-columns: 100%;
+.appointment-page .appointment__col--2 .appointment_form_patient .current_user_form, .appointment-page .appointment__col--2 .appointment_form_patient .someone_else_form {
+  display: flex;
+  flex-direction: column;
   grid-gap: 1rem;
 }
-.form_container__form__input_field label[for=health_record], .form_container__form__input_field label[for=appointment_date], .form_container__form__input_field label[for=appointment_details] {
-  font-size: 1.5rem;
-  font-family: "Nexa Bold";
+.appointment-page .appointment__col--2 .appointment_form_patient .current_user_form .appointment_form_input_field, .appointment-page .appointment__col--2 .appointment_form_patient .someone_else_form .appointment_form_input_field {
+  display: flex;
+  flex-direction: column;
 }
-.form_container__form__submit span {
+.appointment-page .appointment__col--2 .appointment_form_patient .current_user_form .appointment_form_input_field input, .appointment-page .appointment__col--2 .appointment_form_patient .someone_else_form .appointment_form_input_field input {
+  border: 1px solid #ccc;
+  padding: 1rem 2rem;
+}
+.appointment-page .appointment__col--2 .appointment_form_patient .current_user_form .appointment_form_input_field input[type=number], .appointment-page .appointment__col--2 .appointment_form_patient .someone_else_form .appointment_form_input_field input[type=number] {
+  -moz-appearance: textfield;
+}
+.appointment-page .appointment__col--2 .appointment_form_patient .current_user_form .appointment_form_input_field label, .appointment-page .appointment__col--2 .appointment_form_patient .someone_else_form .appointment_form_input_field label {
   font-size: 1.3rem;
-  line-height: 3rem;
+  font-family: "Nexa Bold";
+  color: #0173b2;
+}
+.appointment-page .appointment__col--2 .appointment_form_patient .appointment_form_button {
+  margin-top: 1rem;
+}
+.appointment-page .appointment__col--2 .appointment_form_patient .appointment_form_button button {
+  width: 100%;
+  border: none;
+  color: white;
+  background-color: #0173b2;
+  font-family: "Nexa Bold";
+  padding: 1.5rem;
 }
 
-@media (min-width: 768px) {
-  .form_container__form__input_field__container--date {
-    display: grid;
-    grid-column: 1/-1;
-    grid-template-columns: 100%;
-    grid-gap: 1rem;
-    height: 100%;
-  }
-}
 .about_doctor__container {
   padding: 2rem 2rem;
 }

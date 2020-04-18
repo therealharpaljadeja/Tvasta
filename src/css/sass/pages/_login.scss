@@ -113,7 +113,7 @@
 	margin: 3rem auto;
 	display: grid;
 	grid-template-columns: 100%;
-	grid-template-rows: 1.5fr 5fr 1fr;
+	// grid-template-rows: 1.5fr 5fr 1fr;
 	justify-content: center;
 	align-items: center;
 	box-shadow: 0px 0px 1.5rem rgba($dark-blue, .3);
@@ -136,7 +136,7 @@
 		padding: 2rem 2rem;
 		display: grid;
 		grid-template-columns: 100%;
-		grid-gap: 1rem;
+		grid-gap: 2rem;
 		.otp-message{
 			text-align: center;
 		}
@@ -170,6 +170,7 @@
 			display: flex;
 			flex-direction: column;
 			grid-gap: 1rem;
+			width: 100%;
 			&--city-state{
 				flex-direction: row;
 				input{
@@ -194,7 +195,7 @@
 				color: #777;
 			}
 		}
-		input[type = text], .form_container__form__phone_number{
+		input[type = text], input[type = time], .form_container__form__phone_number{
 			-moz-appearance: textfield;
 			&::-webkit-inner-spin-button, 
 			&::-webkit-outer-spin-button { 
@@ -235,7 +236,7 @@
 		// }
 		&__submit{
 			border: none;
-			padding: 1rem 0rem;
+			padding: 2rem 0rem;
 			border-radius: 0;
 			background-color: $dark-blue;
 			color: $background-color;
@@ -265,7 +266,7 @@
 		justify-self: center;
 	}
 	&--add-doctors{
-		height: 175rem;
+		height: 195rem;
 		width: 90%;
 		@media(min-width: $bp-tablet){
 			width: 70%;

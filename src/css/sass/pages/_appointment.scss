@@ -1,16 +1,20 @@
 .appointment-page{
-
 	display: flex;
-	width: 65%;
+	// width: 65%;
+	width: 90%;
 	justify-content: center;
 	margin: 2rem auto;
-	flex-direction: row;
+	// flex-direction: row;
+	flex-direction: column;
+	grid-gap: 1rem;
 	.appointment__col{
 		&--1{
-			width: 50%;
+			// width: 50%;
+			width: 100%;
 			display: flex;
 			.appointment_details{
-				width: 40rem;
+				// width: 40rem;
+				width: 100%;
 				height: 23rem;
 				background-color: $background-color;
 				.appointment_type{
@@ -106,7 +110,8 @@
 			}
 		}
 		&--2{
-			width: 50%;
+			// width: 50%;
+			width: 100%;
 			background-color: $background-color;
 			.appointment_form{
 				&_title{
@@ -177,6 +182,33 @@
 							padding: 1.5rem;	
 						}
 					}
+				}
+			}
+		}
+	}
+}
+
+@media(min-width: $bp-tablet){
+	.appointment-page{
+		flex-direction: row;
+		.appointment{
+			&__col--1{
+				.appointment_details{
+					width: 100%;
+				}
+			}
+		}
+	}
+
+}
+
+@media(min-width: $bp-desktop){
+	.appointment-page{
+		width: 65%; 
+		.appointment{
+			&__col--1{
+				.appointment_details{
+					width: 40rem;
 				}
 			}
 		}

@@ -2073,7 +2073,6 @@ html, body {
   margin: 3rem auto;
   display: grid;
   grid-template-columns: 100%;
-  grid-template-rows: 1.5fr 5fr 1fr;
   justify-content: center;
   align-items: center;
   box-shadow: 0px 0px 1.5rem rgba(42, 45, 62, 0.3);
@@ -2126,7 +2125,7 @@ html, body {
   padding: 2rem 2rem;
   display: grid;
   grid-template-columns: 100%;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
 }
 .form_container__form .otp-message {
   text-align: center;
@@ -2161,6 +2160,7 @@ html, body {
   display: flex;
   flex-direction: column;
   grid-gap: 1rem;
+  width: 100%;
 }
 .form_container__form__input_field--city-state {
   flex-direction: row;
@@ -2185,7 +2185,7 @@ html, body {
   font-family: "Nexa Bold";
   color: #777;
 }
-.form_container__form input[type=text], .form_container__form .form_container__form__phone_number {
+.form_container__form input[type=text], .form_container__form input[type=time], .form_container__form .form_container__form__phone_number {
   -moz-appearance: textfield;
   width: 100%;
   height: 100%;
@@ -2198,17 +2198,17 @@ html, body {
   font-size: 1.4rem;
   color: #777;
 }
-.form_container__form input[type=text]::-webkit-inner-spin-button, .form_container__form input[type=text]::-webkit-outer-spin-button, .form_container__form .form_container__form__phone_number::-webkit-inner-spin-button, .form_container__form .form_container__form__phone_number::-webkit-outer-spin-button {
+.form_container__form input[type=text]::-webkit-inner-spin-button, .form_container__form input[type=text]::-webkit-outer-spin-button, .form_container__form input[type=time]::-webkit-inner-spin-button, .form_container__form input[type=time]::-webkit-outer-spin-button, .form_container__form .form_container__form__phone_number::-webkit-inner-spin-button, .form_container__form .form_container__form__phone_number::-webkit-outer-spin-button {
   -webkit-appearance: none;
   appearance: none;
   margin: 0;
 }
-.form_container__form input[type=text]:focus, .form_container__form .form_container__form__phone_number:focus {
+.form_container__form input[type=text]:focus, .form_container__form input[type=time]:focus, .form_container__form .form_container__form__phone_number:focus {
   outline: 1px solid #0173b2;
 }
 .form_container__form__submit {
   border: none;
-  padding: 1rem 0rem;
+  padding: 2rem 0rem;
   border-radius: 0;
   background-color: #2a2d3e;
   color: white;
@@ -2235,7 +2235,7 @@ html, body {
   cursor: pointer;
 }
 .form_container--add-doctors {
-  height: 175rem;
+  height: 195rem;
   width: 90%;
 }
 @media (min-width: 768px) {
@@ -3045,17 +3045,18 @@ html, body {
 }
 .appointment-page {
   display: flex;
-  width: 65%;
+  width: 90%;
   justify-content: center;
   margin: 2rem auto;
-  flex-direction: row;
+  flex-direction: column;
+  grid-gap: 1rem;
 }
 .appointment-page .appointment__col--1 {
-  width: 50%;
+  width: 100%;
   display: flex;
 }
 .appointment-page .appointment__col--1 .appointment_details {
-  width: 40rem;
+  width: 100%;
   height: 23rem;
   background-color: white;
 }
@@ -3141,7 +3142,7 @@ html, body {
   color: #0173b2;
 }
 .appointment-page .appointment__col--2 {
-  width: 50%;
+  width: 100%;
   background-color: white;
 }
 .appointment-page .appointment__col--2 .appointment_form_title {
@@ -3214,6 +3215,22 @@ html, body {
   padding: 1.5rem;
 }
 
+@media (min-width: 768px) {
+  .appointment-page {
+    flex-direction: row;
+  }
+  .appointment-page .appointment__col--1 .appointment_details {
+    width: 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .appointment-page {
+    width: 65%;
+  }
+  .appointment-page .appointment__col--1 .appointment_details {
+    width: 40rem;
+  }
+}
 .about_doctor__container {
   padding: 2rem 2rem;
 }

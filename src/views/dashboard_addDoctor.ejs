@@ -227,6 +227,20 @@
 						<label for="specializations">Specializations</label>
 						<input type="text" name="specializations" class="specializations_input" placeholder="Enter Specializaion" value="" required>
 					</div>
+					<div class="form_container__form__input_field form_container__form__input_field--city-state ">
+						<div class="form_container__form__input_field">
+							<label for="start_time">Start Time</label>
+							<input name="startTime" type="time" id="start_time" placeholder="Enter City" class="form_container__form__city" required>
+						</div>
+						<div class="form_container__form__input_field">
+							<label for="end_time">End Time</label>
+							<input name="endTime" type="time" id="end_time" placeholder="Enter State" class="form_container__form__state" required >	
+						</div>
+					</div>
+					<div class="form_container__form__input_field">
+						<label for="slot_duration">Slot Duration</label>
+						<input type="text" name="slotDuration" class="form_container__form__phone_number" value="" required>
+					</div>
 					<div class="form_container__form__input_field">
 						<label for="averageFees">Average Fees</label>
 						<input type="number" name="averageFees" class="form_container__form__phone_number" placeholder="Enter your average fees" value="" required>
@@ -283,6 +297,21 @@
 			whitelist: hospitalWhitelist,
 			enforceWhitelist: true
 		});
+
+		const slot_duration = document.querySelector('input[name="slotDuration"]');
+		const slotTagify = new Tagify(slot_duration, {
+			whitelist: ['60 Mins', '45 Mins', '30 Mins', '15 Mins'],
+			mode: 'select',
+			dropdown: {
+				className: 'color-blue',
+				enabled: 1,
+				maxItems: 4,
+				position: 'text',
+				closeOnSelect: true,
+				highlightFirst: true 
+			}
+		});
+
 	</script>
 	<script src="./../dashboard.js"></script>
 	<script src="./../error.js"></script>

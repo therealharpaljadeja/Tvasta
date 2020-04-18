@@ -152,7 +152,7 @@ app.get('/submit-your-query', (req, res) => {
 	res.render('views/submit_your_query.ejs', {session: req.session});
 });
 
-app.get('/appointment', (req, res) => {
+app.get('/appointment',authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
 	res.render('views/appointment.ejs', {session: req.session});
 });
 

@@ -95,9 +95,34 @@
 					<div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span> Show More</div>
 				</div>
 			</div>
-
 			<div class="grid doctor_list__container__col-2">
 				<% for(let i = 0; i < doctors.length; i++){ %>
+				<% 
+					const id = doctors[i]._id;
+					const start = new Date();
+					start.setHours(parseInt(doctors[i].startTime.split(':')[0]));
+					start.setMinutes(parseInt(doctors[i].startTime.split(':')[1]));
+					const end = new Date();
+					end.setHours(parseInt(doctors[i].endTime.split(':')[0]));
+					end.setMinutes(parseInt(doctors[i].endTime.split(':')[1]));
+					slotsWithDate = [];
+					slots = [];
+					function generateSlots(start, end, interval){
+						let startTime = start.getTime();
+						let endTime = end.getTime();
+						let duration = parseInt(interval) * 60 * 1000;
+						while(startTime < endTime){
+							startTime += duration;
+							slotsWithDate.push(new Date(startTime));
+						}
+					}	
+						
+					generateSlots(start, end, doctors[i].slotDuration);
+					slotsWithDate.forEach(el => {
+					slots.push(`${el.toLocaleString().split(', ')[1].split(':')[0]}:${el.toLocaleString().split(', ')[1].split(':')[1]} ${el.toLocaleString().split(', ')[1].split(':')[2].split(' ')[1]}`);
+					});
+
+				 %>
 				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-1">
 					<div>
 						<div class="doctor_list__container__col-2__card__name">
@@ -164,8 +189,9 @@
 
 
 						<div class="time-slots">
-
-							<a href=""><span class="slot">10:30 AM</span></a>
+							<% for(let i=0; i < slots.length; i++) { %>
+							<a href="/appointment/<%= id %>?hour=<%= slots[i].split(':')[0] %>&min=<%= slots[i].split(':')[1].split(' ')[0] %>&mode=<%= slots[i].split(':')[1].split(' ')[1] %>"><span class="slot"><%= slots[i] %></span></a>
+							<% } %>
 						</div>
 					</div>
 				</div>

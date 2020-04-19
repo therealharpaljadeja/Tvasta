@@ -122,7 +122,10 @@ const addDoctor = async (req, res, next) => {
 
 const deleteDoctor = async (req, res, next) => {
     await Doctor.remove({ _id: req.params.id });
+    req.session.error = 'Doctor deleted successfully';
+    req.session.errorType = 'Success';
     res.redirect('/admin-doctors');
+
 }
 
 module.exports = {

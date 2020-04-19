@@ -8,6 +8,7 @@ const authenticationController = require('./controllers/authenticationController
 const userController = require('./controllers/userController');
 const doctorController = require('./controllers/doctorController');
 const hospitalController = require('./controllers/hospitalController.js');
+const appointmentController = require('./controllers/appointmentController');
 const User = require('./models/userModel');
 const Doctor = require('./models/doctorModel');
 
@@ -91,7 +92,7 @@ app.get('/admin', authenticationController.redirectLogin, authenticationControll
 });
 
 app.get('/admin-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, doctorController.getAllDoctors, (req, res) => {
-	res.render('views/dashboard_doctors.ejs', {session: req.session, doctors: res.locals.doctors});
+	res.render('views/dashboard_doctors.ejs', {session: req.session, doctors: res.locals.doctors, error: req.session.error, errorType: req.session.errorType});
 });
 
 
@@ -154,9 +155,7 @@ app.get('/submit-your-query', (req, res) => {
 	res.render('views/submit_your_query.ejs', {session: req.session});
 });
 
-app.get('/appointment',authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
-	res.render('views/appointment.ejs', {session: req.session});
-});
+app.get('/appointment/:id',authenticationController.redirectLogin, authenticationController.redirectAdmin, appointmentController.loadingDataOnAppointmentPage);
 
 app.get('/get-a-quote', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/get-a-quote.ejs', {session: req.session});

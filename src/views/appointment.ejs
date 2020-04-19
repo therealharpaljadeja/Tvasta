@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Book An Appointment</title>
     <%- include('partials/head.ejs') %>
+    <!-- <link rel="stylesheet" href="./../css/main.css"> -->
 </head>
 
 <body class="login-body">
@@ -28,7 +29,7 @@
                             <div class="appointment_time">
                                 <i class="fas fa-clock"></i>
                                 <span>At</span>
-                                <span>10:00 AM</span>
+                                <span><%= slot.hour %>:<%= slot.min %> <%= slot.mode %></span>
                             </div>
                         </div>
                         <div class="appointment_change_schedule">
@@ -38,25 +39,22 @@
                     <div class="appointment_doctor_details">
                         <div class="appointment_doctor_details__info_card">
                             <div class="doctor_display_picture_container">
-                                <img src="./../public/uploads/doctors/Dhananjay Bhosle.jpg" alt="">
+                                <img src="<%= doctor.display_picture %>" alt="">
                             </div>
                             <div class="doctor_info">
                                 <div class="doctor_name">
-                                    Dr. Dhananjay Bhosle
+                                    <%= doctor.name %>
                                 </div>
                                 <div class="doctor_qualifications">
-                                    <span>PhD</span>
-                                    <span>
-                                        <span>,</span>
-                                        <span>Certificate in Obesity</span>
-                                    </span>
+                                    <% for(let i = 0; i < doctor.qualifications.length; i++) { %>
+                                    <span><%= doctor.qualifications[i] %></span>
+                                    <% } %>
                                 </div>
                                 <div class="doctor_specializations">
-                                    <span>Opthomatologist</span>
-                                    <span>
-                                        <span>,</span>
-                                        <span>Pediatrician</span>
-                                    </span>
+                                    <% for(let i = 0; i < doctor.specializations.length; i++) { %>
+                                    <span><%= doctor.specializations[i] %></span>
+                                    <span>,<span>
+                                    <% } %>
                                 </div>
                             </div>
                         </div>
@@ -97,7 +95,7 @@
 								<div class="appointment_form_patient_select_item">
 									
 									<input id="current" type="radio" name="patient" value="current_user" checked>
-									<label for="current">Harpalsinh</label>
+									<label for="current"><%= session.user.name %></label>
 								</div>
 								<div class="appointment_form_patient_select_item">
 									
@@ -108,11 +106,11 @@
 							<div class="current_user_form ">
 								<div class="appointment_form_input_field">
 									<label for="current_user_name">Full Name</label>
-									<input type="text" name="current_user_name" id="" required>
+									<input type="text" name="current_user_name" id="" required value="<%= session.user.name %>">
 								</div>
 								<div class="appointment_form_input_field">
 									<label for="current_user_phoneNumber">Mobile</label>
-									<input type="text" name="current_user_phoneNumber" id="" required>
+									<input type="text" name="current_user_phoneNumber" id="" required value="<%= session.user.phoneNumber %>" disabled>
 								</div>
 								<div class="appointment_form_input_field">
 									<label for="current_user_email">Your Email</label>
@@ -126,7 +124,7 @@
 								</div>
 								<div class="appointment_form_input_field">
 									<label for="current_user_phoneNumber">Mobile</label>
-									<input type="number" name="current_user_phoneNumber" id="">
+									<input type="number" name="current_user_phoneNumber" id="" value="<%= session.user.phoneNumber %>" disabled>
 								</div>
 								<div class="appointment_form_input_field">
 									<label for="someone_phoneNumber">Patient's Mobile</label>

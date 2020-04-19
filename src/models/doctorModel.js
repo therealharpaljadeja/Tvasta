@@ -32,8 +32,8 @@ const doctorSchema = new mongoose.Schema({
 	awards: { type: [String] },
 	avg_fees: { type: Number },
 	hospitalList: { type: [mongoose.Schema.ObjectId] },
-	startTime: { type: Date, required: true },
-	endTime: { type: Number, required: true },
+	startTime: { type: String, required: true },
+	endTime: { type: String, required: true },
 	slotDuration: { type: Number, enum: [15,30,45,60] }
 });
 

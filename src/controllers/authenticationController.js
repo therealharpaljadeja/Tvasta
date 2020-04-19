@@ -86,8 +86,6 @@ const emailLogin = async (req, res, next) => {
 				req.session.user = user;
 				req.session.errorType = 'Success';
 				req.session.error = 'Login Successful';
-				console.log(req.session.error);
-				console.log(req.session);
 				if(req.session.user.role === 'admin') res.redirect('/admin');
 				else res.redirect('/');	
 			} else {
@@ -106,7 +104,6 @@ const emailLogin = async (req, res, next) => {
 const phoneLogin = async (req, res, next) => {
 	if(req.body.phoneNumber){
 		const user = await User.findOne({ phoneNumber: req.body.phoneNumber });
-		console.log(user);
 		// const passwordCorrect = await user.comparePassword(req.body.password, user.password); 
 		const nexmoRequestOTPCallback = (err, result) => {
 			if(err) console.log(err);
@@ -188,15 +185,11 @@ const cancelOldOTP = async (req, res, next) => {
 	const cancelRequestCallback = (err, result) => {
 		if(err) console.log(err);
 		else {
-			console.log(result);
-			console.log(req.session);
 			const nexmoRequestOTPCallback = (err, result) => {
 				if(err) console.log(err);
 				else{
 					req.session.request_id = result.request_id;
 					console.log('Requesting OTP');
-					console.log(req.session);
-					console.log(req.session.request_id);
 					req.session.error = 'Valid Only for 60 Secs';
 					req.session.errorType = 'Info';
 					res.redirect('/otp');	
@@ -257,7 +250,6 @@ const checkIfUserExists = async (req, res, next) => {
 	console.log(req.body.email);
 	if(req.body.email){
 		const user = await User.findOne({ email: req.body.email });
-		console.log(user);
 		if(user){
 			req.body.phoneNumber = user.phoneNumber;
 			req.session.forgetPassword = true;

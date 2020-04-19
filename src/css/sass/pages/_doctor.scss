@@ -68,14 +68,43 @@
 				border: .1rem solid #bbb;
 				overflow: hidden;
 				&__name{
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					align-items: center;
 					position: relative;
 					font-family: $nexa-bold;
+					i{
+						font-size: 1.5rem;
+						color: #777;
+						margin-right: 1rem;
+					}
 					h3{
 						color: $bright-blue;
 						font-size: 2rem;
 						line-height: 3rem;
 						margin: 1rem 0rem;
 						padding-left: 5rem; 	
+					}
+					.doctor_menu_container{
+						position: absolute;
+						background-color: $background-color;
+						right: 1rem;
+						top: 4rem;
+						.doctor_menu{
+							display: flex;
+							flex-direction: column;
+							grid-gap: 1rem;
+							justify-content: flex-end;
+							a{
+								text-decoration: none;
+								color: $dark-blue;
+							}
+							&_item{
+								text-align: right;
+								font-size: 1.2rem;
+							}
+						}
 					}
 					&:before{
 						content: '';
@@ -308,13 +337,26 @@
 				&__card{
 					grid-template-columns: 6fr 4fr;
 					&__name{
+						display: flex;
+						/* padding: 0rem 1rem; */
+						flex-direction: row;
+						align-items: center;
+						justify-content: space-between;
 						grid-column: 1/2;
 						grid-row: 1/2;
+						i{
+							font-size: 1.5rem;
+							color: #777;
+							margin-right: 2rem;
+						}
 						h3{
 							font-size: 1.7rem;
 						}
 						&:before{
 							top:47%;
+						}
+						.doctor_menu_container{
+							right: 2rem;
 						}
 					}
 					&__other_details{

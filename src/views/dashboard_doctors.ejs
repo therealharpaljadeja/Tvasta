@@ -70,6 +70,13 @@
 				<div>
 					<div class="doctor_list__container__col-2__card__name">
 						<h3><%= doctors[i].name %></h3>
+						<i id="edit_doctors" class="fas fa-ellipsis-h"></i>
+						<div class="doctor_menu_container display_none">
+							<ul class="doctor_menu">
+								<a href="/edit-doctor/<%= doctors[i]._id%>"><li class="doctor_menu_item">Edit Doctor</li></a>
+								<a href="/delete-doctor/<%= doctors[i]._id%>"><li class="doctor_menu_item">Remove Doctor</li></a>
+							</ul>
+						</div>
 					</div>
 					<div class="doctor_list__container__col-2__card__other_details">
 						<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-certificate"></i></span><%= doctors[i].achievements[0] %></li>
@@ -88,6 +95,16 @@
 			<% } %>
 		</div>
 	</section>
+	<script>
+		const edit_doctors = document.querySelectorAll('#edit_doctors');
+		// const edit_doctors_menu = document.querySelector('.doctor_menu_container');
+		edit_doctors.forEach(el => {
+			el.addEventListener('click', () => {
+				const doctor_menu = el.parentElement.children[2].classList.toggle('display_none');
+			});
+		});
+	</script>
+	<script src="./../index.js"></script>
 	<script src="./../dashboard.js"></script>
 	<script src="./../error.js"></script>
 </body>

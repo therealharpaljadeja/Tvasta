@@ -404,11 +404,12 @@ html, body {
 }
 
 .display_none {
-  display: none !important;
+  display: none;
 }
 
 .treatment_menu_container {
-  right: 56rem;
+  right: 50%;
+  transform: translateX(50%);
 }
 .treatment_menu_container .profile_menu__item {
   text-align: center;
@@ -469,6 +470,9 @@ html, body {
     flex-direction: row;
     list-style-type: none;
     justify-content: center;
+  }
+  .navbar__menu__ul #treatments {
+    position: relative;
   }
   .navbar__menu__ul #treatments:hover {
     color: #0173b2;
@@ -1458,8 +1462,17 @@ html, body {
   overflow: hidden;
 }
 .doctor_list__container__col-2__card__name, .hospital_list__container__col-2__card__name {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
   font-family: "Nexa Bold";
+}
+.doctor_list__container__col-2__card__name i, .hospital_list__container__col-2__card__name i {
+  font-size: 1.5rem;
+  color: #777;
+  margin-right: 1rem;
 }
 .doctor_list__container__col-2__card__name h3, .hospital_list__container__col-2__card__name h3 {
   color: #0173b2;
@@ -1467,6 +1480,26 @@ html, body {
   line-height: 3rem;
   margin: 1rem 0rem;
   padding-left: 5rem;
+}
+.doctor_list__container__col-2__card__name .doctor_menu_container, .hospital_list__container__col-2__card__name .doctor_menu_container {
+  position: absolute;
+  background-color: white;
+  right: 1rem;
+  top: 4rem;
+}
+.doctor_list__container__col-2__card__name .doctor_menu_container .doctor_menu, .hospital_list__container__col-2__card__name .doctor_menu_container .doctor_menu {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
+  justify-content: flex-end;
+}
+.doctor_list__container__col-2__card__name .doctor_menu_container .doctor_menu a, .hospital_list__container__col-2__card__name .doctor_menu_container .doctor_menu a {
+  text-decoration: none;
+  color: #2a2d3e;
+}
+.doctor_list__container__col-2__card__name .doctor_menu_container .doctor_menu_item, .hospital_list__container__col-2__card__name .doctor_menu_container .doctor_menu_item {
+  text-align: right;
+  font-size: 1.2rem;
 }
 .doctor_list__container__col-2__card__name:before, .hospital_list__container__col-2__card__name:before {
   content: "";
@@ -1694,14 +1727,27 @@ html, body {
     grid-template-columns: 6fr 4fr;
   }
   .doctor_list__container__col-2__card__name, .hospital_list__container__col-2__card__name {
+    display: flex;
+    /* padding: 0rem 1rem; */
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     grid-column: 1/2;
     grid-row: 1/2;
+  }
+  .doctor_list__container__col-2__card__name i, .hospital_list__container__col-2__card__name i {
+    font-size: 1.5rem;
+    color: #777;
+    margin-right: 2rem;
   }
   .doctor_list__container__col-2__card__name h3, .hospital_list__container__col-2__card__name h3 {
     font-size: 1.7rem;
   }
   .doctor_list__container__col-2__card__name:before, .hospital_list__container__col-2__card__name:before {
     top: 47%;
+  }
+  .doctor_list__container__col-2__card__name .doctor_menu_container, .hospital_list__container__col-2__card__name .doctor_menu_container {
+    right: 2rem;
   }
   .doctor_list__container__col-2__card__other_details, .hospital_list__container__col-2__card__other_details {
     grid-column: 1/2;

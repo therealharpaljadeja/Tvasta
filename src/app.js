@@ -101,6 +101,8 @@ app.get('/add-doctors', authenticationController.redirectLogin, authenticationCo
 
 app.post('/add-doctors', doctorController.addDoctor);
 
+app.get('/delete-doctor/:id', doctorController.deleteDoctor);
+
 // User Routes
 
 app.get('/', authenticationController.redirectLogin2, authenticationController.redirectAdmin, (req, res) => {

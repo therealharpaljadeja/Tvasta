@@ -143,12 +143,13 @@
 }
 
 .display_none{
-	display: none !important;
+	display: none;
 }
 
 
 .treatment_menu_container{
-	right: 56rem;
+	right: 50%;
+	transform: translateX(50%);
 	.profile_menu{
 		&__item{
 			text-align: center;
@@ -215,6 +216,7 @@
 				list-style-type: none;
 				justify-content: center;
 				#treatments{
+					position: relative;
 					&:hover{
 						color: $bright-blue;
 						#treatment_menu_container{

@@ -31,7 +31,10 @@ const doctorSchema = new mongoose.Schema({
 	qualifications: { type: [String] },
 	awards: { type: [String] },
 	avg_fees: { type: Number },
-	hospitalList: { type: [mongoose.Schema.ObjectId] }
+	hospitalList: { type: [mongoose.Schema.ObjectId] },
+	startTime: { type: Date, required: true },
+	endTime: { type: Number, required: true },
+	slotDuration: { type: Number, enum: [15,30,45,60] }
 });
 
 doctorSchema.pre('save', async function(next){

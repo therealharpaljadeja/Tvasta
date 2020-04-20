@@ -121,7 +121,8 @@
 					slotsWithDate.forEach(el => {
 					slots.push(`${el.toLocaleString().split(', ')[1].split(':')[0]}:${el.toLocaleString().split(', ')[1].split(':')[1]} ${el.toLocaleString().split(', ')[1].split(':')[2].split(' ')[1]}`);
 					});
-
+					
+					console.log(doctors[i].slots);
 				 %>
 				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-1">
 					<div>
@@ -151,7 +152,7 @@
 							<div class="carousel-dates slides">
 								<div class="date-heading date-heading--active current slide">
 									<div class="day-date">
-										<span>Sat, 9 May</span>
+										<span>Mon, 20 April 2020</span>
 									</div>
 									<div class="day-slots-available">
 										15 Slots Available
@@ -159,7 +160,7 @@
 								</div>
 								<div class="date-heading slide">
 									<div class="day-date">
-										<span>Sat, 10 May</span>
+										<span>Tue, 21 April 2020</span>
 									</div>
 									<div class="day-slots-available">
 										15 Slots Available
@@ -167,7 +168,7 @@
 								</div>
 								<div class="date-heading slide">
 									<div class="day-date">
-										<span>Sat, 11 May</span>
+										<span>Wed, 22 April 2020</span>
 									</div>
 									<div class="day-slots-available">
 										15 Slots Available
@@ -175,7 +176,7 @@
 								</div>
 								<div class="date-heading slide">
 									<div class="day-date">
-										<span>Sun, 12 May</span>
+										<span>Thur, 23 April 2020</span>
 									</div>
 									<div class="day-slots-available">
 										15 Slots Available
@@ -185,13 +186,20 @@
 							<div class="time-slots-header-controls time-slots-header-right right">
 								<i class="fas fa-chevron-right"></i>
 							</div>
-						</div>	
-
-
-						<div class="time-slots">
-							<% for(let i=0; i < slots.length; i++) { %>
-							<a href="/appointment/<%= id %>?hour=<%= slots[i].split(':')[0] %>&min=<%= slots[i].split(':')[1].split(' ')[0] %>&mode=<%= slots[i].split(':')[1].split(' ')[1] %>"><span class="slot"><%= slots[i] %></span></a>
-							<% } %>
+						</div>
+						<div class="time-slots-container">
+							<div class="time-slots">
+								<% for(let i = 0; i < slots.length; i++) { %>
+								<!-- <a onclick="appointment(this)" href="/appointment/<%= id %>?hour=<%= slots[i].split(':')[0] %>&min=<%= slots[i].split(':')[1].split(' ')[0] %>&mode=<%= slots[i].split(':')[1].split(' ')[1] %>"> --><span onclick="appointment(this, '<%= id %>')" class="slot"><%= slots[i] %></span>
+								<!-- </a> -->
+								<% } %>
+							</div>
+							<div class="time-slots">
+								<% for(let i = 0; i < slots.length; i++) { %>
+								<!-- <a onclick="appointment(this)" href="/appointment/<%= id %>?hour=<%= slots[i].split(':')[0] %>&min=<%= slots[i].split(':')[1].split(' ')[0] %>&mode=<%= slots[i].split(':')[1].split(' ')[1] %>"> --><span onclick="appointment(this, '<%= id %>')" class="slot"><%= slots[i] %></span>
+								<!-- </a> -->
+								<% } %>
+							</div>	
 						</div>
 					</div>
 				</div>
@@ -305,6 +313,21 @@
 	<div class="border">
 	</div>
 	<script>
+
+		const appointment = async (el, id) => {
+			const currentDate = document.querySelector('.date-heading--active');
+			console.log(currentDate.children[0].children[0].innerText);
+			console.log(el.innerText);
+			const hour = el.innerText.split(':')[0];
+			// const id = "<%- doctors[1]._id %>";
+			console.log(id);
+			const min = el.innerText.split(':')[1].split(' ')[0];
+			const mode = el.innerText.split(':')[1].split(' ')[1];
+			const date = currentDate.children[0].children[0].innerText;
+			const query = `/appointment/${id}?hour=${hour}&min=${min}&mode=${mode}&date=${date}`;
+			window.location.href = query;
+		}
+
 		const carousel = document.querySelector(".carousel");
 		const slides = Array.from(carousel.querySelectorAll(".slide"));
 		const leftButton = document.querySelector(".left");
@@ -448,8 +471,7 @@
 					timeSlots.style.display = 'flex';
 				}
 			});
-		})
-		
+		});	
 	</script>
 	<script type="text/javascript" src="index.js"></script>
 </body>

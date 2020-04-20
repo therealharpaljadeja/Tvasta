@@ -74,6 +74,7 @@ const signUp = async (req, res, next) => {
 	req.session.errorType = 'Success';
 	req.session.error = 'Login Successful';
 	res.redirect('/');
+	console.log(req.body);
 }
 
 const emailLogin = async (req, res, next) => {

@@ -224,20 +224,23 @@
 							}
 						}
 					}
+					.time-slots-container{
+						display: flex;
+						justify-content: flex-start;
+						overflow: hidden;
+					}
 					.time-slots{
-						a{
-							text-decoration: none;
-							.slot{
-								display: inline;
-								line-height: 3rem;
-								border-radius: .5rem;
-								border: 1px solid $bright-blue;
-								padding: .7rem;
-								font-family: $nexa-bold;
-								color: $bright-blue;
-							}	
-						}
-						
+						flex-basis: 100%;
+						min-width: 100%;
+						.slot{
+							display: inline;
+							line-height: 3rem;
+							border-radius: .5rem;
+							border: 1px solid $bright-blue;
+							padding: .7rem;
+							font-family: $nexa-bold;
+							color: $bright-blue;
+						}	
 					}
 				}
 			}

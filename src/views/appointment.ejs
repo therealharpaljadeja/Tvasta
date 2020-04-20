@@ -24,7 +24,7 @@
                             <div class="appointment_date">
                                 <i class="far fa-calender-alt"></i>
                                 <span>On</span>
-                                <span>9th May, 2020</span>
+                                <span><%= slot.date %></span>
                             </div>
                             <div class="appointment_time">
                                 <i class="fas fa-clock"></i>
@@ -87,7 +87,7 @@
 						Patient Details
 					</div>
 					<div class="appointment_form_patient">
-						<form action="">
+						<form id="appointment_form" action="/appointment" method="POST">
 							<div class="appointment_form_patient_title">
 								This appointment is for:
 							</div>
@@ -103,7 +103,7 @@
 									<label for="someone">Someone Else</label>
 								</div>
 							</div>
-							<div class="current_user_form ">
+							<div class="current_user_form">
 								<div class="appointment_form_input_field">
 									<label for="current_user_name">Full Name</label>
 									<input type="text" name="current_user_name" id="" required value="<%= session.user.name %>">
@@ -115,7 +115,10 @@
 								<div class="appointment_form_input_field">
 									<label for="current_user_email">Your Email</label>
 									<input type="email" name="current_user_email" id="" required>
-								</div>	
+								</div>
+                                <div class="appointment_form_button">
+                                    <button type="submit">Book Appointment</button>
+                                </div>	
 							</div>
 							<div class="someone_else_form display_none">
 								<div class="appointment_form_input_field">
@@ -134,9 +137,9 @@
 									<label for="someone_email">Patient's Email</label>
 									<input type="email" name="someone_email" id="">
 								</div>
-							</div>
-							<div class="appointment_form_button">
-								<button type="submit">Book Appointment</button>
+                                <div class="appointment_form_button">
+                                    <button type="submit">Book Appointment</button>
+                                </div>
 							</div>
 						</form>
 					</div>
@@ -151,19 +154,38 @@
         	const someoneElseRadio = document.querySelector('input[value="someone_else"]');
         	const currentUserForm = document.querySelector('.current_user_form');
         	const someoneElseForm = document.querySelector('.someone_else_form');
+            const current_name = document.querySelector('input[name="current_user_name"]');
+            const current_phone = document.querySelector('input[name="current_user_phoneNumber"]');
+            const current_email = document.querySelector('input[name="current_user_email"]');
+
+            const someone_name = document.querySelector('input[name="someone_name"]');
+            const someone_phone = document.querySelector('input[name="someone_phoneNumber"]');
+            const someone_email = document.querySelector('input[name="someone_email"]');
+
+
+        	someoneElseForm.style.display = 'none';
         	currentUserRadio.addEventListener('click', () => {
-        		if(currentUserForm.classList.contains('display_none')){
-        			currentUserForm.classList.remove('display_none');
-        			someoneElseForm.classList.add('display_none');
-        		}
+        			currentUserForm.style.display = 'flex';
+        			someoneElseForm.style.display = 'none';
+                    current_name.required = 'true';
+                    current_phone.required = 'true';
+                    current_email.required = 'true';
+                    someone_name.removeAttribute('required');
+                    someone_email.removeAttribute('required');
+                    someone_phone.removeAttribute('required');
         	});
         	someoneElseRadio.addEventListener('click', () => {
-        		if(someoneElseForm.classList.contains('display_none')){
-        			currentUserForm.classList.add('display_none');
-        			someoneElseForm.classList.remove('display_none');
-        		}
+        			currentUserForm.style.display = 'none';
+        			someoneElseForm.style.display = 'flex';
+                    someone_name.required = 'true';
+                    someone_email.required = 'true';
+                    someone_phone.required = 'true';
+                    current_name.removeAttribute('required');
+                    current_phone.removeAttribute('required');
+                    current_email.removeAttribute('required');
         	})
         </script>
+        <script src="/index.js"></script>
     </div>
 </body>
 

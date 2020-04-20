@@ -99,7 +99,7 @@ const addDoctor = async (req, res, next) => {
                 achievements: achievements,
                 experience: req.body.experience,
                 location: req.body.location,
-                display_picture: req.file.path,
+                display_picture: '/' + req.file.path,
                 description: req.body.description,
                 email: req.body.email,
                 password: req.body.password,

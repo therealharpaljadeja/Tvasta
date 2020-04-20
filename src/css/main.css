@@ -643,6 +643,28 @@ html, body {
     font-size: 2rem;
   }
 }
+.doctor_details_modal {
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  height: 100%;
+  width: 100%;
+  z-index: 10000;
+}
+.doctor_details_modal form {
+  position: absolute;
+  background-color: white;
+  overflow: scroll;
+  width: 50rem;
+  height: 60rem;
+  padding: 2rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  flex-direction: column;
+  grid-gap: 2rem;
+}
+
 .hero {
   background-image: url("https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/img1.jpg");
   background-size: cover;
@@ -1620,10 +1642,16 @@ html, body {
 .doctor_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading--active .day-date, .hospital_list__container__col-2__card__time_slot .time-slots-header .carousel-dates .date-heading--active .day-date {
   color: #0173b2;
 }
-.doctor_list__container__col-2__card__time_slot .time-slots a, .hospital_list__container__col-2__card__time_slot .time-slots a {
-  text-decoration: none;
+.doctor_list__container__col-2__card__time_slot .time-slots-container, .hospital_list__container__col-2__card__time_slot .time-slots-container {
+  display: flex;
+  justify-content: flex-start;
+  overflow: hidden;
 }
-.doctor_list__container__col-2__card__time_slot .time-slots a .slot, .hospital_list__container__col-2__card__time_slot .time-slots a .slot {
+.doctor_list__container__col-2__card__time_slot .time-slots, .hospital_list__container__col-2__card__time_slot .time-slots {
+  flex-basis: 100%;
+  min-width: 100%;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots .slot, .hospital_list__container__col-2__card__time_slot .time-slots .slot {
   display: inline;
   line-height: 3rem;
   border-radius: 0.5rem;
@@ -2316,7 +2344,7 @@ html, body {
 }
 
 .form_container--signup {
-  height: 67rem;
+  height: 75rem;
   grid-template-rows: 1fr 5fr 0.5fr;
 }
 .form_container__form__input_field select, .form_container__form__input_field input[type=date], .form_container__form__input_field input[type=email], .form_container__form__input_field input[type=password] {
@@ -2331,6 +2359,10 @@ html, body {
 }
 .form_container__form__input_field select:focus, .form_container__form__input_field input[type=date]:focus, .form_container__form__input_field input[type=email]:focus, .form_container__form__input_field input[type=password]:focus {
   outline: 1px solid #0173b2;
+}
+.form_container__form #isDoctorInput {
+  flex-direction: row;
+  align-items: center;
 }
 
 .page_description {

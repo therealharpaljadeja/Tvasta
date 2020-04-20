@@ -32,7 +32,7 @@ app.set('views', __dirname);
 app.use(express.static(path.join(__dirname)));
 
 // Public Folder
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/public')));
 
 // EJS
 app.engine('html', ejs.renderFile);
@@ -156,6 +156,8 @@ app.get('/submit-your-query', (req, res) => {
 });
 
 app.get('/appointment/:id',authenticationController.redirectLogin, authenticationController.redirectAdmin, appointmentController.loadingDataOnAppointmentPage);
+
+app.post('/appointment', appointmentController.createAppointment);
 
 app.get('/get-a-quote', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/get-a-quote.ejs', {session: req.session});

@@ -27,7 +27,7 @@ const editProfile = (req, res, next) => {
 		} else {
 			console.log(req.body);
 			const user = await User.findOne({ email: req.session.user.email });
-			user.display_picture = req.file === undefined ? req.session.user.display_picture : req.file.path;
+			user.display_picture = req.file === undefined ? req.session.user.display_picture : '/' + req.file.path;
 			user.name = req.body.name;
 			user.phoneNumber = req.body.phoneNumber;
 			user.email = req.body.email;

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-
+const doctorSchema = require('./doctorModel');
 
 const userSchema = new mongoose.Schema({
 	name: {
@@ -54,9 +54,10 @@ const userSchema = new mongoose.Schema({
 	},
 	role: {
 		type: String,
-		enum: ['admin', 'user'],
+		enum: ['admin', 'user', 'doctor'],
 		default: 'user'
-	}
+	},
+	doctor: doctorSchema
 });
 
 

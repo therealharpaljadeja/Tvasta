@@ -1,3 +1,24 @@
+.doctor_details_modal{
+	position: fixed;
+	background-color: rgba(transparent, .4);
+	height: 100%;
+	width: 100%;
+	z-index: 10000;
+	form{
+		position: absolute;
+		background-color: white;
+		overflow: scroll;
+		width: 50rem;
+		height: 60rem;
+		padding: 2rem;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		display: flex;
+		flex-direction: column;
+		grid-gap: 2rem;
+	}
+}
 
 .hero{
 	background-image: url('https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/img1.jpg');

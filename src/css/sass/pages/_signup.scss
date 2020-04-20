@@ -1,6 +1,6 @@
 .form_container{
 	&--signup{
-		height: 67rem;
+		height: 75rem;
 		grid-template-rows: 1fr 5fr 0.5fr;
 	}
 	&__form{
@@ -18,6 +18,10 @@
 				font-family: $nexa-bold;
 				font-size: 1.4rem;
 			}
+		}
+		#isDoctorInput{
+			flex-direction: row;
+			align-items: center;
 		}
 	}
 }

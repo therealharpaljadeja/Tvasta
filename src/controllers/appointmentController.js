@@ -8,12 +8,18 @@ const loadingDataOnAppointmentPage = async (req, res, next) => {
 	const slot = {
 		hour: req.query.hour,
 		min: req.query.min,
-		mode: req.query.mode
+		mode: req.query.mode,
+		date: req.query.date
 	};
 	console.log(slot);
 	res.render('views/appointment.ejs', { session: req.session, doctor: doctor, slot: slot });
 }
 
+const createAppointment = (req, res, next) => {
+	// if(req.body.)
+}
+
 module.exports = {
-	loadingDataOnAppointmentPage: loadingDataOnAppointmentPage
+	loadingDataOnAppointmentPage: loadingDataOnAppointmentPage,
+	createAppointment: createAppointment
 }

@@ -30,10 +30,10 @@ const getAllDoctors = async (req, res, next) => {
         experience = Math.min(...experience);
     }
     // console.log({ role : "doctor", ...req.query, doctor.experience: { $gte : experience || 0 }});
-    
+    console.log(req.query);
     const doctors = await User.find({role: 'doctor',...req.query, "doctor.experience": { $gte : experience || 0 }});       
-    res.locals.doctors = doctors;
     console.log(doctors);
+    res.locals.doctors = doctors;
     next();
 }
 
@@ -56,13 +56,13 @@ const addDoctor = async (req, res, next) => {
             let qualificationList = req.body.qualifications.slice(1,req.body.qualifications.length - 1).split(',');
             let awardsList = req.body.awards.slice(1,req.body.awards.length - 1).split(',');
             let specializationsList = req.body.specializations.slice(1,req.body.specializations.length - 1).split(',');
-            let slotDurationString = req.body.slotDuration.slice(1,req.body.slotDuration.length - 1).split(',');
+            // let slotDurationString = req.body.slotDuration.slice(1,req.body.slotDuration.length - 1).split(',');
             let hospitalList = [];
             let achievements = [];
             let qualifications = [];
             let awards = [];
             let specializations = [];
-            let slotDuration = '';
+            // let slotDuration = '';
             if(req.body.hospitalList){
                 for(let i = 0; i < hospitals.length; i++){
                     value = JSON.parse(hospitals[i]).value;
@@ -91,30 +91,34 @@ const addDoctor = async (req, res, next) => {
                 value = JSON.parse(specializationsList[i]).value;
                 specializations.push(value);
             }
-            for(let i = 0; i < slotDurationString.length; i++){
-                slotDuration = JSON.parse(slotDurationString[i]).value.split(' ')[0];
-            }
-            console.log(slotDuration);
-            const newDoctor = Doctor.create({
+            // for(let i = 0; i < slotDurationString.length; i++){
+            //     slotDuration = JSON.parse(slotDurationString[i]).value.split(' ')[0];
+            // }
+            // console.log(slotDuration);
+            const newDoctor = User.create({
+                role: 'doctor',
                 name: req.body.name,
                 gender: req.body.gender,
-                achievements: achievements,
-                experience: req.body.experience,
                 location: req.body.location,
                 display_picture: '/' + req.file.path,
-                description: req.body.description,
                 email: req.body.email,
                 password: req.body.password,
-                mobile: req.body.phoneNumber,
-                specializations: specializations,
-                qualifications: qualifications,
-                awards: awards,
-                avg_fees: req.body.averageFees,
-                hospitalList: hospitalList,
-                startTime: req.body.startTime,
-                endTime: req.body.endTime,
-                slotDuration: slotDuration
+                phoneNumber: req.body.phoneNumber,
+                doctor: {
+                    specializations: specializations,
+                    qualifications: qualifications,
+                    awards: awards,
+                    avg_fees: req.body.averageFees,
+                    hospitalList: hospitalList,
+                    // startTime: req.body.startTime,
+                    // endTime: req.body.endTime,
+                    // slotDuration: slotDuration,
+                    achievements: achievements,
+                    experience: req.body.experience,
+                    description: req.body.description,    
+                }
             });
+            console.log(newDoctor);
             req.session.error = 'Doctor Registered Succesfully!';
             req.session.errorType = 'Success';
             res.redirect('/add-doctors');

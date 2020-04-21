@@ -24,15 +24,45 @@ const uploadDoctor = multer({
 
 
 const getAllDoctors = async (req, res, next) => {
-	let experience = req.query.experience;
-    if(experience && experience instanceof Array) {
-        experience = experience.map(e => Number(e));
-        experience = Math.min(...experience);
+    var doctors = [];
+    console.log(req.session.filters);
+    if(req.session.filters){
+        if(Object.keys(req.session.filters).length){
+            doctors = await User.find({
+                $and: [
+                    {role: 'doctor'},
+                    // {
+                    //     "location": {$in: req.session.filters.location ? req.session.filters.location : ['New Delhi', 'Mumbai', 'Bangalore', 'Punjab', 'Ahmedabad', 'Gurgaon']}
+                    // },
+                    // {
+                    //     "doctor.hospitalList": { $in: req.session.filters.hospital ?  req.session.filters.hospital : ['Apollo Hospital', 'Rockland Hospital', 'Kokilaben Hospital', 'AIIMS', 'Fortis Hospital', 'Primus Super Speciality Hospital'] }
+                    // },
+                    {
+                        "doctor.experience": { $gte: req.session.filters.experience ?  parseInt(req.session.filters.experience[req.session.filters.experience.length - 1]) : 0 }
+                    }
+                ]
+            })
+            console.log(doctors);
+        } else {
+            doctors = await User.find({
+                role: 'doctor'
+            });
+        }
+    } else {
+        doctors = await User.find({
+            role: 'doctor'
+        });
     }
-    // console.log({ role : "doctor", ...req.query, doctor.experience: { $gte : experience || 0 }});
-    console.log(req.query);
-    const doctors = await User.find({role: 'doctor',...req.query, "doctor.experience": { $gte : experience || 0 }});       
-    console.log(doctors);
+
+
+
+	// let experience = req.query.experience;
+ //    if(experience && experience instanceof Array) {
+ //        experience = experience.map(e => Number(e));
+ //        experience = Math.min(...experience);
+ //    }
+ //    // console.log({ role : "doctor", ...req.query, doctor.experience: { $gte : experience || 0 }});
+ //    const doctors = await User.find({role: 'doctor',...req.query, "doctor.experience": { $gte : experience || 0 }});         
     res.locals.doctors = doctors;
     next();
 }
@@ -51,28 +81,28 @@ const addDoctor = async (req, res, next) => {
             res.redirect('/add-doctors');
         } else {
             console.log(req.file);
-            let hospitals = req.body.hospitalList.slice(1,req.body.hospitalList.length - 1).split(',');
+            // let hospitals = req.body.hospitalList.slice(1,req.body.hospitalList.length - 1).split(',');
             let achievementList = req.body.achievements.slice(1,req.body.achievements.length - 1).split(',');
             let qualificationList = req.body.qualifications.slice(1,req.body.qualifications.length - 1).split(',');
             let awardsList = req.body.awards.slice(1,req.body.awards.length - 1).split(',');
             let specializationsList = req.body.specializations.slice(1,req.body.specializations.length - 1).split(',');
             // let slotDurationString = req.body.slotDuration.slice(1,req.body.slotDuration.length - 1).split(',');
-            let hospitalList = [];
+            // let hospitalList = [];
             let achievements = [];
             let qualifications = [];
             let awards = [];
             let specializations = [];
             // let slotDuration = '';
-            if(req.body.hospitalList){
-                for(let i = 0; i < hospitals.length; i++){
-                    value = JSON.parse(hospitals[i]).value;
-                    // let hospital = await Hospital.findOne({ name: value }, { _id: 1 });
-                    // let id = hospital.id;
-                    // console.log(hospital);
-                    // console.log(id);
-                    hospitalList.push(value);
-                }    
-            }
+            // if(req.body.hospitalList){
+            //     for(let i = 0; i < hospitals.length; i++){
+            //         value = JSON.parse(hospitals[i]).value;
+            //         // let hospital = await Hospital.findOne({ name: value }, { _id: 1 });
+            //         // let id = hospital.id;
+            //         // console.log(hospital);
+            //         // console.log(id);
+            //         hospitalList.push(value);
+            //     }    
+            // }
             for(let i = 0; i < achievementList.length; i++){
                 value = JSON.parse(achievementList[i]).value;
                 achievements.push(value);
@@ -95,11 +125,13 @@ const addDoctor = async (req, res, next) => {
             //     slotDuration = JSON.parse(slotDurationString[i]).value.split(' ')[0];
             // }
             // console.log(slotDuration);
+            console.log(req.body);
             const newDoctor = User.create({
                 role: 'doctor',
                 name: req.body.name,
                 gender: req.body.gender,
-                location: req.body.location,
+                dob: req.body.dob,
+                location: req.body.city,
                 display_picture: '/' + req.file.path,
                 email: req.body.email,
                 password: req.body.password,
@@ -109,7 +141,7 @@ const addDoctor = async (req, res, next) => {
                     qualifications: qualifications,
                     awards: awards,
                     avg_fees: req.body.averageFees,
-                    hospitalList: hospitalList,
+                    // hospitalList: hospitalList,
                     // startTime: req.body.startTime,
                     // endTime: req.body.endTime,
                     // slotDuration: slotDuration,
@@ -144,9 +176,15 @@ const deleteDoctor = async (req, res, next) => {
 
 }
 
+const doctorFilters = (req, res) => {
+    req.session.filters = req.body;
+    res.redirect('/doctors');
+}
+
 module.exports = {
 	getAllDoctors: getAllDoctors,
     addDoctor: addDoctor,
     deleteDoctor: deleteDoctor,
-    manuallyPopulateDoctor: manuallyPopulateDoctor
+    manuallyPopulateDoctor: manuallyPopulateDoctor,
+    doctorFilters: doctorFilters
 }

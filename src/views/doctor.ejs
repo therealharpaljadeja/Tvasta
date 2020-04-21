@@ -35,48 +35,61 @@
 						<p>Filter By</p>
 					</div>
 					<div class="doctor_list__container__col-1__filter-by__tags" id="doctor_list__container__col-1__filter-by__tags">
-						
+						<% if(filter) { %>
+						<% let key = Object.keys(filter) %>
+						<% key.forEach(el => { %>
+							<% for(let i = 0; i < filter[el].length; i++) { %> 
+								<div class="filter_button">
+									<p class="text"><%= filter[el][i] %></p>
+									<button onclick="form_submit(this)">
+										<i class="fas fa-times"></i>
+									</button>
+								</div>
+							<% } %>
+						<% }) %>
+						<% } %>
 					</div>
 				</div>
+				<form action="/add-filters" id="filter_form" method="POST">
 				<div class="grid doctor_list__container__col-1__filter doctor_list__container__col-1__filter-1">
 					<p class="doctor_list__container__col-1__filter__title">Location</p>
 					<span class="doctor_list__container__col-1__filter__search"><i class="fa fa-search"></i></span>
 					<span class="doctor_list__container__col-1__filter__collapse"><i class="fa fa-minus"></i></span>
 					<div class="doctor_list__container__col-1__filter__options">
-						<label class="checkbox_container" for="New Delhi"><input type="checkbox" onclick="add(this)" id="New Delhi" name="location" value="New Delhi">New Delhi</label>
-	 					<label class="checkbox_container" for="Mumbai"><input type="checkbox" onclick="add(this)" id="Mumbai" name="location" value="Mumbai">Mumbai</label>
-						<label class="checkbox_container" for="Bangalore"><input type="checkbox" onclick="add(this)" id="Bangalore" name="location" value="Bangalore">Bangalore</label>
-						<label class="checkbox_container" for="Punjab"><input type="checkbox" onclick="add(this)" id="Punjab" name="location" value="Punjab">Punjab</label>
-						<label class="checkbox_container" for="Ahmedabad"><input type="checkbox" onclick="add(this)" id="Ahmedabad" name="location" value="Ahmedabad">Ahmedabad</label>
-						<label class="checkbox_container" for="Gurgaon"><input type="checkbox" onclick="add(this)" id="Gurgaon" name="location" value="Gurgaon">Gurgaon</label>
+						<label class="checkbox_container" for="New Delhi"><input type="checkbox" class="_New-Delhi" onclick="this.form.submit()" id="New Delhi" name="location[]" value="New Delhi">New Delhi</label>
+	 					<label class="checkbox_container" for="Mumbai"><input type="checkbox" class="_Mumbai" onclick="this.form.submit()" id="Mumbai" name="location[]" value="Mumbai">Mumbai</label>
+						<label class="checkbox_container" for="Bangalore"><input type="checkbox" class="_Bangalore" onclick="this.form.submit()" id="Bangalore" name="location[]" value="Bangalore">Bangalore</label>
+						<label class="checkbox_container" for="Punjab"><input type="checkbox" class="_Punjab" onclick="this.form.submit()" id="Punjab" name="location[]" value="Punjab">Punjab</label>
+						<label class="checkbox_container" for="Ahmedabad"><input type="checkbox" class="_Ahemdabad" onclick="this.form.submit()" id="Ahmedabad" name="location[]" value="Ahmedabad">Ahmedabad</label>
+						<label class="checkbox_container" for="Gurgaon"><input type="checkbox" class="_Gurgaon" onclick="this.form.submit()" id="Gurgaon" name="location[]" value="Gurgaon">Gurgaon</label>
 					</div>
 					<div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span>Show More</div>
 				</div>
-				<div class="grid doctor_list__container__col-1__filter doctor_list__container__col-1__filter-2">
+				<!-- <div class="grid doctor_list__container__col-1__filter doctor_list__container__col-1__filter-2">
 					<p class="doctor_list__container__col-1__filter__title">Treatment</p>
 					<span class="doctor_list__container__col-1__filter__search"><i class="fa fa-search"></i></span>
 					<span class="doctor_list__container__col-1__filter__collapse"><i class="fa fa-minus"></i></span>
 					<div class="doctor_list__container__col-1__filter__options">
-						<label class="checkbox_container" for="Multi Organ Transplant"><input type="checkbox" value="Multi Organ Transplant" id="Multi Organ Transplant" name="treatment" onclick="add(this)">Multi Organ Transplant</label>
-						<label class="checkbox_container" for="Orthopedic Surgery"><input type="checkbox" value="Orthopedic Surgery" id="Orthopedic Surgery" name="treatment" onclick="add(this)">Orthopedic Surgery</label>
-						<label class="checkbox_container" for="Infertility Treatment"><input type="checkbox" value="Infertility Treatment" id="Infertility Treatment" name="treatment" onclick="add(this)">Infertility Treatment</label>
-						<label class="checkbox_container" for="Dentistry"><input type="checkbox" id="Dentistry" value="Dentistry" name="treatment" onclick="add(this)">Dentistry</label>
+						<label class="checkbox_container" for="Multi Organ Transplant"><input type="checkbox" value="Multi Organ Transplant" id="Multi Organ Transplant" name="treatment[]" onclick="this.form.submit()">Multi Organ Transplant</label>
+						<label class="checkbox_container" for="Orthopedic Surgery"><input type="checkbox" value="Orthopedic Surgery" id="Orthopedic Surgery" name="treatment[]" onclick="this.form.submit()">Orthopedic Surgery</label>
+						<label class="checkbox_container" for="Infertility Treatment"><input type="checkbox" value="Infertility Treatment" id="Infertility Treatment" name="treatment[]" onclick="this.form.submit()">Infertility Treatment</label>
+						<label class="checkbox_container" for="Dentistry"><input type="checkbox" id="Dentistry" value="Dentistry" name="treatment[]" onclick="this.form.submit()">Dentistry</label>
 						<label class="checkbox_container" for="Cardiology"><input type="checkbox" id="Cardiology" value="Cardiology" name="treatment" onclick="add(this)">Cardiology</label>
 						<label class="checkbox_container" for="Cancer"><input type="checkbox" value="Cancer" id="Cancer" name="treatment" onclick="add(this)">Cancer</label>
 					</div>
 					<div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span> Show More</div>
-				</div>
+				</div> -->
 				<div class="grid doctor_list__container__col-1__filter doctor_list__container__col-1__filter-3">
 					<p class="doctor_list__container__col-1__filter__title">Hospitals</p>
 					<span class="doctor_list__container__col-1__filter__search"><i class="fa fa-search"></i></span>
 					<span class="doctor_list__container__col-1__filter__collapse"><i class="fa fa-minus"></i></span>
 					<div class="doctor_list__container__col-1__filter__options">
-						<label class="checkbox_container" for="Apollo Hospital"><input id="Apollo Hospital" value="Apollo Hospital" type="checkbox" name="hospital" onclick="add(this)">Apollo Hospital</label>
-						<label class="checkbox_container" for="Rockland Hospital"><input id="Rockland Hospital" value="Rockland Hospital" type="checkbox" name="hospital" onclick="add(this)">Rockland Hospital</label>
-						<label class="checkbox_container" for="Kokilaben Hospital"><input id="Kokilaben Hospital" value="Kokilaben Hospital" type="checkbox" name="hospital" onclick="add(this)">Kokilaben Hospital</label>
-						<label class="checkbox_container" for="AIIMS"><input id="AIIMS" value="AIIMS" type="checkbox" name="hospital" onclick="add(this)">AIIMS</label>
-						<label class="checkbox_container" for="Fortis Hospital"><input id="Fortis Hospital" value="Fortis Hospital" type="checkbox" name="hospital" onclick="add(this)">Fortis Hospital</label>
-						<label class="checkbox_container" for="Primus Super Speeciality Hospital"><input id="Primus Super Speeciality Hospital" value="Primus Super Speciality Hospital" type="checkbox" name="hospital" onclick="add(this)">Primus Super Speciality Hospital</label>
+						<label class="checkbox_container" for="Apollo Hospital"><input id="Apollo Hospital" class="_Apollo-Hospital" value="Apollo Hospital" type="checkbox" name="hospital[]" onclick="this.form.submit()">Apollo Hospital</label>
+						<label class="checkbox_container" for="Rockland Hospital"><input id="Rockland Hospital" class="_Rockland-Hospital" value="Rockland Hospital" type="checkbox" name="hospital[]" onclick="this.form.submit()">Rockland Hospital</label>
+						<label class="checkbox_container" for="Kokilaben Hospital"><input id="Kokilaben Hospital" class="_Kokilaben-Hospital" value="Kokilaben Hospital" type="checkbox" name="hospital[]" onclick="this.form.submit()">Kokilaben Hospital</label>
+						<label class="checkbox_container" for="AIIMS"><input id="AIIMS" class="_AIIMS" value="AIIMS" type="checkbox" name="hospital[]" onclick="this.form.submit()">AIIMS</label>
+						<label class="checkbox_container" for="Fortis Hospital"><input id="Fortis Hospital" class="_Fortis-Hospital" value="Fortis Hospital" type="checkbox" name="hospital[]" onclick="this.form.submit()">Fortis Hospital</label>
+						<label class="checkbox_container" for="Primus Super Speeciality Hospital"><input id="Primus Super Speeciality Hospital" class="_Primus-Super-Speciality-Hospital" value="Primus Super Speciality Hospital" type="checkbox" name="hospital[]" onclick="this.form.submit()">Primus Super Speciality Hospital</label>
 					</div>
 					<div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span> Show More</div>
 				</div>
@@ -85,16 +98,17 @@
 					<span class="doctor_list__container__col-1__filter__search"><i class="fa fa-search"></i></span>
 					<span class="doctor_list__container__col-1__filter__collapse"><i class="fa fa-minus"></i></span>
 					<div class="doctor_list__container__col-1__filter__options">
-						<label class="checkbox_container" for="30+"><input id="30+" value="30" type="checkbox" name="experience" onclick="add(this)">30+</label>
-						<label class="checkbox_container" for="25+"><input id="25+" value="25" type="checkbox" name="experience" onclick="add(this)">25+</label>
-						<label class="checkbox_container" for="20+"><input id="20+" value="20" type="checkbox" name="experience" onclick="add(this)">20+</label>
-						<label class="checkbox_container" for="15+"><input id="15+" value="15" type="checkbox" name="experience" onclick="add(this)">15+</label>
-						<label class="checkbox_container" for="10+"><input id="10+" value="10" type="checkbox" name="experience" onclick="add(this)">10+</label>
-						<label class="checkbox_container" for="5+"><input id="5+" value="5" type="checkbox" name="experience" onclick="add(this)">5+</label>
+						<label class="checkbox_container" for="30+"><input id="30+" value="30" class="_30" type="checkbox" name="experience[]" onclick="this.form.submit()">30+</label>
+						<label class="checkbox_container" for="25+"><input id="25+" value="25" class="_25" type="checkbox" name="experience[]" onclick="this.form.submit()">25+</label>
+						<label class="checkbox_container" for="20+"><input id="20+" value="20" class="_20" type="checkbox" name="experience[]" onclick="this.form.submit()">20+</label>
+						<label class="checkbox_container" for="15+"><input id="15+" value="15" class="_15" type="checkbox" name="experience[]" onclick="this.form.submit()">15+</label>
+						<label class="checkbox_container" for="10+"><input id="10+" value="10" class="_10" type="checkbox" name="experience[]" onclick="this.form.submit()">10+</label>
+						<label class="checkbox_container" for="5+"><input id="5+" value="5" class="_5" type="checkbox" name="experience[]" onclick="this.form.submit()">5+</label>
 					</div>
 					<div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span> Show More</div>
 				</div>
 			</div>
+			</form>
 			<div class="grid doctor_list__container__col-2">
 				<% for(let i = 0; i < doctors.length; i++){ %>
 				
@@ -280,6 +294,36 @@
 	</footer>
 	<div class="border">
 	</div>
+	<script>
+		let form_submit = (doc)=>{
+
+	        let filter_finder =  doc.parentElement.querySelector(".text");
+
+	        console.log(filter_finder);
+	        
+	        document.querySelector("._" + filter_finder.innerText.split(' ').join('-')).removeAttribute("checked",false);
+
+	        document.querySelector("#filter_form").submit();
+	        
+	        }
+
+
+		console.log('<%- filter %>')
+		let filter = '<%- JSON.stringify(filter) %>';
+		// console.log(filter);
+		filter = JSON.parse(filter);
+		console.log(filter);
+		if(filter){
+			let key = Object.keys(filter)
+            key.forEach(element=>{ 
+                for(let i = 0;i<filter[element].length;i++) {
+                    
+                    document.querySelector("._" + filter[element][i].split(' ').join('-')).setAttribute("checked",true);
+
+                }
+            });
+		}
+	</script>
 	<script>
 
 		const appointment = async (el, id) => {

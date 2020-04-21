@@ -30,7 +30,7 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: [true, 'Every user must have a password.']
 	},
-	city: {
+	location: {
 		type: String,
 		// required: [true, 'Every user must provide a city name']
 	},

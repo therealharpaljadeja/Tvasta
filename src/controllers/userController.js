@@ -41,28 +41,28 @@ const addDoctorDetails = (req, res, next) => {
 		} else {
 			console.log(req.body);
 			console.log(req.file);
-			let hospitals = req.body.hospitalList.slice(1,req.body.hospitalList.length - 1).split(',');
+			// let hospitals = req.body.hospitalList.slice(1,req.body.hospitalList.length - 1).split(',');
             let achievementList = req.body.achievements.slice(1,req.body.achievements.length - 1).split(',');
             let qualificationList = req.body.qualifications.slice(1,req.body.qualifications.length - 1).split(',');
             let awardsList = req.body.awards.slice(1,req.body.awards.length - 1).split(',');
             let specializationsList = req.body.specializations.slice(1,req.body.specializations.length - 1).split(',');
             // let slotDurationString = req.body.slotDuration.slice(1,req.body.slotDuration.length - 1).split(',');
-            let hospitalList = [];
+            // let hospitalList = [];
             let achievements = [];
             let qualifications = [];
             let awards = [];
             let specializations = [];
             // let slotDuration = '';
-            if(req.body.hospitalList){
-                for(let i = 0; i < hospitals.length; i++){
-                    value = JSON.parse(hospitals[i]).value;
-                    let hospital = await Hospital.findOne({ name: value }, { _id: 1 });
-                    let id = hospital.id;
-                    console.log(hospital);
-                    console.log(id);
-                    hospitalList.push(id);
-                }    
-            }
+            // if(req.body.hospitalList){
+            //     for(let i = 0; i < hospitals.length; i++){
+            //         value = JSON.parse(hospitals[i]).value;
+            //         let hospital = await Hospital.findOne({ name: value }, { _id: 1 });
+            //         let id = hospital.id;
+            //         console.log(hospital);
+            //         console.log(id);
+            //         hospitalList.push(id);
+            //     }    
+            // }
             for(let i = 0; i < achievementList.length; i++){
                 value = JSON.parse(achievementList[i]).value;
                 achievements.push(value);
@@ -90,7 +90,7 @@ const addDoctorDetails = (req, res, next) => {
             	awards: awards,
             	specializations: specializations,
             	avg_fees: req.body.averageFees,
-            	hospitalList: hospitalList
+            	// hospitalList: hospitalList
             }
             // user.doctor.description = req.body.description;
             // user.doctor.achievements = achievements;
@@ -102,9 +102,9 @@ const addDoctorDetails = (req, res, next) => {
             // user.doctor.hospitalList = hospitalList;
             // user.display_picture = req.file.path;
             user.save();
-            user.doctor.hospitalList.populate({
-                path: 'hospitalList'
-            }); 
+            // user.doctor.hospitalList.populate({
+            //     path: 'hospitalList'
+            // }); 
             req.session.user = user;
             console.log(req.session);
             req.session.error = 'Doctor Successfully Registered';

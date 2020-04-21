@@ -2332,7 +2332,7 @@ html, body {
   cursor: pointer;
 }
 .form_container--add-doctors {
-  height: 195rem;
+  height: 178rem;
   width: 90%;
 }
 @media (min-width: 768px) {

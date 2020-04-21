@@ -57,7 +57,7 @@ const userSchema = new mongoose.Schema({
 		enum: ['admin', 'user', 'doctor'],
 		default: 'user'
 	},
-	doctor: doctorSchema
+	doctor: doctorSchema.doctorSchema
 });
 
 

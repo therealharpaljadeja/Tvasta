@@ -80,10 +80,12 @@
 			<img src="<%= session.user.display_picture ? session.user.display_picture : 'public/uploads/users/user.jpeg'  %>" class="profile_picture">
 		</div>
 		<div class="name_and_phone">
-			<a href="/edit-profile"><h4 class="name"><%= session.user.name %></h4></a>
+			<a href="<%= session.user.role === 'user' ? '/edit-profile' : '/edit-profile-doctor' %>">
+			<h4 class="name"><%= session.user.name %></h4></a>
 			<span class="phoneNumber"><%= session.user.phoneNumber %></span> 
 		</div>
 	</div>
+	<% if(session.user.role == 'user') { %>
 	<ul class="profile_menu">
 		<a href="/user-dashboard-appointments"><li class="profile_menu__item">My Appointments</li></a>
 		<a href="/user-dashboard-lab-tests"><li class="profile_menu__item">My Lab Tests</li></a>
@@ -91,6 +93,13 @@
 		<a href="/user-dashboard-lab-tests"><li class="profile_menu__item">My Payments</li></a>
 		<a href="/logout"><li class="profile_menu__item">Logout</li></a>
 	</ul>
+	<% } else { %>
+	<ul class="profile_menu">
+		<a href="/doctor-dashboard-appointments"><li class="profile_menu__item">My Appointments</li></a>
+		<a href="/doctor-dashboard-payments"><li class="profile_menu__item">My Payments</li></a>
+		<a href="/logout"><li class="profile_menu__item">Logout</li></a>
+	</ul>
+	<% } %>
 </div>
 <% } %>
 <div class="treatment_menu_container display_none" id="treatment_menu_container">

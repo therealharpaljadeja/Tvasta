@@ -6,6 +6,7 @@
 		<a href="/admin"><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" alt="" class="logo"></a>
 	</div>
 	<div class="menu_container">
+	<% if(session.user.role !== 'doctor') { %>
 		<ul class="menu">
 			<li class="menu-title para">
 				Medicine
@@ -34,7 +35,33 @@
 				<i class="item-icon fas fa-money-check-alt"></i>
 				<p class="para"><a href="/admin-dashboard">Payments</a></p>
 			</li>	
-
 		</ul>
+		<% } else { %>
+		<ul class="menu">
+			<li class="menu-title para">
+				Medicine
+			</li>
+			<li class="menu-item">
+				<i class="item-icon fas fa-thermometer"></i>
+				<p class="para"><a href="/edit-profile-doctor">Profile</a></p>
+			</li>
+			<li class="menu-item">
+				<i class="item-icon fas fa-thermometer"></i>
+				<p class="para"><a href="/admin">Dashboard</a></p>
+			</li>
+			<li class="menu-item">
+				<i class="item-icon fas fa-stethoscope"></i>
+				<p class="para"><a href="/admin-dashboard">Appointments</a></p>
+			</li>
+			<li class="menu-item">
+				<i class="item-icon fas fa-money-check-alt"></i>
+				<p class="para"><a href="/admin-dashboard">Schedule Appointments</a></p>
+			</li>
+			<li class="menu-item">
+				<i class="item-icon fas fa-money-check-alt"></i>
+				<p class="para"><a href="/admin-dashboard">Payments</a></p>
+			</li>	
+		</ul>
+		<% } %>
 	</div>
 </sidebar>

@@ -10,9 +10,12 @@ const doctorSchema = new mongoose.Schema({
 	qualifications: { type: [String] },
 	awards: { type: [String] },
 	avg_fees: { type: Number },
-	hospitalList: { type: [mongoose.Schema.ObjectId] },
-	startTime: { type: String, required: true },
-	endTime: { type: String, required: true },
+	hospitalList: { 
+		type: [mongoose.Schema.ObjectId],
+		ref: 'Hospital'
+	},
+	startTime: { type: String },
+	endTime: { type: String },
 	slotDuration: { type: Number, enum: [15,30,45,60] },
 	// slots ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 }, {
@@ -57,6 +60,9 @@ doctorSchema.pre('find', async function(next){
 
 
 
-// const Doctor = mongoose.model('Doctor', doctorSchema);
+const Doctor = mongoose.model('Doctor', doctorSchema);
 
-module.exports = doctorSchema;
+module.exports = {
+	doctorSchema: doctorSchema,
+	Doctor: Doctor
+};

@@ -185,6 +185,11 @@ app.post('/save-changes', userController.editProfile);
 
 app.get('/autoCompleteHospital', hospitalController.autoCompleteHospitals);
 
+
+app.get('/edit-profile-doctor', authenticationController.redirectLogin, authenticationController.redirectAdmin,  doctorController.manuallyPopulateDoctor, (req, res) => {
+	res.render('views/edit_profile_doctor.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
+})
+
 // Reload Method
 // app.post('/doctors', (req, res) => {
 // 	console.log('post req');

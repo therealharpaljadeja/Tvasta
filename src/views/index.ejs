@@ -79,7 +79,7 @@
 	<% } %>
 	<% if(session.user.role === 'doctor' && !session.user.doctor) { %>
 	<div class="doctor_details_modal">
-		<form class="form_container form_container--first-login" action="/" method="POST">
+		<form class="form_container form_container--first-login" action="/" method="POST" enctype="multipart/form-data">
 			<div class="form_container__form__input_field">
 				<label for="description">Describe Yourself</label>
 				<textarea name="description" id="doctor_description" cols="30" rows="7" placeholder="Describe yourself" required></textarea>
@@ -107,20 +107,6 @@
 			<div class="form_container__form__input_field">
 				<label for="specializations">Specializations</label>
 				<input type="text" name="specializations" class="specializations_input" placeholder="Enter Specializaion" value="" required>
-			</div>
-			<div class="form_container__form__input_field form_container__form__input_field--city-state ">
-				<div class="form_container__form__input_field">
-					<label for="start_time">Start Time</label>
-					<input name="startTime" type="time" id="start_time" placeholder="Enter City" class="form_container__form__city" required>
-				</div>
-				<div class="form_container__form__input_field">
-					<label for="end_time">End Time</label>
-					<input name="endTime" type="time" id="end_time" placeholder="Enter State" class="form_container__form__state" required >	
-				</div>
-			</div>
-			<div class="form_container__form__input_field">
-				<label for="slot_duration">Slot Duration</label>
-				<input type="text" name="slotDuration" class="form_container__form__phone_number" value="" required>
 			</div>
 			<div class="form_container__form__input_field">
 				<label for="averageFees">Average Fees</label>

@@ -1,7 +1,8 @@
-const Doctor = require('./../models/doctorModel');
+const Doctor = require('./../models/doctorModel').Doctor;
 const Hospital = require('./../models/hospitalModel');
 const multer = require('multer');
 const path = require('path');
+const User = require('./../models/userModel');
 // const getAllDoctors = async (req, res, next) => {
 // 	const doctors = await Doctor.find(req.query);
 // 	console.log(req.query);
@@ -28,10 +29,11 @@ const getAllDoctors = async (req, res, next) => {
         experience = experience.map(e => Number(e));
         experience = Math.min(...experience);
     }
-    console.log({ role : "doctor", ...req.query, experience: { $gte : experience || 0 }});
+    // console.log({ role : "doctor", ...req.query, doctor.experience: { $gte : experience || 0 }});
     
-    const doctors = await Doctor.find({...req.query, experience: { $gte : experience || 0 }});       
+    const doctors = await User.find({role: 'doctor',...req.query, "doctor.experience": { $gte : experience || 0 }});       
     res.locals.doctors = doctors;
+    console.log(doctors);
     next();
 }
 
@@ -64,11 +66,11 @@ const addDoctor = async (req, res, next) => {
             if(req.body.hospitalList){
                 for(let i = 0; i < hospitals.length; i++){
                     value = JSON.parse(hospitals[i]).value;
-                    let hospital = await Hospital.findOne({ name: value }, { _id: 1 });
-                    let id = hospital.id;
-                    console.log(hospital);
-                    console.log(id);
-                    hospitalList.push(id);
+                    // let hospital = await Hospital.findOne({ name: value }, { _id: 1 });
+                    // let id = hospital.id;
+                    // console.log(hospital);
+                    // console.log(id);
+                    hospitalList.push(value);
                 }    
             }
             for(let i = 0; i < achievementList.length; i++){
@@ -120,6 +122,16 @@ const addDoctor = async (req, res, next) => {
     })
 }
 
+const manuallyPopulateDoctor = async (req, res, next) => {
+    var hospitals = [];
+    for await (hospitalid of req.session.user.doctor.hospitalList){
+        let hospital = await Hospital.findOne({ _id: hospitalid }, {name: 1});
+        hospitals.push(hospital.name);
+    }
+    req.session.user.doctor.hospitalList = hospitals;
+    next();
+}
+
 const deleteDoctor = async (req, res, next) => {
     await Doctor.remove({ _id: req.params.id });
     req.session.error = 'Doctor deleted successfully';
@@ -131,5 +143,6 @@ const deleteDoctor = async (req, res, next) => {
 module.exports = {
 	getAllDoctors: getAllDoctors,
     addDoctor: addDoctor,
-    deleteDoctor: deleteDoctor
+    deleteDoctor: deleteDoctor,
+    manuallyPopulateDoctor: manuallyPopulateDoctor
 }

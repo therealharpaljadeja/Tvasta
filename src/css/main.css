@@ -665,6 +665,7 @@ html, body {
   display: flex;
   flex-direction: column;
   grid-gap: 2rem;
+  justify-content: flex-start;
 }
 .doctor_details_modal form .upload_display_picture_container {
   width: 100%;
@@ -1075,7 +1076,7 @@ html, body {
 @media (min-width: 768px) {
   .doctor_details_modal form {
     width: 50rem;
-    height: 105rem;
+    height: 60rem;
   }
   .doctor_details_modal form .form_container__form__submit {
     padding: 2rem 18rem;
@@ -1229,7 +1230,7 @@ html, body {
   .doctor_details_modal form {
     margin: 0;
     width: 50rem;
-    height: 60rem;
+    height: 55rem;
   }
 
   .hero {
@@ -4768,6 +4769,10 @@ html, body {
     width: calc(100% - 40rem);
   }
 }
+.edit_profile--doctor {
+  transform: translateX(30rem);
+  width: calc(100% - 30rem);
+}
 .edit_profile_container {
   margin: 2rem;
   background-color: white;
@@ -4840,6 +4845,14 @@ html, body {
   margin-bottom: 2rem;
   border-bottom: 1px solid #ddd;
 }
+.edit_profile_container .edit_doctor_details .edit_field input[type=number] {
+  -moz-appearance: textfield;
+}
+.edit_profile_container .edit_doctor_details .edit_field .tagify {
+  font-size: 1.4rem;
+  font-family: "Nexa Bold";
+  color: #777;
+}
 
 @media (min-width: 768px) {
   .edit_profile_container {
@@ -4862,6 +4875,16 @@ html, body {
     grid-template-columns: 1fr 1fr;
     grid-gap: 2rem;
   }
+  .edit_profile .edit_doctor_details {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 2rem;
+  }
+  .edit_profile .edit_doctor_details .edit_field .tagify {
+    font-size: 1.4rem;
+    font-family: "Nexa Bold";
+    color: #777;
+  }
 }
 @media (min-width: 1024px) {
   .edit_profile_container {
@@ -4872,6 +4895,14 @@ html, body {
   }
   .edit_profile .edit_address {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+  .edit_profile .edit_doctor_details {
+    grid-template-columns: 1fr 1fr;
+  }
+  .edit_profile .edit_doctor_details .edit_field .tagify {
+    font-size: 1.4rem;
+    font-family: "Nexa Bold";
+    color: #777;
   }
 }
 .upload_dp {

@@ -1,5 +1,5 @@
 const Appointment = require('./../models/appointmentModel');
-const Doctor = require('./../models/doctorModel');
+const Doctor = require('./../models/doctorModel').Doctor;
 
 
 const loadingDataOnAppointmentPage = async (req, res, next) => {

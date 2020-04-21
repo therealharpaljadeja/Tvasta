@@ -12,10 +12,10 @@
 	<div class="profile_menu_container profile_menu_container--admin display_none">
 		<div class="profile_small_details">
 			<div class="profile_picture__container">
-				<img src="<%= session.user.display_picture ? session.user.display_picture : 'public/uploads/user.jpeg'  %>" class="profile_picture">
+				<img src="<%= session.user.display_picture ? session.user.display_picture : 'public/uploads/users/user.jpeg'  %>" class="profile_picture">
 			</div>
 			<div class="name_and_phone">
-				<a href="/edit-profile"><h4 class="name"><%= session.user.name %></h4></a>
+				<a href="<%= session.user.role === 'admin' ? '/edit-profile' : '/doctor-dashboard' %>"><h4 class="name"><%= session.user.name %></h4></a>
 				<span class="phoneNumber"><%= session.user.phoneNumber %></span> 
 			</div>
 		</div>

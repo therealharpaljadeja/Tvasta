@@ -97,14 +97,14 @@
 			</div>
 			<div class="grid doctor_list__container__col-2">
 				<% for(let i = 0; i < doctors.length; i++){ %>
-				<% 
-					const id = doctors[i]._id;
+				<!-- <% 
+					const id = doctors.doctors[i]._id;
 					const start = new Date();
-					start.setHours(parseInt(doctors[i].startTime.split(':')[0]));
-					start.setMinutes(parseInt(doctors[i].startTime.split(':')[1]));
+					start.setHours(parseInt(user.doctors[i].startTime.split(':')[0]));
+					start.setMinutes(parseInt(user.doctors[i].startTime.split(':')[1]));
 					const end = new Date();
-					end.setHours(parseInt(doctors[i].endTime.split(':')[0]));
-					end.setMinutes(parseInt(doctors[i].endTime.split(':')[1]));
+					end.setHours(parseInt(user.doctors[i].endTime.split(':')[0]));
+					end.setMinutes(parseInt(user.doctors[i].endTime.split(':')[1]));
 					slotsWithDate = [];
 					slots = [];
 					function generateSlots(start, end, interval){
@@ -123,18 +123,18 @@
 					});
 					
 					console.log(doctors[i].slots);
-				 %>
+				 %> -->
 				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-1">
 					<div>
 						<div class="doctor_list__container__col-2__card__name">
-							<h3><%= doctors[i].name %></h3>
+							<h3><%= doctors.doctor.name %></h3>
 						</div>
 						<div class="doctor_list__container__col-2__card__other_details">
-							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-certificate"></i></span><%= doctors[i].achievements[0] %></li>
-							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span><%= doctors[i].achievements[1] %></li>
-							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fas fa-clock"></i></span><%= doctors[i].experience %> Years Of Experience</li>
-							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fas fa-building"></i></span><%= doctors[i].hospital %></li>
-							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fas fa-map-marker-alt"></i></span><%= doctors[i].location %></li>
+							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-certificate"></i></span><%= doctors.doctor.achievements[0] %></li>
+							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span><%= doctos.doctors.achievements[1] %></li>
+							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fas fa-clock"></i></span><%= user.doctors[i].experience %> Years Of Experience</li>
+							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fas fa-building"></i></span><%= user.doctors[i].hospital %></li>
+							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fas fa-map-marker-alt"></i></span><%= user.doctors[i].location %></li>
 						</div>
 						<button class="doctor_list__container__col-2__card__book">Book an appointment</button>
 					</div>

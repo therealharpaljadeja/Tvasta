@@ -84,10 +84,10 @@ const emailLogin = async (req, res, next) => {
 		if(user){
 			const passwordCorrect = await user.comparePassword(req.body.password, user.password);
 			if(passwordCorrect){
-				req.session.userId = user.id;
-				req.session.user = user;
 				req.session.errorType = 'Success';
 				req.session.error = 'Login Successful';
+				req.session.userId = user.id;
+				req.session.user = user;
 				if(req.session.user.role === 'admin') res.redirect('/admin');
 				else res.redirect('/');	
 			} else {

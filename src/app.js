@@ -110,6 +110,8 @@ app.get('/', authenticationController.redirectLogin2, authenticationController.r
 	res.render('views/index.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
 });
 
+app.post('/', authenticationController.redirectLogin2, authenticationController.redirectAdmin, userController.addDoctorDetails);
+
 app.put('/disable-error', authenticationController.clearError);
 
 app.get('/doctors', authenticationController.redirectLogin, doctorController.getAllDoctors, (req, res) => {

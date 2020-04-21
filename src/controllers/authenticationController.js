@@ -67,7 +67,8 @@ const signUp = async (req, res, next) => {
 		password: req.body.password,
 		city: req.body.city,
 		state: req.body.state,
-		country: req.body.country,	
+		country: req.body.country,
+		role: req.body.isDoctor ? 'doctor' : 'user' 	
 	});
 	req.session.userId = newUser.id;
 	req.session.user = newUser;

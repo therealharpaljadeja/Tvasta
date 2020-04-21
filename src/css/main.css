@@ -645,6 +645,8 @@ html, body {
 }
 .doctor_details_modal {
   position: fixed;
+  top: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.4);
   height: 100%;
   width: 100%;
@@ -654,7 +656,7 @@ html, body {
   position: absolute;
   background-color: white;
   overflow: scroll;
-  width: 50rem;
+  width: 35rem;
   height: 60rem;
   padding: 2rem;
   top: 50%;
@@ -663,6 +665,12 @@ html, body {
   display: flex;
   flex-direction: column;
   grid-gap: 2rem;
+}
+.doctor_details_modal form .upload_display_picture_container {
+  width: 100%;
+}
+.doctor_details_modal form .form_container__form__submit {
+  padding: 2rem 11rem;
 }
 
 .hero {
@@ -1065,6 +1073,14 @@ html, body {
   }
 }
 @media (min-width: 768px) {
+  .doctor_details_modal form {
+    width: 50rem;
+    height: 105rem;
+  }
+  .doctor_details_modal form .form_container__form__submit {
+    padding: 2rem 18rem;
+  }
+
   .hero__container {
     padding: 2rem 3rem;
     width: 100%;
@@ -1210,6 +1226,12 @@ html, body {
   }
 }
 @media (min-width: 1024px) {
+  .doctor_details_modal form {
+    margin: 0;
+    width: 50rem;
+    height: 60rem;
+  }
+
   .hero {
     height: 40rem;
   }

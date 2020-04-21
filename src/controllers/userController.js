@@ -17,6 +17,10 @@ const uploadUser = multer({
 	limits: {fileSize: 1000000},
 }).single('display_picture');
 
+const addDoctorDetails = (req, res, next) => {
+
+}
+
 
 const editProfile = (req, res, next) => {
 	uploadUser(req, res, async (err) => {
@@ -49,5 +53,6 @@ const editProfile = (req, res, next) => {
 }
 
 module.exports = {
-	editProfile: editProfile
+	editProfile: editProfile,
+	addDoctorDetails: addDoctorDetails
 }

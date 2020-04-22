@@ -19,11 +19,16 @@
 	<div class="breadcrumb">
 		<div class="breadcrumb__container">
 			<p class="breadcrumb__text">Home / Doctor List</p>
-			<select class="breadcrumb__sort">
-				<option value="" selected>Sort By</option>
-				<option value="name">Name</option>
-				<option value="name">Experience</option>
-			</select>
+			<form method="POST" action="/sort-by">
+				<select class="breadcrumb__sort" name="sort" onchange="this.form.submit()">
+					<option value="not-specified" selected disabled>Sort By</option>
+					<option value="name-asc">Name A-Z</option>
+					<option value="name-desc">Name Z-A</option>
+					<option value="avg_fees-asc">Fees Low-High</option>
+					<option value="avg_fees-desc">Fees High-Low</option>
+					<option value="doctor.experience-desc">Experience</option>
+				</select>	
+			</form>
 		</div>
 	</div>
 
@@ -310,8 +315,10 @@
 
 		console.log('<%- filter %>')
 		let filter = '<%- JSON.stringify(filter) %>';
+		let sort_by = '<%- JSON.stringify(sort) %>';
 		// console.log(filter);
 		filter = JSON.parse(filter);
+		sort_by = JSON.parse(sort_by);
 		console.log(filter);
 		if(filter){
 			let key = Object.keys(filter)
@@ -322,6 +329,11 @@
 
                 }
             });
+		}
+		if(sort_by && sort_by != 'none'){
+			document.querySelector('.' + sort_by).setAttribute('selected', true);
+		} else {
+			document.querySelector('.not-specfied').setAttribute('selected', true);
 		}
 	</script>
 	<script>

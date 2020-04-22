@@ -191,7 +191,7 @@
 		</div>
 	</section> -->
 	<section class="edit_profile edit_profile--doctor">
-		<form action="/save-changes-doctor" id="edit-profile" method="POST" enctype="multipart/form-data">
+		<form action="/save-changes" id="edit-profile" method="POST" enctype="multipart/form-data">
 		<div class="edit_profile_container">
 			<div class="save_button">
 				<button type="submit" form="edit-profile">
@@ -218,7 +218,7 @@
 			<div class="edit_other_details">
 				<div class="edit_field">
 					<label for="phoneNumber">Phone Number</label>
-					<input type="text" name="phoneNumber" value="<%= session.user.phoneNumber %>" placeholder="Enter your phone number" required disabled>	
+					<input type="text" name="phoneNumber" value="<%= session.user.phoneNumber %>" placeholder="Enter your phone number" required>	
 				</div>
 				<div class="edit_field">
 					<label for="email">Email</label>
@@ -266,7 +266,7 @@
 			<div class="edit_address">
 				<div class="edit_field">
 					<label for="city">City</label>
-					<input type="text" name="city" value="<%= session.user.city %>">	
+					<input type="text" name="city" value="<%= session.user.location %>">	
 				</div>
 				<div class="edit_field">
 					<label for="state">State</label>
@@ -291,10 +291,6 @@
 					<input class="experience_input" type="number" name="experience" value="<%= session.user.doctor.experience %>">	
 				</div>
 				<div class="edit_field">
-					<label for="location">Location</label>
-					<input type="number" name="location" value="<%= session.user.location %>">	
-				</div>
-				<div class="edit_field">
 					<label for="specializations">Specializations</label>
 					<input class="specializations_input" type="text" name="specializations" value='<%= session.user.doctor.specializations %>'>	
 				</div>
@@ -304,7 +300,7 @@
 				</div>
 				<div class="edit_field">
 					<label for="awards">Awards</label>
-					<input class="awards_input"  type="text" name="Awards" value="<%= session.user.doctor.awards %>">	
+					<input class="awards_input"  type="text" name="awards" value="<%= session.user.doctor.awards %>">	
 				</div>
 				<div class="edit_field">
 					<label for="averageFees">Average Fees</label>
@@ -319,6 +315,27 @@
 	</form>
 	</section>
 	<script src="./../tagify.js"></script>
+	<script>
+		const gender = document.querySelector('select[name="gender"]');
+		const country = document.querySelector('select[name="country"]');
+		const bloodGroup = document.querySelector('select[name="bloodGroup"]');
+		const timeZone = document.querySelector('select[name="timeZone"]');
+
+		function selectOptionFromBackend (optionsList, value){
+			for(var i=0; i < optionsList.options.length; i++){
+				option = optionsList.options[i];
+				if(option.value == value){
+					console.log(value);
+					option.selected = 'selected';
+				}
+			}	
+		}
+
+		selectOptionFromBackend(gender, '<%= session.user.gender %>');
+		selectOptionFromBackend(country, '<%= session.user.country %>');
+		selectOptionFromBackend(bloodGroup, '<%= session.user.bloodGroup %>');
+		selectOptionFromBackend(timeZone, '<%= session.user.timeZone %>');
+	</script>
 	<script>
 
 		const hospitalWhitelist = [];

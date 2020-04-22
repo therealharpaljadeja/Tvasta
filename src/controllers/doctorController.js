@@ -41,17 +41,16 @@ const getAllDoctors = async (req, res, next) => {
                         "doctor.experience": { $gte: req.session.filters.experience ?  parseInt(req.session.filters.experience[req.session.filters.experience.length - 1]) : 0 }
                     }
                 ]
-            })
-            console.log(doctors);
+            }).sort(req.session.sortBy ? {[req.session.sortBy.split('-')[0]] : req.session.sortBy.split('-')[1] === 'asc' ? 1 : -1} : []);
         } else {
             doctors = await User.find({
                 role: 'doctor'
-            });
+            }).sort(req.session.sortBy ? { [req.session.sortBy.split('-')[0]] : req.session.sortBy.split('-')[1] == 'asc' ? 1: -1} : []);
         }
     } else {
         doctors = await User.find({
             role: 'doctor'
-        });
+        }).sort(req.session.sortBy ? { [req.session.sortBy.split('-')[0]] : req.session.sortBy.split('-')[1] == 'asc' ? 1: -1} : []);
     }
 
 
@@ -181,10 +180,16 @@ const doctorFilters = (req, res) => {
     res.redirect('/doctors');
 }
 
+const doctorSort = (req, res) => {
+    req.session.sortBy = req.body.sort;
+    res.redirect('/doctors');
+}
+
 module.exports = {
 	getAllDoctors: getAllDoctors,
     addDoctor: addDoctor,
     deleteDoctor: deleteDoctor,
     manuallyPopulateDoctor: manuallyPopulateDoctor,
-    doctorFilters: doctorFilters
+    doctorFilters: doctorFilters,
+    doctorSort: doctorSort
 }

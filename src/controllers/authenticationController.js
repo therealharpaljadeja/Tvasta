@@ -65,7 +65,7 @@ const signUp = async (req, res, next) => {
 		phoneNumber: req.body.phoneNumber,
 		email: req.body.email,
 		password: req.body.password,
-		city: req.body.city,
+		location: req.body.city,
 		state: req.body.state,
 		country: req.body.country,
 		role: req.body.isDoctor ? 'doctor' : 'user' 	

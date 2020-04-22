@@ -115,7 +115,7 @@ app.post('/', authenticationController.redirectLogin2, authenticationController.
 app.put('/disable-error', authenticationController.clearError);
 
 app.get('/doctors', authenticationController.redirectLogin, doctorController.getAllDoctors, (req, res) => {
-	res.render('views/doctor.ejs', {doctors : res.locals.doctors, session: req.session, filter: req.session.filters ?  req.session.filters : 'filter'});
+	res.render('views/doctor.ejs', {doctors : res.locals.doctors, session: req.session, filter: req.session.filters ?  req.session.filters : '', sort: req.session.sortBy ?  req.session.sortBy : ''});
 });
 
 app.get('/hospitals', authenticationController.redirectLogin, hospitalController.getAllHospitals, (req, res) => {
@@ -191,6 +191,8 @@ app.get('/edit-profile-doctor', authenticationController.redirectLogin, authenti
 })
 
 app.post('/add-filters', doctorController.doctorFilters);
+
+app.post('/sort-by', doctorController.doctorSort);
 
 // Reload Method
 // app.post('/doctors', (req, res) => {

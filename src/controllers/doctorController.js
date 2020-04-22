@@ -157,15 +157,15 @@ const addDoctor = async (req, res, next) => {
     })
 }
 
-const manuallyPopulateDoctor = async (req, res, next) => {
-    var hospitals = [];
-    for await (hospitalid of req.session.user.doctor.hospitalList){
-        let hospital = await Hospital.findOne({ _id: hospitalid }, {name: 1});
-        hospitals.push(hospital.name);
-    }
-    req.session.user.doctor.hospitalList = hospitals;
-    next();
-}
+// const manuallyPopulateDoctor = async (req, res, next) => {
+//     var hospitals = [];
+//     for await (hospitalid of req.session.user.doctor.hospitalList){
+//         let hospital = await Hospital.findOne({ _id: hospitalid }, {name: 1});
+//         hospitals.push(hospital.name);
+//     }
+//     req.session.user.doctor.hospitalList = hospitals;
+//     next();
+// }
 
 const deleteDoctor = async (req, res, next) => {
     await Doctor.remove({ _id: req.params.id });
@@ -189,7 +189,7 @@ module.exports = {
 	getAllDoctors: getAllDoctors,
     addDoctor: addDoctor,
     deleteDoctor: deleteDoctor,
-    manuallyPopulateDoctor: manuallyPopulateDoctor,
+    // manuallyPopulateDoctor: manuallyPopulateDoctor,
     doctorFilters: doctorFilters,
     doctorSort: doctorSort
 }

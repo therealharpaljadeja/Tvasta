@@ -9,6 +9,7 @@ const userController = require('./controllers/userController');
 const doctorController = require('./controllers/doctorController');
 const hospitalController = require('./controllers/hospitalController.js');
 const appointmentController = require('./controllers/appointmentController');
+const slotController = require('./controllers/slotController');
 const User = require('./models/userModel');
 const Doctor = require('./models/doctorModel');
 
@@ -100,9 +101,20 @@ app.get('/add-doctors', authenticationController.redirectLogin, authenticationCo
 	res.render('views/dashboard_addDoctor.ejs', {session: req.session, error:req.session.error, errorType: req.session.errorType, doctors: res.locals.doctors});
 });
 
+app.get('/doctor-dashboard', authenticationController.redirectLogin, (req, res) => {
+	res.render('views/doctor_dashboard.ejs', {session: req.session, error:req.session.error, errorType: req.session.errorType, doctors: res.locals.doctors});
+});
+
+
 app.post('/add-doctors', doctorController.addDoctor);
 
 app.get('/delete-doctor/:id', doctorController.deleteDoctor);
+
+app.get('/admin-edit-doctor/:id', authenticationController.redirectLogin, authenticationController.checkAdmin, doctorController.getDoctor, (req, res) => {
+	res.render('views/admin_edit_profile_doctor.ejs', { user: res.locals.doctor, session: req.session, error: req.session.error, errorType: req.session.errorType });
+})
+
+app.post('/admin-edit-doctor', authenticationController.redirectLogin, authenticationController.checkAdmin, doctorController.adminEditDoctor);
 
 // User Routes
 
@@ -189,6 +201,12 @@ app.get('/autoCompleteHospital', hospitalController.autoCompleteHospitals);
 app.get('/edit-profile-doctor', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
 	res.render('views/edit_profile_doctor.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
 })
+
+app.get('/schedule-appointment', authenticationController.redirectLogin, (req, res) => {
+	res.render('views/schedule_appointment.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
+})
+
+app.post('/schedule-appointment', authenticationController.redirectLogin, slotController.addSlot);
 
 app.post('/add-filters', doctorController.doctorFilters);
 

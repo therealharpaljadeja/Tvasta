@@ -2,8 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Admin Dashboard</title>
+	<title>Schedule Appointments</title>
 	<%- include('partials/head.ejs') %>
+	<link rel="stylesheet" href="./../css/tagify.css">
 </head>
 <body>
 	<% if(error) {%>
@@ -120,9 +121,10 @@
 			<i class="fas fa-chevron-down"></i>
 		</div>
 	</header> -->
-	<%- include('partials/admin_sidebar.ejs') %>
 	<%- include('partials/admin_header.ejs') %>
-	<section class="statistics_site">
+	<%- include('partials/admin_sidebar.ejs') %>
+	
+	<!-- <section class="statistics_site">
 		<div class="statistics_site__grid">
 			<div class="statistics_site__grid__item">
 				<div class="statistics_site__grid__item__col--1">
@@ -187,69 +189,120 @@
 				
 			</div>
 		</div>
-	</section>
-	<section class="earnings_chart_container">
-		<svg class="earnings_chart">
-			
-		</svg>
-	</section>
-	<section class="recent_appointments">
-		<div class="recent_appointments__container">
-			<h3 class="recent_appointments__heading heading-3">Last Appointments</h3>
-			<div class="recent_appointments__table_container">
-				<table class="recent_appointments__table">
-					<thead>
-						<tr>
-							<th>Photo</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Date</th>
-							<th>Visit Time</th>
-							<th>Number</th>
-							<th>Condition/Injury</th>
-							<th>Action</th>
-						</tr>	
-					</thead>
-					<tbody>
-						<tr>
-							<td class="display_picture_container">
-								<img src="./../public/uploads/users/user.jpeg" alt="">
-							</td>
-							<td>
-								Rajdeep Jadeja
-							</td>
-							<td>
-								rajdeep@gmail.com
-							</td>
-							<td>
-								14 Apr 2020
-							</td>
-							<td>
-								11:00 - 11:15
-							</td>
-							<td>
-								9820836830
-							</td>
-							<td>
-								Leg Pain
-							</td>
-							<td>
-								
-							</td>
-						</tr>	
-					</tbody>
-					
-				</table>
-			</div>	
-		</div>
+	</section> -->
+	<section class="edit_profile edit_profile--doctor">
+		<div class="schedule_appointment_container edit_profile_container">
+			<form action="/schedule-appointment" id="edit-profile" method="POST">
+				<div class="add_appointment_slot">
+					<div class="edit_field">
+						<label for="day">Day</label>
+						<select name="day" required>
+							<option value="monday">Monday</option>
+							<option value="tuesday">Tuesday</option>
+							<option value="wednesday">Wednesday</option>
+							<option value="thursday">Thursday</option>
+							<option value="friday">Friday</option>
+							<option value="saturday">Saturday</option>
+							<option value="sunday">Sunday</option>
+						</select>	
+					</div>
+					<div class="edit_field">
+						<label for="startTime">Start Time</label>
+						<input type="time" name="startTime">
+					</div>
+					<div class="edit_field">
+						<label for="endTime">End Time</label>
+						<input type="time" name="endTime">
+					</div>
+					<div class="edit_field">
+						<label for="interval">Interval</label>
+						<input type="text" name="interval">
+					</div>
+					<div class="edit_field">
+						<label for="hospital">Hospital</label>
+						<input type="text" name="hospital" class="hospital_list_input">
+					</div>
+					<div class="edit_field">
+						<button class="add_slot_button">Add Slot</button>
+					</div>
+				</div>
+			</form>	
+		</div>	
 		
+	</section>
+	<script src="./../tagify.js"></script>
+	<script>
+		// const gender = document.querySelector('select[name="gender"]');
+		// const country = document.querySelector('select[name="country"]');
+		// const bloodGroup = document.querySelector('select[name="bloodGroup"]');
+		// const timeZone = document.querySelector('select[name="timeZone"]');
 
-	</section>
-	<section class="">
+		// function selectOptionFromBackend (optionsList, value){
+		// 	for(var i=0; i < optionsList.options.length; i++){
+		// 		option = optionsList.options[i];
+		// 		if(option.value == value){
+		// 			console.log(value);
+		// 			option.selected = 'selected';
+		// 		}
+		// 	}	
+		// }
+
+		// selectOptionFromBackend(gender, '<%= session.user.gender %>');
+		// selectOptionFromBackend(country, '<%= session.user.country %>');
+		// selectOptionFromBackend(bloodGroup, '<%= session.user.bloodGroup %>');
+		// selectOptionFromBackend(timeZone, '<%= session.user.timeZone %>');
+	</script>
+	<script>
+
+		const hospitalWhitelist = [];
+		const fetchHospitals = async () => {
+			const hospitals = await fetch('/autoCompleteHospital', {
+				method: 'GET'
+			});
+			const hospitalData = await hospitals.json();
+			console.log(hospitalData);
+			hospitalData.data.forEach(el => {
+				hospitalWhitelist.push(el.name);
+			})
+		}
+		fetchHospitals();
+		console.log(hospitalWhitelist);
+		// const specializationsInput = document.querySelector('.specializations_input');
+		// const specializationsTagify = new Tagify(specializationsInput, {
+		// 	enforceWhitelist: true,
+		// 	whitelist: ['Family Physician', 'Internal Medicine Physician', 'Pediatrician', 'Obstetrician', 'Gynecologist', 'Surgeon', 'Psychiatrist', 'Cardiologist', 'Dermatologist', 'Endocrinologist', 'Gastroenterologist', 'Infectious Disease Physician', 'Nephrologist', 'Ophthalmologist', 'Otolaryngologist', 'Pulmonologist', 'Neurologist', 'Physician Executive', 'Radiologist', 'Anesthesiologist', 'Oncologist']
+		// });
+		// const achievements = document.querySelector('.achievements_input');
+		// const achievmentsTagify = new Tagify(achievements);
+		// const qualifications = document.querySelector('.qualifications_input');
+		// const qualificationsTagify = new Tagify(qualifications);
+		// const awards = document.querySelector('.awards_input');
+		// const awardsTagify = new Tagify(awards);
+		const hospitalInput = document.querySelector('.hospital_list_input');
+		const hospitalInputTagify = new Tagify(hospitalInput, {
+			whitelist: hospitalWhitelist,
+			enforceWhitelist: true,
+			
+		});
+
+		const slot_duration = document.querySelector('input[name="interval"]');
+		const slotTagify = new Tagify(slot_duration, {
+			whitelist: ['60 Mins', '45 Mins', '30 Mins', '15 Mins'],
+			mode: 'select',
+			dropdown: {
+				className: 'color-blue',
+				enabled: 1,
+				maxItems: 4,
+				position: 'text',
+				closeOnSelect: true,
+				highlightFirst: true 
+			}
+		});
 		
-	</section>
-	<script src="https://d3js.org/d3.v5.min.js"></script>
-	<script src="./../charts_in_admin.js"></script>
+		// if(<%- session.user.doctor.specializations %>){
+		// 	specializationsTagify.addTags(session.user.doctor.specializations);	
+		// }
+	</script>
 	<script src="./../index.js">
 	</script>
 	<script src="./../dashboard.js"></script>

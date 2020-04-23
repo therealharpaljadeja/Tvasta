@@ -191,7 +191,7 @@
 		</div>
 	</section> -->
 	<section class="edit_profile edit_profile--doctor">
-		<form action="/save-changes" id="edit-profile" method="POST" enctype="multipart/form-data">
+		<form action="/admin-edit-doctor" id="edit-profile" method="POST" enctype="multipart/form-data">
 		<div class="edit_profile_container">
 			<div class="save_button">
 				<button type="submit" form="edit-profile">
@@ -203,7 +203,7 @@
 			<div class="photo_and_name">
 				<div class="edit_profile_photo">
 					<div class="upload_photo_image_container">
-						<img src="<%= session.user.display_picture ? session.user.display_picture : 'public/uploads/users/user.jpeg'  %>" alt="">
+						<img src="<%= user.display_picture ? user.display_picture : 'public/uploads/users/user.jpeg'  %>" alt="">
 					</div>
 					<div class="upload_image_container">
 						<label for="display_picture">Upload Your Profile Photo</label>
@@ -212,17 +212,17 @@
 				</div>
 				<div class="edit_name">
 					<label for="name">Name</label>
-					<input type="text" name="name" value="<%= session.user.name %>" placeholder="Enter your name" required>
+					<input type="text" name="name" value="<%= user.name %>" placeholder="Enter your name" required>
 				</div>
 			</div>
 			<div class="edit_other_details">
 				<div class="edit_field">
 					<label for="phoneNumber">Phone Number</label>
-					<input type="text" name="phoneNumber" value="<%= session.user.phoneNumber %>" placeholder="Enter your phone number" required>	
+					<input type="text" name="phoneNumber" value="<%= user.phoneNumber %>" placeholder="Enter your phone number" required>	
 				</div>
 				<div class="edit_field">
 					<label for="email">Email</label>
-					<input type="email" name="email" value="<%= session.user.email %>" placeholder="Enter your email" required>			
+					<input type="email" name="email" value="<%= user.email %>" placeholder="Enter your email" required>			
 				</div>
 				<div class="edit_field">
 					<label for="gender">Gender</label>
@@ -234,7 +234,7 @@
 				</div>
 				<div class="edit_field">
 					<label for="dob">DOB</label>
-					<input type="date" name="dob" value="<%= session.user.dob.split('T')[0] %>" placeholder="DOB">			
+					<input type="date" name="dob" value="<%= user.dob.toISOString().split('T')[0] %>" placeholder="DOB">			
 				</div>
 				<div class="edit_field">
 					<label for="bloodGroup">Blood Group</label>
@@ -266,11 +266,11 @@
 			<div class="edit_address">
 				<div class="edit_field">
 					<label for="location">Location</label>
-					<input type="text" name="location" value="<%= session.user.location %>">	
+					<input type="text" name="location" value="<%= user.location %>">	
 				</div>
 				<div class="edit_field">
 					<label for="state">State</label>
-					<input type="text" name="state" value="<%= session.user.state %>">	
+					<input type="text" name="state" value="<%= user.state %>">	
 				</div>
 				<div class="edit_field">
 					<label for="country">Country</label>
@@ -284,37 +284,33 @@
 			<div class="edit_doctor_details">
 				<div class="edit_field">
 					<label for="achievements">Achievments</label>
-					<input class="achievements_input" type="text" name="achievements" value="<%= session.user.doctor.achievements %>">	
+					<input class="achievements_input" type="text" name="achievements" value="<%= user.doctor.achievements %>">	
 				</div>
 				<div class="edit_field">
 					<label for="experience">Experience</label>
-					<input class="experience_input" type="number" name="experience" value="<%= session.user.doctor.experience %>">	
+					<input class="experience_input" type="number" name="experience" value="<%= user.doctor.experience %>">	
 				</div>
 				<div class="edit_field">
 					<label for="specializations">Specializations</label>
-					<input class="specializations_input" type="text" name="specializations" value='<%= session.user.doctor.specializations %>'>	
+					<input class="specializations_input" type="text" name="specializations" value='<%= user.doctor.specializations %>'>	
 				</div>
 				<div class="edit_field">
 					<label for="qualifications">Qualifications</label>
-					<input class="qualifications_input" type="text" name="qualifications" value="<%= session.user.doctor.qualifications %>">	
+					<input class="qualifications_input" type="text" name="qualifications" value="<%= user.doctor.qualifications %>">	
 				</div>
 				<div class="edit_field">
 					<label for="awards">Awards</label>
-					<input class="awards_input"  type="text" name="awards" value="<%= session.user.doctor.awards %>">	
+					<input class="awards_input"  type="text" name="awards" value="<%= user.doctor.awards %>">	
 				</div>
 				<div class="edit_field">
 					<label for="averageFees">Average Fees</label>
-					<input class="averageFees_input" type="number" name="averageFees" value="<%= session.user.doctor.avg_fees %>">	
+					<input class="averageFees_input" type="number" name="averageFees" value="<%= user.doctor.avg_fees %>">	
 				</div>
 				<div class="edit_field">
 					<label for="description">Description</label>
-					<textarea name="description" id="" cols="30" rows="10"><%= session.user.doctor.description %></textarea>	
+					<textarea name="description" id="" cols="30" rows="10"><%= user.doctor.description %></textarea>	
 				</div>
 				
-				<!-- <div class="edit_field">
-					<label for="hospitalList">Hospitals</label>
-					<input class="hospital_list_input" type="text" name="hospitalList" value="<%= session.user.doctor.hospitalList %>">	
-				</div> -->
 			</div>
 		</div>
 	</form>
@@ -336,10 +332,10 @@
 			}	
 		}
 
-		selectOptionFromBackend(gender, '<%= session.user.gender %>');
-		selectOptionFromBackend(country, '<%= session.user.country %>');
-		selectOptionFromBackend(bloodGroup, '<%= session.user.bloodGroup %>');
-		selectOptionFromBackend(timeZone, '<%= session.user.timeZone %>');
+		selectOptionFromBackend(gender, '<%= user.gender %>');
+		selectOptionFromBackend(country, '<%= user.country %>');
+		selectOptionFromBackend(bloodGroup, '<%= user.bloodGroup %>');
+		selectOptionFromBackend(timeZone, '<%= user.timeZone %>');
 	</script>
 	<script>
 
@@ -387,9 +383,6 @@
 			}
 		});
 		
-		// if(<%- session.user.doctor.specializations %>){
-		// 	specializationsTagify.addTags(session.user.doctor.specializations);	
-		// }
 	</script>
 	<script src="./../index.js">
 	</script>

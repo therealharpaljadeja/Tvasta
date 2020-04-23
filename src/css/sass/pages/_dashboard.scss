@@ -35,6 +35,11 @@
 	}
 }
 
+.earnings_chart_container{
+	transform: translateX(30rem);
+	width: calc(100% - 30rem);
+}
+
 @media(min-width: $bp-tablet){
 	.statistics_site{
 		padding: 2rem 3rem;

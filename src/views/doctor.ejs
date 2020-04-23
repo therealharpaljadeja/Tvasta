@@ -24,8 +24,8 @@
 					<option value="not-specified" selected disabled>Sort By</option>
 					<option value="name-asc">Name A-Z</option>
 					<option value="name-desc">Name Z-A</option>
-					<option value="avg_fees-asc">Fees Low-High</option>
-					<option value="avg_fees-desc">Fees High-Low</option>
+					<option value="doctor.avg_fees-asc">Fees Low-High</option>
+					<option value="doctor.avg_fees-desc">Fees High-Low</option>
 					<option value="doctor.experience-desc">Experience</option>
 				</select>	
 			</form>
@@ -331,7 +331,7 @@
             });
 		}
 		if(sort_by && sort_by != 'none'){
-			document.querySelector('.' + sort_by).setAttribute('selected', true);
+			document.querySelector(`option[value="${sort_by}"]`).setAttribute('selected', true);
 		} else {
 			document.querySelector('.not-specfied').setAttribute('selected', true);
 		}

@@ -1,0 +1,21 @@
+.schedule_appointment_container{
+	margin: 10rem 3rem;
+	.add_appointment_slot{
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+
+		.edit_field{
+			flex-basis: 30%;
+			min-width: 30%;
+			margin: 1rem;
+			height: 100%;
+			width: 100%;
+			.tagify{
+				margin-top: 1rem;
+				font-family: $nexa-bold;
+				font-size: 1.4rem;
+			}
+		}
+	}
+}

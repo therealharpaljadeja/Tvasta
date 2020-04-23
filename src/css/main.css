@@ -4586,6 +4586,11 @@ html, body {
   color: #0173b2;
 }
 
+.earnings_chart_container {
+  transform: translateX(30rem);
+  width: calc(100% - 30rem);
+}
+
 @media (min-width: 768px) {
   .statistics_site {
     padding: 2rem 3rem;
@@ -4789,7 +4794,6 @@ html, body {
   width: 100%;
 }
 .edit_profile_container label {
-  margin-bottom: 1rem;
   font-family: "Nexa Bold";
   font-size: 1.5rem;
 }
@@ -4845,8 +4849,16 @@ html, body {
   margin-bottom: 2rem;
   border-bottom: 1px solid #ddd;
 }
+.edit_profile_container .edit_doctor_details .edit_field {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 0.5rem;
+}
 .edit_profile_container .edit_doctor_details .edit_field input[type=number] {
   -moz-appearance: textfield;
+}
+.edit_profile_container .edit_doctor_details .edit_field textarea {
+  font-family: "Nexa Bold";
 }
 .edit_profile_container .edit_doctor_details .edit_field .tagify {
   font-size: 1.4rem;
@@ -4922,6 +4934,106 @@ html, body {
   font-family: "Nexa Bold";
   font-size: 1.5rem;
   color: #444;
+}
+
+.schedule_appointment_container {
+  margin: 10rem 3rem;
+}
+.schedule_appointment_container .add_appointment_slot {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.schedule_appointment_container .add_appointment_slot .edit_field {
+  flex-basis: 30%;
+  min-width: 30%;
+  margin: 1rem;
+  height: 100%;
+  width: 100%;
+}
+.schedule_appointment_container .add_appointment_slot .edit_field .tagify {
+  margin-top: 1rem;
+  font-family: "Nexa Bold";
+  font-size: 1.4rem;
+}
+
+.recent_appointments {
+  transform: translateX(30rem);
+  width: calc(100% - 30rem);
+}
+.recent_appointments__container {
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 2rem;
+}
+.recent_appointments__heading {
+  font-family: "Nexa Bold";
+}
+.recent_appointments__table {
+  width: 100%;
+  border-collapse: collapse;
+  line-height: 6rem;
+}
+.recent_appointments__table tbody {
+  width: 100%;
+  background-color: #eee;
+}
+.recent_appointments__table tbody tr {
+  line-height: 4rem;
+}
+.recent_appointments__table tbody tr td {
+  text-align: center;
+  padding: 1rem;
+  font-family: "Nexa Bold";
+  vertical-align: middle;
+  font-size: 1.2rem;
+}
+.recent_appointments__table tbody tr td .actions {
+  display: flex;
+  flex-direction: row;
+  grid-gap: 0.5rem;
+}
+.recent_appointments__table tbody tr td .appointment_edit_button {
+  text-align: center;
+  background-color: #0173b2;
+  color: white;
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  margin: auto;
+  border-radius: 50%;
+}
+.recent_appointments__table tbody tr td .appointment_edit_button i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.recent_appointments__table tbody tr .display_picture_container {
+  position: relative;
+  width: 4rem;
+  height: 4rem;
+}
+.recent_appointments__table tbody tr .display_picture_container img {
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-75%);
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+}
+.recent_appointments__table thead {
+  background-color: #ccc;
+  width: 100%;
+}
+.recent_appointments__table thead tr {
+  font-family: "Nexa Bold";
+  font-size: 1.5rem;
+}
+.recent_appointments__table thead tr th {
+  padding: 1rem 2rem;
 }
 
 /*# sourceMappingURL=main.css.map */

@@ -18,7 +18,6 @@
 			width: 100%;
 		}
 		label{
-			margin-bottom: 1rem;
 			font-family: $nexa-bold;
 			font-size: 1.5rem;
 		}
@@ -76,8 +75,14 @@
 		}
 		.edit_doctor_details{
 			.edit_field{
+				display: flex;
+				flex-direction: column;
+				grid-gap: .5rem;
 				input[type=number]{
 					-moz-appearance: textfield;
+				}
+				textarea{
+					font-family: $nexa-bold;
 				}
 				.tagify{
 					font-size: 1.4rem;

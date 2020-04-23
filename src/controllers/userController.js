@@ -135,7 +135,7 @@ const editProfile = (req, res, next) => {
 			user.timeZone = req.body.timeZone;
 			user.state = req.body.state;
 			user.country = req.body.country;
-            user.location = req.body.city;
+            user.location = req.body.location;
             if(user.role === 'doctor'){
                 let achievementList = req.body.achievements.slice(1,req.body.achievements.length - 1).split(',');
                 let qualificationList = req.body.qualifications.slice(1,req.body.qualifications.length - 1).split(',');
@@ -192,6 +192,8 @@ const editProfile = (req, res, next) => {
 		}
 	})
 }
+
+
 
 module.exports = {
 	editProfile: editProfile,

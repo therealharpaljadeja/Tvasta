@@ -2,27 +2,17 @@ const mongoose = require('mongoose');
 const Slot = require('./slotModel');
 
 const appointmentSchema = new mongoose.Schema({
-  	// slot: {
-  	// 	type: mongoose.ObjectId,
-  	// 	ref: 'Slot',
-  	// 	required: true
-  	// },
-  	createdAt: {
-  		type: Date,
-  		default: Date.now()
-  	},
-  	user: {
-  		type: mongoose.ObjectId,
-  		ref: 'User',
-  		required: true
-  	},
-  	patientName: String,
-  	patientNumber: String,
-  	patientEmail: String,
-  	date: Date,
-  	start: String,
-  	end: String
-});
+  	slot: {
+      type: mongoose.ObjectId,
+      ref: 'subSlot'
+    },
+    patient_name: String,
+    user: {
+      type: mongoose.ObjectId,
+      ref: 'User'
+    },
+    patient_phoneNumber: Number,
+}, {timestamps: true});
 
 // appointmentSchema.pre('save', function(next){
 // 	const start = new Date();

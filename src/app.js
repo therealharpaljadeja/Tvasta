@@ -208,6 +208,8 @@ app.get('/schedule-appointment', authenticationController.redirectLogin, slotCon
 
 app.post('/schedule-appointment', authenticationController.redirectLogin, slotController.addSlot);
 
+app.get('/delete-schedule/:id', authenticationController.redirectLogin, slotController.disableSlot);
+
 app.post('/add-filters', doctorController.doctorFilters);
 
 app.post('/sort-by', doctorController.doctorSort);

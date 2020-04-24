@@ -112,6 +112,9 @@ const getSlotsBasedOnDoctor = async (req, res, next) => {
 			},
 			{
 				holiday: false
+			},
+			{
+				isDisabled: false
 			}
 		]
 		 
@@ -119,7 +122,13 @@ const getSlotsBasedOnDoctor = async (req, res, next) => {
 	next();
 }
 
+const disableSlot = async (req, res) => {
+	await Slot.findByIdAndUpdate(req.params.id, { isDisabled: true });
+	res.redirect('/schedule-appointment');
+}
+
 module.exports = {
 	addSlot: addSlot,
-	getSlotsBasedOnDoctor: getSlotsBasedOnDoctor
+	getSlotsBasedOnDoctor: getSlotsBasedOnDoctor,
+	disableSlot: disableSlot
 }

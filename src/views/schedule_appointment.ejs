@@ -212,13 +212,13 @@
 						<label for="startTime">Start Time</label>
 						<!-- <input type="time" name="startTime"> -->
 						<div class="input-group clockpicker">
-						    <input name="startTime" type="text" class="form-control" value="09:00">
+						    <input name="startTime" type="time" class="form-control" value="09:00">
 						</div>
 					</div>
 					<div class="edit_field">
 						<label for="endTime">End Time</label>
 						<div class="input-group clockpicker">
-						    <input name="endTime" type="text" class="form-control" value="09:00">
+						    <input name="endTime" type="time" class="form-control" value="09:00">
 						</div>
 					</div>
 					<div class="edit_field">
@@ -248,6 +248,20 @@
 			<h3 class="heading-3">Scheduled Slots</h3>
 			<% if(slots.length) { %>
 				<% for(let i = 0; i < slots.length; i++) { %>
+					<% 
+						function tConvert (time) {
+						  time = time.toString().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+						  if (time.length > 1) { 
+						    time = time.slice (1);  
+						    time[5] = +time[0] < 12 ? 'AM' : 'PM'; 
+						    time[0] = +time[0] % 12 || 12;
+						  }
+						  return time.join ('');
+						}
+						let startTime = tConvert(slots[i].startTime);
+						let endTime = tConvert(slots[i].endTime);
+ 					%>
 					<div class="scheduled_slots__slot">
 						<span class="scheduled_slots__day">
 							<%= `${slots[i].day[0].toUpperCase()}${slots[i].day.slice(1,slots[i].day.length)}` %>
@@ -257,16 +271,19 @@
 								<%= slots[i].hospital %>
 							</span>
 							<span class="scheduled_slots__time">
-								<span class="start_time"><%= slots[i].startTime %></span>
-								<span class="end_time">- <%= slots[i].endTime %></span>
+								<span class="start_time"><%= startTime %></span>
+								<span class="end_time">- <%= endTime %></span>
 							</span>
 						</div>
-						<button class="scheduled_slots__edit">
+						<a href="/delete-schedule/<%= slots[i]._id %>"><button class="scheduled_slots__edit">
+							Delete Slot
+						</button></a>
+						<a href=""><button class="scheduled_slots__edit">
 							Edit Slot
-						</button>
-						<button class="scheduled_slots__detail">
+						</button></a>
+						<a href=""><button class="scheduled_slots__detail">
 							View Detail
-						</button>
+						</button></a>
 					</div>
 				<% } %>
 			<% } else { %>
@@ -281,8 +298,7 @@
 	<script src="./../tagify.js"></script>
 	<script>
 		$('.clockpicker').clockpicker({
-			donetext: 'Done',
-			twelvehour: true 
+			donetext: 'Done'
 		});
 		// const gender = document.querySelector('select[name="gender"]');
 		// const country = document.querySelector('select[name="country"]');

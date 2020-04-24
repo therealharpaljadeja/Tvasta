@@ -19,11 +19,29 @@ const addSlot = async (req, res, next) => {
 		endTime: req.body.endTime,
 		day: req.body.day,
 		interval: parseInt(interval[0]),
-		hospital: hospital[0]
+		hospital: hospital[0],
+		holiday: req.body.holiday ? true : false,
+		doctor: req.session.user._id
 	});
 	res.redirect('/schedule-appointment');	
 }
 
+const getSlotsBasedOnDoctor = async (req, res, next) => {
+	res.locals.slots = await Slot.find({ 
+		$and: [
+			{
+				doctor: req.session.user._id
+			},
+			{
+				holiday: false
+			}
+		]
+		 
+	});
+	next();
+}
+
 module.exports = {
-	addSlot: addSlot
+	addSlot: addSlot,
+	getSlotsBasedOnDoctor: getSlotsBasedOnDoctor
 }

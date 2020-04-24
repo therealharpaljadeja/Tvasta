@@ -202,8 +202,8 @@ app.get('/edit-profile-doctor', authenticationController.redirectLogin, authenti
 	res.render('views/edit_profile_doctor.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
 })
 
-app.get('/schedule-appointment', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/schedule_appointment.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
+app.get('/schedule-appointment', authenticationController.redirectLogin, slotController.getSlotsBasedOnDoctor, (req, res) => {
+	res.render('views/schedule_appointment.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType, slots: res.locals.slots});
 })
 
 app.post('/schedule-appointment', authenticationController.redirectLogin, slotController.addSlot);

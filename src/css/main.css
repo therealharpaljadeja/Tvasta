@@ -4937,12 +4937,19 @@ html, body {
 }
 
 .schedule_appointment_container {
-  margin: 10rem 3rem;
+  margin: 10rem 3rem 1.5rem 3rem;
 }
 .schedule_appointment_container .add_appointment_slot {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+.schedule_appointment_container .add_appointment_slot .add_slot_and_holiday {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+  grid-gap: 2rem;
+  justify-content: space-between;
 }
 .schedule_appointment_container .add_appointment_slot .edit_field {
   flex-basis: 30%;
@@ -4951,10 +4958,81 @@ html, body {
   height: 100%;
   width: 100%;
 }
+.schedule_appointment_container .add_appointment_slot .edit_field .holiday {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  grid-gap: 1rem;
+}
 .schedule_appointment_container .add_appointment_slot .edit_field .tagify {
   margin-top: 1rem;
   font-family: "Nexa Bold";
   font-size: 1.4rem;
+}
+.schedule_appointment_container .add_appointment_slot .edit_field .add_slot_button {
+  background-color: #0173b2;
+  color: white;
+  border: none;
+  width: 100%;
+  flex-basis: 10rem;
+  min-width: 10rem;
+  padding: 1rem 2rem;
+  font-family: "Nexa Bold";
+}
+
+.scheduled_slots {
+  transform: translateX(30rem);
+  width: calc(100% - 30rem);
+}
+.scheduled_slots__container {
+  margin: 1.5rem 3rem 3rem 3rem;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
+}
+.scheduled_slots__container h3 {
+  margin-bottom: 1rem;
+  font-family: "Nexa Bold";
+}
+.scheduled_slots__container h4 {
+  font-family: "Nexa Light";
+}
+.scheduled_slots__slot {
+  display: flex;
+  flex-direction: row;
+  padding: 1.5rem;
+  background-color: #ddd;
+  justify-content: space-between;
+  grid-gap: 1rem;
+}
+.scheduled_slots__day {
+  background-color: #eee;
+  padding: 1rem;
+  font-family: "Nexa Bold";
+  font-size: 1.6rem;
+  border-radius: 0.5rem;
+}
+.scheduled_slots__hospital_and_time {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.scheduled_slots__hospital {
+  font-size: 1.5rem;
+  font-family: "Nexa Bold";
+}
+.scheduled_slots__time {
+  font-size: 1.1rem;
+  font-family: "Nexa Light";
+}
+.scheduled_slots__edit, .scheduled_slots__detail {
+  background-color: #0173b2;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-family: "Nexa Bold";
 }
 
 .recent_appointments {

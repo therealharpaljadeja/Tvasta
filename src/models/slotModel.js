@@ -15,17 +15,43 @@ const slotSchema = new mongoose.Schema({
 		ref: 'Doctor',
 	},
 	hospital: String,
-	subSlots: [subSlotSchema]
+	subSlots: [subSlotSchema],
+	holiday: {
+		type: Boolean,
+		default: false
+	}
 },{ timestamps: true });
 
 
 slotSchema.pre('save',async function(next){
+
+	function ampmto24hours(ampmtime) {
+		var hours = parseInt(ampmtime.split(':')[0]);
+		var minutes = parseInt(ampmtime.split(':')[1]);
+		console.log(ampmtime);
+		var AMPM = ampmtime.slice(5,ampmtime.length);
+		console.log(AMPM);
+		if(AMPM == "PM" && hours<12) hours = hours+12;
+		if(AMPM == "AM" && hours==12) hours = hours-12;
+		var sHours = hours.toString();
+		var sMinutes = minutes.toString();
+		if(hours<10) sHours = "0" + sHours;
+		if(minutes<10) sMinutes = "0" + sMinutes;
+		return `${sHours}:${sMinutes}`;
+	
+	}
+	
+	let startTime = ampmto24hours(this.startTime);
+	let endTime = ampmto24hours(this.endTime);
+	console.log(startTime);
+	console.log(endTime);
+
 	const start = new Date();
-	start.setHours(parseInt(this.startTime.split(':')[0]));
-	start.setMinutes(parseInt(this.startTime.split(':')[1]));
+	start.setHours(parseInt(startTime.split(':')[0]));
+	start.setMinutes(parseInt(startTime.split(':')[1]));
 	const end = new Date();
-	end.setHours(parseInt(this.endTime.split(':')[0]));
-	end.setMinutes(parseInt(this.endTime.split(':')[1]));
+	end.setHours(parseInt(endTime.split(':')[0]));
+	end.setMinutes(parseInt(endTime.split(':')[1]));
 	
 	const slots = [];
 	const slotsWithDate = [];
@@ -51,16 +77,24 @@ slotSchema.pre('save',async function(next){
 		// console.log(slotsWithDate);
 	}	
 
-	await generateSlots(start, end, '15');
+	await generateSlots(start, end, this.interval);
 	this.subSlots = [];
-	slots.forEach(async el => {
-		let slot = await subSlot.create({
-			startTime: el[0],
-			endTime: el[1]
+	for(let i = 0; i < slots.length; i++){
+		let subslot = await subSlot.create({
+			startTime: slots[i][0],
+			endTime: slots[i][1]
 		});
-		console.log(slot._id);
-		this.subSlots.push(slot);
-	})
+		this.subSlots.push(subslot);
+	}
+	// slots.forEach(async el => {
+	// 	let slot = await subSlot.create({
+	// 		startTime: el[0],
+	// 		endTime: el[1]
+	// 	});
+	// 	this.subSlots.push(slot);
+	// })
+	console.log(this.subSlots);
+	next();
 })
 
 

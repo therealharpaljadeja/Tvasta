@@ -5,6 +5,8 @@
 	<title>Schedule Appointments</title>
 	<%- include('partials/head.ejs') %>
 	<link rel="stylesheet" href="./../css/tagify.css">
+	<link rel="stylesheet" href="http://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.css" />
+	
 </head>
 <body>
 	<% if(error) {%>
@@ -208,11 +210,16 @@
 					</div>
 					<div class="edit_field">
 						<label for="startTime">Start Time</label>
-						<input type="time" name="startTime">
+						<!-- <input type="time" name="startTime"> -->
+						<div class="input-group clockpicker">
+						    <input name="startTime" type="text" class="form-control" value="09:00">
+						</div>
 					</div>
 					<div class="edit_field">
 						<label for="endTime">End Time</label>
-						<input type="time" name="endTime">
+						<div class="input-group clockpicker">
+						    <input name="endTime" type="text" class="form-control" value="09:00">
+						</div>
 					</div>
 					<div class="edit_field">
 						<label for="interval">Interval</label>
@@ -222,16 +229,61 @@
 						<label for="hospital">Hospital</label>
 						<input type="text" name="hospital" class="hospital_list_input">
 					</div>
-					<div class="edit_field">
-						<button class="add_slot_button">Add Slot</button>
+					<div class="edit_field add_slot_and_holiday">
+						<div class="edit_field">
+							<button class="add_slot_button">Add Slot</button>	
+						</div>
+						<div class="edit_field holiday">
+							<input type="checkbox" name="holiday">
+							<label for="holiday">Holiday</label>	
+						</div>	
 					</div>
 				</div>
 			</form>	
 		</div>	
 		
 	</section>
+	<section class="scheduled_slots">
+		<div class="scheduled_slots__container">
+			<h3 class="heading-3">Scheduled Slots</h3>
+			<% if(slots.length) { %>
+				<% for(let i = 0; i < slots.length; i++) { %>
+					<div class="scheduled_slots__slot">
+						<span class="scheduled_slots__day">
+							<%= `${slots[i].day[0].toUpperCase()}${slots[i].day.slice(1,slots[i].day.length)}` %>
+						</span>
+						<div class="scheduled_slots__hospital_and_time">
+							<span class="scheduled_slots__hospital">
+								<%= slots[i].hospital %>
+							</span>
+							<span class="scheduled_slots__time">
+								<span class="start_time"><%= slots[i].startTime %></span>
+								<span class="end_time">- <%= slots[i].endTime %></span>
+							</span>
+						</div>
+						<button class="scheduled_slots__edit">
+							Edit Slot
+						</button>
+						<button class="scheduled_slots__detail">
+							View Detail
+						</button>
+					</div>
+				<% } %>
+			<% } else { %>
+			<h4 class="heading-4">
+				No Scheduled Appointments
+			</h4>
+			<% } %>
+		</div>	
+	</section>
+	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+	<script src="http://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.js" /></script>
 	<script src="./../tagify.js"></script>
 	<script>
+		$('.clockpicker').clockpicker({
+			donetext: 'Done',
+			twelvehour: true 
+		});
 		// const gender = document.querySelector('select[name="gender"]');
 		// const country = document.querySelector('select[name="country"]');
 		// const bloodGroup = document.querySelector('select[name="bloodGroup"]');

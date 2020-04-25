@@ -6,8 +6,8 @@ const slotSchema = new mongoose.Schema({
 	startTime: String,
 	endTime: String,
 	interval: Number,
-	day: {
-		type: String, 
+	days: {
+		type: [String], 
 		enum: ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
 	},
 	doctor: {

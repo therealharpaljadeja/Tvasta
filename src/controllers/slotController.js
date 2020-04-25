@@ -16,7 +16,6 @@ const addSlot = async (req, res, next) => {
 	});
 	if(allSlots.length){
 		const valid = await isValidateSlot(allSlots, req.body);
-		console.log(valid);
 		if(valid){
 			let intervalString = req.body.interval.slice(1,req.body.interval.length - 1).split(',');
 			let interval = [];
@@ -30,11 +29,10 @@ const addSlot = async (req, res, next) => {
 		        value = JSON.parse(intervalString[i]).value;
 		        interval.push(value);
 		    }
-			console.log(req.body);
 			const slot = await Slot.create({
 				startTime: req.body.startTime,
 				endTime: req.body.endTime,
-				day: req.body.day,
+				days: req.body.days,
 				interval: parseInt(interval[0]),
 				hospital: hospital[0],
 				holiday: req.body.holiday ? true : false,
@@ -61,11 +59,10 @@ const addSlot = async (req, res, next) => {
 	        value = JSON.parse(intervalString[i]).value;
 	        interval.push(value);
 	    }
-		console.log(req.body);
 		const slot = await Slot.create({
 			startTime: req.body.startTime,
 			endTime: req.body.endTime,
-			day: req.body.day,
+			days: req.body.days,
 			interval: parseInt(interval[0]),
 			hospital: hospital[0],
 			holiday: req.body.holiday ? true : false,
@@ -82,26 +79,29 @@ const addSlot = async (req, res, next) => {
 
 const isValidateSlot = async (slots, slot) => {
 	for(let i = 0; i < slots.length; i++){
-		console.log(slots[i].day.toLowerCase(),slot.day)
-		if(slots[i].day.toLowerCase() === slot.day){
-			console.log(slots[i].startTime > slot.startTime, slots[i].startTime > slot.startTime);
-			if(slots[i].startTime > slot.startTime && slots[i].endTime < slot.endTime){
-				return false;
-			} else {
-				if(slots[i].startTime > slot.startTime && slots[i].endTime > slot.endTime && slots[i].startTime < slot.endTime){
-					return false;
+		for(let j = 0; j < slots[i].days.length; j++){	
+			if(slot.days.indexOf(slots[i].days[j]) !== -1){
+				if(slot.startTime <= slots[i].startTime && slot.endTime >= slots[i].endTime){
+					return false 
 				} else {
-					if(slots[i].startTime < slot.startTime && slots[i].endTime > slot.startTime && slots[i].endTime < slot.endTime){
+					if(slot.startTime >= slots[i].startTime && slot.startTime <= slots[i].endTime && slot.endTime >= slots[i].endTime){
 						return false;
 					} else {
-						return true;
+						if(slot.startTime >= slots[i].startTime  && slot.endTime <= slots[i].endTime){
+							return false
+						} else {
+							if(slot.startTime <= slots[i].startTime && slot.endTime >= slots[i].startTime && slot.endTime <= slots[i].endTime){
+								return false;
+							} else {
+								return true;
+							}
+						}
 					}
 				}
-			}
-		} else {
-			return true;
+			} 
 		}
 	}
+	return true;
 }
 
 const getSlotsBasedOnDoctor = async (req, res, next) => {
@@ -123,7 +123,59 @@ const getSlotsBasedOnDoctor = async (req, res, next) => {
 }
 
 const disableSlot = async (req, res) => {
-	await Slot.findByIdAndUpdate(req.params.id, { isDisabled: true });
+	var slot = await Slot.findOne({
+		$and: [
+			{
+				_id: req.params.id
+			},
+			{
+				startTime: req.query.startTime
+			},
+			{
+				endTime: req.query.endTime
+			},
+			{
+				days: { $in: [req.query.day] }
+			}
+		]
+	});
+	slot.days.splice(slot.days.indexOf(req.query.day),1);
+	if(slot.days.length){
+		await Slot.findOneAndUpdate({
+			$and: [
+				{
+					_id: req.params.id
+				},
+				{
+					startTime: req.query.startTime
+				},
+				{
+					endTime: req.query.endTime
+				},
+				{
+					days: { $in: [req.query.day] }
+				}
+			]
+		}, { days: slot.days });	
+	} else {
+		await Slot.findOneAndUpdate({
+			$and: [
+				{
+					_id: req.params.id
+				},
+				{
+					startTime: req.query.startTime
+				},
+				{
+					endTime: req.query.endTime
+				},
+				{
+					days: { $in: [req.query.day] }
+				}
+			]
+		}, { isDisabled: true });
+	}
+	
 	res.redirect('/schedule-appointment');
 }
 

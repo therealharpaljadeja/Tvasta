@@ -5034,6 +5034,28 @@ html, body {
   padding: 1rem 2rem;
   font-family: "Nexa Bold";
 }
+.scheduled_slots__edit_options {
+  background-color: #eee;
+  padding: 1rem;
+}
+.scheduled_slots__sub_slots {
+  background-color: #eee;
+  padding: 1.5rem;
+}
+.scheduled_slots__sub_slots .time-slots {
+  display: flex;
+  align-items: center;
+  grid-gap: 0.5rem;
+  flex-wrap: wrap;
+}
+.scheduled_slots__sub_slots .time-slots .slot {
+  display: inline;
+  border-radius: 0.5rem;
+  border: 1px solid #0173b2;
+  padding: 0.7rem;
+  font-family: "Nexa Bold";
+  color: #0173b2;
+}
 
 .recent_appointments {
   transform: translateX(30rem);

@@ -110,9 +110,9 @@ const getSlotsBasedOnDoctor = async (req, res, next) => {
 			{
 				doctor: req.session.user._id
 			},
-			{
-				holiday: false
-			},
+			// {
+			// 	holiday: false
+			// },
 			{
 				isDisabled: false
 			}

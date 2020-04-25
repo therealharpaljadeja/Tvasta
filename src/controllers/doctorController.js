@@ -62,6 +62,7 @@ const getAllDoctors = async (req, res, next) => {
  //    }
  //    // console.log({ role : "doctor", ...req.query, doctor.experience: { $gte : experience || 0 }});
  //    const doctors = await User.find({role: 'doctor',...req.query, "doctor.experience": { $gte : experience || 0 }});         
+    console.log(doctors);
     res.locals.doctors = doctors;
     next();
 }

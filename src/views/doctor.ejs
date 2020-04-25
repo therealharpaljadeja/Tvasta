@@ -182,7 +182,11 @@
 						</div>
 						<div class="time-slots-container">
 							<div class="time-slots">
-								
+								<% for(let j = 0; j < doctors[i].slots.length; i++) { %>
+									<% for(let k = 0; k < doctors[i].slots[j].subSlots.length; k++) { %>
+										<div class="slot"><%= doctors[i].slots[j].subSlots[k].startTime %></div>
+									<% } %>
+								<% } %>
 							</div>
 							<div class="time-slots">
 								

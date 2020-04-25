@@ -263,7 +263,8 @@
 						let endTime = tConvert(slots[i].endTime);
  					%>
  					<% for(let j = 0; j < slots[i].days.length; j++) { %>
-						<div class="scheduled_slots__slot">
+ 					<div>
+ 						<div class="scheduled_slots__slot">
 							<span class="scheduled_slots__day">
 								<%= `${slots[i].days[j][0].toUpperCase()}${slots[i].days[j].slice(1,slots[i].days[j].length)}` %>
 							</span>
@@ -279,13 +280,31 @@
 							<a href="/delete-schedule/<%= slots[i]._id %>?day=<%= slots[i].days[j] %>&startTime=<%= slots[i].startTime %>&endTime=<%= slots[i].endTime %>"><button class="scheduled_slots__edit">
 								Delete Slot
 							</button></a>
-							<a href=""><button class="scheduled_slots__edit">
+							<button onclick="showEditOptions(this)" class="scheduled_slots__edit">
 								Edit Slot
-							</button></a>
-							<a href=""><button class="scheduled_slots__detail">
+							</button>
+							<button onclick="showSlotDetails(this)" class="scheduled_slots__detail">
 								View Detail
-							</button></a>
+							</button>
 						</div>
+						<div class="scheduled_slots__edit_options display_none">
+							<form action="/slot-holiday" method="POST" class="edit_field holiday">
+								<input type="checkbox" name="holiday">
+								<label for="holiday">Holiday</label>	
+							</form>
+						</div>
+						<div class="scheduled_slots__sub_slots display_none">
+							<div class="time-slots">
+							<% for(let k = 0; k < slots[i].subSlots.length; k++) { %>
+								<% if(!slots[i].subSlots[k].isBooked) { %>
+									<div class="slot"><%= slots[i].subSlots[k].startTime %></div>
+									<input type="checkbox" name="disabled[]">
+								<% } %>
+							<% } %>
+							</div>
+						</div>
+ 					</div>
+						
 					<% } %>
 				<% } %>
 			<% } else { %>
@@ -295,6 +314,14 @@
 			<% } %>
 		</div>	
 	</section>
+	<script>
+		const showEditOptions = (el) => {
+			el.parentElement.parentElement.children[1].classList.toggle('display_none');
+		}
+		const showSlotDetails = (el) => {
+			el.parentElement.parentElement.children[2].classList.toggle('display_none');
+		}
+	</script>
 	<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
 	<script src="http://weareoutman.github.io/clockpicker/dist/jquery-clockpicker.js" /></script>
 	<script src="./../tagify.js"></script>

@@ -98,4 +98,27 @@
 		padding: 1rem 2rem;
 		font-family: $nexa-bold;
 	}
+	&__edit_options{
+		background-color: #eee;
+		padding: 1rem;
+	}
+	&__sub_slots{
+		background-color: #eee;
+		padding: 1.5rem;
+		.time-slots{
+			display: flex;
+			align-items: center;
+			grid-gap: .5rem;
+			flex-wrap: wrap;
+			.slot{
+				display: inline;
+				// line-height: 3rem;
+				border-radius: .5rem;
+				border: 1px solid $bright-blue;
+				padding: .7rem;
+				font-family: $nexa-bold;
+				color: $bright-blue;
+			}	
+		}
+	}
 }

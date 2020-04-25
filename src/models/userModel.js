@@ -58,6 +58,9 @@ const userSchema = new mongoose.Schema({
 		default: 'user'
 	},
 	doctor: doctorSchema.doctorSchema
+},{
+	toJSON: { virtuals : true },
+	toObject: { virtuals : true },
 });
 
 
@@ -70,6 +73,19 @@ userSchema.pre('save', async function(next){
 			next(err);
 		}
 	}
+})
+
+userSchema.virtual('slots', {
+	ref: 'Slot',
+	foreignField: 'doctor',
+	localField: '_id'
+});
+
+userSchema.post('find', async function(docs,next){
+	for await(let doc of docs){
+		await doc.populate('slots').execPopulate();
+	}
+	next();
 })
 
 userSchema.pre('save', async function(next) {

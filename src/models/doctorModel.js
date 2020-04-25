@@ -19,17 +19,6 @@ const doctorSchema = new mongoose.Schema({
 	toObject: { virtuals : true },
 });
 
-doctorSchema.virtual('slots', {
-	ref: 'Slot',
-	foreignField: 'doctor',
-	localField: '_id'
-});
-
-doctorSchema.pre('find', async function(next){
-	this.populate({
-		path: 'slots'
-	})
-})
 
 // doctorSchema.pre('save', async function(next){
 // 	const passwordValidator = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}/;

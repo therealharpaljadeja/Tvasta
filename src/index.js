@@ -1,3 +1,15 @@
+const sideMenuTreatments = document.getElementById('side_menu_treatments');
+const sideMenutreatmentChevron = document.querySelector('#treatments_sideMenu');
+
+if(sideMenutreatmentChevron){
+	sideMenutreatmentChevron.addEventListener('click', () => {
+		sideMenuTreatments.classList.toggle('display_none')
+	});
+	
+}
+
+
+
 const profileChevron = document.querySelector('.navbar__profile');
 const profile_menu = document.querySelector('.profile_menu_container');
 
@@ -5,15 +17,17 @@ profileChevron.addEventListener('click', () => {profile_menu.classList.toggle('d
 
 const treatmentChevron = document.querySelector('#treatments');
 const treatment_menu = document.querySelector('#treatment_menu_container');
+if(treatmentChevron) {
+	treatmentChevron.addEventListener('mouseover', () => {
+		treatment_menu.classList.toggle('display_none')
+	});
 
-treatmentChevron.addEventListener('mouseover', () => {
-	treatment_menu.classList.toggle('display_none')
-});
 
+	treatmentChevron.addEventListener('mouseout', () => {
+		treatment_menu.classList.toggle('display_none')
+	});
 
-treatmentChevron.addEventListener('mouseout', () => {
-	treatment_menu.classList.toggle('display_none')
-});
+}
 
 
 

@@ -55,7 +55,7 @@
 				margin-bottom: 2rem;
 				font-weight: 600;
 				letter-spacing: 0.1rem;
-				a, a:visited, a:hover, a:active{
+				a, a:visited, a:active{
 					text-decoration: none;
 					color: $dark-blue;
 				}
@@ -127,7 +127,7 @@
 		justify-content: flex-end;
 		&__item{
 			&:hover{
-				border-left: 3px solid $bright-blue;
+				// border-left: 3px solid $bright-blue;
 				background-color: rgba(grey,.1);
 			}
 			padding: 2rem 1rem;
@@ -193,6 +193,8 @@
 	.navbar{
 		@include container-styling-desktop;
 		height: 10rem;
+		// z-index: 1000;
+		// position: fixed;
 		&__profile{
 			// box-shadow: 0px 0px 1rem rgba(black,.4);
 			// border: 1px solid $bright-blue;
@@ -236,9 +238,12 @@
 					letter-spacing: 0.1rem;
 					padding: 4rem 0rem;
 					
-					a, a:visited, a:hover, a:active{
+					a, a:visited, a:active{
 						text-decoration: none;
 						color: $dark-blue;
+					}
+					a:hover{
+						color: $bright-blue;
 					}
 				}
 			}
@@ -262,19 +267,31 @@
 
 			}
 			&-tvastra-plus{
+				cursor: pointer;
 				@include button-styling-desktop;
 				background-color: $bright-blue;
 				color: $background-color;
 				font-size: 1.2rem;
 				padding: 1rem 2.6rem;
 				border-color: $bright-blue;
+				transition: .3s color, .3s background-color;
+				&:hover{
+					background-color: $background-color;
+					color: $bright-blue;
+				}
 			}
 			&-quote{
+				cursor: pointer;
 				@include button-styling-desktop;
 				background-color: $dark-blue;
 				color: $background-color;
 				padding: 1rem 2.6rem;
 				font-size: 1.2rem;
+				transition: .3s color, .3s background-color;
+				&:hover{
+					background-color: $background-color;
+					color: $dark-blue;
+				}
 			}
 		}
 		.fa-bars{

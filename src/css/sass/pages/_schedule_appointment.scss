@@ -1,5 +1,5 @@
 .schedule_appointment_container{
-	margin: 10rem 3rem 1.5rem 3rem;
+	margin: 0rem 3rem 1.5rem 3rem;
 	.add_appointment_slot{
 		display: flex;
 		flex-direction: row;
@@ -45,8 +45,6 @@
 }
 
 .scheduled_slots{
-	transform: translateX(30rem);
-	width: calc(100% - 30rem);
 	&__container{
 		margin: 1.5rem 3rem 3rem 3rem;
 		padding: 2rem;

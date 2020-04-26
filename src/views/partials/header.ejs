@@ -4,53 +4,57 @@
 			<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/Logo.jpg" class="navbar__logo__img">
 		</a>
 	</div>
-	<div class="navbar__menu">
-		<ul class="navbar__menu__ul">
-			<li class="navbar__menu__ul__item"><a href="/doctors">Doctors</a></li>
-			<li class="navbar__menu__ul__item"><a href="/hospitals">Hospitals</a></li>
-			<li class="navbar__menu__ul__item" id="treatments">
-				Treatment <i class="fas fa-chevron-down"></i>
-				<div class="treatment_menu_container display_none" id="treatment_menu_container">
-					<ul class="profile_menu">
-						<a href="/treatments"><li class="profile_menu__item">Dentistry</li></a>
-						<a href="/treatments"><li class="profile_menu__item">Cancer</li></a>
-						<a href="/treatments"><li class="profile_menu__item">Cardiology</li></a>
-						<a href="/treatments"><li class="profile_menu__item">Multi Organ Transplant</li></a>
-						<a href="/treatments"><li class="profile_menu__item">Orthopedics Surgery</li></a>
-						<a href="/treatments"><li class="profile_menu__item">Multi Organ Transplant</li></a>
-						<a href="/treatments"><li class="profile_menu__item">Infertility Treatment</li></a>
+	<% if(session.user) { 
+		if(!(session.user.role === 'admin')) { %>
+		<div class="navbar__menu">
+			<ul class="navbar__menu__ul">
+				<li class="navbar__menu__ul__item"><a href="/doctors">Doctors</a></li>
+				<li class="navbar__menu__ul__item"><a href="/hospitals">Hospitals</a></li>
+				<li class="navbar__menu__ul__item" id="treatments">
+					Treatment <i class="fas fa-chevron-down"></i>
+					<div class="treatment_menu_container display_none" id="treatment_menu_container">
+						<ul class="profile_menu">
+							<a href="/treatments"><li class="profile_menu__item">Dentistry</li></a>
+							<a href="/treatments"><li class="profile_menu__item">Cancer</li></a>
+							<a href="/treatments"><li class="profile_menu__item">Cardiology</li></a>
+							<a href="/treatments"><li class="profile_menu__item">Multi Organ Transplant</li></a>
+							<a href="/treatments"><li class="profile_menu__item">Orthopedics Surgery</li></a>
+							<a href="/treatments"><li class="profile_menu__item">Multi Organ Transplant</li></a>
+							<a href="/treatments"><li class="profile_menu__item">Infertility Treatment</li></a>
+						</ul>
+					</div>
+				</li>	
+				<li class="navbar__menu__ul__item"><a href="/about">About</a></li>
+			</ul>
+		</div>
+		<div class="navbar__side_menu">
+			<ul class="navbar__side_menu__ul">
+				<li class="navbar__side_menu__ul__item cross"><span><i class="fas fa-window-close"></i></span></li>
+				<li class="navbar__side_menu__ul__item"><a href="/doctors" >Doctors</a></li>
+				<li class="navbar__side_menu__ul__item"><a href="/hospitals">Hospitals</a></li>
+				<li class="navbar__side_menu__ul__item" id="treatments_sideMenu">Treatment <i class="fas fa-chevron-down"></i></li>
+				<li class="navbar__side_menu__ul__item display_none" id="side_menu_treatments">
+					<ul class="treatments_side_menu">
+						<li class="navbar__side_menu__ul__item"><a href="/treatments">Dentistry</a></li>
+						<li class="navbar__side_menu__ul__item"><a href="/treatments">Cancer</a></li>
+						<li class="navbar__side_menu__ul__item"><a href="/treatments">Cardiology</a></li>
+						<li class="navbar__side_menu__ul__item"><a href="/treatments">Multi Organ Transplant</a></li>
+						<li class="navbar__side_menu__ul__item"><a href="/treatments">Orthopedic Surgery</a></li>
+						<li class="navbar__side_menu__ul__item"><a href="/treatments">Infertility Treatment</a></li>
 					</ul>
-				</div>
-			</li>	
-			<li class="navbar__menu__ul__item"><a href="/about">About</a></li>
-		</ul>
-	</div>
-	<div class="navbar__side_menu">
-		<ul class="navbar__side_menu__ul">
-			<li class="navbar__side_menu__ul__item cross"><span><i class="fas fa-window-close"></i></span></li>
-			<li class="navbar__side_menu__ul__item"><a href="/doctors" >Doctors</a></li>
-			<li class="navbar__side_menu__ul__item"><a href="/hospitals">Hospitals</a></li>
-			<li class="navbar__side_menu__ul__item">Treatment <i class="fas fa-chevron-down"></i></li>
-			<li class="navbar__side_menu__ul__item">
-				<ul class="treatments_side_menu">
-					<li class="navbar__side_menu__ul__item"><a href="/treatments">Dentistry</a></li>
-					<li class="navbar__side_menu__ul__item"><a href="/treatments">Cancer</a></li>
-					<li class="navbar__side_menu__ul__item"><a href="/treatments">Cardiology</a></li>
-					<li class="navbar__side_menu__ul__item"><a href="/treatments">Multi Organ Transplant</a></li>
-					<li class="navbar__side_menu__ul__item"><a href="/treatments">Orthopedic Surgery</a></li>
-					<li class="navbar__side_menu__ul__item"><a href="/treatments">Infertility Treatment</a></li>
-				</ul>
-			</li>
-			<li class="navbar__side_menu__ul__item"><a href="#">Other Services</a></li>
-			<li class="navbar__side_menu__ul__item"><a href="/about">About</a></li>
-			<li class="navbar__side_menu__ul__item"><a href="/edit-profile">My Profile</a></li>
-			<li class="navbar__side_menu__ul__item"><a href="/user-dashboard-appointments">My Appointments</a></li>
-			<li class="navbar__side_menu__ul__item"><a href="/user-dashboard-lab-tests">My Tests</a></li>
-			<li class="navbar__side_menu__ul__item"><a href="/user-dashboard-medicine-orders">My Medicine Orders</a></li>
-			<li class="navbar__side_menu__ul__item"><a href="/user-dashboard-payments">My Payments</a></li>
-			<li class="navbar__side_menu__ul__item"><a href="/logout">Logout</a></li>
-		</ul>
-	</div>
+				</li>
+				<li class="navbar__side_menu__ul__item"><a href="#">Other Services</a></li>
+				<li class="navbar__side_menu__ul__item"><a href="/about">About</a></li>
+				<li class="navbar__side_menu__ul__item"><a href="/edit-profile">My Profile</a></li>
+				<li class="navbar__side_menu__ul__item"><a href="/user-dashboard-appointments">My Appointments</a></li>
+				<li class="navbar__side_menu__ul__item"><a href="/user-dashboard-lab-tests">My Tests</a></li>
+				<li class="navbar__side_menu__ul__item"><a href="/user-dashboard-medicine-orders">My Medicine Orders</a></li>
+				<li class="navbar__side_menu__ul__item"><a href="/user-dashboard-payments">My Payments</a></li>
+				<li class="navbar__side_menu__ul__item"><a href="/logout">Logout</a></li>
+			</ul>
+		</div>
+		<% }
+	} %>
 	<div class="profile_section">
 		<% if(session.userId) { %>
 			<a href="/tvastra-plus" id="tvastra-plus">

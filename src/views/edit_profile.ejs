@@ -6,7 +6,7 @@
 	<%- include('partials/head.ejs') %>		
 </head>
 <body class="user-dashboard">
-	<%- include('partials/header.ejs') %>
+	
 	<% if(error) {%>
 		<% if(errorType === 'Success') { %>
 			<div class="error_container error_container--success">
@@ -69,7 +69,11 @@
 			</div>
 		<% } %>
 	<% } %>
-	<section class="edit_profile">
+
+	
+	<%- include('partials/admin_sidebar.ejs') %>
+	<%- include('partials/header.ejs') %>
+	<!-- <section class="edit_profile">
 		<form action="/save-changes" id="edit-profile" method="POST" enctype="multipart/form-data">
 		<div class="edit_profile_container">
 			<div class="save_button">
@@ -138,10 +142,13 @@
 						<option value="Bogota">America/Bogota</option>
 						<option value="Los Angles">America/Los Angles</option>
 					</select>
-				</div>
+				</div> -->
 				<!-- <label for="dob">DOB</label>
 				<input type="date" name="dob" placeholder="Enter DOB" class="form_container__form__dob"> -->
-			</div>
+			
+
+
+			<!-- </div>
 			<div class="edit_address">
 				<div class="edit_field">
 					<label for="location">Location</label>
@@ -162,7 +169,101 @@
 			</div>
 		</div>
 	</form>
-	</section>
+	</section> -->
+	<div class="dashboard_content">
+		<section class="edit_profile edit_profile--doctor">
+			<form action="/save-changes" id="edit-profile" method="POST" enctype="multipart/form-data">
+			<div class="edit_profile_container">
+				<div class="save_button">
+					<button type="submit" form="edit-profile">
+						<span>
+							Save Changes
+						</span>
+					</button>
+				</div>
+				<div class="photo_and_name">
+					<div class="edit_profile_photo">
+						<div class="upload_photo_image_container">
+							<img src="<%= session.user.display_picture ? session.user.display_picture : 'public/uploads/users/user.jpeg'  %>" alt="">
+						</div>
+						<div class="upload_image_container">
+							<label for="display_picture">Upload Your Profile Photo</label>
+							<input type="file" name="display_picture" accept="image/*" id="display_picture">	
+						</div>
+					</div>
+					<div class="edit_name">
+						<label for="name">Name <%= session.user.role %></label>
+						<input type="text" name="name" value="<%= session.user.name %>" placeholder="Enter your name" required>
+					</div>
+				</div>
+				<div class="edit_other_details">
+					<div class="edit_field">
+						<label for="phoneNumber">Phone Number</label>
+						<input type="text" name="phoneNumber" value="<%= session.user.phoneNumber %>" placeholder="Enter your phone number" required>	
+					</div>
+					<div class="edit_field">
+						<label for="email">Email</label>
+						<input type="email" name="email" value="<%= session.user.email %>" placeholder="Enter your email" required>			
+					</div>
+					<div class="edit_field">
+						<label for="gender">Gender</label>
+						<select data-selected="" required name="gender" id="gender" type="text" class="form_container__form__gender">
+							<option value="Male">Male</option>
+							<option value="Female">Female</option>
+							<option value="Other">Other</option>
+						</select>
+					</div>
+					<div class="edit_field">
+						<label for="dob">DOB</label>
+						<input type="date" name="dob" value="<%= session.user.dob.split('T')[0] %>" placeholder="DOB">			
+					</div>
+					<div class="edit_field">
+						<label for="bloodGroup">Blood Group</label>
+						<select name="bloodGroup" id="bloodGroup" type="text" class="form_container__form__gender">
+							<option value=undefined>Select your Blood Group</option>
+							<option value="O+">O+</option>
+							<option value="O-">O-</option>
+							<option value="A+">A+</option>
+							<option value="A-">A-</option>
+							<option value="B+">B+</option>
+							<option value="B-">B-</option>
+							<option value="AB+">AB+</option>
+							<option value="AB-">AB-</option>
+						</select>
+					</div>
+					<div class="edit_field">
+						<label for="timeZone">Time Zone</label>
+						<select name="timeZone" id="timezone" type="text" class="form_container__form__gender">
+							<option value=undefined>Select your Time Zone</option>
+							<option value="Kolkata">Asia/Kolkata</option>
+							<option value="Karachi">Asia/Karachi</option>
+							<option value="Bogota">America/Bogota</option>
+							<option value="Los Angles">America/Los Angles</option>
+						</select>
+					</div>
+				</div>
+				<div class="edit_address">
+					<div class="edit_field">
+						<label for="location">Location</label>
+						<input type="text" name="location" value="<%= session.user.location %>">	
+					</div>
+					<div class="edit_field">
+						<label for="state">State</label>
+						<input type="text" name="state" value="<%= session.user.state %>">	
+					</div>
+					<div class="edit_field">
+						<label for="country">Country</label>
+						<select name="country" id="country" type="text" class="form_container__form__gender">
+							<option value="India">India</option>
+							<option value="USA">USA</option>
+							<option value="Other">Sri Lanka</option>
+						</select>	
+					</div>
+				</div>
+			</div>
+		</form>
+		</section>
+	</div>
 	<script>
 		const gender = document.querySelector('select[name="gender"]');
 		const country = document.querySelector('select[name="country"]');
@@ -184,7 +285,9 @@
 		selectOptionFromBackend(bloodGroup, '<%= session.user.bloodGroup %>');
 		selectOptionFromBackend(timeZone, '<%= session.user.timeZone %>');
 	</script>
+	<script src="./../dashboard.js"></script>
 	<script src="./../index.js"></script>
 	<script src="./../error.js"></script>
+
 </body>
 </html>

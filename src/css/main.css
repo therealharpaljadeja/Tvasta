@@ -322,7 +322,7 @@ html, body {
   font-weight: 600;
   letter-spacing: 0.1rem;
 }
-.navbar__side_menu__ul__item a, .navbar__side_menu__ul__item a:visited, .navbar__side_menu__ul__item a:hover, .navbar__side_menu__ul__item a:active {
+.navbar__side_menu__ul__item a, .navbar__side_menu__ul__item a:visited, .navbar__side_menu__ul__item a:active {
   text-decoration: none;
   color: #2a2d3e;
 }
@@ -395,7 +395,6 @@ html, body {
   font-size: 1.5rem;
 }
 .profile_menu_container .profile_menu__item:hover, .treatment_menu_container .profile_menu__item:hover {
-  border-left: 3px solid #0173b2;
   background-color: rgba(128, 128, 128, 0.1);
 }
 .profile_menu_container .profile_menu a, .treatment_menu_container .profile_menu a {
@@ -492,9 +491,12 @@ html, body {
     letter-spacing: 0.1rem;
     padding: 4rem 0rem;
   }
-  .navbar__menu__ul__item a, .navbar__menu__ul__item a:visited, .navbar__menu__ul__item a:hover, .navbar__menu__ul__item a:active {
+  .navbar__menu__ul__item a, .navbar__menu__ul__item a:visited, .navbar__menu__ul__item a:active {
     text-decoration: none;
     color: #2a2d3e;
+  }
+  .navbar__menu__ul__item a:hover {
+    color: #0173b2;
   }
   .navbar__side_menu {
     display: none;
@@ -515,6 +517,7 @@ html, body {
     justify-self: end;
   }
   .navbar__buttons-tvastra-plus {
+    cursor: pointer;
     padding: 1rem 1.8rem;
     color: #2a2d3e;
     border: 1px solid #2a2d3e;
@@ -527,8 +530,14 @@ html, body {
     font-size: 1.2rem;
     padding: 1rem 2.6rem;
     border-color: #0173b2;
+    transition: 0.3s color, 0.3s background-color;
+  }
+  .navbar__buttons-tvastra-plus:hover {
+    background-color: white;
+    color: #0173b2;
   }
   .navbar__buttons-quote {
+    cursor: pointer;
     padding: 1rem 1.8rem;
     color: #2a2d3e;
     border: 1px solid #2a2d3e;
@@ -540,6 +549,11 @@ html, body {
     color: white;
     padding: 1rem 2.6rem;
     font-size: 1.2rem;
+    transition: 0.3s color, 0.3s background-color;
+  }
+  .navbar__buttons-quote:hover {
+    background-color: white;
+    color: #2a2d3e;
   }
   .navbar .fa-bars {
     display: none;
@@ -4310,10 +4324,10 @@ html, body {
   background-color: white;
   position: fixed;
   width: 20rem;
-  padding: 2rem 3rem;
+  padding: 3rem 3rem 0rem 10rem;
   left: 0;
-  top: 0;
-  height: 100%;
+  top: 10rem;
+  height: calc(100% - 10rem);
   display: none;
   flex-direction: column;
   justify-content: flex-start;
@@ -4462,10 +4476,6 @@ html, body {
     display: none;
   }
 
-  .user-dashboard {
-    background-color: #eee;
-  }
-
   .profile_detail {
     display: block;
     background-color: white;
@@ -4549,10 +4559,11 @@ html, body {
     margin: 0rem 0rem 0rem 10rem;
   }
 }
-.statistics_site {
-  padding: 2rem 2rem;
-  margin-top: 7rem;
+.dashboard_content {
+  transform: translate(30rem);
+  width: calc(100% - 30rem);
 }
+
 .statistics_site__grid {
   display: grid;
   grid-template-columns: 100%;
@@ -4586,11 +4597,6 @@ html, body {
   color: #0173b2;
 }
 
-.earnings_chart_container {
-  transform: translateX(30rem);
-  width: calc(100% - 30rem);
-}
-
 @media (min-width: 768px) {
   .statistics_site {
     padding: 2rem 3rem;
@@ -4600,10 +4606,6 @@ html, body {
   }
 }
 @media (min-width: 1024px) {
-  .statistics_site {
-    transform: translateX(30rem);
-    width: calc(100% - 30rem);
-  }
   .statistics_site__grid {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
@@ -4629,7 +4631,6 @@ html, body {
 
 .admin_doctors {
   padding: 2rem 2rem;
-  margin-top: 7rem;
 }
 .admin_doctors__title {
   font-family: "Nexa Bold";
@@ -4658,12 +4659,6 @@ html, body {
     padding: 2rem 3rem;
   }
 }
-@media (min-width: 1024px) {
-  .admin_doctors {
-    transform: translateX(30rem);
-    width: calc(100% - 30rem);
-  }
-}
 .page-flex {
   display: flex;
   flex-direction: row;
@@ -4671,7 +4666,6 @@ html, body {
 
 .page-content {
   max-height: 100%;
-  background-color: #ddd;
   margin: 1rem 2rem;
 }
 .page-content .page-content-container {
@@ -4680,19 +4674,19 @@ html, body {
 }
 .page-content .page-content-container .appointment_heading {
   font-family: "Nexa Bold";
-  color: #777;
+  color: black;
 }
 .page-content .page-content-container .appointment_container .appointment {
   display: flex;
   flex-direction: row;
   grid-gap: 1rem;
-  background-color: white;
+  background-color: #ddd;
   border: 1px solid #ddd;
   padding: 1rem 1.5rem;
   margin: 1rem 0rem;
 }
 .page-content .page-content-container .appointment_container .appointment_date {
-  background-color: #ccc;
+  background-color: #fff;
   padding: 1rem;
   border-radius: 0.5rem;
   display: flex;
@@ -4703,14 +4697,14 @@ html, body {
 }
 .page-content .page-content-container .appointment_container .appointment_date_date {
   font-family: "Nexa Bold";
-  color: #666;
+  color: black;
   font-size: 2rem;
 }
 .page-content .page-content-container .appointment_container .appointment_date_month {
   text-transform: uppercase;
   font-family: "Nexa Bold";
   font-size: 1.5rem;
-  color: #666;
+  color: black;
 }
 .page-content .page-content-container .appointment_container .appointment_details {
   display: flex;
@@ -4722,22 +4716,22 @@ html, body {
 .page-content .page-content-container .appointment_container .appointment_details_doctor_name {
   font-family: "Nexa Bold";
   font-size: 1.4rem;
-  color: #555;
+  color: black;
 }
 .page-content .page-content-container .appointment_container .appointment_details_time {
   font-family: "Nexa Bold";
-  color: #999;
+  color: black;
 }
 .page-content .page-content-container .appointment_container .appointment_details_clinic {
   font-family: "Nexa Bold";
-  color: #999;
+  color: black;
 }
 .page-content .page-content-container .appointment_container .appointment_details_status .approved {
   line-height: 2rem;
   padding: 0.5rem;
   border-radius: 0.5rem;
   font-family: "Nexa Bold";
-  background-color: rgba(0, 128, 0, 0.4);
+  background-color: rgba(0, 128, 0, 0.2);
   color: green;
 }
 .page-content .page-content-container .appointment_container .appointment_details_status .cancelled {
@@ -4755,33 +4749,22 @@ html, body {
   grid-gap: 1rem;
 }
 .page-content .page-content-container .appointment_container .appointment_view_details_btn {
-  background-color: white;
+  background-color: #0173b2;
   border: 1px solid #0173b2;
   border-radius: 0.5rem;
-  color: #0173b2;
+  color: white;
   font-family: "Nexa Bold";
   padding: 1rem;
 }
 
 @media (min-width: 768px) {
   .page-content {
-    width: calc(100% - 26rem);
-    margin: 0rem 0rem 0rem 0rem;
+    margin: 3rem 10rem;
   }
-}
-@media (min-width: 1024px) {
-  .page-content {
-    width: calc(100% - 40rem);
-  }
-}
-.edit_profile--doctor {
-  transform: translateX(30rem);
-  width: calc(100% - 30rem);
 }
 .edit_profile_container {
   margin: 2rem;
   background-color: white;
-  padding: 2rem;
 }
 .edit_profile_container input {
   margin: 1rem 0rem;
@@ -4937,7 +4920,7 @@ html, body {
 }
 
 .schedule_appointment_container {
-  margin: 10rem 3rem 1.5rem 3rem;
+  margin: 0rem 3rem 1.5rem 3rem;
 }
 .schedule_appointment_container .add_appointment_slot {
   display: flex;
@@ -4980,10 +4963,6 @@ html, body {
   font-family: "Nexa Bold";
 }
 
-.scheduled_slots {
-  transform: translateX(30rem);
-  width: calc(100% - 30rem);
-}
 .scheduled_slots__container {
   margin: 1.5rem 3rem 3rem 3rem;
   padding: 2rem;
@@ -5057,10 +5036,6 @@ html, body {
   color: #0173b2;
 }
 
-.recent_appointments {
-  transform: translateX(30rem);
-  width: calc(100% - 30rem);
-}
 .recent_appointments__container {
   padding: 3rem;
   display: flex;

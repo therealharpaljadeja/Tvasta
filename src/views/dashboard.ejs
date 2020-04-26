@@ -121,133 +121,137 @@
 		</div>
 	</header> -->
 	<%- include('partials/admin_sidebar.ejs') %>
-	<%- include('partials/admin_header.ejs') %>
-	<section class="statistics_site">
-		<div class="statistics_site__grid">
-			<div class="statistics_site__grid__item">
-				<div class="statistics_site__grid__item__col--1">
-					<div class="statistics_site__grid__item__icon">
-						<i class="fas fa-medkit"></i>
-					</div>	
-				</div>
-				<div class="statistics_site__grid__item__col--2">
-					<div class="statistics_site__grid__item__title">
-						<h4 class="heading-4">Appointments</h4>
+	<%- include('partials/header.ejs') %>
+	<div class="dashboard_content">
+		<section class="statistics_site">
+			<div class="statistics_site__grid">
+				<div class="statistics_site__grid__item">
+					<div class="statistics_site__grid__item__col--1">
+						<div class="statistics_site__grid__item__icon">
+							<i class="fas fa-medkit"></i>
+						</div>	
 					</div>
-					<div class="statistics_site__grid__item__figure">
-						<h4 class="heading-4">213</h4>
-					</div>	
-				</div>
-				
-			</div>
-			<div class="statistics_site__grid__item">
-				<div class="statistics_site__grid__item__col--1">
-					<div class="statistics_site__grid__item__icon">
-						<i class="fas fa-syringe"></i>
-					</div>	
-				</div>
-				<div class="statistics_site__grid__item__col--2">
-					<div class="statistics_site__grid__item__title">
-						<h4 class="heading-4">Operations</h4>
+					<div class="statistics_site__grid__item__col--2">
+						<div class="statistics_site__grid__item__title">
+							<h4 class="heading-4">Appointments</h4>
+						</div>
+						<div class="statistics_site__grid__item__figure">
+							<h4 class="heading-4">213</h4>
+						</div>	
 					</div>
-					<div class="statistics_site__grid__item__figure">
-						<h4 class="heading-4">12</h4>
-					</div>	
-				</div>
-			</div>
-			<div class="statistics_site__grid__item">
-				<div class="statistics_site__grid__item__col--1">
-					<div class="statistics_site__grid__item__icon">
-						<i class="fas fa-user-injured"></i>
-					</div>	
-				</div>
-				<div class="statistics_site__grid__item__col--2">
-					<div class="statistics_site__grid__item__title">
-						<h4 class="heading-4">Patients</h4>
-					</div>
-					<div class="statistics_site__grid__item__figure">
-						<h4 class="heading-4">13</h4>
-					</div>	
-				</div>
-			</div>
-			<div class="statistics_site__grid__item">
-				<div class="statistics_site__grid__item__col--1">
-					<div class="statistics_site__grid__item__icon">
-						<i class="fas fa-rupee-sign"></i>
-					</div>	
-				</div>
-				<div class="statistics_site__grid__item__col--2">
-					<div class="statistics_site__grid__item__title">
-						<h4 class="heading-4">Hospital Earnings</h4>
-					</div>
-					<div class="statistics_site__grid__item__figure">
-						<h4 class="heading-4">₹ 21313</h4>
-					</div>	
-				</div>
-				
-			</div>
-		</div>
-	</section>
-	<section class="earnings_chart_container">
-		<svg class="earnings_chart">
-			
-		</svg>
-	</section>
-	<section class="recent_appointments">
-		<div class="recent_appointments__container">
-			<h3 class="recent_appointments__heading heading-3">Last Appointments</h3>
-			<div class="recent_appointments__table_container">
-				<table class="recent_appointments__table">
-					<thead>
-						<tr>
-							<th>Photo</th>
-							<th>Name</th>
-							<th>Email</th>
-							<th>Date</th>
-							<th>Visit Time</th>
-							<th>Number</th>
-							<th>Condition/Injury</th>
-							<th>Action</th>
-						</tr>	
-					</thead>
-					<tbody>
-						<tr>
-							<td class="display_picture_container">
-								<img src="./../public/uploads/users/user.jpeg" alt="">
-							</td>
-							<td>
-								Rajdeep Jadeja
-							</td>
-							<td>
-								rajdeep@gmail.com
-							</td>
-							<td>
-								14 Apr 2020
-							</td>
-							<td>
-								11:00 - 11:15
-							</td>
-							<td>
-								9820836830
-							</td>
-							<td>
-								Leg Pain
-							</td>
-							<td>
-								
-							</td>
-						</tr>	
-					</tbody>
 					
-				</table>
-			</div>	
-		</div>
-		
+				</div>
+				<div class="statistics_site__grid__item">
+					<div class="statistics_site__grid__item__col--1">
+						<div class="statistics_site__grid__item__icon">
+							<i class="fas fa-syringe"></i>
+						</div>	
+					</div>
+					<div class="statistics_site__grid__item__col--2">
+						<div class="statistics_site__grid__item__title">
+							<h4 class="heading-4">Operations</h4>
+						</div>
+						<div class="statistics_site__grid__item__figure">
+							<h4 class="heading-4">12</h4>
+						</div>	
+					</div>
+				</div>
+				<div class="statistics_site__grid__item">
+					<div class="statistics_site__grid__item__col--1">
+						<div class="statistics_site__grid__item__icon">
+							<i class="fas fa-user-injured"></i>
+						</div>	
+					</div>
+					<div class="statistics_site__grid__item__col--2">
+						<div class="statistics_site__grid__item__title">
+							<h4 class="heading-4">Patients</h4>
+						</div>
+						<div class="statistics_site__grid__item__figure">
+							<h4 class="heading-4">13</h4>
+						</div>	
+					</div>
+				</div>
+				<div class="statistics_site__grid__item">
+					<div class="statistics_site__grid__item__col--1">
+						<div class="statistics_site__grid__item__icon">
+							<i class="fas fa-rupee-sign"></i>
+						</div>	
+					</div>
+					<div class="statistics_site__grid__item__col--2">
+						<div class="statistics_site__grid__item__title">
+							<h4 class="heading-4">Hospital Earnings</h4>
+						</div>
+						<div class="statistics_site__grid__item__figure">
+							<h4 class="heading-4">₹ 21313</h4>
+						</div>	
+					</div>
+					
+				</div>
+			</div>
+		</section>
+		<section class="earnings_chart_container">
+			<svg class="earnings_chart">
+				
+			</svg>
+		</section>
+		<section class="recent_appointments">
+			<div class="recent_appointments__container">
+				<h3 class="recent_appointments__heading heading-3">Last Appointments</h3>
+				<div class="recent_appointments__table_container">
+					<table class="recent_appointments__table">
+						<thead>
+							<tr>
+								<th>Photo</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Date</th>
+								<th>Visit Time</th>
+								<th>Number</th>
+								<th>Condition/Injury</th>
+								<th>Action</th>
+							</tr>	
+						</thead>
+						<tbody>
+							<tr>
+								<td class="display_picture_container">
+									<img src="./../public/uploads/users/user.jpeg" alt="">
+								</td>
+								<td>
+									Rajdeep Jadeja
+								</td>
+								<td>
+									rajdeep@gmail.com
+								</td>
+								<td>
+									14 Apr 2020
+								</td>
+								<td>
+									11:00 - 11:15
+								</td>
+								<td>
+									9820836830
+								</td>
+								<td>
+									Leg Pain
+								</td>
+								<td>
+									
+								</td>
+							</tr>	
+						</tbody>
+						
+					</table>
+				</div>	
+			</div>
+			
 
-	</section>
-	<section class="">
+		</section>
+		<section class="">
+			
+		</section>
 		
-	</section>
+	</div>
+	
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<script src="./../charts_in_admin.js"></script>
 	<script src="./../index.js">

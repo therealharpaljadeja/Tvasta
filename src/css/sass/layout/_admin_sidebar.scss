@@ -3,10 +3,10 @@
 	background-color: $background-color;
 	position: fixed;
 	width: 20rem;
-	padding: 2rem 3rem;
+	padding: 3rem 3rem 0rem 10rem;
 	left: 0;
-	top: 0;
-	height: 100%;
+	top: 10rem;
+	height: calc(100% - 10rem);
 	display: none;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -67,5 +67,11 @@
 @media(min-width: $bp-tablet){
 	.admin_sidebar{
 		width: 30rem;
+	}
+}
+
+@media(min-width: $bp-desktop){
+	.admin_sidebar{
+	
 	}
 }

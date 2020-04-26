@@ -123,7 +123,7 @@
 			<i class="fas fa-chevron-down"></i>
 		</div>
 	</header> -->
-	<%- include('partials/admin_header.ejs') %>
+	<%- include('partials/header.ejs') %>
 	<%- include('partials/admin_sidebar.ejs') %>
 	
 	<!-- <section class="statistics_site">
@@ -192,128 +192,131 @@
 			</div>
 		</div>
 	</section> -->
-	<section class="edit_profile edit_profile--doctor">
-		<div class="schedule_appointment_container edit_profile_container">
-			<form action="/schedule-appointment" id="edit-profile" method="POST">
-				<div class="add_appointment_slot">
-					<div class="edit_field">
-						<label for="days[]">Day</label>
-						<select name="days[]" multiple required>
-							<option value="monday">Monday</option>
-							<option value="tuesday">Tuesday</option>
-							<option value="wednesday">Wednesday</option>
-							<option value="thursday">Thursday</option>
-							<option value="friday">Friday</option>
-							<option value="saturday">Saturday</option>
-							<option value="sunday">Sunday</option>
-						</select>	
-					</div>
-					<div class="edit_field">
-						<label for="startTime">Start Time</label>
-						<!-- <input type="time" name="startTime"> -->
-						<div class="input-group clockpicker">
-						    <input name="startTime" type="time" class="form-control" value="09:00">
-						</div>
-					</div>
-					<div class="edit_field">
-						<label for="endTime">End Time</label>
-						<div class="input-group clockpicker">
-						    <input name="endTime" type="time" class="form-control" value="09:00">
-						</div>
-					</div>
-					<div class="edit_field">
-						<label for="interval">Interval</label>
-						<input type="text" name="interval">
-					</div>
-					<div class="edit_field">
-						<label for="hospital">Hospital</label>
-						<input type="text" name="hospital" class="hospital_list_input">
-					</div>
-					<div class="edit_field add_slot_and_holiday">
+	<div class="dashboard_content">
+		<section class="edit_profile edit_profile--doctor">
+			<div class="schedule_appointment_container edit_profile_container">
+				<form action="/schedule-appointment" id="edit-profile" method="POST">
+					<div class="add_appointment_slot">
 						<div class="edit_field">
-							<button class="add_slot_button">Add Slot</button>	
+							<label for="days[]">Day</label>
+							<select name="days[]" multiple required>
+								<option value="monday">Monday</option>
+								<option value="tuesday">Tuesday</option>
+								<option value="wednesday">Wednesday</option>
+								<option value="thursday">Thursday</option>
+								<option value="friday">Friday</option>
+								<option value="saturday">Saturday</option>
+								<option value="sunday">Sunday</option>
+							</select>	
 						</div>
-						<div class="edit_field holiday">
-							<input type="checkbox" name="holiday">
-							<label for="holiday">Holiday</label>	
-						</div>	
-					</div>
-				</div>
-			</form>	
-		</div>	
-		
-	</section>
-	<section class="scheduled_slots">
-		<div class="scheduled_slots__container">
-			<h3 class="heading-3">Scheduled Slots</h3>
-			<% if(slots.length) { %>
-				<% for(let i = 0; i < slots.length; i++) { %>
-					<% 
-						function tConvert (time) {
-						  time = time.toString().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
-
-						  if (time.length > 1) { 
-						    time = time.slice (1);  
-						    time[5] = +time[0] < 12 ? 'AM' : 'PM'; 
-						    time[0] = +time[0] % 12 || 12;
-						  }
-						  return time.join ('');
-						}
-						let startTime = tConvert(slots[i].startTime);
-						let endTime = tConvert(slots[i].endTime);
- 					%>
- 					<% for(let j = 0; j < slots[i].days.length; j++) { %>
- 					<div>
- 						<div class="scheduled_slots__slot">
-							<span class="scheduled_slots__day">
-								<%= `${slots[i].days[j][0].toUpperCase()}${slots[i].days[j].slice(1,slots[i].days[j].length)}` %>
-							</span>
-							<div class="scheduled_slots__hospital_and_time">
-								<span class="scheduled_slots__hospital">
-									<%= slots[i].hospital %>
-								</span>
-								<span class="scheduled_slots__time">
-									<span class="start_time"><%= startTime %></span>
-									<span class="end_time">- <%= endTime %></span>
-								</span>
+						<div class="edit_field">
+							<label for="startTime">Start Time</label>
+							<!-- <input type="time" name="startTime"> -->
+							<div class="input-group clockpicker">
+							    <input name="startTime" type="time" class="form-control" value="09:00">
 							</div>
-							<a href="/delete-schedule/<%= slots[i]._id %>?day=<%= slots[i].days[j] %>&startTime=<%= slots[i].startTime %>&endTime=<%= slots[i].endTime %>"><button class="scheduled_slots__edit">
-								Delete Slot
-							</button></a>
-							<button onclick="showEditOptions(this)" class="scheduled_slots__edit">
-								Edit Slot
-							</button>
-							<button onclick="showSlotDetails(this)" class="scheduled_slots__detail">
-								View Detail
-							</button>
 						</div>
-						<div class="scheduled_slots__edit_options display_none">
-							<form action="/slot-holiday" method="POST" class="edit_field holiday">
+						<div class="edit_field">
+							<label for="endTime">End Time</label>
+							<div class="input-group clockpicker">
+							    <input name="endTime" type="time" class="form-control" value="09:00">
+							</div>
+						</div>
+						<div class="edit_field">
+							<label for="interval">Interval</label>
+							<input type="text" name="interval">
+						</div>
+						<div class="edit_field">
+							<label for="hospital">Hospital</label>
+							<input type="text" name="hospital" class="hospital_list_input">
+						</div>
+						<div class="edit_field add_slot_and_holiday">
+							<div class="edit_field">
+								<button class="add_slot_button">Add Slot</button>	
+							</div>
+							<!-- <div class="edit_field holiday">
 								<input type="checkbox" name="holiday">
 								<label for="holiday">Holiday</label>	
-							</form>
+							</div>	 -->
 						</div>
-						<div class="scheduled_slots__sub_slots display_none">
-							<div class="time-slots">
-							<% for(let k = 0; k < slots[i].subSlots.length; k++) { %>
-								<% if(!slots[i].subSlots[k].isBooked) { %>
-									<div class="slot"><%= slots[i].subSlots[k].startTime %></div>
-									<input type="checkbox" name="disabled[]">
-								<% } %>
-							<% } %>
+					</div>
+				</form>	
+			</div>	
+			
+		</section>
+		<section class="scheduled_slots">
+			<div class="scheduled_slots__container">
+				<h3 class="heading-3">Scheduled Slots</h3>
+				<% if(slots.length) { %>
+					<% for(let i = 0; i < slots.length; i++) { %>
+						<% 
+							function tConvert (time) {
+							  time = time.toString().match (/^([01]\d|2[0-3])(:)([0-5]\d)(:[0-5]\d)?$/) || [time];
+
+							  if (time.length > 1) { 
+							    time = time.slice (1);  
+							    time[5] = +time[0] < 12 ? 'AM' : 'PM'; 
+							    time[0] = +time[0] % 12 || 12;
+							  }
+							  return time.join ('');
+							}
+							let startTime = tConvert(slots[i].startTime);
+							let endTime = tConvert(slots[i].endTime);
+	 					%>
+	 					<% for(let j = 0; j < slots[i].days.length; j++) { %>
+	 					<div>
+	 						<div class="scheduled_slots__slot">
+								<span class="scheduled_slots__day">
+									<%= `${slots[i].days[j][0].toUpperCase()}${slots[i].days[j].slice(1,slots[i].days[j].length)}` %>
+								</span>
+								<div class="scheduled_slots__hospital_and_time">
+									<span class="scheduled_slots__hospital">
+										<%= slots[i].hospital %>
+									</span>
+									<span class="scheduled_slots__time">
+										<span class="start_time"><%= startTime %></span>
+										<span class="end_time">- <%= endTime %></span>
+									</span>
+								</div>
+								<a href="/delete-schedule/<%= slots[i]._id %>?day=<%= slots[i].days[j] %>&startTime=<%= slots[i].startTime %>&endTime=<%= slots[i].endTime %>"><button class="scheduled_slots__edit">
+									Delete Slot
+								</button></a>
+								<button onclick="showEditOptions(this)" class="scheduled_slots__edit">
+									Edit Slot
+								</button>
+								<button onclick="showSlotDetails(this)" class="scheduled_slots__detail">
+									View Detail
+								</button>
 							</div>
-						</div>
- 					</div>
-						
+							<div class="scheduled_slots__edit_options display_none">
+								<form action="/slot-holiday" method="POST" class="edit_field holiday">
+									<input type="checkbox" name="holiday">
+									<label for="holiday">Holiday</label>	
+								</form>
+							</div>
+							<div class="scheduled_slots__sub_slots display_none">
+								<div class="time-slots">
+								<% for(let k = 0; k < slots[i].subSlots.length; k++) { %>
+									<% if(!slots[i].subSlots[k].isBooked) { %>
+										<div class="slot"><%= slots[i].subSlots[k].startTime %></div>
+										<input type="checkbox" name="disabled[]">
+									<% } %>
+								<% } %>
+								</div>
+							</div>
+	 					</div>
+							
+						<% } %>
 					<% } %>
+				<% } else { %>
+				<h4 class="heading-4">
+					No Scheduled Appointments
+				</h4>
 				<% } %>
-			<% } else { %>
-			<h4 class="heading-4">
-				No Scheduled Appointments
-			</h4>
-			<% } %>
-		</div>	
-	</section>
+			</div>	
+		</section>
+	</div>
+	
 	<script>
 		const showEditOptions = (el) => {
 			el.parentElement.parentElement.children[1].classList.toggle('display_none');

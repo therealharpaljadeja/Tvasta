@@ -145,7 +145,7 @@
 							<div class="carousel-dates slides">
 								<div class="date-heading date-heading--active current slide">
 									<div class="day-date">
-										<span>Mon, 20 April 2020</span>
+										<span>Today</span>
 									</div>
 									<div class="day-slots-available">
 										15 Slots Available
@@ -153,28 +153,25 @@
 								</div>
 								<div class="date-heading slide">
 									<div class="day-date">
-										<span>Tue, 21 April 2020</span>
+										<span>Tommorow</span>
 									</div>
 									<div class="day-slots-available">
 										15 Slots Available
 									</div>
 								</div>
-								<div class="date-heading slide">
-									<div class="day-date">
-										<span>Wed, 22 April 2020</span>
+								<% let date = new Date(Date.now()); 
+								date.setDate(date.getDate() + 1); 
+								for(let j = 1; j < 6 ; j++) { %>
+									<div class="date-heading slide">
+										<div class="day-date">
+											<% date.setDate(date.getDate() + 1) %>
+											<span><%= new Date(date).toDateString() %></span>
+										</div>
+										<div class="day-slots-available">
+											15 Slots Available
+										</div>
 									</div>
-									<div class="day-slots-available">
-										15 Slots Available
-									</div>
-								</div>
-								<div class="date-heading slide">
-									<div class="day-date">
-										<span>Thur, 23 April 2020</span>
-									</div>
-									<div class="day-slots-available">
-										15 Slots Available
-									</div>
-								</div>
+								<% } %>
 							</div>
 							<div class="time-slots-header-controls time-slots-header-right right">
 								<i class="fas fa-chevron-right"></i>
@@ -182,11 +179,12 @@
 						</div>
 						<div class="time-slots-container">
 							<div class="time-slots">
-								<% for(let j = 0; j < doctors[i].slots.length; i++) { %>
+								<% for(let j = 0; j < doctors[i].slots.length; j++) { %>
 									<% for(let k = 0; k < doctors[i].slots[j].subSlots.length; k++) { %>
 										<div class="slot"><%= doctors[i].slots[j].subSlots[k].startTime %></div>
 									<% } %>
 								<% } %>
+								
 							</div>
 							<div class="time-slots">
 								

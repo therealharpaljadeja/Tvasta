@@ -1,12 +1,10 @@
+
 .edit_profile{
 	&--doctor{
-		transform: translateX(30rem);
-		width: calc(100% - 30rem);
 	}
 	&_container{
 		margin: 2rem;
 		background-color: white;
-		padding: 2rem;
 		input{
 			margin: 1rem 0rem;
 			display: block;

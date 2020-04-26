@@ -32,7 +32,7 @@
 			background-color: white;
 		}
 		.save_button{
-			border-bottom: 1px solid #ddd;
+			// border-bottom: 1px solid #ddd;
 			padding: 2rem 0rem;
 			text-align: right;
 			button{
@@ -65,6 +65,29 @@
 						height: 100%;
 					}
 				}
+				.upload_image_container{
+					display: flex;
+					flex-direction: column;
+					justify-content: center;
+					#display_picture{
+						visibility: hidden;
+						margin: 0;
+						padding :0;
+						position: absolute;
+					}	
+					span{
+						font-family: $nexa-bold;
+						font-size: 1.4rem;
+						display: block;	
+						margin-bottom: 2rem;
+					}
+					label{
+						font-size: 1.2rem;
+						color: $bright-blue;
+						cursor: pointer;
+					}
+				}
+				
 			}
 		}
 		.edit_other_details{
@@ -96,6 +119,15 @@
 	.edit_profile{
 		&_container{
 			margin: 3rem;
+			.edit_profile_heading{
+				h4{
+					font-family: $nexa-bold;
+				}
+				border-bottom: 1px solid #ddd;
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+			}
 		}
 		.photo_and_name{
 			display: grid;

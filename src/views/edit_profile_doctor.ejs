@@ -195,12 +195,15 @@
 		<section class="edit_profile edit_profile--doctor">
 			<form action="/save-changes" id="edit-profile" method="POST" enctype="multipart/form-data">
 			<div class="edit_profile_container">
-				<div class="save_button">
-					<button type="submit" form="edit-profile">
-						<span>
-							Save Changes
-						</span>
-					</button>
+				<div class="edit_profile_heading">
+					<h4 class="heading-4">Account</h4>
+					<div class="save_button">
+						<button type="submit" form="edit-profile">
+							<span>
+								Save Changes
+							</span>
+						</button>
+					</div>	
 				</div>
 				<div class="photo_and_name">
 					<div class="edit_profile_photo">
@@ -208,7 +211,8 @@
 							<img src="<%= session.user.display_picture ? session.user.display_picture : 'public/uploads/users/user.jpeg'  %>" alt="">
 						</div>
 						<div class="upload_image_container">
-							<label for="display_picture">Upload Your Profile Photo</label>
+							<span>Profile Picture</span>
+							<label for="display_picture">Upload Photo</label>
 							<input type="file" name="display_picture" accept="image/*" id="display_picture">	
 						</div>
 					</div>

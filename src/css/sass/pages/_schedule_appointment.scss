@@ -59,6 +59,13 @@
 			font-family: $nexa-light;
 		}	
 	}
+	.slot_container{
+		border: 1px solid $bright-blue;
+		border-radius: .5rem;
+		padding: .5rem;
+		display: flex;
+
+	}
 	&__slot{
 		display: flex;
 		flex-direction: row;
@@ -108,11 +115,11 @@
 			align-items: center;
 			grid-gap: .5rem;
 			flex-wrap: wrap;
+			grid-gap: 1rem;
 			.slot{
-				display: inline;
-				// line-height: 3rem;
+				display: block;
 				border-radius: .5rem;
-				border: 1px solid $bright-blue;
+				
 				padding: .7rem;
 				font-family: $nexa-bold;
 				color: $bright-blue;

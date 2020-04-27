@@ -25,7 +25,6 @@ const uploadDoctor = multer({
 
 const getAllDoctors = async (req, res, next) => {
     var doctors = [];
-    console.log(req.session.filters);
     if(req.session.filters){
         if(Object.keys(req.session.filters).length){
             doctors = await User.find({
@@ -62,8 +61,9 @@ const getAllDoctors = async (req, res, next) => {
  //    }
  //    // console.log({ role : "doctor", ...req.query, doctor.experience: { $gte : experience || 0 }});
  //    const doctors = await User.find({role: 'doctor',...req.query, "doctor.experience": { $gte : experience || 0 }});         
-    console.log(doctors);
+    
     res.locals.doctors = doctors;
+    res.locals.currentDay = new Date().getDay();
     next();
 }
 

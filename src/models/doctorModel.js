@@ -13,6 +13,7 @@ const doctorSchema = new mongoose.Schema({
 	startTime: { type: String },
 	endTime: { type: String },
 	slotDuration: { type: Number, enum: [15,30,45,60] },
+	subslots: [],
 	// slots ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 }, {
 	toJSON: { virtuals : true },

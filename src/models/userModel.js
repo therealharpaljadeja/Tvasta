@@ -81,12 +81,25 @@ userSchema.virtual('slots', {
 	localField: '_id'
 });
 
+
 userSchema.post('find', async function(docs,next){
+	const days = ['sunday','monday', 'tuesday', 'wednesday', 'thursday','friday', 'saturday'];
 	for await(let doc of docs){
 		await doc.populate('slots').execPopulate();
+		let subslotsArray = [[], [], [], [], [], [], []];
+	 	for(let i = 0; i < doc.slots.length; i++){
+			for(let j = 0; j < doc.slots[i].days.length; j++){
+				subslotsArray[days.indexOf(doc.slots[i].days[j])] = doc.slots[i].subSlots;
+			}
+		}
+		doc.doctor.subslots = subslotsArray;
 	}
 	next();
 })
+
+
+
+
 
 userSchema.pre('save', async function(next) {
 	if(this.isModified('password')){

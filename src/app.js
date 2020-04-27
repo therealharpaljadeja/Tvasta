@@ -127,7 +127,7 @@ app.post('/', authenticationController.redirectLogin2, authenticationController.
 app.put('/disable-error', authenticationController.clearError);
 
 app.get('/doctors', authenticationController.redirectLogin, doctorController.getAllDoctors, (req, res) => {
-	res.render('views/doctor.ejs', {doctors : res.locals.doctors, session: req.session, filter: req.session.filters ?  req.session.filters : '', sort: req.session.sortBy ?  req.session.sortBy : ''});
+	res.render('views/doctor.ejs', {currentDay: res.locals.currentDay , doctors : res.locals.doctors, session: req.session, filter: req.session.filters ?  req.session.filters : '', sort: req.session.sortBy ?  req.session.sortBy : ''});
 });
 
 app.get('/hospitals', authenticationController.redirectLogin, hospitalController.getAllHospitals, (req, res) => {

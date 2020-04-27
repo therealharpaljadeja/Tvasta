@@ -1687,10 +1687,13 @@ html, body {
 .doctor_list__container__col-2__card__time_slot .time-slots, .hospital_list__container__col-2__card__time_slot .time-slots {
   flex-basis: 100%;
   min-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 0.5rem;
 }
 .doctor_list__container__col-2__card__time_slot .time-slots .slot, .hospital_list__container__col-2__card__time_slot .time-slots .slot {
   display: inline;
-  line-height: 3rem;
+  line-height: 2rem;
   border-radius: 0.5rem;
   border: 1px solid #0173b2;
   padding: 0.7rem;
@@ -4778,7 +4781,7 @@ html, body {
 }
 .edit_profile_container label {
   font-family: "Nexa Bold";
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 .edit_profile_container select {
   display: block;
@@ -4840,7 +4843,7 @@ html, body {
 }
 .edit_profile_container .photo_and_name .edit_profile_photo .upload_image_container span {
   font-family: "Nexa Bold";
-  font-size: 1.4rem;
+  font-size: 1.3rem;
   display: block;
   margin-bottom: 2rem;
 }
@@ -5007,6 +5010,12 @@ html, body {
 .scheduled_slots__container h4 {
   font-family: "Nexa Light";
 }
+.scheduled_slots .slot_container {
+  border: 1px solid #0173b2;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+}
 .scheduled_slots__slot {
   display: flex;
   flex-direction: row;
@@ -5056,11 +5065,11 @@ html, body {
   align-items: center;
   grid-gap: 0.5rem;
   flex-wrap: wrap;
+  grid-gap: 1rem;
 }
 .scheduled_slots__sub_slots .time-slots .slot {
-  display: inline;
+  display: block;
   border-radius: 0.5rem;
-  border: 1px solid #0173b2;
   padding: 0.7rem;
   font-family: "Nexa Bold";
   color: #0173b2;

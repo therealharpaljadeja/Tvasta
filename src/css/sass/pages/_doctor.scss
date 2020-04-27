@@ -232,9 +232,12 @@
 					.time-slots{
 						flex-basis: 100%;
 						min-width: 100%;
+						display: flex;
+						flex-wrap: wrap;
+						grid-gap: .5rem;
 						.slot{
 							display: inline;
-							line-height: 3rem;
+							line-height: 2rem;
 							border-radius: .5rem;
 							border: 1px solid $bright-blue;
 							padding: .7rem;

@@ -144,11 +144,12 @@
 							</div>
 							<div class="carousel-dates slides">
 								<div class="date-heading date-heading--active current slide">
+									<% var k = currentDay; %>
 									<div class="day-date">
 										<span>Today</span>
 									</div>
 									<div class="day-slots-available">
-										15 Slots Available
+										<%= doctors[i].doctor.subslots[k].length === 0 ? 'No' : doctors[i].doctor.subslots[k].length %> Slots Available
 									</div>
 								</div>
 								<div class="date-heading slide">
@@ -156,39 +157,47 @@
 										<span>Tommorow</span>
 									</div>
 									<div class="day-slots-available">
-										15 Slots Available
+										<%= doctors[i].doctor.subslots[k + 1].length === 0 ? 'No' : doctors[i].doctor.subslots[k + 1].length %> Slots Available
 									</div>
 								</div>
 								<% let date = new Date(Date.now()); 
-								date.setDate(date.getDate() + 1); 
+								date.setDate(date.getDate() + 1);
+								k = k + 2; 
 								for(let j = 1; j < 6 ; j++) { %>
+								<% k = k == 7 ? k % 7 : k; %>
 									<div class="date-heading slide">
 										<div class="day-date">
 											<% date.setDate(date.getDate() + 1) %>
 											<span><%= new Date(date).toDateString() %></span>
 										</div>
 										<div class="day-slots-available">
-											15 Slots Available
+											<%= doctors[i].doctor.subslots[k].length === 0 ? 'No' : doctors[i].doctor.subslots[k].length %> Slots Available
 										</div>
 									</div>
+									<% k++ %>
 								<% } %>
 							</div>
 							<div class="time-slots-header-controls time-slots-header-right right">
 								<i class="fas fa-chevron-right"></i>
 							</div>
 						</div>
-						<div class="time-slots-container">
-							<div class="time-slots">
-								<% for(let j = 0; j < doctors[i].slots.length; j++) { %>
-									<% for(let k = 0; k < doctors[i].slots[j].subSlots.length; k++) { %>
-										<div class="slot"><%= doctors[i].slots[j].subSlots[k].startTime %></div>
-									<% } %>
-								<% } %>
-								
-							</div>
-							<div class="time-slots">
-								
-							</div>	
+						<div class="time-slots-container time-slots-carousel">
+							<% let current = currentDay; %>
+							<% for(let j = 0; j < 7; j++) { %>
+								<div class="time-slots time-slot-slide">
+									<% 
+										if(current >= 7) current = current % 7;
+										let subslots = doctors[i].doctor.subslots[current];
+										if(subslots.length){
+											for(let k = 0; k < subslots.length; k++) { %>
+												<div class="slot"><%= subslots[k].startTime %></div>
+											<% } 
+										} else { %>
+											<h4 class="heading-4">No Slots Available</h4>
+										<% }
+										 current++; %>
+								</div>		
+							<% } %>
 						</div>
 					</div>
 				</div>
@@ -355,10 +364,13 @@
 		}
 
 		const carousel = document.querySelector(".carousel");
+		const timeSlotCarousel = document.querySelector(".time-slots-carousel");
 		const slides = Array.from(carousel.querySelectorAll(".slide"));
+		const timeSlotSlides = Array.from(timeSlotCarousel.querySelectorAll(".time-slot-slide"));
 		const leftButton = document.querySelector(".left");
 		const rightButton = document.querySelector(".right");
 		let current = slides[0];
+		let timeSlotCurrent = timeSlotSlides[0];
 
 		const getOrder = elem => {
 		  const styles = getComputedStyle(elem);
@@ -369,41 +381,52 @@
 
 		for(i = 1; i <= slides.length; i++){
 			slides[i-1].style.order = i;
+			timeSlotSlides[i-1].style.order = i;
 		}
 
 		const moveRight = _ => {
-		  slides.forEach(function(slide) {
-		    order = getOrder(slide);
-		    
-		    if (order < slides.length) {
-		      slide.style.order = order += 1;
-		    } else {
-		      slide.style.order = 1;
-		    }
-		  });
+			for(let i = 0; i < slides.length; i++){
+				order = getOrder(slides[i]);
+				timeSlideOrder = getOrder(timeSlotSlides[i]);
+
+				if (order < slides.length) {
+			      slides[i].style.order = order += 1;
+			      timeSlotSlides[i].style.order = order += 1;
+			    } else {
+			      slides[i].style.order = 1;
+			      timeSlotSlides[i].style.order = 1;
+			    }
+					
+			}
 		  current.classList.remove('date-heading--active');
-		  slides.forEach(slide => {
-		  	if(slide.style.order === '1') {
-		  		current = slide;
+		  for(let i = 0; i < slides.length; i++){
+		  	if(slides[i].style.order === '1'){
+		  		current = slides[i];
 		  	}
-		  });
+		  	if(timeSlotSlides[i].style.order === '1'){
+		  		timeSlotCurrent = timeSlotSlides[i];
+		  	}
+		  }
 		  current.classList.add('date-heading--active');
 		}
 
 		const moveLeft = _ => {
-		  slides.forEach(function(slide) {
-		    order = getOrder(slide)
-		    
-		    if (order > 1) {
-		      slide.style.order = order -= 1;
-		    } else {
-		      slide.style.order = slides.length;
-		    }
-		  });
+			for(let i = 0; i < slides.length; i++){
+				order = getOrder(slides[i]);
+				timeSlideOrder = getOrder(timeSlotSlides[i]);
+				if (order > 1) {
+			      slides[i].style.order = order -= 1;
+			      timeSlotSlides[i].style.order = order -= 1;
+			    } else {
+			      slides[i].style.order = slides.length;
+			      timeSlotSlides[i].style.order = timeSlotSlides.length;
+			    }		
+			}
 		  current.classList.remove('date-heading--active');
-		  slides.forEach(slide => {
-		  	if(slide.style.order === '1') current = slide;
-		  });
+		  for(let i = 0; i < slides.length; i++){
+		  	if(slides[i].style.order === '1') current = slides[i];
+		  	if(timeSlotSlides[i].style.order === '1') timeSlotCurrent = timeSlotSlides[i];
+		  }
 		  current.classList.add('date-heading--active');
 		}
 

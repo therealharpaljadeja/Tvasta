@@ -213,7 +213,7 @@
 							<label for="startTime">Start Time</label>
 							<!-- <input type="time" name="startTime"> -->
 							<div class="input-group clockpicker">
-							    <input name="startTime" type="time" class="form-control" value="09:00">
+							    <input name="startTime" type="time" class="form-control" value="00:00">
 							</div>
 						</div>
 						<div class="edit_field">
@@ -298,8 +298,11 @@
 								<div class="time-slots">
 								<% for(let k = 0; k < slots[i].subSlots.length; k++) { %>
 									<% if(!slots[i].subSlots[k].isBooked) { %>
-										<div class="slot"><%= slots[i].subSlots[k].startTime %></div>
-										<input type="checkbox" name="disabled[]">
+										<div class="slot_container">
+											<div class="slot"><%= slots[i].subSlots[k].startTime %></div>
+											<input type="checkbox" name="disabled[]">
+										</div>
+										
 									<% } %>
 								<% } %>
 								</div>

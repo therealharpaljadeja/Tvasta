@@ -1622,6 +1622,47 @@ html, body {
   font-family: "Nexa Bold";
   color: #0173b2;
 }
+.doctor_list__container__col-2__card__time_slot .legend, .hospital_list__container__col-2__card__time_slot .legend {
+  display: flex;
+  flex-wrap: wrap;
+  grid-gap: 2.5rem;
+}
+.doctor_list__container__col-2__card__time_slot .legend-item, .hospital_list__container__col-2__card__time_slot .legend-item {
+  font-family: "Nexa Bold";
+  position: relative;
+  color: #0173b2;
+}
+.doctor_list__container__col-2__card__time_slot .legend-item::before, .hospital_list__container__col-2__card__time_slot .legend-item::before {
+  content: "";
+  display: block;
+  position: relative;
+  left: -1.5rem;
+  top: 50%;
+  width: 1rem;
+  height: 1rem;
+  background-color: #0173b2;
+}
+.doctor_list__container__col-2__card__time_slot .legend-item-red, .hospital_list__container__col-2__card__time_slot .legend-item-red {
+  color: red;
+}
+.doctor_list__container__col-2__card__time_slot .legend-item-red::before, .hospital_list__container__col-2__card__time_slot .legend-item-red::before {
+  content: "";
+  background-color: red;
+}
+.doctor_list__container__col-2__card__time_slot .legend-item-purple, .hospital_list__container__col-2__card__time_slot .legend-item-purple {
+  color: purple;
+}
+.doctor_list__container__col-2__card__time_slot .legend-item-purple::before, .hospital_list__container__col-2__card__time_slot .legend-item-purple::before {
+  content: "";
+  background-color: purple;
+}
+.doctor_list__container__col-2__card__time_slot .legend-item-green, .hospital_list__container__col-2__card__time_slot .legend-item-green {
+  color: green;
+}
+.doctor_list__container__col-2__card__time_slot .legend-item-green::before, .hospital_list__container__col-2__card__time_slot .legend-item-green::before {
+  content: "";
+  background-color: green;
+}
 .doctor_list__container__col-2__card__time_slot .time-slots-header, .hospital_list__container__col-2__card__time_slot .time-slots-header {
   width: 100%;
   display: flex;
@@ -1699,6 +1740,19 @@ html, body {
   padding: 0.7rem;
   font-family: "Nexa Bold";
   color: #0173b2;
+  max-height: 3.5rem;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots .slot-red, .hospital_list__container__col-2__card__time_slot .time-slots .slot-red {
+  border: 1px solid red;
+  color: red;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots .slot-purple, .hospital_list__container__col-2__card__time_slot .time-slots .slot-purple {
+  border: 1px solid purple;
+  color: purple;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots .slot-green, .hospital_list__container__col-2__card__time_slot .time-slots .slot-green {
+  border: 1px solid green;
+  color: green;
 }
 
 @media (min-width: 768px) {

@@ -167,6 +167,47 @@
 						font-family: $nexa-bold;
 						color: $bright-blue;
 					}
+					.legend{
+						display: flex;
+						flex-wrap: wrap;
+						grid-gap: 2.5rem;
+						&-item{
+							font-family: $nexa-bold;
+							position: relative;
+							color: $bright-blue;
+							&::before{
+								content: '';
+								display: block;
+								position: relative;
+								left: -1.5rem;
+								top: 50%;
+								width: 1rem;
+								height: 1rem;
+								background-color: $bright-blue;
+							}
+							&-red{
+								color: red;
+								&::before{
+									content: '';
+									background-color: red;
+								}
+							}
+							&-purple{
+								color: purple;
+								&::before{
+									content: '';
+									background-color: purple;
+								}
+							}
+							&-green{
+								color: green;
+								&::before{
+									content: '';
+									background-color: green;
+								}
+							}
+						}
+					}
 					.time-slots-header{
 						width: 100%;
 						display: flex;
@@ -243,6 +284,19 @@
 							padding: .7rem;
 							font-family: $nexa-bold;
 							color: $bright-blue;
+							max-height: 3.5rem;
+							&-red{
+								border: 1px solid red;
+								color: red;
+							}
+							&-purple{
+								border: 1px solid purple;
+								color: purple;
+							}
+							&-green{
+								border: 1px solid green;
+								color: green;
+							}
 						}	
 					}
 				}

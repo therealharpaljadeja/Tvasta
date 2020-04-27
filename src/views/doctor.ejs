@@ -139,17 +139,29 @@
 						<h4 class="heading-4">Select a Time Slot</h4>
 							
 						<div class="time-slots-header carousel">
-							<div class="time-slots-header-controls time-slots-header-left left">
+							<div class="time-slots-header-controls time-slots-header-left right">
 								<i class="fas fa-chevron-left"></i>
 							</div>
 							<div class="carousel-dates slides">
 								<div class="date-heading date-heading--active current slide">
 									<% var k = currentDay; %>
+									<% const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']; %>
+									<% function slotsAvailable(day) {
+										let slotCount = 0;
+										for(let j = 0; j < doctors[i].slots.length; j++){
+											if(doctors[i].slots[j].days.indexOf(day) !== -1){
+												for(let c = 0; c < doctors[i].slots[j].subSlots.length; c++){
+													slotCount++;
+												}
+											}
+										}
+										return slotCount;
+									} %>
 									<div class="day-date">
 										<span>Today</span>
 									</div>
 									<div class="day-slots-available">
-										<%= doctors[i].doctor.subslots[k].length === 0 ? 'No' : doctors[i].doctor.subslots[k].length %> Slots Available
+										<%= slotsAvailable(days[k]) === 0 ? 'No' : slotsAvailable(days[k]) %> Slots Available
 									</div>
 								</div>
 								<div class="date-heading slide">
@@ -157,7 +169,7 @@
 										<span>Tommorow</span>
 									</div>
 									<div class="day-slots-available">
-										<%= doctors[i].doctor.subslots[k + 1].length === 0 ? 'No' : doctors[i].doctor.subslots[k + 1].length %> Slots Available
+										<%= slotsAvailable(days[k+1]) === 0 ? 'No' : slotsAvailable(days[k+1]) %> Slots Available
 									</div>
 								</div>
 								<% let date = new Date(Date.now()); 
@@ -171,33 +183,90 @@
 											<span><%= new Date(date).toDateString() %></span>
 										</div>
 										<div class="day-slots-available">
-											<%= doctors[i].doctor.subslots[k].length === 0 ? 'No' : doctors[i].doctor.subslots[k].length %> Slots Available
+											<%= slotsAvailable(days[k]) === 0 ? 'No' : slotsAvailable(days[k]) %> Slots Available
 										</div>
 									</div>
 									<% k++ %>
 								<% } %>
 							</div>
-							<div class="time-slots-header-controls time-slots-header-right right">
+							<div class="time-slots-header-controls time-slots-header-right left">
 								<i class="fas fa-chevron-right"></i>
 							</div>
 						</div>
 						<div class="time-slots-container time-slots-carousel">
-							<% let current = currentDay; %>
+							<% let current = currentDay;
+							
+							var subslots = []; %>
 							<% for(let j = 0; j < 7; j++) { %>
 								<div class="time-slots time-slot-slide">
 									<% 
-										if(current >= 7) current = current % 7;
-										let subslots = doctors[i].doctor.subslots[current];
-										if(subslots.length){
-											for(let k = 0; k < subslots.length; k++) { %>
-												<div class="slot"><%= subslots[k].startTime %></div>
-											<% } 
-										} else { %>
-											<h4 class="heading-4">No Slots Available</h4>
-										<% }
-										 current++; %>
+										subslots = [];
+										var noSlots = 0;
+										if(current >= 7) current = current % 7; %>
+										<% for(let q = 0; q < doctors[i].slots.length; q++) {
+								
+											if(doctors[i].slots[q].days.indexOf(days[current]) !== -1) {
+											noSlots = 1;
+												%>
+
+												<% if(doctors[i].slots[q].subSlots.length) { %>
+													<% for(let m = 0; m < doctors[i].slots[q].subSlots.length; m++) {%>
+														<% if(q == 0) { %>
+														<div class="slot">
+															<%= doctors[i].slots[q].subSlots[m].startTime  %>
+														</div>
+														<% } %>
+														<% if(q == 1) { %>
+															<div class="slot slot-red">
+																<%= doctors[i].slots[q].subSlots[m].startTime  %>		
+															</div>
+														<% } %>	
+														<% if(q == 2) { %>
+															<div class="slot slot-purple">
+																<%= doctors[i].slots[q].subSlots[m].startTime  %>
+															</div>
+														<% } %>	
+														<% if(q == 3) { %>
+															<div class="slot slot-green">
+																<%= doctors[i].slots[q].subSlots[m].startTime  %>
+															</div>
+														<% } %>	
+													<% } %>
+												<% } %>
+											<% } %>
+										<% } 
+										current++; %>
+										<% if(!noSlots) { %>
+											<h4 class="heading-4">No Slot Available</h4>
+										<% } %>
 								</div>		
 							<% } %>
+						</div>
+						<div class="legend">
+						<% for(let n = 0; n < doctors[i].slots.length; n++) { %>
+							
+								<% if(n == 0) { %>
+									<div class="legend-item legend-item-blue">
+										<%= doctors[i].slots[n].hospital %>
+									</div>
+								<% } %>
+								<% if(n == 1) { %>
+									<div class="legend-item legend-item-red">
+										<%= doctors[i].slots[n].hospital %>
+									</div>
+								<% } %>
+								<% if(n == 2) { %>
+									<div class="legend-item legend-item-purple">
+										<%= doctors[i].slots[n].hospital %>
+									</div>
+								<% } %>
+								<% if(n == 3) { %>
+									<div class="legend-item legend-item-green">
+										<%= doctors[i].slots[n].hospital %>
+									</div>
+								<% } %>
+							
+						<% } %>
 						</div>
 					</div>
 				</div>
@@ -363,81 +432,159 @@
 			window.location.href = query;
 		}
 
+		const carousels = document.querySelectorAll('.carousel');
+		carousels.forEach(carousel => {
+			const timeSlotCarousel = carousel.parentElement.querySelector(".time-slots-carousel");
+			const slides = Array.from(carousel.querySelectorAll(".slide"));
+			const timeSlotSlides = Array.from(timeSlotCarousel.querySelectorAll(".time-slot-slide"));
+			const leftButton = carousel.querySelector(".left");
+			const rightButton = carousel.querySelector(".right");
+			let current = slides[0];
+			let timeSlotCurrent = timeSlotSlides[0];
+
+			const getOrder = elem => {
+			  const styles = getComputedStyle(elem);
+			  const orderValue = styles.order;
+			  const order = parseInt(orderValue);
+			  return order;
+			}
+
+			for(i = 1; i <= slides.length; i++){
+				slides[i-1].style.order = i;
+				timeSlotSlides[i-1].style.order = i;
+			}
+
+			const moveRight = _ => {
+				for(let i = 0; i < slides.length; i++){
+					order = getOrder(slides[i]);
+					timeSlideOrder = getOrder(timeSlotSlides[i]);
+
+					if (order < slides.length) {
+				      slides[i].style.order = order += 1;
+				      timeSlotSlides[i].style.order = order += 1;
+				    } else {
+				      slides[i].style.order = 1;
+				      timeSlotSlides[i].style.order = 1;
+				    }
+						
+				}
+			  current.classList.remove('date-heading--active');
+			  for(let i = 0; i < slides.length; i++){
+			  	if(slides[i].style.order === '1'){
+			  		current = slides[i];
+			  	}
+			  	if(timeSlotSlides[i].style.order === '1'){
+			  		timeSlotCurrent = timeSlotSlides[i];
+			  	}
+			  }
+			  current.classList.add('date-heading--active');
+			}
+
+			const moveLeft = _ => {
+				for(let i = 0; i < slides.length; i++){
+					order = getOrder(slides[i]);
+					timeSlideOrder = getOrder(timeSlotSlides[i]);
+					if (order > 1) {
+				      slides[i].style.order = order -= 1;
+				      timeSlotSlides[i].style.order = order -= 1;
+				    } else {
+				      slides[i].style.order = slides.length;
+				      timeSlotSlides[i].style.order = timeSlotSlides.length;
+				    }		
+				}
+			  current.classList.remove('date-heading--active');
+			  for(let i = 0; i < slides.length; i++){
+			  	if(slides[i].style.order === '1') current = slides[i];
+			  	if(timeSlotSlides[i].style.order === '1') timeSlotCurrent = timeSlotSlides[i];
+			  }
+			  current.classList.add('date-heading--active');
+			}
+
+
+			rightButton.addEventListener('click', _ => {
+			  moveRight();
+			});
+
+			leftButton.addEventListener('click', _ => {
+			  moveLeft();
+			});
+		})
+
 		const carousel = document.querySelector(".carousel");
-		const timeSlotCarousel = document.querySelector(".time-slots-carousel");
-		const slides = Array.from(carousel.querySelectorAll(".slide"));
-		const timeSlotSlides = Array.from(timeSlotCarousel.querySelectorAll(".time-slot-slide"));
-		const leftButton = document.querySelector(".left");
-		const rightButton = document.querySelector(".right");
-		let current = slides[0];
-		let timeSlotCurrent = timeSlotSlides[0];
+		// const timeSlotCarousel = document.querySelector(".time-slots-carousel");
+		// const slides = Array.from(carousel.querySelectorAll(".slide"));
+		// const timeSlotSlides = Array.from(timeSlotCarousel.querySelectorAll(".time-slot-slide"));
+		// const leftButton = document.querySelector(".left");
+		// const rightButton = document.querySelector(".right");
+		// let current = slides[0];
+		// let timeSlotCurrent = timeSlotSlides[0];
 
-		const getOrder = elem => {
-		  const styles = getComputedStyle(elem);
-		  const orderValue = styles.order;
-		  const order = parseInt(orderValue);
-		  return order;
-		}
+		// const getOrder = elem => {
+		//   const styles = getComputedStyle(elem);
+		//   const orderValue = styles.order;
+		//   const order = parseInt(orderValue);
+		//   return order;
+		// }
 
-		for(i = 1; i <= slides.length; i++){
-			slides[i-1].style.order = i;
-			timeSlotSlides[i-1].style.order = i;
-		}
+		// for(i = 1; i <= slides.length; i++){
+		// 	slides[i-1].style.order = i;
+		// 	timeSlotSlides[i-1].style.order = i;
+		// }
 
-		const moveRight = _ => {
-			for(let i = 0; i < slides.length; i++){
-				order = getOrder(slides[i]);
-				timeSlideOrder = getOrder(timeSlotSlides[i]);
+		// const moveRight = _ => {
+		// 	for(let i = 0; i < slides.length; i++){
+		// 		order = getOrder(slides[i]);
+		// 		timeSlideOrder = getOrder(timeSlotSlides[i]);
 
-				if (order < slides.length) {
-			      slides[i].style.order = order += 1;
-			      timeSlotSlides[i].style.order = order += 1;
-			    } else {
-			      slides[i].style.order = 1;
-			      timeSlotSlides[i].style.order = 1;
-			    }
+		// 		if (order < slides.length) {
+		// 	      slides[i].style.order = order += 1;
+		// 	      timeSlotSlides[i].style.order = order += 1;
+		// 	    } else {
+		// 	      slides[i].style.order = 1;
+		// 	      timeSlotSlides[i].style.order = 1;
+		// 	    }
 					
-			}
-		  current.classList.remove('date-heading--active');
-		  for(let i = 0; i < slides.length; i++){
-		  	if(slides[i].style.order === '1'){
-		  		current = slides[i];
-		  	}
-		  	if(timeSlotSlides[i].style.order === '1'){
-		  		timeSlotCurrent = timeSlotSlides[i];
-		  	}
-		  }
-		  current.classList.add('date-heading--active');
-		}
+		// 	}
+		//   current.classList.remove('date-heading--active');
+		//   for(let i = 0; i < slides.length; i++){
+		//   	if(slides[i].style.order === '1'){
+		//   		current = slides[i];
+		//   	}
+		//   	if(timeSlotSlides[i].style.order === '1'){
+		//   		timeSlotCurrent = timeSlotSlides[i];
+		//   	}
+		//   }
+		//   current.classList.add('date-heading--active');
+		// }
 
-		const moveLeft = _ => {
-			for(let i = 0; i < slides.length; i++){
-				order = getOrder(slides[i]);
-				timeSlideOrder = getOrder(timeSlotSlides[i]);
-				if (order > 1) {
-			      slides[i].style.order = order -= 1;
-			      timeSlotSlides[i].style.order = order -= 1;
-			    } else {
-			      slides[i].style.order = slides.length;
-			      timeSlotSlides[i].style.order = timeSlotSlides.length;
-			    }		
-			}
-		  current.classList.remove('date-heading--active');
-		  for(let i = 0; i < slides.length; i++){
-		  	if(slides[i].style.order === '1') current = slides[i];
-		  	if(timeSlotSlides[i].style.order === '1') timeSlotCurrent = timeSlotSlides[i];
-		  }
-		  current.classList.add('date-heading--active');
-		}
+		// const moveLeft = _ => {
+		// 	for(let i = 0; i < slides.length; i++){
+		// 		order = getOrder(slides[i]);
+		// 		timeSlideOrder = getOrder(timeSlotSlides[i]);
+		// 		if (order > 1) {
+		// 	      slides[i].style.order = order -= 1;
+		// 	      timeSlotSlides[i].style.order = order -= 1;
+		// 	    } else {
+		// 	      slides[i].style.order = slides.length;
+		// 	      timeSlotSlides[i].style.order = timeSlotSlides.length;
+		// 	    }		
+		// 	}
+		//   current.classList.remove('date-heading--active');
+		//   for(let i = 0; i < slides.length; i++){
+		//   	if(slides[i].style.order === '1') current = slides[i];
+		//   	if(timeSlotSlides[i].style.order === '1') timeSlotCurrent = timeSlotSlides[i];
+		//   }
+		//   current.classList.add('date-heading--active');
+		// }
 
 
-		rightButton.addEventListener('click', _ => {
-		  moveRight();
-		});
+		// rightButton.addEventListener('click', _ => {
+		//   moveRight();
+		// });
 
-		leftButton.addEventListener('click', _ => {
-		  moveLeft();
-		});
+		// leftButton.addEventListener('click', _ => {
+		//   moveLeft();
+		// });
 	</script>
 	<!-- <script src="./../doctors.js"></script> -->
 	<script>

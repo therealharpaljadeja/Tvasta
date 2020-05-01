@@ -4,6 +4,7 @@
 	background-color: $background-color;
 	@include flex(row);
 	@include container-styling-mobile;
+	align-items: center;
 	height: 6rem;
 	&__logo{
 		flex-grow: 1;
@@ -12,7 +13,10 @@
 		}
 	}
 	&__profile{
-		display: none;
+		display: flex;
+		flex-direction: row;
+		grid-gap: .5rem;
+		font-family: $nexa-bold;
 	}
 	
 	&__menu{
@@ -30,6 +34,7 @@
 		display: inline;
 		font-size: 1.5rem;
 		align-self: center;
+		margin-right: 1rem;
 	}
 	.profile_section{
 		display: none;
@@ -41,12 +46,12 @@
 		height: 100%;
 		width: 55%;
 		z-index: 1000;
-		right: 0;
+		left: 0;
 		top: 0;
 		padding: 2rem;
 		&__ul{
 			@include flex(column);
-			align-items: flex-end;
+			align-items: flex-start;
 			list-style-type: none;
 			&__item{
 				font-family: $nexa-light;
@@ -61,7 +66,7 @@
 				}
 				.treatments_side_menu{
 					li{
-						text-align: right;
+						text-align: left;
 					}
 				}
 			}
@@ -75,11 +80,14 @@
 .profile_menu_container, .treatment_menu_container{
 	background-color: $background-color;
 	border: 1px solid #ddd;
-	position: absolute;
-	top: 7rem;
+	// position: absolute;
+	position: fixed;
+	// top: 7rem;
 	z-index: 10;
+	right: 0;
 	width: 25rem;
-	right: 10rem;
+	height: 100%;
+	// right: 10rem;
 	&--admin{
 		right: 3rem;
 		top: 5rem;
@@ -296,6 +304,24 @@
 		}
 		.fa-bars{
 			display: none;
+		}
+	}
+	.profile_menu_container, .treatment_menu_container{
+		position: absolute;
+		top: 7rem;
+		right: 10rem;
+		height: auto;
+	}
+	.treatment_menu_container{
+		right: 50%;
+		transform: translateX(50%);
+		.profile_menu{
+			&__item{
+				text-align: center;
+			}
+		}
+		&:hover{
+			display: block;
 		}
 	}
 }

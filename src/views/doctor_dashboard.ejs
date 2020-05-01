@@ -201,45 +201,47 @@
 								<th>Date</th>
 								<th>Visit Time</th>
 								<th>Number</th>
-								<th>Condition/Injury</th>
+								<th>Hospital</th>
 								<th>Action</th>
 							</tr>	
 						</thead>
 						<tbody>
-							<tr>
-								<td class="display_picture_container">
-									<img src="./../public/uploads/users/user.jpeg" alt="">
-								</td>
-								<td>
-									Rajdeep Jadeja
-								</td>
-								<td>
-									rajdeep@gmail.com
-								</td>
-								<td>
-									14 Apr 2020
-								</td>
-								<td>
-									11:00 - 11:15
-								</td>
-								<td>
-									9820836830
-								</td>
-								<td>
-									Leg Pain
-								</td>
-								<td>
-									<div class="actions">
-										<div class="appointment_edit_button">
-											<i class="fas fa-pencil-alt"></i>
+							<% for(let i = 0; i < bookedSlots.length; i++) { %>
+								<tr>
+									<td class="display_picture_container">
+										<img src="./../public/uploads/users/user.jpeg" alt="">
+									</td>
+									<td>
+										<%= patients[i].name %>
+									</td>
+									<td>
+										<%= patients[i].email %>
+									</td>
+									<td>
+										<%= appointments[i].appointmentDate.toDateString() %>
+									</td>
+									<td>
+										<%= bookedSlots[i].slots.subSlots.startTime %>
+									</td>
+									<td>
+										<%= patients[i].phoneNumber %>
+									</td>
+									<td>
+										<%= bookedSlots[i].slots.hospital %>
+									</td>
+									<td>
+										<div class="actions">
+											<div class="appointment_edit_button">
+												<i class="fas fa-pencil-alt"></i>
+											</div>
+											<div class="appointment_edit_button">
+												<i class="fas fa-trash-alt"></i>
+											</div>	
 										</div>
-										<div class="appointment_edit_button">
-											<i class="fas fa-trash-alt"></i>
-										</div>	
-									</div>
-									
-								</td>
-							</tr>	
+										
+									</td>
+								</tr>
+							<% } %>	
 						</tbody>
 						
 					</table>

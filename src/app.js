@@ -88,8 +88,8 @@ app.get('/logout', authenticationController.logout);
 
 // Admin Routes
 
-app.get('/admin', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
-	res.render('views/dashboard.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
+app.get('/admin', authenticationController.redirectLogin, authenticationController.checkAdmin, appointmentController.getAppointmentToAdminDashboard, (req, res) => {
+	res.render('views/dashboard.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType, patients: res.locals.patients, subslots: res.locals.subslots, appointments: res.locals.appointments });
 });
 
 app.get('/admin-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, doctorController.getAllDoctors, (req, res) => {
@@ -101,8 +101,8 @@ app.get('/add-doctors', authenticationController.redirectLogin, authenticationCo
 	res.render('views/dashboard_addDoctor.ejs', {session: req.session, error:req.session.error, errorType: req.session.errorType, doctors: res.locals.doctors});
 });
 
-app.get('/doctor-dashboard', authenticationController.redirectLogin, (req, res) => {
-	res.render('views/doctor_dashboard.ejs', {session: req.session, error:req.session.error, errorType: req.session.errorType, doctors: res.locals.doctors});
+app.get('/doctor-dashboard', authenticationController.redirectLogin, appointmentController.getAppointmentToDoctorDashboard, (req, res) => {
+	res.render('views/doctor_dashboard.ejs', {session: req.session, error:req.session.error, errorType: req.session.errorType, patients: res.locals.patients, appointments: res.locals.appointments, bookedSlots: res.locals.bookedSlots });
 });
 
 
@@ -127,7 +127,7 @@ app.post('/', authenticationController.redirectLogin2, authenticationController.
 app.put('/disable-error', authenticationController.clearError);
 
 app.get('/doctors', authenticationController.redirectLogin, doctorController.getAllDoctors, (req, res) => {
-	res.render('views/doctor.ejs', {currentDay: res.locals.currentDay , doctors : res.locals.doctors, session: req.session, filter: req.session.filters ?  req.session.filters : '', sort: req.session.sortBy ?  req.session.sortBy : ''});
+	res.render('views/doctor.ejs', {dateFromServer: res.locals.currentDate, currentDay: res.locals.currentDay , doctors : res.locals.doctors, session: req.session, filter: req.session.filters ?  req.session.filters : '', sort: req.session.sortBy ?  req.session.sortBy : ''});
 });
 
 app.get('/hospitals', authenticationController.redirectLogin, hospitalController.getAllHospitals, (req, res) => {
@@ -171,7 +171,7 @@ app.get('/submit-your-query', (req, res) => {
 
 app.get('/appointment/:id',authenticationController.redirectLogin, authenticationController.redirectAdmin, appointmentController.loadingDataOnAppointmentPage);
 
-app.post('/appointment', appointmentController.createAppointment);
+app.post('/appointment/:id', appointmentController.createAppointment);
 
 app.get('/get-a-quote', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/get-a-quote.ejs', {session: req.session});
@@ -181,8 +181,8 @@ app.get('/edit-profile', authenticationController.redirectLogin, authenticationC
 	res.render('views/edit_profile.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
 })
 
-app.get('/user-dashboard-appointments', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
-	res.render('views/user_dashboard_appointments.ejs', {session: req.session});
+app.get('/user-dashboard-appointments', authenticationController.redirectLogin, authenticationController.redirectAdmin, appointmentController.getUserAppointments, (req, res) => {
+	res.render('views/user_dashboard_appointments.ejs', {session: req.session, doctors: res.locals.doctors, slots: res.locals.slots, appointments: res.locals.appointments});
 })
 
 app.get('/user-dashboard-medicines', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {

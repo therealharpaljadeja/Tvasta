@@ -120,7 +120,7 @@
 				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-1">
 					<div>
 						<div class="doctor_list__container__col-2__card__name">
-							<h3><%= doctors[i].name %></h3>
+							<a href="http://localhost:8000/doctor/<%= doctors[i].id %>"><h3><%= doctors[i].name %></h3></a>
 						</div>
 						<div class="doctor_list__container__col-2__card__other_details">
 							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-certificate"></i></span><%= doctors[i].doctor.achievements[0] %></li>
@@ -149,9 +149,12 @@
 									<% function slotsAvailable(day) {
 										let slotCount = 0;
 										for(let j = 0; j < doctors[i].slots.length; j++){
-											if(doctors[i].slots[j].days.indexOf(day) !== -1){
-												for(let c = 0; c < doctors[i].slots[j].subSlots.length; c++){
-													slotCount++;
+											if(doctors[i].slots[j].isDisabled) {
+											} else {
+ 												if(doctors[i].slots[j].days.indexOf(day) !== -1){
+													for(let c = 0; c < doctors[i].slots[j].subSlots.length; c++){
+														slotCount++;
+													}
 												}
 											}
 										}
@@ -172,15 +175,16 @@
 										<%= slotsAvailable(days[k+1]) === 0 ? 'No' : slotsAvailable(days[k+1]) %> Slots Available
 									</div>
 								</div>
-								<% let date = new Date(Date.now()); 
-								date.setDate(date.getDate() + 1);
+								<% let dateForCarousel = dateFromServer;
+								let carouselDate = new Date(dateForCarousel);
+								carouselDate.setDate(carouselDate.getDate() + 1);
 								k = k + 2; 
 								for(let j = 1; j < 6 ; j++) { %>
 								<% k = k == 7 ? k % 7 : k; %>
 									<div class="date-heading slide">
 										<div class="day-date">
-											<% date.setDate(date.getDate() + 1) %>
-											<span><%= new Date(date).toDateString() %></span>
+											<% carouselDate.setDate(carouselDate.getDate() + 1) %>
+											<span><%= new Date(carouselDate).toDateString() %></span>
 										</div>
 										<div class="day-slots-available">
 											<%= slotsAvailable(days[k]) === 0 ? 'No' : slotsAvailable(days[k]) %> Slots Available
@@ -196,41 +200,50 @@
 						<div class="time-slots-container time-slots-carousel">
 							<% let current = currentDay;
 							
-							var subslots = []; %>
+							var subslots = [];
+							var dateForSlots = new Date(dateFromServer);
+							%>
 							<% for(let j = 0; j < 7; j++) { %>
+
 								<div class="time-slots time-slot-slide">
 									<% 
 										subslots = [];
 										var noSlots = 0;
 										if(current >= 7) current = current % 7; %>
 										<% for(let q = 0; q < doctors[i].slots.length; q++) {
-								
-											if(doctors[i].slots[q].days.indexOf(days[current]) !== -1) {
-											noSlots = 1;
-												%>
+										%> 
+											<% if(doctors[i].slots[q].isDisabled) { %>
+											<% } else { %>
+												<% if(doctors[i].slots[q].days.indexOf(days[current]) !== -1) {
+												noSlots = 1;
+													%>
 
-												<% if(doctors[i].slots[q].subSlots.length) { %>
-													<% for(let m = 0; m < doctors[i].slots[q].subSlots.length; m++) {%>
-														<% if(q == 0) { %>
-														<div class="slot">
-															<%= doctors[i].slots[q].subSlots[m].startTime  %>
-														</div>
+													<% if(doctors[i].slots[q].subSlots.length) { %>
+														<% for(let m = 0; m < doctors[i].slots[q].subSlots.length; m++) {%>
+															<% if(doctors[i].slots[q].subSlots[m].isBooked) { %>
+															<% } else { %>
+																<% if(q == 0) { %>
+																<div class="slot" onclick="goToAppointment(this)" data-subslotid='<%= doctors[i].slots[q].subSlots[m].id %>' data-doctorid='<%= doctors[i].id %>' data-date='<%= dateForSlots.toDateString() %>'>
+																	<%= doctors[i].slots[q].subSlots[m].startTime  %>
+																</div>
+																<% } %>
+																<% if(q == 1) { %>
+																	<div class="slot slot-red" onclick="goToAppointment(this)" data-subslotid='<%= doctors[i].slots[q].subSlots[m].id %>' data-doctorid='<%= doctors[i].id %>' data-date='<%= dateForSlots.toDateString() %>' >
+																		<%= doctors[i].slots[q].subSlots[m].startTime  %>		
+																	</div>
+																<% } %>	
+																<% if(q == 2) { %>
+																	<div class="slot slot-purple" onclick="goToAppointment(this)" data-subslotid='<%= doctors[i].slots[q].subSlots[m].id %>' data-doctorid='<%= doctors[i].id %>' data-date='<%= dateForSlots.toDateString() %>'>
+																		<%= doctors[i].slots[q].subSlots[m].startTime  %>
+																	</div>
+																<% } %>	
+																<% if(q == 3) { %>
+																	<div class="slot slot-green" onclick="goToAppointment(this)" data-subslotid='<%= doctors[i].slots[q].subSlots[m].id %>' data-doctorid='<%= doctors[i].id %>' data-date='<%= dateForSlots.toDateString() %>'>
+																		<%= doctors[i].slots[q].subSlots[m].startTime  %>
+																	</div>
+																<% } %>
+															<% } %>	
 														<% } %>
-														<% if(q == 1) { %>
-															<div class="slot slot-red">
-																<%= doctors[i].slots[q].subSlots[m].startTime  %>		
-															</div>
-														<% } %>	
-														<% if(q == 2) { %>
-															<div class="slot slot-purple">
-																<%= doctors[i].slots[q].subSlots[m].startTime  %>
-															</div>
-														<% } %>	
-														<% if(q == 3) { %>
-															<div class="slot slot-green">
-																<%= doctors[i].slots[q].subSlots[m].startTime  %>
-															</div>
-														<% } %>	
 													<% } %>
 												<% } %>
 											<% } %>
@@ -239,33 +252,35 @@
 										<% if(!noSlots) { %>
 											<h4 class="heading-4">No Slot Available</h4>
 										<% } %>
-								</div>		
+								</div>
+								<% dateForSlots.setDate(dateForSlots.getDate() + 1) %>		
 							<% } %>
 						</div>
 						<div class="legend">
 						<% for(let n = 0; n < doctors[i].slots.length; n++) { %>
-							
-								<% if(n == 0) { %>
-									<div class="legend-item legend-item-blue">
-										<%= doctors[i].slots[n].hospital %>
-									</div>
-								<% } %>
-								<% if(n == 1) { %>
-									<div class="legend-item legend-item-red">
-										<%= doctors[i].slots[n].hospital %>
-									</div>
-								<% } %>
-								<% if(n == 2) { %>
-									<div class="legend-item legend-item-purple">
-										<%= doctors[i].slots[n].hospital %>
-									</div>
-								<% } %>
-								<% if(n == 3) { %>
-									<div class="legend-item legend-item-green">
-										<%= doctors[i].slots[n].hospital %>
-									</div>
-								<% } %>
-							
+							<% if(doctors[i].slots[n].isDisabled) { %>
+								<% } else { %>
+									<% if(n == 0) { %>
+										<div class="legend-item legend-item-blue">
+											<%= doctors[i].slots[n].hospital %>
+										</div>
+									<% } %>
+									<% if(n == 1) { %>
+										<div class="legend-item legend-item-red">
+											<%= doctors[i].slots[n].hospital %>
+										</div>
+									<% } %>
+									<% if(n == 2) { %>
+										<div class="legend-item legend-item-purple">
+											<%= doctors[i].slots[n].hospital %>
+										</div>
+									<% } %>
+									<% if(n == 3) { %>
+										<div class="legend-item legend-item-green">
+											<%= doctors[i].slots[n].hospital %>
+										</div>
+									<% } %>
+							<% } %>
 						<% } %>
 						</div>
 					</div>
@@ -379,6 +394,12 @@
 	</footer>
 	<div class="border">
 	</div>
+	<script>
+		function goToAppointment(slot) {
+			console.log(slot.dataset);
+			window.location.href = `http://localhost:8000/appointment/${slot.dataset.doctorid}?slot=${slot.dataset.subslotid}&date=${slot.dataset.date}`;
+		}
+	</script>
 	<script>
 		let form_submit = (doc)=>{
 

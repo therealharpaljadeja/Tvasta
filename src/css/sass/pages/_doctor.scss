@@ -557,6 +557,9 @@
 			&__col-2{
 				&__card{
 					&__name{
+						a{
+							text-decoration: none;
+						}
 						h3{
 							font-size: 2rem;
 							padding-left: 4rem;

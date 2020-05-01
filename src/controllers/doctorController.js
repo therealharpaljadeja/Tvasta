@@ -64,6 +64,7 @@ const getAllDoctors = async (req, res, next) => {
     
     res.locals.doctors = doctors;
     res.locals.currentDay = new Date().getDay();
+    res.locals.currentDate = new Date();
     next();
 }
 

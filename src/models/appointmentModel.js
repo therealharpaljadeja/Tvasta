@@ -10,6 +10,7 @@ const appointmentSchema = new mongoose.Schema({
       type: mongoose.ObjectId,
       ref: 'User'
     },
+    appointmentDate: Date
 }, {timestamps: true});
 
 // appointmentSchema.pre('save', function(next){

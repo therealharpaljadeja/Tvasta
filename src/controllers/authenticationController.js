@@ -88,6 +88,7 @@ const emailLogin = async (req, res, next) => {
 				req.session.error = 'Login Successful';
 				req.session.userId = user.id;
 				req.session.user = user;
+				console.log(req.session.user);
 				if(req.session.user.role === 'admin') res.redirect('/admin');
 				else res.redirect('/');	
 			} else {

@@ -266,6 +266,7 @@ html, body {
   padding: 2rem 2rem;
   width: 100%;
   height: 100%;
+  align-items: center;
   height: 6rem;
 }
 .navbar__logo {
@@ -276,7 +277,10 @@ html, body {
   height: auto;
 }
 .navbar__profile {
-  display: none;
+  display: flex;
+  flex-direction: row;
+  grid-gap: 0.5rem;
+  font-family: "Nexa Bold";
 }
 .navbar__menu {
   display: none;
@@ -293,6 +297,7 @@ html, body {
   display: inline;
   font-size: 1.5rem;
   align-self: center;
+  margin-right: 1rem;
 }
 .navbar .profile_section {
   display: none;
@@ -304,14 +309,14 @@ html, body {
   height: 100%;
   width: 55%;
   z-index: 1000;
-  right: 0;
+  left: 0;
   top: 0;
   padding: 2rem;
 }
 .navbar__side_menu__ul {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
+  align-items: flex-start;
   list-style-type: none;
 }
 .navbar__side_menu__ul__item {
@@ -327,7 +332,7 @@ html, body {
   color: #2a2d3e;
 }
 .navbar__side_menu__ul__item .treatments_side_menu li {
-  text-align: right;
+  text-align: left;
 }
 .navbar .cross {
   font-size: 1.5rem;
@@ -336,11 +341,11 @@ html, body {
 .profile_menu_container, .treatment_menu_container {
   background-color: white;
   border: 1px solid #ddd;
-  position: absolute;
-  top: 7rem;
+  position: fixed;
   z-index: 10;
+  right: 0;
   width: 25rem;
-  right: 10rem;
+  height: 100%;
 }
 .profile_menu_container--admin, .treatment_menu_container--admin {
   right: 3rem;
@@ -557,6 +562,24 @@ html, body {
   }
   .navbar .fa-bars {
     display: none;
+  }
+
+  .profile_menu_container, .treatment_menu_container {
+    position: absolute;
+    top: 7rem;
+    right: 10rem;
+    height: auto;
+  }
+
+  .treatment_menu_container {
+    right: 50%;
+    transform: translateX(50%);
+  }
+  .treatment_menu_container .profile_menu__item {
+    text-align: center;
+  }
+  .treatment_menu_container:hover {
+    display: block;
   }
 }
 .help {
@@ -1996,6 +2019,9 @@ html, body {
   .doctor_list__container__col-2__card, .hospital_list__container__col-2__card {
     grid-template-columns: 10fr 4fr;
   }
+  .doctor_list__container__col-2__card__name a, .hospital_list__container__col-2__card__name a {
+    text-decoration: none;
+  }
   .doctor_list__container__col-2__card__name h3, .hospital_list__container__col-2__card__name h3 {
     font-size: 2rem;
     padding-left: 4rem;
@@ -3346,7 +3372,7 @@ html, body {
   flex-direction: row;
   align-items: center;
 }
-.appointment-page .appointment__col--2 .appointment_form_patient_select_item label {
+.appointment-page .appointment__col--2 .appointment_form_patient_select_item span {
   font-family: "Nexa Bold";
   font-size: 1.3rem;
   color: #0173b2;

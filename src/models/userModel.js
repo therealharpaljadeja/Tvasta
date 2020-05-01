@@ -19,7 +19,13 @@ const userSchema = new mongoose.Schema({
 	phoneNumber: {
 		type: Number,
 		required: [true, 'Every user must have a phone number'],
-		unique: true
+		unique: true,
+		validate: {
+			validator: function(number){
+				return `${number}`.length === 10;
+			},
+			message: err => `${err.value} is not a valid number`
+		}
 	},
 	email: {
 		type: String,

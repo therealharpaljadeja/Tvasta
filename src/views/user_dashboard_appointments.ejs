@@ -126,44 +126,51 @@
 					<h4 class="heading-4">Upcoming</h4>
 				</div>
 				<div class="appointment_container">
-					<div class="appointment">
-						<div class="appointment_date">
-							<div class="appointment_date_date">
-								15
-							</div>
-							<div class="appointment_date_month">
-								Apr
-							</div>
-						</div>
-						<div class="appointment_details">
-							<div class="appointment_details_doctor_name">
-								Dr. Dilip Dalgade, Dentist
-							</div>
-							<div class="appointment_details_time">
-								Wednesday, 04:00PM
-							</div>
-							<div class="appointment_details_clinic">
-								Toothaid Dental Clinic
-							</div>
+					<% if(!appointments.length) { %>
+						<h4 class="heading-4">No Appointments</h4>
+					<% } else { %>
+						<% for(let i = 0; i < appointments.length; i++) { %>
+							<div class="appointment">
+								<div class="appointment_date">
+									<div class="appointment_date_date">
+										<%= appointments[i].appointmentDate.getDate() %>
+									</div>
+									<div class="appointment_date_month">
+										<%= appointments[i].appointmentDate.toDateString().split(' ')[1] %>
+									</div>
+								</div>
+								<div class="appointment_details">
+									<div class="appointment_details_doctor_name">
+										Dr. <%= doctors[i].name %>, Dentist
+									</div>
+									<div class="appointment_details_time">
+										<%= appointments[i].appointmentDate.toDateString().split(' ')[0] %>, <%= slots[i].subSlots.startTime %>
+									</div>
+									<div class="appointment_details_clinic">
+										<%= slots[i].hospital %>
+									</div>
 
-							<div class="appointment_details_status">
-								<span class="approved">
-									Approved
-								</span>
-								<span class="cancelled">
-									Cancelled
-								</span>
+									<div class="appointment_details_status">
+										<span class="approved">
+											Approved
+										</span>
+									<!-- 
+										<span class="cancelled">
+											Cancelled
+										</span> -->
+									</div>
+								</div>
+								<div class="appointment_view_details">
+									<button class="appointment_view_details_btn appointment_view_details_book_again">
+										Book Again
+									</button>
+									<button class="appointment_view_details_btn appointment_view_details_view_details">
+										View Details
+									</button>
+								</div>
 							</div>
-						</div>
-						<div class="appointment_view_details">
-							<button class="appointment_view_details_btn appointment_view_details_book_again">
-								Book Again
-							</button>
-							<button class="appointment_view_details_btn appointment_view_details_view_details">
-								View Details
-							</button>
-						</div>
-					</div>	
+						<% } %>	
+					<% } %>
 				</div>
 			</div>
 		</section>

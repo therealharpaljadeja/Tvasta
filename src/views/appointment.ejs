@@ -24,12 +24,13 @@
                             <div class="appointment_date">
                                 <i class="far fa-calender-alt"></i>
                                 <span>On</span>
-                                <span><%= slot.date %></span>
+                                
+                                <span><%= date %></span>
                             </div>
                             <div class="appointment_time">
                                 <i class="fas fa-clock"></i>
                                 <span>At</span>
-                                <span><%= slot.hour %>:<%= slot.min %> <%= slot.mode %></span>
+                                <span><%= slot.subSlots.startTime %></span>
                             </div>
                         </div>
                         <div class="appointment_change_schedule">
@@ -46,13 +47,13 @@
                                     <%= doctor.name %>
                                 </div>
                                 <div class="doctor_qualifications">
-                                    <% for(let i = 0; i < doctor.qualifications.length; i++) { %>
-                                    <span><%= doctor.qualifications[i] %></span>
+                                    <% for(let i = 0; i < doctor.doctor.qualifications.length; i++) { %>
+                                    <span><%= doctor.doctor.qualifications[i] %></span>
                                     <% } %>
                                 </div>
                                 <div class="doctor_specializations">
-                                    <% for(let i = 0; i < doctor.specializations.length; i++) { %>
-                                    <span><%= doctor.specializations[i] %></span>
+                                    <% for(let i = 0; i < doctor.doctor.specializations.length; i++) { %>
+                                    <span><%= doctor.doctor.specializations[i] %></span>
                                     <span>,<span>
                                     <% } %>
                                 </div>
@@ -87,40 +88,35 @@
 						Patient Details
 					</div>
 					<div class="appointment_form_patient">
-						<form id="appointment_form" action="/appointment" method="POST">
+						<form id="appointment_form" action="/appointment/<%= slot.subSlots._id %>?date=<%= new Date(date) %>" method="POST">
 							<div class="appointment_form_patient_title">
 								This appointment is for:
 							</div>
 							<div class="appointment_form_patient_select">
 								<div class="appointment_form_patient_select_item">
 									
-									<input id="current" type="radio" name="patient" value="current_user" checked>
-									<label for="current"><%= session.user.name %></label>
+									<span><%= session.user.name %></span>
 								</div>
-								<div class="appointment_form_patient_select_item">
+								<!-- <div class="appointment_form_patient_select_item">
 									
 									<input id="someone" type="radio" name="patient" value="someone_else">
 									<label for="someone">Someone Else</label>
-								</div>
+								</div> -->
 							</div>
 							<div class="current_user_form">
-								<div class="appointment_form_input_field">
-									<label for="current_user_name">Full Name</label>
-									<input type="text" name="current_user_name" id="" required value="<%= session.user.name %>">
-								</div>
 								<div class="appointment_form_input_field">
 									<label for="current_user_phoneNumber">Mobile</label>
 									<input type="text" name="current_user_phoneNumber" id="" required value="<%= session.user.phoneNumber %>" disabled>
 								</div>
 								<div class="appointment_form_input_field">
 									<label for="current_user_email">Your Email</label>
-									<input type="email" name="current_user_email" id="" required>
+									<input type="email" name="current_user_email" id=""  placeholder="Optional">
 								</div>
                                 <div class="appointment_form_button">
                                     <button type="submit">Book Appointment</button>
                                 </div>	
 							</div>
-							<div class="someone_else_form display_none">
+							<!-- <div class="someone_else_form display_none">
 								<div class="appointment_form_input_field">
 									<label for="someone_name">Patient's Full Name</label>
 									<input type="text" name="someone_name" id="">
@@ -140,7 +136,7 @@
                                 <div class="appointment_form_button">
                                     <button type="submit">Book Appointment</button>
                                 </div>
-							</div>
+							</div> -->
 						</form>
 					</div>
             	</div>
@@ -149,7 +145,7 @@
         <section class="copyright">
             <span>All Rights Reserved &copy; Tvastra 2020</span>
         </section>
-        <script>
+        <!-- <script>
         	const currentUserRadio = document.querySelector('input[value="current_user"]');
         	const someoneElseRadio = document.querySelector('input[value="someone_else"]');
         	const currentUserForm = document.querySelector('.current_user_form');
@@ -184,6 +180,9 @@
                     current_phone.removeAttribute('required');
                     current_email.removeAttribute('required');
         	})
+        </script> -->
+        <script>
+            
         </script>
         <script src="/index.js"></script>
     </div>

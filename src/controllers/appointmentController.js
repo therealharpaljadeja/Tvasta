@@ -32,24 +32,30 @@ const loadingDataOnAppointmentPage = async (req, res, next) => {
 	slot = slot[0];
 	console.log(doctor);
 	console.log(slot);
+	console.log(req.query.date);
 	// console.log(subSlot);
 	res.render('views/appointment.ejs', { session: req.session, doctor: doctor, slot: slot, date: req.query.date });
 }
 
 const createAppointment = async (req, res, next) => {
-	await Slot.findOneAndUpdate({
-		subSlots: { $elemMatch: { _id: Mongoose.Types.ObjectId(req.params.id) } }
-	},{ 'subSlots.$.isBooked': true });
+	console.log(req.query.appointmentDate);
+	let appointmentDate = new Date(req.query.appointmentDate);
+	console.log(appointmentDate);
 	// subslot.isBooked = true;
 	const newAppointment = await Appointment.create({
 		slot: req.params.id,
 		user: req.session.user._id,
 		appointmentDate: new Date(req.query.date)
+
 	});
-	// subslot.save();
-	req.session.error = 'Appointment Successfully Booked!';
-	req.session.errorType = 'Success';
-	res.redirect('/');
+
+	// await Slot.findOneAndUpdate({
+	// 	subSlots: { $elemMatch: { _id: Mongoose.Types.ObjectId(req.params.id) } }
+	// },{ 'subSlots.$.isBooked': true });
+	// // subslot.save();
+	// req.session.error = 'Appointment Successfully Booked!';
+	// req.session.errorType = 'Success';
+	// res.redirect('/');
 }
 
 const getUserAppointments = async (req, res, next) => {

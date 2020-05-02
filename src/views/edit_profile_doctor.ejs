@@ -208,7 +208,7 @@
 				<div class="photo_and_name">
 					<div class="edit_profile_photo">
 						<div class="upload_photo_image_container">
-							<img src="<%= session.user.display_picture ? session.user.display_picture : 'public/uploads/users/user.jpeg'  %>" alt="">
+							<img src="<%= session.user.display_picture ? session.user.display_picture : 'public/uploads/users/default-user.png'  %>" alt="">
 						</div>
 						<div class="upload_image_container">
 							<span>Profile Picture</span>
@@ -223,7 +223,10 @@
 				</div>
 				<div class="edit_other_details">
 					<div class="edit_field">
-						<label for="phoneNumber">Phone Number</label>
+						<div class="edit_phone_number">
+							<label for="phoneNumber">Phone Number</label>
+							<span id="edit_phone_number">Edit Number</span>
+						</div>
 						<input type="text" name="phoneNumber" value="<%= session.user.phoneNumber %>" placeholder="Enter your phone number" required>	
 					</div>
 					<div class="edit_field">

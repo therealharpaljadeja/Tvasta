@@ -21,6 +21,20 @@ const appointmentSchema = new mongoose.Schema({
 
 // })
 
+appointmentSchema.pre('save', function(next){
+	var rightNow = new Date(Date.now());
+  console.log(rightNow, this.appointmentDate);
+  console.log('hi');
+  console.log(rightNow < this.appointmentDate);
+	if(rightNow < this.appointmentDate){
+		next();
+	} else {
+		var err = new Error('Appointment Invalid');
+		next(err);
+	}
+})
+
+
 const Appointment = mongoose.model('Appointment', appointmentSchema);
 
 module.exports = Appointment;

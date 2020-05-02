@@ -200,8 +200,19 @@
 						<div class="time-slots-container time-slots-carousel">
 							<% let current = currentDay;
 							
-							var subslots = [];
+							var subslots = [];	
 							var dateForSlots = new Date(dateFromServer);
+							var dateForTime = new Date(dateFromServer);
+							
+							
+
+							var rightNow = new Date(dateFromServer);
+							rightNow.setHours(dateFromServer.getHours() + 5);
+							rightNow.setMinutes(dateFromServer.getMinutes() + 30);
+							dateForSlots.setHours(dateFromServer.getHours() + 5);
+							dateForSlots.setMinutes(dateFromServer.getMinutes() + 30);
+							console.log('dateForSlots',dateForSlots)
+
 							%>
 							<% for(let j = 0; j < 7; j++) { %>
 
@@ -217,11 +228,38 @@
 												<% if(doctors[i].slots[q].days.indexOf(days[current]) !== -1) {
 												noSlots = 1;
 													%>
-
+													
 													<% if(doctors[i].slots[q].subSlots.length) { %>
 														<% for(let m = 0; m < doctors[i].slots[q].subSlots.length; m++) {%>
 															<% if(doctors[i].slots[q].subSlots[m].isBooked) { %>
 															<% } else { %>
+															<% 
+															
+															var hours;
+
+															if(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[1] == 'pm'){
+																if(doctors[i].slots[q].subSlots[m].startTime.split(':')[0] == '12'){
+																	hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]);
+																} else {
+																	hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]) + 12;
+																}
+															} else {
+																hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]);
+															} 
+															
+															var minutes = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[0]);
+																
+																
+															dateForSlots.setHours(hours);
+															dateForSlots.setMinutes(minutes);
+
+															dateForSlots.setHours(dateForSlots.getHours() + 5);
+															dateForSlots.setMinutes(dateForSlots.getMinutes() + 30);
+
+															if(!(rightNow < dateForSlots)) {
+
+															} else {
+															 %>
 																<% if(q == 0) { %>
 																<div class="slot" onclick="goToAppointment(this)" data-subslotid='<%= doctors[i].slots[q].subSlots[m].id %>' data-doctorid='<%= doctors[i].id %>' data-date='<%= dateForSlots.toDateString() %>'>
 																	<%= doctors[i].slots[q].subSlots[m].startTime  %>
@@ -242,10 +280,12 @@
 																		<%= doctors[i].slots[q].subSlots[m].startTime  %>
 																	</div>
 																<% } %>
+																<% } %>
 															<% } %>	
 														<% } %>
 													<% } %>
 												<% } %>
+												
 											<% } %>
 										<% } 
 										current++; %>
@@ -253,8 +293,10 @@
 											<h4 class="heading-4">No Slot Available</h4>
 										<% } %>
 								</div>
-								<% dateForSlots.setDate(dateForSlots.getDate() + 1) %>		
+								<% dateForSlots.setDate(dateForSlots.getDate() + 1) %>
+								<% dateForTime.setDate(dateForTime.getDate() + 1) %>
 							<% } %>
+
 						</div>
 						<div class="legend">
 						<% for(let n = 0; n < doctors[i].slots.length; n++) { %>

@@ -63,7 +63,7 @@
                     <div class="appointment_hospital_details display_none">
                         <div class="appointment_hospital_details_info_card">
                             <div class="hospital_display_picture_container">
-                                <img src="./../public/uploads/users/user.jpeg" alt="">
+                                <img src="./../public/uploads/users/default-user.png" alt="">
                             </div>
                             <div class="hospital_info">
                                 <div class="hospital_name">
@@ -88,7 +88,7 @@
 						Patient Details
 					</div>
 					<div class="appointment_form_patient">
-						<form id="appointment_form" action="/appointment/<%= slot.subSlots._id %>?date=<%= new Date(date) %>" method="POST">
+						<form id="appointment_form" action="/appointment/<%= slot.subSlots._id %>?appointmentDate=<%= new Date(date) %>" method="POST">
 							<div class="appointment_form_patient_title">
 								This appointment is for:
 							</div>

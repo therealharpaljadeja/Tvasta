@@ -71,7 +71,7 @@
 	<% } %>
 
 	
-	<%- include('partials/admin_sidebar.ejs') %>
+	
 	<%- include('partials/header.ejs') %>
 	<!-- <section class="edit_profile">
 		<form action="/save-changes" id="edit-profile" method="POST" enctype="multipart/form-data">
@@ -170,6 +170,8 @@
 		</div>
 	</form>
 	</section> -->
+	<div class="background-dashboard">
+	<%- include('partials/admin_sidebar.ejs') %>
 	<div class="dashboard_content">
 		<section class="edit_profile edit_profile--doctor">
 			<form action="/save-changes" id="edit-profile" method="POST" enctype="multipart/form-data">
@@ -271,6 +273,7 @@
 			</div>
 		</form>
 		</section>
+	</div>
 	</div>
 	<div class="change_phone_number_form_container display_none">
 		<div class="form_container__form change_phone_number">

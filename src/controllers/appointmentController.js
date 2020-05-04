@@ -124,10 +124,18 @@ const postCancelAppointment = async (req, res, next) => {
 		const appointment = await Appointment.findOne({ _id: Mongoose.Types.ObjectId(req.params.id) });
 		appointment.status = 'Cancelled';
 		appointment.save();
+		await Slot.findOneAndUpdate({
+			subSlots: { $elemMatch: { _id: Mongoose.Types.ObjectId(appointment.slot) } }
+		},{ 'subSlots.$.isBooked': false });
 		console.log('Cancelled');
 		req.session.error = 'Appointment Cancelled';
 		req.session.errorType = 'Success';
-		res.redirect('/user-dashboard-appointments');
+		if(req.session.user.role == 'user'){
+			res.redirect('/user-dashboard-appointments');	
+		} else {
+			res.redirect('/doctor-dashboard');
+		}
+		
 	} else {
 		res.redirect('/user-dashboard-appointments');
 	}

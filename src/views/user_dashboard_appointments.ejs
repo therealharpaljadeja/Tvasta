@@ -59,7 +59,7 @@
 		</div>
 	</header> -->
 	<%- include('partials/header.ejs') %>
-	<%- include('partials/admin_sidebar.ejs') %>
+	
 	<!-- <div class="page-flex">
 		<sidebar class="profile_dashboard__sidebar_menu_container">
 			<ul class="profile_dashboard__sidebar_menu">
@@ -119,15 +119,19 @@
 			</div>
 		</section>	
 	</div> -->
+	<div class="background-dashboard">
+	<%- include('partials/admin_sidebar.ejs') %>
 	<div class="dashboard_content">
 		<section class="page-content">
 			<div class="page-content-container">
-				<div class="appointment_heading">
-					<h4 class="heading-4">Upcoming</h4>
-				</div>
 				<div class="appointment_container">
 					<% if(!appointments.length) { %>
-						<h4 class="heading-4">No Appointments</h4>
+						<div class="no_appointments_container">
+							<div class="no_appointments">
+								<i class="fas fa-folder-open"></i>
+								<h4 class="heading-4">No Appointments</h4>
+							</div>
+						</div>
 					<% } else { %>
 						<% for(let i = 0; i < appointments.length; i++) { %>
 							<div class="appointment">
@@ -159,18 +163,19 @@
 											<span class="approved">
 												Approved
 											</span>
-										<% } else if(appointments[i].status === 'Completed') %>
+										<% } else if(appointments[i].status === 'Completed') { %>
 											<span class="approved">
 												Completed
 											</span>
+										<% } %>
 									</div>
 								</div>
 								<div class="appointment_view_details">
-									<button class="appointment_view_details_btn appointment_view_details_book_again">
-										Book Again
+									<button class="appointment_view_details_btn appointment_view_details_book_again" onclick="cancelAppointment(this)" data-appointment="<%= appointments[i]._id %>">
+										Cancel Appointment
 									</button>
-									<button class="appointment_view_details_btn appointment_view_details_view_details">
-										View Details
+									<button class="appointment_view_details_btn appointment_view_details_view_details" onclick="rescheduleAppointment(this)">
+										Reschedule Appointment
 									</button>
 								</div>
 							</div>
@@ -179,9 +184,16 @@
 				</div>
 			</div>
 		</section>
-		
 	</div>
-	
+	</div>
+	<script>
+		async function cancelAppointment(button){
+			const res = await fetch(`/appointment-cancel/${button.dataset.appointment}`, {
+				method: 'POST'
+			});
+			window.location.href = res.url;
+		}
+	</script>
 	<script src="./../dashboard.js"></script>
 	<script src="./../error.js"></script>
 	<script src="./../index.js"></script>

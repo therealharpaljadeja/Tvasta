@@ -120,8 +120,10 @@
 			<i class="fas fa-chevron-down"></i>
 		</div>
 	</header> -->
-	<%- include('partials/admin_sidebar.ejs') %>
+	
 	<%- include('partials/header.ejs') %>
+	<div class="background-dashboard">
+	<%- include('partials/admin_sidebar.ejs') %>
 	<div class="dashboard_content">
 		<section class="statistics_site">
 			<div class="statistics_site__grid">
@@ -264,7 +266,7 @@
 		</section>
 		
 	</div>
-	
+	</div>
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<script src="./../charts_in_admin.js"></script>
 	<script src="./../index.js">

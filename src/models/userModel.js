@@ -101,9 +101,7 @@ userSchema.post('find', async function(docs,next){
 		doc.doctor.subslots = subslotsArray;
 	}
 	next();
-})
-
-
+});
 
 
 

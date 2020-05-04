@@ -1,6 +1,8 @@
 .dashboard_content{
 	transform: 0;
 	width: 100%;
+	background-color: $background-color;
+
 }
 .statistics_site{
 	&__grid{
@@ -51,8 +53,8 @@
 
 @media(min-width: $bp-desktop) {
 	.dashboard_content{
-		transform: translate(30rem);
-		width: calc(100% - 30rem);
+		overflow: scroll;
+		height: 100%;
 	}
 	.statistics_site{
 		&__grid{

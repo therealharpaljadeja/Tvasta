@@ -45,17 +45,93 @@ const createAppointment = async (req, res, next) => {
 	const newAppointment = await Appointment.create({
 		slot: req.params.id,
 		user: req.session.user._id,
-		appointmentDate: new Date(req.query.date)
+		appointmentDate: appointmentDate
 
 	});
 
-	// await Slot.findOneAndUpdate({
-	// 	subSlots: { $elemMatch: { _id: Mongoose.Types.ObjectId(req.params.id) } }
-	// },{ 'subSlots.$.isBooked': true });
-	// // subslot.save();
-	// req.session.error = 'Appointment Successfully Booked!';
-	// req.session.errorType = 'Success';
-	// res.redirect('/');
+	await Slot.findOneAndUpdate({
+		subSlots: { $elemMatch: { _id: Mongoose.Types.ObjectId(req.params.id) } }
+	},{ 'subSlots.$.isBooked': true });
+	// subslot.save();
+	req.session.error = 'Appointment Successfully Booked!';
+	req.session.errorType = 'Success';
+	req.session.appointment = newAppointment;
+	console.log(req.session.appointment);
+	res.redirect('/appointment-booked');
+}
+
+const appointmentBooked = async (req, res, next) => {
+	const appointment = req.session.appointment;
+	if(appointment){
+		const patient = await User.findOne({ _id: appointment.user });
+		let subslot = await Slot.aggregate([
+			{
+				$unwind: '$subSlots'
+			},
+			{
+				$match: { 'subSlots._id': Mongoose.Types.ObjectId(appointment.slot) }
+			}
+
+		]);
+		subslot = subslot[0];
+		console.log(subslot);
+		const doctor = await User.findOne({ _id: subslot.doctor });
+		res.locals.doctor = doctor;
+		res.locals.patient = patient;
+		res.locals.subslot = subslot;
+		res.locals.appointment = appointment;
+		appointmentDate = new Date(appointment.appointmentDate);
+		res.locals.appointmentDate = appointmentDate.toDateString();
+		console.log(doctor);
+		next();
+	} else {
+		req.session.error = 'Book an appointment first';
+		req.session.errorType = 'Failure';
+		if(req.session.user.role == 'admin') res.redirect('/admin');
+		else res.redirect('/');
+	}
+}
+
+const getCancelAppointment = async (req, res, next) => {
+	const appointment = await Appointment.findOne({ _id: Mongoose.Types.ObjectId(req.params.id) });
+	if(appointment){
+		const patient = await User.findOne({ _id: appointment.user });
+		let subslot = await Slot.aggregate([
+			{
+				$unwind: '$subSlots'
+			},
+			{
+				$match: { 'subSlots._id': Mongoose.Types.ObjectId(appointment.slot) }
+			}
+
+		]);
+		subslot = subslot[0];
+		console.log(subslot);
+		const doctor = await User.findOne({ _id: subslot.doctor });
+		res.locals.doctor = doctor;
+		res.locals.patient = patient;
+		res.locals.subslot = subslot;
+		res.locals.appointment = appointment;
+		appointmentDate = new Date(appointment.appointmentDate);
+		res.locals.appointmentDate = appointmentDate.toDateString();
+		console.log(doctor);
+		next();
+	}
+}
+
+const postCancelAppointment = async (req, res, next) => {
+	if(req.params.id){
+		const appointment = await Appointment.findOne({ _id: Mongoose.Types.ObjectId(req.params.id) });
+		appointment.status = 'Cancelled';
+		appointment.save();
+		console.log('Cancelled');
+		req.session.error = 'Appointment Cancelled';
+		req.session.errorType = 'Success';
+		res.redirect('/user-dashboard-appointments');
+	} else {
+		res.redirect('/user-dashboard-appointments');
+	}
+	
 }
 
 const getUserAppointments = async (req, res, next) => {
@@ -182,5 +258,8 @@ module.exports = {
 	createAppointment: createAppointment,
 	getUserAppointments: getUserAppointments,
 	getAppointmentToDoctorDashboard: getAppointmentToDoctorDashboard,
-	getAppointmentToAdminDashboard: getAppointmentToAdminDashboard
+	getAppointmentToAdminDashboard: getAppointmentToAdminDashboard,
+	appointmentBooked: appointmentBooked,
+	getCancelAppointment: getCancelAppointment,
+	postCancelAppointment: postCancelAppointment
 }

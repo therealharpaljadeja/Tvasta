@@ -92,10 +92,19 @@
 		<a href="/user-dashboard-lab-tests"><li class="profile_menu__item">My Payments</li></a>
 		<a href="/logout"><li class="profile_menu__item">Logout</li></a>
 	</ul>
-	<% } else { %>
+	<% } else if(session.user.role == 'doctor') { %>
 	<ul class="profile_menu">
-		<a href="/doctor-dashboard-appointments"><li class="profile_menu__item">My Appointments</li></a>
-		<a href="/doctor-dashboard-payments"><li class="profile_menu__item">My Payments</li></a>
+		<a href="/doctor-dashboard"><li class="profile_menu__item">Appointments</li></a>
+		<a href="/doctor-dashboard-payments"><li class="profile_menu__item">Payments</li></a>
+		<a href="/schedule-appointment"><li class="profile_menu__item">Schedule Appointments</li></a>
+		<a href="/logout"><li class="profile_menu__item">Logout</li></a>
+	</ul>
+	<% } else if(session.user.role == 'admin') { %>
+	<ul class="profile_menu">
+		<a href="/admin"><li class="profile_menu__item">Dashboard</li></a>
+		<a href="/admin"><li class="profile_menu__item">Appointments</li></a>
+		<a href="/admin-doctors"><li class="profile_menu__item">Doctors</li></a>
+		<a href="/admin"><li class="profile_menu__item">Departments</li></a>
 		<a href="/logout"><li class="profile_menu__item">Logout</li></a>
 	</ul>
 	<% } %>

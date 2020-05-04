@@ -6,6 +6,10 @@ const subSlotSchema = new mongoose.Schema({
 	isBooked: {
 		type: Boolean,
 		default: false
+	},
+	isDisabled: {
+		type: Boolean,
+		default: false
 	}
 });
 

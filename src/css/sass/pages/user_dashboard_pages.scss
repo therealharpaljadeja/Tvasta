@@ -6,7 +6,6 @@
 .page-content{
 	max-height: 100%;
 	// background-color: #ddd;
-	margin: 1rem 2rem;
 
 	.page-content-container{
 		width: 100%;
@@ -24,6 +23,7 @@
 				border: 1px solid #ddd;
 				padding: 1rem 1.5rem;
 				margin: 1rem 0rem;
+				flex-wrap: wrap;
 				&_date{
 					background-color: #fff;
 					padding: 1rem;
@@ -106,7 +106,9 @@
 
 @media(min-width: $bp-tablet){
 	.page-content{
-		margin: 3rem 10rem;
+		&-container{
+			padding: 2rem 3rem;
+		}
 	}
 	.page-flex{
 	}

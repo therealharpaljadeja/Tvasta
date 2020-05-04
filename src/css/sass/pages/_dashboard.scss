@@ -1,6 +1,6 @@
 .dashboard_content{
-	transform: translate(30rem);
-	width: calc(100% - 30rem);
+	transform: 0;
+	width: 100%;
 }
 .statistics_site{
 	&__grid{
@@ -50,6 +50,10 @@
 }
 
 @media(min-width: $bp-desktop) {
+	.dashboard_content{
+		transform: translate(30rem);
+		width: calc(100% - 30rem);
+	}
 	.statistics_site{
 		&__grid{
 			grid-template-columns: 1fr 1fr 1fr 1fr;

@@ -1,4 +1,3 @@
-
 .edit_profile{
 	&--doctor{
 	}
@@ -116,6 +115,31 @@
 	}
 }
 
+.change_phone_number_form_container{
+	position: fixed;
+	z-index: 100000;
+	background-color: rgba(black,.4);
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	.change_phone_number{
+		position: relative;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		height: 25rem;
+		width: 40rem;
+		background-color: $background-color;
+		.close-form{
+			position: absolute;
+			right: 1rem;
+			top: 1rem;
+			font-size: 1.4rem;
+		}
+	}
+}
+
 @media(min-width: $bp-tablet){
 	.edit_profile{
 		&_container{
@@ -149,6 +173,7 @@
 				#edit_phone_number{
 					font-family: $nexa-bold;
 					color: $bright-blue;
+					cursor: pointer;
 				}
 			}
 		}

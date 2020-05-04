@@ -21,4 +21,3 @@ const showSidebar = () => {
 
 
 cross_sidebar.addEventListener('click', hideSidebar);
-burger.addEventListener('click', showSidebar);

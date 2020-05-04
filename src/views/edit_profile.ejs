@@ -203,7 +203,10 @@
 				</div>
 				<div class="edit_other_details">
 					<div class="edit_field">
-						<label for="phoneNumber">Phone Number</label>
+						<div class="edit_phone_number">
+							<label for="phoneNumber">Phone Number</label>
+							<span id="edit_phone_number">Edit Number</span>
+						</div>
 						<input type="text" name="phoneNumber" value="<%= session.user.phoneNumber %>" placeholder="Enter your phone number" required>	
 					</div>
 					<div class="edit_field">
@@ -269,6 +272,100 @@
 		</form>
 		</section>
 	</div>
+	<div class="change_phone_number_form_container display_none">
+		<div class="form_container__form change_phone_number">
+			<h1 class="form_container__heading">Change Phone Number</h1>
+			<div class="form_container__form__input_field">
+				<input name="phoneNumber" type="text" placeholder="Enter Mobile Number" maxlength="10" id="phoneNumber" class="form_container__form__phone_number" required>
+			</div>
+			<button onclick="sendOTP()" type="submit" class="form_container__form__submit">
+				<span class="form_container__form__submit__text">Verify</span>
+				<span class="form_container__form__submit__icon"><i class="fas fa-arrow-right"></i></span>
+			</button>
+			<span class="close-form"><i class="fas fa-times"></i></span>
+		</div>
+	</div>
+	<script>
+	
+		var editNumber = document.getElementById('edit_phone_number');
+		let formContainer = document.querySelector('.change_phone_number');
+		let closeForm = document.querySelector('.close-form');
+		closeForm.addEventListener('click', function(){
+			formContainerContainer.style.display = 'none';
+		})
+		let formContainerContainer = document.querySelector('.change_phone_number_form_container');
+		editNumber.addEventListener('click', function(){
+			formContainerContainer.style.display = 'block';
+			console.log(formContainer);
+		});
+
+		var phoneNumber = document.querySelector('#phoneNumber');
+
+		var otpForm = `<h1 class="form_container__heading">OTP</h1>
+			<div class="form_container__form">
+				<h3 class="para-1 otp-message">We have sent One Time Password (OTP) to your registered Phone Number.</h3>
+				<div class="form_container__form__input_field">
+					<!-- <input name="otp" id="otp" type="text" class="form_container__form__otp" required onKeyPress="if(this.value.length==4) return false;" maxlength="4"> -->
+					<!-- <i class="fas fa-question-circle"></i> -->
+
+					<input class="otpField" name="otp_1" id="codeBox1" type="number" maxlength="1" onkeyup="onKeyUpEvent(1, event)" onfocus="onFocusEvent(1)" required>
+					<input class="otpField" name="otp_2" id="codeBox2" type="number" maxlength="1" onkeyup="onKeyUpEvent(2, event)" onfocus="onFocusEvent(2)" required>
+					<input class="otpField" name="otp_3" id="codeBox3" type="number" maxlength="1" onkeyup="onKeyUpEvent(3, event)" onfocus="onFocusEvent(3)" required>
+					<input class="otpField" name="otp_4" id="codeBox4" type="number" maxlength="1" onkeyup="onKeyUpEvent(4, event)" onfocus="onFocusEvent(4)" required>
+
+				</div>
+				<button onclick="verifyOTP()" type="submit" id="otpSubmit" class="form_container__form__submit">
+					<span class="form_container__form__submit__text">Submit</span>
+					<span class="form_container__form__submit__icon"><i class="fas fa-arrow-right"></i></span>
+				</button>
+				<span class="close-form"><i class="fas fa-times"></i></span>
+				</div>`
+		async function sendOTP() {
+			console.log(phoneNumber.value);
+			console.log(JSON.stringify(phoneNumber.value));
+			const res = await fetch('/change-phone-number', {
+				method: 'POST',
+				body: JSON.stringify({
+					phoneNumber: phoneNumber.value
+				}),
+				headers: { 
+        			"Content-type": "application/json; charset=UTF-8"
+    			}
+			});
+			console.log(res);
+			console.log(res.response);
+			const result = await res.json();
+			if(result.status === 'success'){
+				formContainer.innerHTML = '';
+				formContainer.innerHTML = otpForm;
+				formContainer.style.height = '30rem'; 
+			} 
+		}
+
+		async function verifyOTP(){
+			const otp_1 = document.querySelector(input[name="otp_1"]);
+			const otp_2 = document.querySelector(input[name="otp_2"]);
+			const otp_3 = document.querySelector(input[name="otp_3"]);
+			const otp_4 = document.querySelector(input[name="otp_4"]);
+			const res = await fetch('/change-phone-number-verify', {
+				method: 'POST',
+				body: JSON.stringify({
+					otp_1: otp_1.value,
+					otp_2: otp_2.value,
+					otp_3: otp_3.value,
+					otp_4: otp_4.value,
+				}),
+				headers: {
+					"Content-type": "application/json; charset=UTF-8"
+				}
+			});
+			const result = await res.json();
+			console.log(result);
+		}
+
+		
+
+	</script>
 	<script>
 		const gender = document.querySelector('select[name="gender"]');
 		const country = document.querySelector('select[name="country"]');

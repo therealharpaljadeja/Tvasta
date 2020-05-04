@@ -10,7 +10,12 @@ const appointmentSchema = new mongoose.Schema({
       type: mongoose.ObjectId,
       ref: 'User'
     },
-    appointmentDate: Date
+    appointmentDate: Date,
+    status: {
+    	type: String,
+    	enum: ['Cancelled','Approved', 'Completed'],
+      default: 'Approved'
+    }
 }, {timestamps: true});
 
 // appointmentSchema.pre('save', function(next){
@@ -18,21 +23,21 @@ const appointmentSchema = new mongoose.Schema({
 // 	start.setHours(this.start.split(':')[0]);
 // 	start.setMinutes(this.start.split(':')[1]);
 // 	start.getTime() + this.inte
-
+ 
 // })
 
-appointmentSchema.pre('save', function(next){
-	var rightNow = new Date(Date.now());
-  console.log(rightNow, this.appointmentDate);
-  console.log('hi');
-  console.log(rightNow < this.appointmentDate);
-	if(rightNow < this.appointmentDate){
-		next();
-	} else {
-		var err = new Error('Appointment Invalid');
-		next(err);
-	}
-})
+// appointmentSchema.pre('save', function(next){
+// 	var rightNow = new Date(Date.now());
+//   console.log(rightNow, this.appointmentDate);
+//   console.log('hi');
+//   console.log(rightNow <= this.appointmentDate);
+// 	if(rightNow < this.appointmentDate){
+// 		next();
+// 	} else {
+// 		var err = new Error('Appointment Invalid');
+// 		next(err);
+// 	}
+// })
 
 
 const Appointment = mongoose.model('Appointment', appointmentSchema);

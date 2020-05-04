@@ -24,16 +24,13 @@
                             <div class="appointment_date">
                                 <i class="far fa-calender-alt"></i>
                                 <span>On</span>
-                                <span><%= date %></span>
+                                <span><%= appointmentDate %></span>
                             </div>
                             <div class="appointment_time">
                                 <i class="fas fa-clock"></i>
                                 <span>At</span>
-                                <span><%= slot.subSlots.startTime %></span>
+                                <span><%= subslot.subSlots.startTime %></span>
                             </div>
-                        </div>
-                        <div class="appointment_change_schedule">
-                            <a href="/doctors">Change Date and Time</a>
                         </div>
                     </div>
                     <div class="appointment_doctor_details">
@@ -82,73 +79,70 @@
                 </div>
             </div>
             <div class="appointment__col--2">
-            	<div class="appointment_form">
-					<div class="appointment_form_title">
-						Patient Details
-					</div>
-					<div class="appointment_form_patient">
-						<form id="appointment_form" action="/appointment/<%= slot.subSlots._id %>?appointmentDate=<%= new Date(date) %>" method="POST">
-							<div class="appointment_form_patient_title">
-								This appointment is for:
-							</div>
-							<div class="appointment_form_patient_select">
-								<div class="appointment_form_patient_select_item">
-									
-									<span><%= session.user.name %></span>
-								</div>
-								<!-- <div class="appointment_form_patient_select_item">
-									
-									<input id="someone" type="radio" name="patient" value="someone_else">
-									<label for="someone">Someone Else</label>
-								</div> -->
-							</div>
-							<div class="current_user_form">
-								<div class="appointment_form_input_field">
-									<label for="current_user_phoneNumber">Mobile</label>
-									<input type="text" name="current_user_phoneNumber" id="" required value="<%= session.user.phoneNumber %>" disabled>
-								</div>
-								<div class="appointment_form_input_field">
-									<label for="current_user_email">Your Email</label>
-									<input type="email" name="current_user_email" id=""  placeholder="Optional">
-								</div>
-                                <div class="appointment_form_button">
-                                    <button type="submit">Book Appointment</button>
-                                </div>	
-							</div>
-							<!-- <div class="someone_else_form display_none">
-								<div class="appointment_form_input_field">
-									<label for="someone_name">Patient's Full Name</label>
-									<input type="text" name="someone_name" id="">
-								</div>
-								<div class="appointment_form_input_field">
-									<label for="current_user_phoneNumber">Mobile</label>
-									<input type="number" name="current_user_phoneNumber" id="" value="<%= session.user.phoneNumber %>" disabled>
-								</div>
-								<div class="appointment_form_input_field">
-									<label for="someone_phoneNumber">Patient's Mobile</label>
-									<input type="number" name="someone_phoneNumber" id="">
-								</div>
-								<div class="appointment_form_input_field">
-									<label for="someone_email">Patient's Email</label>
-									<input type="email" name="someone_email" id="">
-								</div>
-                                <div class="appointment_form_button">
-                                    <button type="submit">Book Appointment</button>
+                <div class="appointment_form">
+                    <div class="appointment_form_title">
+                        Cancel Appointment
+                    </div>
+                    <div class="appointment_form_patient">
+                        <div id="appointment_form" method="POST">
+                            <div class="appointment_booked_details">
+                                <h4 class="heading-4">Appointment Details</h4>
+                                <div class="appointment_booked_detail_container">
+                                    <div class="appointment_booked_detail_heading">
+                                        Patient Name
+                                    </div>
+                                    <div class="appointment_booked_detail">
+                                        <%= patient.name %>
+                                    </div>
                                 </div>
-							</div> -->
-						</form>
-					</div>
-            	</div>
+                                <div class="appointment_booked_detail_container">
+                                    <div class="appointment_booked_detail_heading">
+                                        Phone Number
+                                    </div>
+                                    <div class="appointment_booked_detail">
+                                        <%= patient.phoneNumber %>
+                                    </div>
+                                </div>
+                                <div class="appointment_booked_detail_container appointment_booked_detail_container--buttons">
+                                    <h4 class="heading-4">Are you sure? You want to cancel this appointment?</h4>
+                                    <button class="appointment_booked--options appointment_booked--cancel" data-appointment="<%= appointment._id %>" onclick="cancelAppointment(this)">
+                                        Yes
+                                    </button>
+                                    <button class="appointment_booked--options appointment_booked--reschedule" onclick="userAppointmentDashboard()">
+                                        No
+                                    </button>
+                                </div>    
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
         <section class="copyright">
             <span>All Rights Reserved &copy; Tvastra 2020</span>
         </section>
+        <script>
+            async function cancelAppointment(button){
+                console.log(button.dataset.appointment);
+                const res = await fetch(`/appointment-cancel/${button.dataset.appointment}`, {
+                    method: 'POST'
+                });
+                console.log(res);
+                window.location.href = res.url;
+            }
+
+            async function userAppointmentDashboard() {
+                const res = await fetch('/appointment-cancel/', {
+                    method: 'POST'
+                });
+                window.location.href = res.url;
+            }
+        </script>
         <!-- <script>
-        	const currentUserRadio = document.querySelector('input[value="current_user"]');
-        	const someoneElseRadio = document.querySelector('input[value="someone_else"]');
-        	const currentUserForm = document.querySelector('.current_user_form');
-        	const someoneElseForm = document.querySelector('.someone_else_form');
+            const currentUserRadio = document.querySelector('input[value="current_user"]');
+            const someoneElseRadio = document.querySelector('input[value="someone_else"]');
+            const currentUserForm = document.querySelector('.current_user_form');
+            const someoneElseForm = document.querySelector('.someone_else_form');
             const current_name = document.querySelector('input[name="current_user_name"]');
             const current_phone = document.querySelector('input[name="current_user_phoneNumber"]');
             const current_email = document.querySelector('input[name="current_user_email"]');
@@ -158,27 +152,27 @@
             const someone_email = document.querySelector('input[name="someone_email"]');
 
 
-        	someoneElseForm.style.display = 'none';
-        	currentUserRadio.addEventListener('click', () => {
-        			currentUserForm.style.display = 'flex';
-        			someoneElseForm.style.display = 'none';
+            someoneElseForm.style.display = 'none';
+            currentUserRadio.addEventListener('click', () => {
+                    currentUserForm.style.display = 'flex';
+                    someoneElseForm.style.display = 'none';
                     current_name.required = 'true';
                     current_phone.required = 'true';
                     current_email.required = 'true';
                     someone_name.removeAttribute('required');
                     someone_email.removeAttribute('required');
                     someone_phone.removeAttribute('required');
-        	});
-        	someoneElseRadio.addEventListener('click', () => {
-        			currentUserForm.style.display = 'none';
-        			someoneElseForm.style.display = 'flex';
+            });
+            someoneElseRadio.addEventListener('click', () => {
+                    currentUserForm.style.display = 'none';
+                    someoneElseForm.style.display = 'flex';
                     someone_name.required = 'true';
                     someone_email.required = 'true';
                     someone_phone.required = 'true';
                     current_name.removeAttribute('required');
                     current_phone.removeAttribute('required');
                     current_email.removeAttribute('required');
-        	})
+            })
         </script> -->
         <script>
             

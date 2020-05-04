@@ -1,4 +1,5 @@
 const Slot = require('./../models/slotModel.js');
+const Mongoose = require('mongoose');
 
 const addSlot = async (req, res, next) => {
 	const allSlots = await Slot.find({ 
@@ -6,9 +7,9 @@ const addSlot = async (req, res, next) => {
 			{
 				doctor: req.session.user._id
 			},
-			{
-				holiday: false
-			},
+			// {
+			// 	holiday: false
+			// },
 			{
 				isDisabled: false
 			}
@@ -179,8 +180,52 @@ const disableSlot = async (req, res) => {
 	res.redirect('/schedule-appointment');
 }
 
+const editSubSlot = async (req, res, next) => {
+	const disableThisSubslots = req.body.disabled;
+	const enableThisSubslots = req.body.enabled;
+
+	if(disableThisSubslots){
+		for(let i = 0; i < disableThisSubslots.length; i++){
+			await Slot.findOneAndUpdate({
+				subSlots: { $elemMatch: { _id: Mongoose.Types.ObjectId(disableThisSubslots[i]) } }
+			},{ 'subSlots.$.isDisabled': true });	
+		}	
+	}
+
+	if(enableThisSubslots){
+		for(let i = 0; i < enableThisSubslots.length; i++){
+			await Slot.findOneAndUpdate({
+				subSlots: { $elemMatch: { _id: Mongoose.Types.ObjectId(enableThisSubslots[i]) } }
+			},{ 'subSlots.$.isDisabled': false });	
+		}	
+	}
+	
+	res.redirect('/schedule-appointment');
+}
+
+const editSlot = async (req, res, next) => {
+	const holidayArray = req.body.holiday;
+	if(holidayArray){
+		for(let i = 0; i < holidayArray.length; i++){
+			let slot = await Slot.findOne({ _id: Mongoose.Types.ObjectId(holidayArray[i]) });
+			if(slot.holiday){
+				await Slot.findOneAndUpdate({ _id: Mongoose.Types.ObjectId(holidayArray[i])},
+				{ 'holiday': false });
+			} else {
+				await Slot.findOneAndUpdate({ _id: Mongoose.Types.ObjectId(holidayArray[i])},
+				{ 'holiday': true });
+			}
+		}
+	}
+
+
+	res.redirect('/schedule-appointment');
+}
+
 module.exports = {
 	addSlot: addSlot,
 	getSlotsBasedOnDoctor: getSlotsBasedOnDoctor,
-	disableSlot: disableSlot
+	disableSlot: disableSlot,
+	editSubSlot: editSubSlot,
+	editSlot: editSlot
 }

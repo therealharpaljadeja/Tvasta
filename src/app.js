@@ -173,6 +173,18 @@ app.get('/appointment/:id',authenticationController.redirectLogin, authenticatio
 
 app.post('/appointment/:id', appointmentController.createAppointment);
 
+app.get('/appointment-booked/', authenticationController.redirectLogin, authenticationController.redirectAdmin, appointmentController.appointmentBooked, (req, res) => {
+	res.render('views/appointment_booked.ejs', { doctor: res.locals.doctor, patient: res.locals.patient, subslot: res.locals.subslot, session: req.session, appointmentDate: res.locals.appointmentDate, appointment: res.locals.appointment })
+});
+
+app.get('/appointment-cancel/:id', authenticationController.redirectLogin, authenticationController.redirectAdmin, appointmentController.getCancelAppointment, (req, res) => {
+	res.render('views/cancel_appointment.ejs', { doctor: res.locals.doctor, patient: res.locals.patient, subslot: res.locals.subslot, session: req.session, appointmentDate: res.locals.appointmentDate, appointment: res.locals.appointment })
+});
+
+app.post('/appointment-cancel/:id', authenticationController.redirectLogin, authenticationController.redirectAdmin, appointmentController.postCancelAppointment);
+
+app.post('/appointment-cancel/', authenticationController.redirectLogin, authenticationController.redirectAdmin, appointmentController.postCancelAppointment);
+
 app.get('/get-a-quote', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/get-a-quote.ejs', {session: req.session});
 })
@@ -180,6 +192,10 @@ app.get('/get-a-quote', authenticationController.redirectLogin, (req, res) => {
 app.get('/edit-profile', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
 	res.render('views/edit_profile.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
 })
+
+app.post('/change-phone-number', userController.changePhoneNumber);
+
+app.post('/change-phone-number-verify', userController.changePhoneNumberOTPVerify);
 
 app.get('/user-dashboard-appointments', authenticationController.redirectLogin, authenticationController.redirectAdmin, appointmentController.getUserAppointments, (req, res) => {
 	res.render('views/user_dashboard_appointments.ejs', {session: req.session, doctors: res.locals.doctors, slots: res.locals.slots, appointments: res.locals.appointments});
@@ -207,6 +223,10 @@ app.get('/schedule-appointment', authenticationController.redirectLogin, slotCon
 })
 
 app.post('/schedule-appointment', authenticationController.redirectLogin, slotController.addSlot);
+
+app.post('/edit-subslots', slotController.editSubSlot);
+
+app.post('/edit-slot', slotController.editSlot)
 
 app.get('/delete-schedule/:id', authenticationController.redirectLogin, slotController.disableSlot);
 

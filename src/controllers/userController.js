@@ -3,6 +3,13 @@ const multer = require('multer');
 const path = require('path');
 const Hospital = require('./../models/hospitalModel');
 const Doctor = require('./../models/doctorModel');
+const Nexmo = require('nexmo');
+
+
+const nexmo = new Nexmo({
+    apiKey: process.env.NEXMO_API_KEY,
+    apiSecret: process.env.NEXMO_API_SECRET
+});
 // File Storage
 const userFileStorage = multer.diskStorage({
 	destination: 'public/uploads/users',
@@ -194,8 +201,86 @@ const editProfile = (req, res, next) => {
 }
 
 
+const changePhoneNumber = (req, res, next) => {
+
+    const nexmoRequestOTPCallback = (err, result) => {
+        if(err) {
+            res.status(400).json({
+                status: 'error',
+                message: 'Please come back later.'
+            })
+        }
+        else{
+            req.session.request_id = result.request_id;
+            req.session.phoneNumber = req.body.phoneNumber;
+            console.log('Requesting OTP');
+            console.log(req.session.request_id);
+            req.session.error = 'Valid Only for 60 Secs';
+            req.session.errorType = 'Info';
+            res.status(200).json({
+                status: 'success',
+            }); 
+        }
+    }
+
+
+    nexmo.verify.request({
+        number: '91' + req.body.phoneNumber,
+        brand: 'Tvastra',
+        code_length: '4',
+        workflow_id: '6',
+        pin_expiry: '120'
+    }, nexmoRequestOTPCallback);
+    
+}
+
+const changePhoneNumberOTPVerify = (req, res, next) => {
+
+    const nexmoVerifyCallback = (err, result) => {
+        if(err) {
+            req.session.errorType = 'Failure';
+            req.session.error = 'Please try again after some time.';
+            res.status(400).json({
+                status: 'error',
+                message: 'Error'
+            });
+        }
+        else {
+            if(result.error_text == 'The code provided does not match the expected value'){
+                req.session.errorType = 'Failure';
+                req.session.error = 'Incorrect OTP';
+                res.status(400).json({
+                    status: 'error',
+                    message: 'Incorrect OTP'
+                });
+            } else {
+                    const user = User.findOne({ email: req.session.user.email });
+                    user.phoneNumber = req.session.phoneNumber;
+                    user.save();
+                    req.session.errorType = 'Success';
+                    req.session.error = 'Phone Number Changed';
+                    req.session.userId = req.session.user._id;
+                    req.session.request_id = null;
+                    req.session.save();
+                    res.redirect('/edit-profile');
+                    // console.log(req.session);
+            }
+        }
+    }
+
+
+    req.body.otp = `${req.body.otp_1 + req.body.otp_2 + req.body.otp_3 + req.body.otp_4}`;
+    nexmo.verify.check({
+        request_id: req.session.request_id,
+        code: req.body.otp
+    }, nexmoVerifyCallback);
+
+}
+
 
 module.exports = {
 	editProfile: editProfile,
-	addDoctorDetails: addDoctorDetails
+	addDoctorDetails: addDoctorDetails,
+    changePhoneNumber: changePhoneNumber,
+    changePhoneNumberOTPVerify: changePhoneNumberOTPVerify
 }

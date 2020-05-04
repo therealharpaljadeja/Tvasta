@@ -151,13 +151,18 @@
 									</div>
 
 									<div class="appointment_details_status">
-										<span class="approved">
-											Approved
-										</span>
-									<!-- 
-										<span class="cancelled">
-											Cancelled
-										</span> -->
+										<% if((slots[i].holiday) || (slots[i].subSlots.isDisabled) || (appointments[i].status === 'Cancelled')) { %>
+											<span class="cancelled">
+												Cancelled
+											</span>
+										<% } else if(appointments[i].status === 'Approved') { %>
+											<span class="approved">
+												Approved
+											</span>
+										<% } else if(appointments[i].status === 'Completed') %>
+											<span class="approved">
+												Completed
+											</span>
 									</div>
 								</div>
 								<div class="appointment_view_details">

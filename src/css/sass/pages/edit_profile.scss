@@ -147,6 +147,7 @@
 			margin: 3rem;
 			.edit_profile_heading{
 				height: 4.5rem;
+				padding: 2rem;
 				h4{
 					font-family: $nexa-bold;
 				}
@@ -214,6 +215,7 @@
 			grid-template-columns: 1fr 1fr 1fr;
 		}
 		.edit_doctor_details{
+			padding: 2rem;
 			grid-template-columns: 1fr 1fr; 
 			.edit_field{
 				.tagify{

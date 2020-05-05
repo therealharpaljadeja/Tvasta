@@ -156,6 +156,9 @@
 						height: 100%;
 					}
 				}
+				.time_slot--reschedule{
+					display: block;
+				}
 				&__time_slot{
 					display: none;
 					flex-direction: column;

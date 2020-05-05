@@ -173,12 +173,12 @@
 								<% if(appointments[i].status == 'Cancelled') { %>
 								<% } else { %>
 								<div class="appointment_view_details">
-									<button class="appointment_view_details_btn appointment_view_details_book_again" onclick="cancelAppointment(this)" data-appointment="<%= appointments[i]._id %>">
+									<a href="/appointment-cancel/<%= appointments[i]._id %>"><button class="appointment_view_details_btn appointment_view_details_book_again" onclick="cancelAppointment(this)" data-appointment="<%= appointments[i]._id %>">
 										Cancel Appointment
-									</button>
-									<button class="appointment_view_details_btn appointment_view_details_view_details" onclick="rescheduleAppointment(this)">
+									</button></a>
+									<a href="/reschedule-appointment/<%= appointments[i]._id %>"><button class="appointment_view_details_btn appointment_view_details_view_details" onclick="rescheduleAppointment(this)">
 										Reschedule Appointment
-									</button>
+									</button></a>
 								</div>
 								<% } %>
 							</div>

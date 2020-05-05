@@ -260,6 +260,51 @@ const getAppointmentToAdminDashboard = async (req, res, next) => {
 	res.locals.appointments = appointments;
 	next();
 }
+ 
+const getRescheduleAppointment = async (req, res, next) => {
+	console.log('1');
+	const appointment = await Appointment.findOne({ _id: Mongoose.Types.ObjectId(req.params.id) });
+	console.log(appointment);
+	let subslot = await Slot.aggregate([
+		{
+			$unwind: '$subSlots'
+		},
+		{
+			$match: { 'subSlots._id': appointment.slot }
+		}
+
+	]);
+	subslot = subslot[0];
+	const doctor = await User.find({ _id: subslot.doctor });
+	console.log(doctor);
+	res.locals.doctors = doctor;
+	res.locals.appointment = appointment;
+	res.locals.currentDay = new Date().getDay();
+	res.locals.currentDate = new Date();
+	res.locals.subslot = subslot;
+	next();
+}	
+
+const postRescheduleAppointment = async (req, res, next) => {
+	
+	const appointment = await Appointment.findOne({ _id: req.params.id });
+	await Slot.findOneAndUpdate({
+			subSlots: { 
+					$elemMatch: { _id: Mongoose.Types.ObjectId(appointment.slot) } 
+				}
+			},{ 'subSlots.$.isBooked': false });
+	await Slot.findOneAndUpdate({
+			subSlots: { 
+					$elemMatch: { _id: Mongoose.Types.ObjectId(req.query.subslot) } 
+				}
+			},{ 'subSlots.$.isBooked': true });
+	appointment.slot = req.query.subslot;
+	appointment.save();
+	req.session.error = 'Appointment Rescheduled';
+	req.session.errorType = 'Success';
+	if (req.session.user.role == 'user') res.redirect('/user-dashboard-appointments');
+	else res.redirect('/doctor-dashboard');
+}
 
 module.exports = {
 	loadingDataOnAppointmentPage: loadingDataOnAppointmentPage,
@@ -269,5 +314,7 @@ module.exports = {
 	getAppointmentToAdminDashboard: getAppointmentToAdminDashboard,
 	appointmentBooked: appointmentBooked,
 	getCancelAppointment: getCancelAppointment,
-	postCancelAppointment: postCancelAppointment
+	postCancelAppointment: postCancelAppointment,
+	getRescheduleAppointment: getRescheduleAppointment,
+	postRescheduleAppointment: postRescheduleAppointment
 }

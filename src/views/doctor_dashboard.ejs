@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Admin Dashboard</title>
+	<title>Doctor Dashboard</title>
 	<%- include('partials/head.ejs') %>
 </head>
 <body>
@@ -234,9 +234,9 @@
 									</td>
 									<td>
 										<div class="actions">
-											<div class="appointment_edit_button" data-appointment="<%= appointments[i]._id  %>" onclick="rescheduleAppointment()">
+											<a href="/reschedule-appointment/<%= appointments[i]._id %>"><div class="appointment_edit_button">
 												<i class="fas fa-pencil-alt"></i>
-											</div>
+											</div></a>
 											<div class="appointment_edit_button" data-appointment="<%= appointments[i]._id  %>" onclick="cancelAppointment(this)">
 												<i class="fas fa-trash-alt"></i>
 											</div>	

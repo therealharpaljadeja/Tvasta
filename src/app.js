@@ -185,6 +185,12 @@ app.post('/appointment-cancel/:id', authenticationController.redirectLogin, auth
 
 app.post('/appointment-cancel/', authenticationController.redirectLogin, authenticationController.redirectAdmin, appointmentController.postCancelAppointment);
 
+app.get('/reschedule-appointment/:id', appointmentController.getRescheduleAppointment, (req, res) => {
+	res.render('views/reschedule_appointment.ejs', {session: req.session, doctors: res.locals.doctors, appointment: res.locals.appointment, currentDay: res.locals.currentDay, dateFromServer: res.locals.currentDate, subslot: res.locals.subslot});
+})
+
+app.post('/reschedule-appointment/:id', appointmentController.postRescheduleAppointment);
+
 app.get('/get-a-quote', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/get-a-quote.ejs', {session: req.session});
 })

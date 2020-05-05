@@ -315,6 +315,10 @@
 		</div>
 	</form>
 	</section>
+	<script>
+		const menuItemActive = document.querySelectorAll(`a[href='/${window.location.href.split('/')[3]}']`);
+		menuItemActive[1].parentElement.parentElement.classList.add('menu-item--active');
+	</script>
 	<script src="./../tagify.js"></script>
 	<script>
 		const gender = document.querySelector('select[name="gender"]');

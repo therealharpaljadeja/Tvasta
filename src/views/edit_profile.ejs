@@ -170,13 +170,15 @@
 		</div>
 	</form>
 	</section> -->
+
 	<div class="background-dashboard">
+	
 	<%- include('partials/admin_sidebar.ejs') %>
 	<div class="dashboard_content">
 		<section class="edit_profile edit_profile--doctor">
 			<form action="/save-changes" id="edit-profile" method="POST" enctype="multipart/form-data">
 			<div class="edit_profile_container">
-				<div class="edit_profile_heading">
+				<div class="edit_profile_heading edit_profile_heading--edit_profile">
 					<h4 class="heading-4">Account</h4>
 					<div class="save_button">
 						<button type="submit" form="edit-profile">
@@ -186,7 +188,6 @@
 						</button>
 					</div>	
 				</div>
-				
 				<div class="photo_and_name">
 					<div class="edit_profile_photo">
 						<div class="upload_photo_image_container">
@@ -288,6 +289,10 @@
 			<span class="close-form"><i class="fas fa-times"></i></span>
 		</div>
 	</div>
+	<script>
+		const menuItemActive = document.querySelectorAll(`a[href='/${window.location.href.split('/')[3]}']`);
+		menuItemActive[1].parentElement.parentElement.classList.add('menu-item--active');
+	</script>
 	<script>
 	
 		var editNumber = document.getElementById('edit_phone_number');

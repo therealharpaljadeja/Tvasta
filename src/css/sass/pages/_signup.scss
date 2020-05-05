@@ -5,7 +5,7 @@
 	}
 	&__form{
 		&__input_field{
-			select, input[type=date], input[type=email], input[type=password]{
+			select, input[type=date], input[type=email], input[type=password], input[type=tel]{
 				&:focus{
 					outline: 1px solid $bright-blue;
 				}
@@ -19,6 +19,9 @@
 				font-size: 1.4rem;
 			}
 		}
+		// .isDoctor{
+		// 	justify-content: left;
+		// }
 		#isDoctorInput{
 			flex-direction: row;
 			align-items: center;

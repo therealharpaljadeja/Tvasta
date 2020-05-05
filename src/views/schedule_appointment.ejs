@@ -332,7 +332,10 @@
 	</div>
 	</div>
 
-
+	<script>
+		const menuItemActive = document.querySelectorAll(`a[href='/${window.location.href.split('/')[3]}']`);
+		menuItemActive[1].parentElement.parentElement.classList.add('menu-item--active');
+	</script>
 	<script>
 		const showEditOptions = (el) => {
 			el.parentElement.parentElement.children[1].classList.toggle('display_none');

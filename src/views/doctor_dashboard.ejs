@@ -255,6 +255,10 @@
 	</div>
 </div>
 	<script>
+	const menuItemActive = document.querySelectorAll(`a[href='/${window.location.href.split('/')[3]}']`);
+	menuItemActive[1].parentElement.parentElement.classList.add('menu-item--active');
+	</script>
+	<script>
 		async function cancelAppointment(button) {
 			const res = await fetch(`/appointment-cancel/${button.dataset.appointment}`, {
 				method: 'POST'

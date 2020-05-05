@@ -170,6 +170,8 @@
 										<% } %>
 									</div>
 								</div>
+								<% if(appointments[i].status == 'Cancelled') { %>
+								<% } else { %>
 								<div class="appointment_view_details">
 									<button class="appointment_view_details_btn appointment_view_details_book_again" onclick="cancelAppointment(this)" data-appointment="<%= appointments[i]._id %>">
 										Cancel Appointment
@@ -178,6 +180,7 @@
 										Reschedule Appointment
 									</button>
 								</div>
+								<% } %>
 							</div>
 						<% } %>	
 					<% } %>
@@ -186,6 +189,10 @@
 		</section>
 	</div>
 	</div>
+	<script>
+		const menuItemActive = document.querySelectorAll(`a[href='/${window.location.href.split('/')[3]}']`);
+		menuItemActive[1].parentElement.parentElement.classList.add('menu-item--active');
+	</script>
 	<script>
 		async function cancelAppointment(button){
 			const res = await fetch(`/appointment-cancel/${button.dataset.appointment}`, {

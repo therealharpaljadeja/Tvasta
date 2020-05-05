@@ -45,8 +45,8 @@
 			}
 		}
 		.photo_and_name{
-			padding: 2rem 0rem 0rem 0rem;	
-			margin-bottom: 2rem;
+			padding: 2rem;	
+			// margin-bottom: 2rem;
 			border-bottom: 1px solid #ddd;
 			.edit_profile_photo{
 				display: flex;
@@ -90,8 +90,9 @@
 			}
 		}
 		.edit_other_details{
-			margin-bottom: 2rem;
+			// margin-bottom: 2rem;
 			border-bottom: 1px solid #ddd;
+			padding: 2rem;
 		}
 		.edit_doctor_details{
 			.edit_field{
@@ -145,6 +146,7 @@
 		&_container{
 			margin: 3rem;
 			.edit_profile_heading{
+				height: 4.5rem;
 				h4{
 					font-family: $nexa-bold;
 				}
@@ -153,6 +155,7 @@
 				justify-content: space-between;
 				align-items: center;
 			}
+			
 		}
 		.photo_and_name{
 			display: grid;
@@ -200,12 +203,14 @@
 @media(min-width: $bp-desktop){
 	.edit_profile{
 		&_container{
-			margin: 3rem 10rem;
+			margin: 0rem;
 		}
 		.edit_other_details{
+			padding: 2rem;
 			grid-template-columns: 1fr 1fr 1fr;
 		}
 		.edit_address{
+			padding: 2rem;
 			grid-template-columns: 1fr 1fr 1fr;
 		}
 		.edit_doctor_details{

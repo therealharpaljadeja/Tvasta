@@ -48,15 +48,15 @@
 				display: flex;
 				flex-direction: row;
 				grid-gap: 1rem;
-				background-color: #ddd;
-				border: 1px solid #ddd;
+				background-color: #eee;
+				border: 1px solid #eee;
 				padding: 1rem 1.5rem;
 				margin: 1rem 0rem;
 				flex-wrap: wrap;
 				&_date{
 					background-color: #fff;
 					padding: 1rem;
-					border-radius: .5rem;
+					// border-radius: .5rem;
 					display: flex;
 					flex-direction: column;
 					grid-gap: .5rem;
@@ -108,7 +108,7 @@
 							padding: .5rem;
 							border-radius: .5rem;
 							font-family: $nexa-bold;
-							background-color: rgba(red, .4);
+							background-color: rgba(red, .2);
 							color: red;	
 						}	
 					}
@@ -116,7 +116,7 @@
 				&_view_details{
 					display: flex;
 					flex-direction: row;
-					align-items: flex-end;
+					align-items: center;
 					grid-gap: 1rem;
 					&_btn{
 						background-color: $bright-blue;

@@ -13,7 +13,7 @@
 		<h1 class="form_container__heading">Sign Up</h1>
 		<form method="POST" action="/signup" class="form_container__form">
 			<div class="form_container__form__input_field">
-				<input name="name" type="text" placeholder="Enter Name" class="form_container__form__name" required>
+				<input name="name" type="text" placeholder="Enter Name" class="form_container__form__name" required> 
 			</div>
 			<div class="form_container__form__input_field">
 				<select name="gender"  required id="gender" type="text" class="form_container__form__gender">
@@ -26,7 +26,7 @@
 				<input type="date" name="dob" placeholder="Enter DOB" class="form_container__form__dob" required>
 			</div>
 			<div class="form_container__form__input_field">
-				<input name="phoneNumber" type="text" placeholder="Enter Phone Number" class="form_container__form__phone" required maxlength="10">
+				<input name="phoneNumber" type="tel" pattern="/^\+?([0-9]{2})\)?[-. ]?([0-9]{4})[-. ]?([0-9]{4})$/" placeholder="Enter Phone Number" class="form_container__form__phone" required maxlength="10">
 			</div>
 			<div class="form_container__form__input_field">
 				<input name="email" type="email" placeholder="Enter Email" class="form_container__form__email" required>
@@ -47,7 +47,7 @@
 					<option value="Sri Lanka">Sri Lanka</option>
 				</select>
 			</div>
-			<div class="form_container__form__input_field" id="isDoctorInput">
+			<div class="form_container__form__input_field isDoctor" id="isDoctorInput">
 				<input name="isDoctor" id="isDoctor" type="checkbox" class="form_container__form__email">
 				<label for="isDoctor">Are You A Doctor?</label>
 			</div>

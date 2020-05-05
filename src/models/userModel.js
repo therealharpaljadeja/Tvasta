@@ -98,6 +98,7 @@ userSchema.post('find', async function(docs,next){
 				subslotsArray[days.indexOf(doc.slots[i].days[j])] = doc.slots[i].subSlots;
 			}
 		}
+		console.log('doc',doc);
 		doc.doctor.subslots = subslotsArray;
 	}
 	next();

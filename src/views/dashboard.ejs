@@ -267,6 +267,11 @@
 		
 	</div>
 	</div>
+	<script>
+		const menuItemActive = document.querySelectorAll(`a[href='/${window.location.href.split('/')[3]}']`);
+		menuItemActive[3].parentElement.parentElement.classList.add('menu-item--active');
+		console.log(menuItemActive);
+	</script>
 	<script src="https://d3js.org/d3.v5.min.js"></script>
 	<script src="./../charts_in_admin.js"></script>
 	<script src="./../index.js">

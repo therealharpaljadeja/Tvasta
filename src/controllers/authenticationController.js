@@ -28,7 +28,7 @@ const redirectLogin2 = (req, res, next) => {
 		next();
 	}
 }
-
+ 
  
 
 const clearError = (req, res, next) => {
@@ -72,9 +72,13 @@ const signUp = async (req, res, next) => {
 	});
 	req.session.userId = newUser.id;
 	req.session.user = newUser;
-	req.session.errorType = 'Success';
-	req.session.error = 'Login Successful';
-	res.redirect('/');
+	if(newUser.role == 'doctor'){
+		res.redirect('/doctor-onboarding');
+	} else {
+		req.session.errorType = 'Success';
+		req.session.error = 'Login Successful';
+		res.redirect('/');	
+	}
 	console.log(req.body);
 }
 
@@ -288,6 +292,18 @@ const changePassword = async (req, res, next) => {
 	}
 }
 
+const checkOnboarding = (req, res, next) => {
+	if(req.session.user.role === 'doctor'){
+		if(req.session.user.doctor){
+			next();
+		} else {
+			res.redirect('/doctor-onboarding');
+		}
+	} else {
+		next();
+	}
+}
+
 module.exports = {
 	redirectLogin: redirectLogin,
 	redirectLogin2: redirectLogin2,
@@ -304,5 +320,6 @@ module.exports = {
 	redirectToRespectiveHome: redirectToRespectiveHome,
 	cancelOldOTP: cancelOldOTP,
 	checkIfUserExists: checkIfUserExists,
-	changePassword: changePassword
+	changePassword: changePassword,
+	checkOnboarding: checkOnboarding
 }

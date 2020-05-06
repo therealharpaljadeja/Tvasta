@@ -165,6 +165,9 @@
 			}
 		}
 		&__input_field{
+			&--add-doctors{
+				flex-direction: column;
+			}
 			text-align: left;
 			position: relative;
 			display: flex;

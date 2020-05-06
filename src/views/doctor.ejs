@@ -118,7 +118,7 @@
 				<% for(let i = 0; i < doctors.length; i++){ %>
 				
 				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-1">
-					<div>
+					<div height="min-content">
 						<div class="doctor_list__container__col-2__card__name">
 							<a href="http://localhost:8000/doctor/<%= doctors[i].id %>"><h3><%= doctors[i].name %></h3></a>
 						</div>
@@ -151,13 +151,16 @@
 										
 										rightNowCount.setMinutes(rightNowCount.getMinutes() + 30);
 										
-										var dateForSlotsCount = new Date(dateFromServer);
+										
 
+										var dateForSlotsCount = new Date(dateFromServer);
+										
 										dateForSlotsCount.setHours(dateForSlotsCount.getHours() + 5);
 										
 										dateForSlotsCount.setMinutes(dateForSlotsCount.getMinutes() + 30); 
+										
 
-										  %>
+										%>
 									<% const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']; %>
 									<% function slotsAvailable(day) {
 										let slotCount = 0;
@@ -173,7 +176,7 @@
 														} else {
 															
 
-															var hoursCount;
+														var hoursCount;
 
 														if(doctors[i].slots[j].subSlots[c].startTime.split(':')[1].split(' ')[1] == 'pm'){
 															if(doctors[i].slots[j].subSlots[c].startTime.split(':')[0] == '12'){
@@ -187,27 +190,16 @@
 															
 														var minutesCount = parseInt(doctors[i].slots[j].subSlots[c].startTime.split(':')[1].split(' ')[0]);
 															
-															
+														console.log('dateForSlotsCount Before' ,dateForSlotsCount);
+
 														dateForSlotsCount.setHours(hoursCount);
 														dateForSlotsCount.setMinutes(minutesCount);
-
-														dateForSlotsCount.setHours(dateForSlotsCount.getHours() + 5);
-														dateForSlotsCount.setMinutes(dateForSlotsCount.getMinutes() + 30);
+	
+														console.log('dateForSlotsCount After' ,dateForSlotsCount);
 														
-														console.log(rightNowCount, dateForSlotsCount);
-
 															if(rightNowCount < dateForSlotsCount) {
 																slotCount++;
 															}
-
-
-
-														
-
-
-
-
-
 														}
 													}
 												}
@@ -289,6 +281,7 @@
 															<% } else { %>
 															<% 
 															
+															
 															var hours;
 
 															if(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[1] == 'pm'){
@@ -303,14 +296,16 @@
 															
 															var minutes = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[0]);
 																
-																
-															dateForSlots.setHours(hours);
-															dateForSlots.setMinutes(minutes);
-
-															dateForSlots.setHours(dateForSlots.getHours() + 5);
-															dateForSlots.setMinutes(dateForSlots.getMinutes() + 30);
+															
 															
 
+															dateForSlots.setHours(hours);
+
+															
+															dateForSlots.setMinutes(minutes);
+
+															
+															
 															if(!(rightNow < dateForSlots)) {
 
 															} else {

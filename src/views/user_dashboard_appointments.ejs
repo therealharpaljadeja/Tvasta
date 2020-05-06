@@ -173,9 +173,9 @@
 								<% if(appointments[i].status == 'Cancelled') { %>
 								<% } else { %>
 								<div class="appointment_view_details">
-									<a href="/appointment-cancel/<%= appointments[i]._id %>"><button class="appointment_view_details_btn appointment_view_details_book_again" onclick="cancelAppointment(this)" data-appointment="<%= appointments[i]._id %>">
+									<button class="appointment_view_details_btn appointment_view_details_book_again" onclick="popupCancelAppointment(this)" data-appointment="<%= appointments[i]._id %>">
 										Cancel Appointment
-									</button></a>
+									</button>
 									<a href="/reschedule-appointment/<%= appointments[i]._id %>"><button class="appointment_view_details_btn appointment_view_details_view_details" onclick="rescheduleAppointment(this)">
 										Reschedule Appointment
 									</button></a>
@@ -189,6 +189,19 @@
 		</section>
 	</div>
 	</div>
+	<div class="change_phone_number_form_container cancel_appointment_form_container display_none">
+		<div class="form_container__form change_phone_number cancel_appointment">
+			<h1 class="form_container__heading">Are you sure?</h1>
+			<div class="cancel_appointment_options_container">
+				<div class="cancel_appointment_options cancel_appointment_options--cancel">
+					<button onclick="cancelAppointment(this)">Yes</button>
+				</div>
+				<div class="cancel_appointment_options ">
+					<button onclick="popupCancelAppointment(this)">No</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	<script>
 		const menuItemActive = document.querySelectorAll(`a[href='/${window.location.href.split('/')[3]}']`);
 		menuItemActive[1].parentElement.parentElement.classList.add('menu-item--active');
@@ -199,6 +212,15 @@
 				method: 'POST'
 			});
 			window.location.href = res.url;
+		}
+
+		function popupCancelAppointment(button){
+			const popCancel = document.querySelector('.cancel_appointment_form_container');
+			popCancel.classList.toggle('display_none');
+			console.log(Array.from(popCancel.classList).indexOf('display_none'));
+			if(Array.from(popCancel.classList).indexOf('display_none') === -1) {
+				popCancel.querySelector('.cancel_appointment_options--cancel').children[0].dataset.appointment = button.dataset.appointment;
+			}
 		}
 	</script>
 	<script src="./../dashboard.js"></script>

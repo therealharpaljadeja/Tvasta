@@ -63,10 +63,12 @@
 		&__col-2{
 			grid-template-columns: 100%;
 			grid-row-gap: 1rem; 
+			height: min-content;
 			&__card{
 				display: grid;
 				border: .1rem solid #bbb;
 				overflow: hidden;
+				height: min-content;
 				&__name{
 					display: flex;
 					flex-direction: row;

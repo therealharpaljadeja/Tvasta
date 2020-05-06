@@ -115,6 +115,7 @@ const addDoctorDetails = (req, res, next) => {
             // }); 
             req.session.user = user;
             console.log(req.session);
+            
             req.session.error = 'Doctor Successfully Registered';
             req.session.errorType = 'Success';
             res.redirect('/');

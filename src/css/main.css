@@ -507,6 +507,9 @@ html, body {
   .navbar__menu__ul__item a:hover {
     color: #0173b2;
   }
+  .navbar__menu__ul__item a.navbar__menu__ul__item--active {
+    color: #0173b2;
+  }
   .navbar__side_menu {
     display: none;
   }
@@ -1542,11 +1545,13 @@ html, body {
 .doctor_list__container__col-2, .hospital_list__container__col-2 {
   grid-template-columns: 100%;
   grid-row-gap: 1rem;
+  height: min-content;
 }
 .doctor_list__container__col-2__card, .hospital_list__container__col-2__card {
   display: grid;
   border: 0.1rem solid #bbb;
   overflow: hidden;
+  height: min-content;
 }
 .doctor_list__container__col-2__card__name, .hospital_list__container__col-2__card__name {
   display: flex;
@@ -2364,6 +2369,9 @@ html, body {
   grid-gap: 1rem;
   justify-content: center;
   width: 100%;
+}
+.form_container__form__input_field--add-doctors {
+  flex-direction: column;
 }
 .form_container__form__input_field--city-state {
   flex-direction: row;
@@ -3348,6 +3356,47 @@ html, body {
   font-size: 1rem;
   color: #0173b2;
 }
+.appointment-page .appointment__col--1 .appointment_details .appointment_hospital_details__info_card {
+  display: flex;
+  flex-direction: row;
+  padding: 2rem;
+  grid-gap: 2rem;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_hospital_details__info_card .hospital_display_picture_container {
+  width: 5rem;
+  height: 5rem;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_hospital_details__info_card .hospital_display_picture_container img {
+  height: 100%;
+  width: 100%;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_hospital_details__info_card .hospital_info {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 0.5rem;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_hospital_details__info_card .hospital_info .hospital_name {
+  font-family: "Nexa Bold";
+  font-size: 1.4rem;
+  color: #2a2d3e;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_hospital_details__info_card .hospital_info .hospital_address {
+  font-family: "Nexa Bold";
+  font-size: 1rem;
+  color: #0173b2;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_hospital_details__info_card .hospital_info .hospital_get_directions {
+  font-family: "Nexa Bold";
+  font-size: 1rem;
+  color: #0173b2;
+}
+.appointment-page .appointment__col--1 .appointment_details .appointment_hospital_details__info_card .hospital_info .hospital_get_directions a {
+  text-decoration: underline;
+  color: #0173b2;
+  cursor: pointer;
+}
 .appointment-page .appointment__col--2 {
   width: 100%;
   background-color: white;
@@ -3357,6 +3406,9 @@ html, body {
   font-family: "Nexa Bold";
   font-size: 2rem;
   border-bottom: 1px solid #ccc;
+}
+.appointment-page .appointment__col--2 .appointment_form_title--booked i {
+  color: green;
 }
 .appointment-page .appointment__col--2 .appointment_form_patient {
   padding: 2rem;
@@ -3392,11 +3444,12 @@ html, body {
 .appointment-page .appointment__col--2 .appointment_form_patient .current_user_form, .appointment-page .appointment__col--2 .appointment_form_patient .someone_else_form {
   display: flex;
   flex-direction: column;
-  grid-gap: 1rem;
+  grid-gap: 2rem;
 }
 .appointment-page .appointment__col--2 .appointment_form_patient .current_user_form .appointment_form_input_field, .appointment-page .appointment__col--2 .appointment_form_patient .someone_else_form .appointment_form_input_field {
   display: flex;
   flex-direction: column;
+  grid-gap: 0.5rem;
 }
 .appointment-page .appointment__col--2 .appointment_form_patient .current_user_form .appointment_form_input_field input, .appointment-page .appointment__col--2 .appointment_form_patient .someone_else_form .appointment_form_input_field input {
   border: 1px solid #ccc;
@@ -3435,7 +3488,8 @@ html, body {
     width: 65%;
   }
   .appointment-page .appointment__col--1 .appointment_details {
-    width: 40rem;
+    width: 100%;
+    height: 100%;
   }
 }
 .about_doctor__container {
@@ -4475,7 +4529,7 @@ html, body {
 .admin_sidebar .menu_container .menu-title {
   font-family: "Nexa Bold";
   font-size: 1.5rem;
-  padding: 1rem 2rem;
+  padding: 2.5rem 2rem;
 }
 .admin_sidebar .menu_container .menu-item {
   display: flex;
@@ -5073,7 +5127,7 @@ html, body {
     margin: 3rem;
   }
   .edit_profile_container .edit_profile_heading {
-    height: 4.5rem;
+    height: 7.5rem;
     padding: 2rem;
     border-bottom: 1px solid #ddd;
     display: flex;
@@ -5085,7 +5139,8 @@ html, body {
   }
   .edit_profile .photo_and_name {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 2rem;
   }
   .edit_profile .photo_and_name .edit_profile_photo {
     flex-direction: row;
@@ -5123,6 +5178,9 @@ html, body {
 @media (min-width: 1024px) {
   .edit_profile_container {
     margin: 0rem;
+  }
+  .edit_profile_container--admin-edit-doctor {
+    padding: 2rem;
   }
   .edit_profile .edit_other_details {
     padding: 2rem;
@@ -5456,11 +5514,89 @@ html, body {
 }
 .reschedule_container .reschedule_appointment_detail_title {
   font-size: 1.3rem;
-  font-family: "Nexa Bold";
+  font-family: "Nexa Light";
 }
 .reschedule_container .reschedule_appointment_detail_description {
   font-size: 1.3rem;
+  font-family: "Nexa Bold";
+}
+
+.cancel_appointment_form_container .cancel_appointment {
+  height: 15rem;
+}
+.cancel_appointment_form_container .cancel_appointment .cancel_appointment_options_container {
+  display: flex;
+  width: 100%;
+  grid-gap: 1rem;
+}
+.cancel_appointment_form_container .cancel_appointment .cancel_appointment_options_container .cancel_appointment_options {
+  width: 100%;
+}
+.cancel_appointment_form_container .cancel_appointment .cancel_appointment_options_container .cancel_appointment_options button {
+  width: 100%;
+  padding: 0.5rem;
+  border: none;
+  height: 100%;
+  background-color: #0173b2;
+  color: white;
+  font-family: "Nexa Bold";
+}
+.cancel_appointment_form_container .cancel_appointment .cancel_appointment_options_container .cancel_appointment_options--cancel button {
+  background-color: red;
+}
+
+.onboarding-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 2rem;
+  background-color: #9cbfda;
+}
+
+.doctor_onboarding_container {
+  width: 50rem;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  grid-gap: 1rem;
+}
+
+.doctor_onboarding_heading_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 1rem;
+}
+
+.doctor_onboarding_title h3 {
+  font-family: "Nexa Bold";
+  text-align: center;
+}
+
+.doctor_onboarding_form_container {
+  width: 100%;
+}
+.doctor_onboarding_form_container .doctor_onboarding_form {
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
+  border: none;
+}
+.doctor_onboarding_form_container .form_container__form__input_field--onboarding {
+  flex-direction: column;
+}
+.doctor_onboarding_para p {
+  text-align: center;
   font-family: "Nexa Light";
+}
+
+.doctor_onboarding_image i {
+  font-size: 5rem;
+  color: #0173b2;
 }
 
 /*# sourceMappingURL=main.css.map */

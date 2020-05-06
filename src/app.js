@@ -67,6 +67,10 @@ app.get('/signup', authenticationController.redirectToRespectiveHome, (req, res)
 
 app.post('/signup', authenticationController.redirectToRespectiveHome, authenticationController.signUp);
  
+app.get('/doctor-onboarding', authenticationController.checkOnboarding, authenticationController.redirectToRespectiveHome, (req, res) => {
+	res.render('views/doctor_onboarding.ejs', { session: req.session, error: req.session.error, errorType: req.session.errorType });
+});
+
 app.get('/otp', (req, res) => {
 	res.render('views/otp.ejs', {error: req.session.error, session: req.session, errorType: req.session.errorType});
 })
@@ -74,6 +78,7 @@ app.get('/otp', (req, res) => {
 app.post('/otp', authenticationController.checkOTP, authenticationController.redirectToRespectiveHome);
 
 app.put('/resend-otp', authenticationController.cancelOldOTP);
+
 
 
 app.post('/forgot-password', authenticationController.checkIfUserExists, authenticationController.phoneLogin)
@@ -118,7 +123,7 @@ app.post('/admin-edit-doctor', authenticationController.redirectLogin, authentic
 
 // User Routes
 
-app.get('/', authenticationController.redirectLogin2, authenticationController.redirectAdmin, (req, res) => {
+app.get('/', authenticationController.redirectLogin2, authenticationController.redirectAdmin, authenticationController.checkOnboarding, (req, res) => {
 	res.render('views/index.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
 });
 

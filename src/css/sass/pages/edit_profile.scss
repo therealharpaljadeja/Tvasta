@@ -146,7 +146,7 @@
 		&_container{
 			margin: 3rem;
 			.edit_profile_heading{
-				height: 4.5rem;
+				height: 7.5rem;
 				padding: 2rem;
 				h4{
 					font-family: $nexa-bold;
@@ -160,7 +160,8 @@
 		}
 		.photo_and_name{
 			display: grid;
-			grid-template-columns: 1fr 1fr;
+			grid-template-columns: 1fr 1fr 1fr;
+			grid-gap: 2rem;
 			.edit_profile_photo{
 				flex-direction: row;
 				.upload_photo_image_container{
@@ -204,6 +205,9 @@
 @media(min-width: $bp-desktop){
 	.edit_profile{
 		&_container{
+			&--admin-edit-doctor{
+				padding: 2rem;
+			}
 			margin: 0rem;
 		}
 		.edit_other_details{

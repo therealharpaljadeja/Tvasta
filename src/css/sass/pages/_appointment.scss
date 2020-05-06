@@ -107,6 +107,50 @@
 						}
 					}
 				}
+				.appointment_hospital_details{
+					&__info_card{
+						display: flex;
+						flex-direction: row;
+						padding: 2rem;
+						grid-gap: 2rem;
+						.hospital_display_picture_container{
+							width: 5rem;
+							height: 5rem;
+							border-radius: .5rem;
+							overflow: hidden;
+							img{
+								height: 100%;
+								width: 100%;
+							}
+						}
+						.hospital_info{
+							display: flex;
+							flex-direction: column;
+							grid-gap: .5rem;
+							.hospital_name{	
+								font-family: $nexa-bold;
+								font-size: 1.4rem;
+								color: $dark-blue;
+							}
+							.hospital_address{
+								font-family: $nexa-bold;
+								font-size: 1rem;
+								color:  $bright-blue;	
+							}
+							.hospital_get_directions{
+								a{
+									text-decoration: underline;
+									color: $bright-blue;
+									cursor: pointer;
+
+								}
+								font-family: $nexa-bold;
+								font-size: 1rem;
+								color:  $bright-blue;	
+							}
+						}
+					}
+				}
 			}
 		}
 		&--2{
@@ -115,6 +159,11 @@
 			background-color: $background-color;
 			.appointment_form{
 				&_title{
+					&--booked{
+						i{
+							color: green;
+						}
+					}
 					padding: 2rem;
 					font-family: $nexa-bold;
 					font-size: 2rem;
@@ -153,10 +202,11 @@
 					.current_user_form, .someone_else_form{
 						display: flex;
 						flex-direction: column;
-						grid-gap: 1rem;
+						grid-gap: 2rem;
 						.appointment_form_input_field{
 							display: flex;
 							flex-direction: column;
+							grid-gap: .5rem;
 							input{
 								&[type='number']{
 									-moz-appearance: textfield;
@@ -208,7 +258,8 @@
 		.appointment{
 			&__col--1{
 				.appointment_details{
-					width: 40rem;
+					width: 100%;
+					height: 100%;
 				}
 			}
 		}

@@ -1,3 +1,13 @@
+const navbar_menu = document.querySelector('.navbar__menu');
+console.log(navbar_menu);
+console.log(window.location.href.split('/')[3]);
+
+
+const activeLink = document.querySelector(`a[href='/${window.location.href.split('/')[3]}']`);
+if(activeLink) activeLink.classList.add('navbar__menu__ul__item--active');
+
+
+
 const sideMenuTreatments = document.getElementById('side_menu_treatments');
 const sideMenutreatmentChevron = document.querySelector('#treatments_sideMenu');
 

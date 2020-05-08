@@ -127,7 +127,7 @@
 							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span><%= doctors[i].doctor.achievements[1] %></li>
 							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fas fa-clock"></i></span><%= doctors[i].doctor.experience %> Years Of Experience</li>
 							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fas fa-building"></i></span><%= doctors[i].doctor.hospital %></li>
-							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fas fa-map-marker-alt"></i></span><%= doctors[i].city %></li>
+							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fas fa-map-marker-alt"></i></span><%= doctors[i].location %></li>
 						</div>
 						<button class="doctor_list__container__col-2__card__book">Book an appointment</button>
 					</div>
@@ -145,36 +145,42 @@
 							<div class="carousel-dates slides">
 								<div class="date-heading date-heading--active current slide">
 									<% var k = currentDay; %>
+									
 									<% var rightNowCount = new Date(dateFromServer);
 										
+
 										rightNowCount.setHours(rightNowCount.getHours() + 5);
-										
+
 										rightNowCount.setMinutes(rightNowCount.getMinutes() + 30);
-										
 										
 
 										var dateForSlotsCount = new Date(dateFromServer);
 										
+
 										dateForSlotsCount.setHours(dateForSlotsCount.getHours() + 5);
+										
 										
 										dateForSlotsCount.setMinutes(dateForSlotsCount.getMinutes() + 30); 
 										
 
+										
+
 										%>
 									<% const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']; %>
-									<% function slotsAvailable(day) {
+									<% function slotsAvailable(day, k) {
 										let slotCount = 0;
 										for(let j = 0; j < doctors[i].slots.length; j++){
-											if((doctors[i].slots[j].isDisabled) || (doctors[i].slots[j].holiday)) {
-											} else {
- 												if(doctors[i].slots[j].days.indexOf(day) !== -1){
-													for(let c = 0; c < doctors[i].slots[j].subSlots.length; c++){
-														if(doctors[i].slots[j].subSlots[c].isBooked || doctors[i].slots[j].subSlots[c].isDisabled){
-															
 
+											if((doctors[i].slots[j].isDisabled) || (doctors[i].slots[j].holiday)) {
+											
+											} else {
+
+ 												if(doctors[i].slots[j].days.indexOf(day) !== -1){	
+													for(let c = 0; c < doctors[i].slots[j].subSlots.length; c++){
+											
+														if(doctors[i].slots[j].subSlots[c].isBooked || doctors[i].slots[j].subSlots[c].isDisabled){
 														
 														} else {
-															
 
 														var hoursCount;
 
@@ -190,12 +196,27 @@
 															
 														var minutesCount = parseInt(doctors[i].slots[j].subSlots[c].startTime.split(':')[1].split(' ')[0]);
 															
-														console.log('dateForSlotsCount Before' ,dateForSlotsCount);
+														
+														dateForSlotsCount = new Date(dateFromServer);
+														
 
+
+														while(days.indexOf(day) !== dateForSlotsCount.getDay()){
+															dateForSlotsCount.setDate(dateForSlotsCount.getDate() + 1);
+														}
+
+
+																				
 														dateForSlotsCount.setHours(hoursCount);
+
+														
+														dateForSlotsCount.setHours(dateForSlotsCount.getHours() + 5);
+
+														
 														dateForSlotsCount.setMinutes(minutesCount);
-	
-														console.log('dateForSlotsCount After' ,dateForSlotsCount);
+														
+														dateForSlotsCount.setMinutes(dateForSlotsCount.getMinutes() + 30);
+														
 														
 															if(rightNowCount < dateForSlotsCount) {
 																slotCount++;
@@ -211,7 +232,8 @@
 										<span>Today</span>
 									</div>
 									<div class="day-slots-available">
-										<%= slotsAvailable(days[k]) === 0 ? 'No' : slotsAvailable(days[k]) %> Slots Available
+										<% let AvailableSlots = slotsAvailable(days[k]) %>
+										<%= AvailableSlots === 0 ? 'No' : AvailableSlots %> Slots Available
 									</div>
 								</div>
 								<div class="date-heading slide">
@@ -219,14 +241,15 @@
 										<span>Tommorow</span>
 									</div>
 									<div class="day-slots-available">
-										<%= slotsAvailable(days[k+1]) === 0 ? 'No' : slotsAvailable(days[k+1]) %> Slots Available
+										<% AvailableSlots = slotsAvailable(days[k+1])  %>
+										<%= AvailableSlots === 0 ? 'No' : AvailableSlots %> Slots Available
 									</div>
 								</div>
 								<% let dateForCarousel = dateFromServer;
 								let carouselDate = new Date(dateForCarousel);
 								carouselDate.setDate(carouselDate.getDate() + 1);
 								k = k + 2; 
-								for(let j = 1; j < 6 ; j++) { %>
+								for(let r = 1; r < 6 ; r++) { %>
 								<% k = k == 7 ? k % 7 : k; %>
 									<div class="date-heading slide">
 										<div class="day-date">
@@ -234,7 +257,8 @@
 											<span><%= new Date(carouselDate).toDateString() %></span>
 										</div>
 										<div class="day-slots-available">
-											<%= slotsAvailable(days[k]) === 0 ? 'No' : slotsAvailable(days[k]) %> Slots Available
+											<% AvailableSlots = slotsAvailable(days[k]) %>
+											<%= AvailableSlots === 0 ? 'No' : AvailableSlots %> Slots Available
 										</div>
 									</div>
 									<% k++ %>
@@ -266,6 +290,7 @@
 									<% 
 										subslots = [];
 										var noSlots = 0;
+										var increment = 0;
 										if(current >= 7) current = current % 7; %>
 										<% for(let q = 0; q < doctors[i].slots.length; q++) {
 										%> 
@@ -281,7 +306,6 @@
 															<% } else { %>
 															<% 
 															
-															
 															var hours;
 
 															if(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[1] == 'pm'){
@@ -296,19 +320,31 @@
 															
 															var minutes = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[0]);
 																
-															
-															
 
+															dateForSlots = new Date(dateFromServer);
+														
+															dateForSlots.setDate(dateForSlots.getDate() + j);
+
+															
 															dateForSlots.setHours(hours);
 
+															dateForSlots.setHours(dateForSlots.getHours() + 5);
 															
 															dateForSlots.setMinutes(minutes);
 
-															
+															dateForSlots.setMinutes(dateForSlots.getMinutes() + 30);
+
+
+															console.log(dateForSlots);
 															
 															if(!(rightNow < dateForSlots)) {
-
+																noSlots = 0;
 															} else {
+																noSlots = 1;
+
+																dateForSlots.setHours(dateForSlots.getHours()  - 5);
+
+																dateForSlots.setMinutes(dateForSlots.getMinutes() - 30);
 															 %>
 																<% if(q == 0) { %>
 																<div class="slot" onclick="goToAppointment(this)" data-subslotid='<%= doctors[i].slots[q].subSlots[m].id %>' data-doctorid='<%= doctors[i].id %>' data-date='<%= dateForSlots.toDateString() %>'>
@@ -343,7 +379,7 @@
 											<h4 class="heading-4">No Slot Available</h4>
 										<% } %>
 								</div>
-								<% dateForSlots.setDate(dateForSlots.getDate() + 1) %>
+								
 								<% dateForTime.setDate(dateForTime.getDate() + 1) %>
 							<% } %>
 

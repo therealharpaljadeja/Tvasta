@@ -293,7 +293,9 @@ const changePassword = async (req, res, next) => {
 }
 
 const checkOnboarding = (req, res, next) => {
+	console.log(req.session.user);
 	if(req.session.user.role === 'doctor'){
+		console.log(req.session.user.doctor);
 		if(req.session.user.doctor){
 			next();
 		} else {
@@ -302,6 +304,21 @@ const checkOnboarding = (req, res, next) => {
 	} else {
 		next();
 	}
+}
+
+const onBoardingDone = (req, res, next) => {
+	if(req.session.user){
+		if(req.session.user.doctor){
+			res.redirect('/');
+		} else {
+			next();
+		}	
+	} else {
+		req.session.error = 'Please Login First';
+		req.session.errorType = 'Failure';
+		res.redirect('/email-login');
+	}
+	
 }
 
 module.exports = {
@@ -321,5 +338,6 @@ module.exports = {
 	cancelOldOTP: cancelOldOTP,
 	checkIfUserExists: checkIfUserExists,
 	changePassword: changePassword,
-	checkOnboarding: checkOnboarding
+	checkOnboarding: checkOnboarding,
+	onBoardingDone: onBoardingDone
 }

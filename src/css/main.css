@@ -4920,6 +4920,7 @@ html, body {
   display: flex;
   flex-direction: column;
   grid-gap: 0.5rem;
+  width: 6.9rem;
   align-items: center;
   justify-content: center;
 }

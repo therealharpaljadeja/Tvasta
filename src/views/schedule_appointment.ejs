@@ -226,7 +226,7 @@
 						</div>
 						<div class="edit_field">
 							<label for="interval">Interval</label>
-							<input type="text" name="interval">
+							<input type="number" name="interval">
 						</div>
 						<div class="edit_field">
 							<label for="hospital">Hospital</label>
@@ -403,20 +403,20 @@
 			enforceWhitelist: true,
 			
 		});
-
-		const slot_duration = document.querySelector('input[name="interval"]');
-		const slotTagify = new Tagify(slot_duration, {
-			whitelist: ['60 Mins', '45 Mins', '30 Mins', '15 Mins'],
-			mode: 'select',
-			dropdown: {
-				className: 'color-blue',
-				enabled: 1,
-				maxItems: 4,
-				position: 'text',
-				closeOnSelect: true,
-				highlightFirst: true 
-			}
-		});
+		
+		// const slot_duration = document.querySelector('input[name="interval"]');
+		// const slotTagify = new Tagify(slot_duration, {
+		// 	whitelist: ['60 Mins', '45 Mins', '30 Mins', '15 Mins'],
+		// 	mode: 'select',
+		// 	dropdown: {
+		// 		className: 'color-blue',
+		// 		enabled: 1,
+		// 		maxItems: 4,
+		// 		position: 'text',
+		// 		closeOnSelect: true,
+		// 		highlightFirst: true 
+		// 	}
+		// });
 		
 		// if(<%- session.user.doctor.specializations %>){
 		// 	specializationsTagify.addTags(session.user.doctor.specializations);	

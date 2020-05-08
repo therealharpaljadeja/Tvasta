@@ -60,7 +60,7 @@ slotSchema.pre('save',async function(next){
 		let endTime = end.getTime();
 		let duration = parseInt(interval) * 60 * 1000;
 		let slotEndTime = start.getTime();
-		while(startTime < endTime){
+		while(startTime + duration <= endTime){
 			slotEndTime += duration;
 			let startDate = new Date(startTime);
 			let endDate = new Date(slotEndTime);

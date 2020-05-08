@@ -64,10 +64,10 @@ app.get('/signup', authenticationController.redirectToRespectiveHome, (req, res)
 	res.render('views/signup.ejs', {session: req.session});
 });
 
-
+ 
 app.post('/signup', authenticationController.redirectToRespectiveHome, authenticationController.signUp);
  
-app.get('/doctor-onboarding', authenticationController.checkOnboarding, authenticationController.redirectToRespectiveHome, (req, res) => {
+app.get('/doctor-onboarding', authenticationController.onBoardingDone, (req, res) => {
 	res.render('views/doctor_onboarding.ejs', { session: req.session, error: req.session.error, errorType: req.session.errorType });
 });
 
@@ -123,7 +123,7 @@ app.post('/admin-edit-doctor', authenticationController.redirectLogin, authentic
 
 // User Routes
 
-app.get('/', authenticationController.redirectLogin2, authenticationController.redirectAdmin, authenticationController.checkOnboarding, (req, res) => {
+app.get('/', authenticationController.redirectLogin2, authenticationController.checkOnboarding, authenticationController.redirectAdmin, (req, res) => {
 	res.render('views/index.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType});
 });
 

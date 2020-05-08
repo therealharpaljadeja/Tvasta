@@ -38,17 +38,34 @@ const getAllDoctors = async (req, res, next) => {
                     // },
                     {
                         "doctor.experience": { $gte: req.session.filters.experience ?  parseInt(req.session.filters.experience[req.session.filters.experience.length - 1]) : 0 }
+                    },
+                    {
+                        'doctor': { $exists: true }
                     }
                 ]
             }).sort(req.session.sortBy ? {[req.session.sortBy.split('-')[0]] : req.session.sortBy.split('-')[1] === 'asc' ? 1 : -1} : []);
         } else {
             doctors = await User.find({
-                role: 'doctor'
+                $and:[
+                    {
+                        role: 'doctor'
+                    },
+                    {
+                        'doctor': { $exists: true }
+                    }
+                ]
             }).sort(req.session.sortBy ? { [req.session.sortBy.split('-')[0]] : req.session.sortBy.split('-')[1] == 'asc' ? 1: -1} : []);
         }
     } else {
         doctors = await User.find({
-            role: 'doctor'
+            $and:[
+                {
+                    role: 'doctor'
+                },
+                {
+                    'doctor': { $exists: true }
+                }
+            ]
         }).sort(req.session.sortBy ? { [req.session.sortBy.split('-')[0]] : req.session.sortBy.split('-')[1] == 'asc' ? 1: -1} : []);
     }
 

@@ -18,64 +18,94 @@ const addSlot = async (req, res, next) => {
 	if(allSlots.length){
 		const valid = await isValidateSlot(allSlots, req.body);
 		if(valid){
-			let intervalString = req.body.interval.slice(1,req.body.interval.length - 1).split(',');
-			let interval = [];
+			// let intervalString = req.body.interval.slice(1,req.body.interval.length - 1).split(',');
+			// let interval = [];
 			let hospitals = req.body.hospital.slice(1,req.body.hospital.length - 1).split(',');
 			let hospital = [];
 			for(let i = 0; i < hospitals.length; i++){
 		        value = JSON.parse(hospitals[i]).value;
 		        hospital.push(value);
 		    }
-			for(let i = 0; i < intervalString.length; i++){
-		        value = JSON.parse(intervalString[i]).value;
-		        interval.push(value);
-		    }
-			const slot = await Slot.create({
-				startTime: req.body.startTime,
-				endTime: req.body.endTime,
-				days: req.body.days,
-				interval: parseInt(interval[0]),
-				hospital: hospital[0],
-				holiday: req.body.holiday ? true : false,
-				doctor: req.session.user._id
-			});
-			req.session.error = 'Slot Succesfully Added';
-			req.session.errorType = 'Success';
-			res.redirect('/schedule-appointment');		
+			// for(let i = 0; i < intervalString.length; i++){
+		 //        value = JSON.parse(intervalString[i]).value;
+		 //        interval.push(value);
+		 //    }
+		 	const slotTimeValidate = slotTimeValidation(req.body);
+		 	if(slotTimeValidate === 'Valid'){
+		 		const slot = await Slot.create({
+					startTime: req.body.startTime,
+					endTime: req.body.endTime,
+					days: req.body.days,
+					interval: req.body.interval,
+					hospital: hospital[0],
+					holiday: req.body.holiday ? true : false,
+					doctor: req.session.user._id
+				});
+				req.session.error = 'Slot Succesfully Added';
+				req.session.errorType = 'Success';
+				res.redirect('/schedule-appointment');	
+		 	} else {
+		 		req.session.error = slotTimeValidate;
+		 		req.session.errorType = 'Failure';
+		 		res.redirect('/schdeule-appointment');
+		 	}
+					
 		} else {
 			req.session.error = "Time Overlap";
 			req.session.errorType = 'Failure';
 			res.redirect('/schedule-appointment');
 		}
 	} else {
-		let intervalString = req.body.interval.slice(1,req.body.interval.length - 1).split(',');
-		let interval = [];
+		// let intervalString = req.body.interval.slice(1,req.body.interval.length - 1).split(',');
+		// let interval = [];
 		let hospitals = req.body.hospital.slice(1,req.body.hospital.length - 1).split(',');
 		let hospital = [];
 		for(let i = 0; i < hospitals.length; i++){
 	        value = JSON.parse(hospitals[i]).value;
 	        hospital.push(value);
 	    }
-		for(let i = 0; i < intervalString.length; i++){
-	        value = JSON.parse(intervalString[i]).value;
-	        interval.push(value);
+		// for(let i = 0; i < intervalString.length; i++){
+	 //        value = JSON.parse(intervalString[i]).value;
+	 //        interval.push(value);
+	 //    }
+	    const slotTimeValidate = slotTimeValidation(req.body);
+	    if(slotTimeValidate === 'Valid'){
+	    	const slot = await Slot.create({
+				startTime: req.body.startTime,
+				endTime: req.body.endTime,
+				days: req.body.days,
+				interval: req.body.interval,
+				hospital: hospital[0],
+				holiday: req.body.holiday ? true : false,
+				doctor: req.session.user._id
+			});
+			req.session.error = 'Slot Succesfully Added';
+			req.session.errorType = 'Success';
+			res.redirect('/schedule-appointment');	
+	    } else {
+	    	req.session.error = slotTimeValidate;
+	    	req.session.errorType = 'Failure';
+	    	res.redirect('/schedule-appointment'); 
 	    }
-		const slot = await Slot.create({
-			startTime: req.body.startTime,
-			endTime: req.body.endTime,
-			days: req.body.days,
-			interval: parseInt(interval[0]),
-			hospital: hospital[0],
-			holiday: req.body.holiday ? true : false,
-			doctor: req.session.user._id
-		});
-		req.session.error = 'Slot Succesfully Added';
-		req.session.errorType = 'Success';
-		res.redirect('/schedule-appointment');
-	}
-	
-	
 		
+	}	
+}
+
+const slotTimeValidation = (slot) => {
+	const startTime = parseInt(slot.startTime.split(':')[0]);
+	const endTime = parseInt(slot.endTime.split(':')[0]);
+	const interval = slot.interval;
+	const startTimeDate = new Date();
+	startTimeDate.setHours(startTime);
+	const endTimeDate = new Date();
+	endTimeDate.setHours(endTime);
+	if(startTime > endTime){
+		return 'Invalid End Time';
+	} else if(((endTimeDate - startTimeDate) /3600) <= interval){
+		return 'Invalid Interval';
+	} else {
+		return 'Valid';
+	}
 }
 
 const isValidateSlot = async (slots, slot) => {

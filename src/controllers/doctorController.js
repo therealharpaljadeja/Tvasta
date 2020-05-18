@@ -99,28 +99,28 @@ const addDoctor = async (req, res, next) => {
             res.redirect('/add-doctors');
         } else {
             console.log(req.file);
-            // let hospitals = req.body.hospitalList.slice(1,req.body.hospitalList.length - 1).split(',');
+            let hospitals = req.body.hospitalList.slice(1,req.body.hospitalList.length - 1).split(',');
             let achievementList = req.body.achievements.slice(1,req.body.achievements.length - 1).split(',');
             let qualificationList = req.body.qualifications.slice(1,req.body.qualifications.length - 1).split(',');
             let awardsList = req.body.awards.slice(1,req.body.awards.length - 1).split(',');
             let specializationsList = req.body.specializations.slice(1,req.body.specializations.length - 1).split(',');
             // let slotDurationString = req.body.slotDuration.slice(1,req.body.slotDuration.length - 1).split(',');
-            // let hospitalList = [];
+            let hospitalList = [];
             let achievements = [];
             let qualifications = [];
             let awards = [];
             let specializations = [];
             // let slotDuration = '';
-            // if(req.body.hospitalList){
-            //     for(let i = 0; i < hospitals.length; i++){
-            //         value = JSON.parse(hospitals[i]).value;
-            //         // let hospital = await Hospital.findOne({ name: value }, { _id: 1 });
-            //         // let id = hospital.id;
-            //         // console.log(hospital);
-            //         // console.log(id);
-            //         hospitalList.push(value);
-            //     }    
-            // }
+            if(req.body.hospitalList){
+                for(let i = 0; i < hospitals.length; i++){
+                    value = JSON.parse(hospitals[i]).value;
+                    // let hospital = await Hospital.findOne({ name: value }, { _id: 1 });
+                    // let id = hospital.id;
+                    // console.log(hospital);
+                    // console.log(id);
+                    hospitalList.push(value);
+                }    
+            }
             for(let i = 0; i < achievementList.length; i++){
                 value = JSON.parse(achievementList[i]).value;
                 achievements.push(value);
@@ -144,7 +144,7 @@ const addDoctor = async (req, res, next) => {
             // }
             // console.log(slotDuration);
             console.log(req.body);
-            const newDoctor = User.create({
+            const newDoctor = await User.create({
                 role: 'doctor',
                 name: req.body.name,
                 gender: req.body.gender,
@@ -159,7 +159,7 @@ const addDoctor = async (req, res, next) => {
                     qualifications: qualifications,
                     awards: awards,
                     avg_fees: req.body.averageFees,
-                    // hospitalList: hospitalList,
+                    hospitalList: hospitalList,
                     // startTime: req.body.startTime,
                     // endTime: req.body.endTime,
                     // slotDuration: slotDuration,
@@ -169,6 +169,16 @@ const addDoctor = async (req, res, next) => {
                 }
             });
             console.log(newDoctor);
+            for(let i = 0; i < newDoctor.doctor.hospitalList.length; i++){
+                const hospital = await Hospital.findOne({ name: newDoctor.doctor.hospitalList[i] });
+                if(hospital){
+
+                } else {
+                    await Hospital.create({
+                        name: newDoctor.doctor.hospitalList[i]
+                    });
+                }
+            }
             req.session.error = 'Doctor Registered Succesfully!';
             req.session.errorType = 'Success';
             res.redirect('/add-doctors');

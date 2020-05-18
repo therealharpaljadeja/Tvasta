@@ -14,6 +14,14 @@
 			color: #777;
 			width: 100%;
 		}
+		.edit_profile_heading{
+			display:flex;
+			justify-content: space-between;
+			align-items: center;
+			h4{
+				font-family: $nexa-bold;
+			}
+		}
 		label{
 			font-family: $nexa-bold;
 			font-size: 1.3rem;
@@ -50,7 +58,7 @@
 			border-bottom: 1px solid #ddd;
 			.edit_profile_photo{
 				display: flex;
-				flex-direction: column;
+				// flex-direction: column;
 				grid-gap: 2rem;
 				margin-bottom: 2rem;
 				.upload_photo_image_container{
@@ -93,8 +101,24 @@
 			// margin-bottom: 2rem;
 			border-bottom: 1px solid #ddd;
 			padding: 2rem;
+			.edit_phone_number{
+				display: flex;
+				justify-content: space-between;
+				#edit_phone_number{
+					font-family: $nexa-bold;
+					color: $bright-blue;
+					cursor: pointer;
+				}
+			}
+		}
+		.edit_address{
+			padding: 2rem;
 		}
 		.edit_doctor_details{
+			display: flex;
+			grid-gap: 1rem;
+			flex-direction: column;
+			padding: 2rem;
 			.edit_field{
 				display: flex;
 				flex-direction: column;
@@ -122,15 +146,15 @@
 	background-color: rgba(black,.4);
 	top: 0;
 	left: 0;
-	width: 100%;
-	height: 100vh;
+	width: 100vw;
+	height: 100%;
 	.change_phone_number{
 		position: relative;
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
 		height: 25rem;
-		width: 40rem;
+		width: 30rem;
 		background-color: $background-color;
 		.close-form{
 			position: absolute;
@@ -142,6 +166,12 @@
 }
 
 @media(min-width: $bp-tablet){
+	.change_phone_number_form_container{
+		.change_phone_number{
+			width: 40rem;
+			height: 25rem;
+		}
+	}
 	.edit_profile{
 		&_container{
 			margin: 3rem;
@@ -160,7 +190,7 @@
 		}
 		.photo_and_name{
 			display: grid;
-			grid-template-columns: 1fr 1fr 1fr;
+			grid-template-columns: 1fr 1fr;
 			grid-gap: 2rem;
 			.edit_profile_photo{
 				flex-direction: row;
@@ -186,11 +216,13 @@
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			grid-gap: 2rem;
+			padding: 2rem;
 		}
 		.edit_doctor_details{
 			display: grid;
 			grid-template-columns: 1fr 1fr;
 			grid-gap: 2rem;
+			padding: 2rem;
 			.edit_field{
 				.tagify{
 					font-size: 1.4rem;
@@ -212,6 +244,9 @@
 		}
 		.edit_other_details{
 			padding: 2rem;
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+		.photo_and_name{
 			grid-template-columns: 1fr 1fr 1fr;
 		}
 		.edit_address{

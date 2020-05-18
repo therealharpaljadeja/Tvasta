@@ -1,7 +1,5 @@
 <sidebar class="admin_sidebar">
-	<div class="cross-sidebar">
-		<i class="fas fa-times"></i>
-	</div>
+	
 	<div class="menu_container">
 	<% if(session.user.role === 'admin') { %>
 		<ul class="menu">
@@ -19,6 +17,10 @@
 			<li class="menu-item">
 				<i class="item-icon fas fa-user-md"></i>
 				<p class="para"><a href="/admin-doctors">Doctors</a></p>
+			</li>
+			<li class="menu-item">
+				<i class="item-icon fas fa-user-md"></i>
+				<p class="para"><a href="/admin-hospitals">Hospitals</a></p>
 			</li>
 			<li class="menu-item">
 				<i class="item-icon fas fa-user-nurse"></i>
@@ -74,7 +76,7 @@
 				</li>
 				<li class="menu-item">
 					<i class="item-icon fas fa-money-check-alt"></i>
-					<p class="para"><a href="/edit-profile">Medical Records</a></p>
+					<p class="para"><a href="/user-dashboard-medical-records">Medical Records</a></p>
 				</li>
 				<li class="menu-item">
 					<i class="item-icon fas fa-money-check-alt"></i>

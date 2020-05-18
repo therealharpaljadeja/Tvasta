@@ -282,28 +282,64 @@
 						flex-wrap: wrap;
 						grid-gap: .5rem;
 						
-						.slot{
-							display: inline;
-							line-height: 2rem;
-							border-radius: .5rem;
-							border: 1px solid $bright-blue;
-							padding: .7rem;
-							font-family: $nexa-bold;
-							color: $bright-blue;
-							max-height: 3.5rem;
-							&-red{
-								border: 1px solid red;
-								color: red;
+						.time-slot-day-wise{
+							min-width: 100%;
+							flex-basis: 100%;
+							display: flex;
+							flex-wrap: wrap;
+							grid-row-gap: 1rem;
+						}
+
+						.time-slot{
+							&-morning{
+								display: flex;
+								flex-direction: row;
+								// grid-gap: 2rem;
+								min-width: 100%;
+								flex-basis: 100%;
+								.time-slot-day-wise-heading{
+									display: flex;
+									grid-gap: .5rem;
+									align-items: center;
+									i{
+										font-size: 1.3rem;
+										color: $bright-blue;
+									}
+								}
+
+								.time-slot-day-wise-slots{
+									height: 100%;
+									display: flex;
+									align-items: center;
+									flex-wrap: wrap;
+									.slot{
+										display: inline;
+										line-height: 2rem;
+										border-radius: .5rem;
+										border: 1px solid $bright-blue;
+										padding: .7rem;
+										font-family: $nexa-bold;
+										color: $bright-blue;
+										max-height: 3.5rem;
+										&-red{
+											border: 1px solid red;
+											color: red;
+										}
+										&-purple{
+											border: 1px solid purple;
+											color: purple;
+										}
+										&-green{
+											border: 1px solid green;
+											color: green;
+										}
+									}	
+								}
 							}
-							&-purple{
-								border: 1px solid purple;
-								color: purple;
-							}
-							&-green{
-								border: 1px solid green;
-								color: green;
-							}
-						}	
+						}
+
+
+						
 					}
 				}
 			}
@@ -417,6 +453,11 @@
 						}
 						h3{
 							font-size: 1.7rem;
+							span{
+								i{
+									color: green;
+								}
+							}
 						}
 						&:before{
 							top:47%;

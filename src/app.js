@@ -101,10 +101,18 @@ app.get('/admin-doctors', authenticationController.redirectLogin, authentication
 	res.render('views/dashboard_doctors.ejs', {session: req.session, doctors: res.locals.doctors, error: req.session.error, errorType: req.session.errorType});
 });
 
+app.get('/admin-hospitals', authenticationController.redirectLogin, authenticationController.checkAdmin, hospitalController.getAllHospitalsAdmin, (req, res) => {
+	res.render('views/admin_dashboard_hospitals.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType, hospitals: res.locals.hospitals});
+});
 
-app.get('/add-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, doctorController.getAllDoctors, (req, res) => {
+app.get('/add-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
 	res.render('views/dashboard_addDoctor.ejs', {session: req.session, error:req.session.error, errorType: req.session.errorType, doctors: res.locals.doctors});
 });
+
+app.get('/verify-hospital/:id', authenticationController.redirectLogin, authenticationController.checkAdmin, hospitalController.getVerifyHospital, (req, res) => {
+	res.render('views/dashboard_addHospital.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType, hospital: res.locals.hospital})
+});
+
 
 app.get('/doctor-dashboard', authenticationController.redirectLogin, appointmentController.getAppointmentToDoctorDashboard, (req, res) => {
 	res.render('views/doctor_dashboard.ejs', {session: req.session, error:req.session.error, errorType: req.session.errorType, patients: res.locals.patients, appointments: res.locals.appointments, bookedSlots: res.locals.bookedSlots });
@@ -112,6 +120,9 @@ app.get('/doctor-dashboard', authenticationController.redirectLogin, appointment
 
 
 app.post('/add-doctors', doctorController.addDoctor);
+
+app.post('/add-hospitals/:id', hospitalController.postVerifyHospital);
+
 
 app.get('/delete-doctor/:id', doctorController.deleteDoctor);
 
@@ -210,6 +221,10 @@ app.post('/change-phone-number-verify', userController.changePhoneNumberOTPVerif
 
 app.get('/user-dashboard-appointments', authenticationController.redirectLogin, authenticationController.redirectAdmin, appointmentController.getUserAppointments, (req, res) => {
 	res.render('views/user_dashboard_appointments.ejs', {session: req.session, doctors: res.locals.doctors, slots: res.locals.slots, appointments: res.locals.appointments});
+});
+
+app.get('/user-dashboard-medical-records', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
+	res.render('views/user_dashboard_medical_records.ejs', { session: req.session, error: req.session.error, errorType: req.session.errorType});
 })
 
 app.get('/user-dashboard-medicines', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {

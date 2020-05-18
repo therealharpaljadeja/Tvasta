@@ -2,8 +2,23 @@ const Appointment = require('./../models/appointmentModel');
 const Doctor = require('./../models/doctorModel').Doctor;
 const User = require('./../models/userModel.js');
 const Slot = require('./../models/slotModel.js');
-const Mongoose = require('mongoose')
+const Mongoose = require('mongoose');
+const authenticationController = require('./../controllers/authenticationController');
 // const Appointment = require('./../models/appointmentModel.js');
+
+const Nexmo = require('nexmo');
+const nexmo = authenticationController.nexmo;
+
+
+
+function send(message, recipientAdresses) {
+
+    const from = 'Vonage SMS API';
+    const to = '91'+recipientAdresses;
+    const text = message;
+    
+    nexmo.message.sendSms(from, to, text);
+}
 
 
 const loadingDataOnAppointmentPage = async (req, res, next) => {
@@ -124,12 +139,19 @@ const postCancelAppointment = async (req, res, next) => {
 		const appointment = await Appointment.findOne({ _id: Mongoose.Types.ObjectId(req.params.id) });
 		appointment.status = 'Cancelled';
 		appointment.save();
-		await Slot.findOneAndUpdate({
+		const slot = await Slot.findOneAndUpdate({
 			subSlots: { $elemMatch: { _id: Mongoose.Types.ObjectId(appointment.slot) } }
 		},{ 'subSlots.$.isBooked': false });
 		console.log('Cancelled');
 		req.session.error = 'Appointment Cancelled';
 		req.session.errorType = 'Success';
+
+		const user = await User.findOne({ _id: appointment.user });
+		const doctor = await User.findOne({ _id: slot.doctor });
+
+		send(new_booking.name + "Appointment has been cancelled successfully .", new_booking.user_phone);
+
+
 		if(req.session.user.role == 'user'){
 			res.redirect('/user-dashboard-appointments');	
 		} else {

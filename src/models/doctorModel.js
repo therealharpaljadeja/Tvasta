@@ -12,8 +12,9 @@ const doctorSchema = new mongoose.Schema({
 	avg_fees: { type: Number },
 	startTime: { type: String },
 	endTime: { type: String },
-	slotDuration: { type: Number, enum: [15,30,45,60] },
+	slotDuration: { type: Number },
 	subslots: [],
+	hospitalList: [String]
 	// slots ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
 }, {
 	toJSON: { virtuals : true },

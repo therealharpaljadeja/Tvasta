@@ -44,7 +44,7 @@
 		position: fixed;
 		background-color: $background-color;
 		height: 100%;
-		width: 100%;
+		width: 100vw;
 		z-index: 1000;
 		left: 0;
 		top: 0;
@@ -196,6 +196,7 @@
 	}
 	.profile_menu_container{
 		width: 25rem;
+		right: 18rem;
 	}
 }
 

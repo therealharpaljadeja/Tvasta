@@ -307,7 +307,7 @@ html, body {
   position: fixed;
   background-color: white;
   height: 100%;
-  width: 100%;
+  width: 100vw;
   z-index: 1000;
   left: 0;
   top: 0;
@@ -448,6 +448,7 @@ html, body {
 
   .profile_menu_container {
     width: 25rem;
+    right: 18rem;
   }
 }
 @media (min-width: 1024px) {
@@ -688,6 +689,10 @@ html, body {
     font-size: 2rem;
   }
 }
+html {
+  overflow-x: hidden;
+}
+
 .doctor_details_modal {
   position: fixed;
   top: 0;
@@ -717,6 +722,30 @@ html, body {
 }
 .doctor_details_modal form .form_container__form__submit {
   padding: 2rem 11rem;
+}
+.doctor_details_modal form .form_container__form__input_field input {
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  border-style: solid;
+  border-width: 1px;
+  border-color: #ccc;
+  padding: 1rem 2rem;
+  font-family: "Nexa Bold";
+  font-size: 1.4rem;
+  color: #777;
+}
+.doctor_details_modal form .form_container__form__input_field--medical-records {
+  flex-direction: column;
+}
+.doctor_details_modal form .form_container__form__input_field--radio {
+  justify-content: flex-start;
+  flex-direction: row;
+}
+.doctor_details_modal form .form_container__form__input_field .form_field_radio {
+  display: flex;
+  align-items: center;
+  grid-gap: 0.5rem;
 }
 
 .hero {
@@ -1277,6 +1306,15 @@ html, body {
     width: 50rem;
     height: 55rem;
   }
+  .doctor_details_modal--upload-records form {
+    height: 45rem;
+    overflow: none;
+  }
+  .doctor_details_modal--upload-records form .close-form {
+    position: absolute;
+    right: 2rem;
+    font-size: 1.5rem;
+  }
 
   .hero {
     height: 40rem;
@@ -1768,7 +1806,35 @@ html, body {
   flex-wrap: wrap;
   grid-gap: 0.5rem;
 }
-.doctor_list__container__col-2__card__time_slot .time-slots .slot, .hospital_list__container__col-2__card__time_slot .time-slots .slot {
+.doctor_list__container__col-2__card__time_slot .time-slots .time-slot-day-wise, .hospital_list__container__col-2__card__time_slot .time-slots .time-slot-day-wise {
+  min-width: 100%;
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  grid-row-gap: 1rem;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots .time-slot-morning, .hospital_list__container__col-2__card__time_slot .time-slots .time-slot-morning {
+  display: flex;
+  flex-direction: row;
+  min-width: 100%;
+  flex-basis: 100%;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-heading, .hospital_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-heading {
+  display: flex;
+  grid-gap: 0.5rem;
+  align-items: center;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-heading i, .hospital_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-heading i {
+  font-size: 1.3rem;
+  color: #0173b2;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-slots, .hospital_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-slots {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.doctor_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-slots .slot, .hospital_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-slots .slot {
   display: inline;
   line-height: 2rem;
   border-radius: 0.5rem;
@@ -1778,15 +1844,15 @@ html, body {
   color: #0173b2;
   max-height: 3.5rem;
 }
-.doctor_list__container__col-2__card__time_slot .time-slots .slot-red, .hospital_list__container__col-2__card__time_slot .time-slots .slot-red {
+.doctor_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-slots .slot-red, .hospital_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-slots .slot-red {
   border: 1px solid red;
   color: red;
 }
-.doctor_list__container__col-2__card__time_slot .time-slots .slot-purple, .hospital_list__container__col-2__card__time_slot .time-slots .slot-purple {
+.doctor_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-slots .slot-purple, .hospital_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-slots .slot-purple {
   border: 1px solid purple;
   color: purple;
 }
-.doctor_list__container__col-2__card__time_slot .time-slots .slot-green, .hospital_list__container__col-2__card__time_slot .time-slots .slot-green {
+.doctor_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-slots .slot-green, .hospital_list__container__col-2__card__time_slot .time-slots .time-slot-morning .time-slot-day-wise-slots .slot-green {
   border: 1px solid green;
   color: green;
 }
@@ -1900,6 +1966,9 @@ html, body {
   }
   .doctor_list__container__col-2__card__name h3, .hospital_list__container__col-2__card__name h3 {
     font-size: 1.7rem;
+  }
+  .doctor_list__container__col-2__card__name h3 span i, .hospital_list__container__col-2__card__name h3 span i {
+    color: green;
   }
   .doctor_list__container__col-2__card__name:before, .hospital_list__container__col-2__card__name:before {
     top: 47%;
@@ -2458,6 +2527,9 @@ html, body {
   .form_container--add-doctors {
     width: 50%;
   }
+}
+.form_container--add-hospitals {
+  height: 100rem;
 }
 
 .copyright {
@@ -4469,8 +4541,8 @@ html, body {
   padding: 3rem;
   background-color: #eee;
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  height: calc(100vh - 12rem);
+  grid-template-columns: 1fr;
+  height: calc(100% - 10rem);
   flex-wrap: wrap;
 }
 .background-dashboard .edit_profile_heading--edit_profile {
@@ -4499,7 +4571,6 @@ html, body {
 }
 
 .admin_sidebar {
-  z-index: 9999;
   background-color: white;
   width: 20rem;
   left: 0;
@@ -4576,12 +4647,22 @@ html, body {
 @media (min-width: 768px) {
   .admin_sidebar {
     width: 100%;
+    display: none;
+  }
+
+  .background-dashboard {
+    grid-template-columns: 1fr;
   }
 }
 @media (min-width: 1024px) {
   .admin_sidebar {
     width: 100%;
     border-right: 1px solid #ddd;
+    display: block;
+  }
+
+  .background-dashboard {
+    grid-template-columns: 1fr 3fr;
   }
 }
 .admin_header {
@@ -4805,6 +4886,7 @@ html, body {
   .dashboard_content {
     overflow: scroll;
     height: 100%;
+    overflow-x: hidden;
   }
 
   .statistics_site__grid {
@@ -5005,6 +5087,14 @@ html, body {
   color: #777;
   width: 100%;
 }
+.edit_profile_container .edit_profile_heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.edit_profile_container .edit_profile_heading h4 {
+  font-family: "Nexa Bold";
+}
 .edit_profile_container label {
   font-family: "Nexa Bold";
   font-size: 1.3rem;
@@ -5040,7 +5130,6 @@ html, body {
 }
 .edit_profile_container .photo_and_name .edit_profile_photo {
   display: flex;
-  flex-direction: column;
   grid-gap: 2rem;
   margin-bottom: 2rem;
 }
@@ -5081,6 +5170,24 @@ html, body {
   border-bottom: 1px solid #ddd;
   padding: 2rem;
 }
+.edit_profile_container .edit_other_details .edit_phone_number {
+  display: flex;
+  justify-content: space-between;
+}
+.edit_profile_container .edit_other_details .edit_phone_number #edit_phone_number {
+  font-family: "Nexa Bold";
+  color: #0173b2;
+  cursor: pointer;
+}
+.edit_profile_container .edit_address {
+  padding: 2rem;
+}
+.edit_profile_container .edit_doctor_details {
+  display: flex;
+  grid-gap: 1rem;
+  flex-direction: column;
+  padding: 2rem;
+}
 .edit_profile_container .edit_doctor_details .edit_field {
   display: flex;
   flex-direction: column;
@@ -5104,8 +5211,8 @@ html, body {
   background-color: rgba(0, 0, 0, 0.4);
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: 100%;
 }
 .change_phone_number_form_container .change_phone_number {
   position: relative;
@@ -5113,7 +5220,7 @@ html, body {
   left: 50%;
   transform: translate(-50%, -50%);
   height: 25rem;
-  width: 40rem;
+  width: 30rem;
   background-color: white;
 }
 .change_phone_number_form_container .change_phone_number .close-form {
@@ -5124,6 +5231,11 @@ html, body {
 }
 
 @media (min-width: 768px) {
+  .change_phone_number_form_container .change_phone_number {
+    width: 40rem;
+    height: 25rem;
+  }
+
   .edit_profile_container {
     margin: 3rem;
   }
@@ -5140,7 +5252,7 @@ html, body {
   }
   .edit_profile .photo_and_name {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-gap: 2rem;
   }
   .edit_profile .photo_and_name .edit_profile_photo {
@@ -5164,11 +5276,13 @@ html, body {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 2rem;
+    padding: 2rem;
   }
   .edit_profile .edit_doctor_details {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-gap: 2rem;
+    padding: 2rem;
   }
   .edit_profile .edit_doctor_details .edit_field .tagify {
     font-size: 1.4rem;
@@ -5185,6 +5299,9 @@ html, body {
   }
   .edit_profile .edit_other_details {
     padding: 2rem;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  .edit_profile .photo_and_name {
     grid-template-columns: 1fr 1fr 1fr;
   }
   .edit_profile .edit_address {

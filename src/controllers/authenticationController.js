@@ -339,5 +339,6 @@ module.exports = {
 	checkIfUserExists: checkIfUserExists,
 	changePassword: changePassword,
 	checkOnboarding: checkOnboarding,
-	onBoardingDone: onBoardingDone
+	onBoardingDone: onBoardingDone,
+	nexmo: nexmo
 }

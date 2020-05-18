@@ -102,30 +102,24 @@
 			</div>
 
 			<div class="grid hospital_list__container__col-2">
-				<% for(let i = 0; i < hospital.length; i++) { %>
+				<% for(let i = 0; i < hospitals.length; i++) { %>
 				<div class="grid hospital_list__container__col-2__card">
 					<div class="grid hospital_list__container__col-2__card__name">
-						<h3><%= hospital[i].name %></h3>
+						<h3><%= hospitals[i].name %></h3>
 					</div>
 					<div class="hospital_list__container__col-2__card__other_details">
-						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-map-marker-alt"></i></span><%= hospital[i].address %></p>
-						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-2"><span><i class="fas fa-bed"></i></span><%= hospital[i].beds %> beds</p>
+						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-map-marker-alt"></i></span><%= hospitals[i].address %></p>
+						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-2"><span><i class="fas fa-bed"></i></span><%= hospitals[i].noOfBeds %> beds</p>
 						<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__experience"><span><i class="fas fa-stethoscope"></i></span>Famous Treatments</p>
 						<div class="hospital_list__container__col-2__card__other_details__tags">
-							<% for(let j = 0; j < hospital[i].listOfTreatment.length; j++){ %>
-							<span class="hospital_list__container__col-2__card__other_details__tags__tag"><%= hospital[i].listOfTreatment[j] %></span>
+							<% for(let j = 0; j < hospitals[i].specializations.length; j++){ %>
+							<span class="hospital_list__container__col-2__card__other_details__tags__tag"><%= hospitals[i].specializations[j] %></span>
 							<% } %>
-							<!-- <span class="hospital_list__container__col-2__card__other_details__tags__tag">Orthopedic Surgery</span>
-							<span class="hospital_list__container__col-2__card__other_details__tags__tag">Infertility Treatment</span>
-							<span class="hospital_list__container__col-2__card__other_details__tags__tag">Dentistry</span>
-							<span class="hospital_list__container__col-2__card__other_details__tags__tag">Cardiology</span>
-							<span class="hospital_list__container__col-2__card__other_details__tags__tag">Cancer</span>
-							<span class="hospital_list__container__col-2__card__other_details__tags__tag">40+ more</span> -->
 						</div>
 					</div>
 					<button class="hospital_list__container__col-2__card__book">Call Now</button>
 					<div class="hospital_list__container__col-2__card__hospital_img_wrapper">
-						<img src="<%= hospital[i].display_picture %>" alt="" class="hospital_list__container__col-2__card__hospital_img_wrapper__img">	
+						<img src="<%= hospitals[i].display_picture %>" alt="" class="hospital_list__container__col-2__card__hospital_img_wrapper__img">	
 					</div>
 				</div>
 				<% } %>

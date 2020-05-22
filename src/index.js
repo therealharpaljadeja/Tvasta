@@ -8,6 +8,281 @@ if(activeLink) activeLink.classList.add('navbar__menu__ul__item--active');
 
 
 
+function modal_display(param){
+
+    console.log(param.parentElement)
+    param.parentElement.querySelector("#myModal").style.display="block";
+
+}
+
+
+function dotsOption(param){
+
+    if(param.parentElement.querySelector("ul").style.display=="none")
+        param.parentElement.querySelector("ul").style.display = "block";
+    
+    else    
+        param.parentElement.querySelector("ul").style.display = "none"
+}
+
+function toggleForm(id){
+
+    document.querySelector(".popup-medical").classList.remove("display_none");
+    
+    document.querySelector(".medicalForm").querySelector(".report_id").value = id;
+}
+
+
+async function searchValues (searchText,loc){
+
+    let http = new XMLHttpRequest();
+    let url = 'http://localhost:8000/getSearch';
+    http.open("GET", url,true);
+
+                    //Show results in HTML
+                    const outputHtml = async (hospital_matches,type) => {
+                        if(loc){
+                            if(hospital_matches.length>0){
+                                const html = hospital_matches.map(match => `
+                                <div class="auto_value" onclick="addCityValue('${match}','${type}')">
+                                <h4>${match} <span>${type}</span> </h4>
+                                </div>`).join('')
+                                return html
+                            }
+                        }
+                        else{
+                        if(hospital_matches.length>0){
+                            const html = hospital_matches.map(match => `
+                            <div class="auto_value" onclick="addValue('${match}','${type}')">
+                            <h4>${match} <span>${type}</span> </h4>
+                            </div>`).join('')
+                            return html
+                            }
+                        }
+                        return ''
+                    }
+
+    http.onload = async (e) => {
+
+        let response = JSON.parse(http.response);
+
+        if(loc){
+            let location_matches = response.location.filter(hospital=>{
+                const regex = new RegExp(`^${searchText}`,'gi');
+                return hospital.match(regex)
+            });
+            if(searchText.length==0){
+                location_matches = 0;
+                matchlist.innerHTML = "";
+            }else{
+                locationhtml = await outputHtml(location_matches,"City");
+                
+                citylist.innerHTML = locationhtml;
+            }
+        }   else{
+            let hospital_matches = response.hospital.filter(hospital=>{
+                const regex = new RegExp(`^${searchText}`,'gi');
+                return hospital.match(regex)
+                });
+
+            let speciality_matches = response.specializations.filter(hospital=>{
+                const regex = new RegExp(`^${searchText}`,'gi');
+                return hospital.match(regex)
+            });
+            if(searchText.length==0){
+                hospital_matches = 0;
+                speciality_matches = 0;
+                matchlist.innerHTML = "";
+            }else{
+                hospitalhtml = await outputHtml(hospital_matches,"Hospital");
+            
+                specialityhtml = await outputHtml(speciality_matches,"Specialization");
+                matchlist.innerHTML = hospitalhtml + specialityhtml;
+            }
+
+
+        }            
+
+    }
+
+    http.send();
+
+
+}
+
+
+
+
+let loc_search = document.getElementById("loc_search")
+
+
+let matchlist = document.getElementById("match-list");
+
+let citylist = document.getElementById("city-list");
+
+
+if(window.location.href == "http://localhost:8000/"){
+	console.log(matchlist, citylist);
+    if(search)
+        search.addEventListener('input',() => searchValues(search.value));
+
+    if(loc_search)
+        loc_search.addEventListener('input',() => searchValues(loc_search.value,"location"));
+    
+    function addValue(value){
+        console.log(value)
+        search.value = value;
+        matchlist.innerHTML = "";
+    }
+
+    function addCityValue(value){
+        console.log(value)
+        loc_search.value = value;
+        citylist.innerHTML = "";
+    }
+
+}
+
+
+function showMore(param){
+	let showList = param.parentElement.querySelectorAll('checkbox_container');
+	showList.forEach(el => {
+		if(el.classList.includes('display_none')){
+			el.classList.remove('display_none');
+		}
+	});
+	param.parentElement.getElementById('show-less').classList.remove('display_none');
+	param.classList.add('display_none');
+}
+
+function showLess(param){
+	let showList = param.parentElement.querySelectorAll('checkbox_container');
+	showList.forEach((el, index) => {
+		if(index > 5){
+			if(el.classList.includes('display_none')){
+
+			} else {
+				el.classList.add('display_none');
+			}
+		}
+	});
+	param.parentElement.getElementById('show-more').classList.remove('display_none');
+	param.classList.add('display_none');
+
+}
+
+
+function delReport(report_id,image_id){
+
+    let form = document.querySelector("#delReport");
+
+    form.querySelector(".report_id").value = report_id;
+    form.querySelector(".report_image").value = image_id;
+
+
+    form.submit();
+
+}
+
+
+function modal_deactivate(param){
+
+    param.parentElement.style.display = "none";
+
+}
+
+
+function addAnother(param,event){
+
+    param.parentElement.style.backgroundImage = `url(${URL.createObjectURL(event.target.files[0])})`;
+    param.parentElement.querySelector("label").style.display = "none";
+    let div = document.createElement('div');
+    let cn = param.parentElement.parentElement.querySelectorAll("input");
+    div.setAttribute("class","input_image_container");
+    let input = document.createElement('input');
+    input.setAttribute("type","file");
+    input.setAttribute("name","medicalphoto[]");
+    input.setAttribute("id",`_${cn.length+1}`);
+    input.setAttribute("onchange","addAnother(this,event)")
+    input.setAttribute("multiple","");
+    let label = document.createElement('label');
+    label.setAttribute("for",`_${cn.length+1}`)
+    let p = document.createElement('p');
+    p.innerText = "+";
+    let small = document.createElement('p');
+
+    small.innerText = "Add Photo";
+    small.setAttribute("class","small");
+    label.appendChild(p)
+    label.appendChild(small)
+    div.appendChild(input)
+    div.appendChild(label)
+    
+
+    param.parentElement.parentElement.appendChild(div);
+
+}
+
+
+
+function togglecancelMessage(id){
+
+    let form;
+    if(   document.querySelector(".change_phone_number_form_container").style.display == "none")
+{        
+    document.querySelector(".change_phone_number_form_container").style.display = "flex";
+        if(document.querySelector("#cancel"))
+            form = document.querySelector("#cancel").querySelector("input").value = id;
+        else
+            form = document.querySelector("#delete_record").querySelector("input").value = id;
+        }
+else    
+
+    document.querySelector(".change_phone_number_form_container").style.display = "none";
+
+}
+
+
+function submitForm(value,id){
+
+    let form = document.querySelector("#" + value);
+
+    if(form){
+        if(id)
+            form.querySelector("input").value = id;
+        if(form.querySelector("input").value)    
+            form.submit();
+    }
+
+}
+
+
+function openRecords(id,e){
+
+    if(e.target.nodeName.toString()!="BUTTON")
+        window.location.href = `/user-dashboard-medical-records/showReport/${id}`;
+
+}
+
+
+
+
+const toggleAccordian = element => {
+	const item = element.target;
+	const chevron = item.children[0].children[1];
+	const content = item.children[1];
+	content.classList.toggle('expandCollapse');
+	chevron.classList.toggle('rotate_arrow');
+}
+
+
+const accordianItem = Array.from(document.querySelectorAll('.about_doctor__container__col--1__more_details__accordian__item'));
+accordianItem.forEach(el => {
+	el.addEventListener('click', toggleAccordian);
+})
+
+
+
 const sideMenuTreatments = document.getElementById('side_menu_treatments');
 const sideMenutreatmentChevron = document.querySelector('#treatments_sideMenu');
 
@@ -20,10 +295,41 @@ if(sideMenutreatmentChevron){
 
 
 
+function findCity(param){
+
+    param.classList.toggle("colorchanger");
+    console.log("snd")
+    let http = new XMLHttpRequest();
+    let url = 'https://geolocation-db.com/json/0f761a30-fe14-11e9-b59f-e53803842572';
+    http.open("GET", url,true);
+    http.onload = async (e) => {
+
+        let response = JSON.parse(http.response);
+
+        console.log(response.city);
+        param.parentElement.querySelector("input").value = response.city
+        param.classList.toggle("colorchanger");
+        param.style.color = "#2a2d3e";
+
+    }
+
+    http.onprogress = (e)=>{
+
+        console.log(e);
+
+    }
+
+    http.send();
+
+
+}
+
+
+
 const profileChevron = document.querySelector('.navbar__profile');
 const profile_menu = document.querySelector('.profile_menu_container');
 
-profileChevron.addEventListener('click', () => {profile_menu.classList.toggle('display_none')});
+if(profileChevron) profileChevron.addEventListener('click', () => {profile_menu.classList.toggle('display_none')});
 
 const treatmentChevron = document.querySelector('#treatments');
 const treatment_menu = document.querySelector('#treatment_menu_container');
@@ -99,8 +405,8 @@ const collapse_menu = (el) => {
 	let side_menu = document.querySelector('.navbar__side_menu');
 	side_menu.style.display = 'none';
 }
-cross_button.addEventListener('click', collapse_menu);
-menu_burger.addEventListener('click', expand_menu);
+if(cross_button) cross_button.addEventListener('click', collapse_menu);
+if(menu_burger) menu_burger.addEventListener('click', expand_menu);
 
 // autoCompleteFunc();
 
@@ -145,20 +451,6 @@ for(let i = 0; i < dots.length; i++){
 
 
 
-
-const toggleAccordian = element => {
-	const item = element.target;
-	const chevron = item.children[0].children[1];
-	const content = item.children[1];
-	content.classList.toggle('expandCollapse');
-	chevron.classList.toggle('rotate_arrow');
-}
-
-
-const accordianItem = Array.from(document.querySelectorAll('.about_doctor__container__col--1__more_details__accordian__item'));
-accordianItem.forEach(el => {
-	el.addEventListener('click', toggleAccordian);
-})
 
 
 

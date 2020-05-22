@@ -23,10 +23,133 @@ const uploadDoctor = multer({
 }).single('display_picture');
 
 
+const correctedArray = async (param_list,filters)=>{
+
+    console.log(filters,param_list)
+    if(filters.location_filter)
+        for(let i=0;i<filters.location_filter.length;i++){
+            if(param_list.location.indexOf(filters.location_filter[i])!=-1){
+                console.log(param_list.location.indexOf(filters.location_filter[i]))
+                param_list.location.splice(param_list.location.indexOf(filters.location_filter[i]),1);
+                param_list.location.unshift(filters.location_filter[i]);
+            }
+        }
+    if(filters.hospital_filter)
+        for(let i=0;i<filters.hospital_filter.length;i++){
+            if(param_list.hospital.indexOf(filters.hospital_filter[i])!=-1){
+                console.log(param_list.hospital.indexOf(filters.hospital_filter[i]))
+                param_list.hospital.splice(param_list.speciality.indexOf(filters.hospital_filter[i]),1);
+                param_list.hospital.unshift(filters.hospital_filter[i]);
+            }
+        }
+    if(filters.treatment_filter)
+        for(let i=0;i<filters.treatment_filter.length;i++){
+            if(param_list.speciality.indexOf(filters.treatment_filter[i])!=-1){
+                console.log(param_list.speciality.indexOf(filters.treatment_filter[i]))
+                param_list.speciality.splice(param_list.speciality.indexOf(filters.treatment_filter[i]),1);
+                param_list.speciality.unshift(filters.treatment_filter[i]);
+            }
+        }
+
+    console.log(param_list)
+
+    return param_list;
+
+
+}
+
+
+
+
+const getallValuesApi = async ()=>{
+
+    let doc = await User.find({ role: 'doctor' });
+    console.log(doc);
+    let hospital=[],location = [],specializations = [];
+
+    doc.forEach(element=>{
+
+        if(element.doctor)
+            element.doctor.hospitalList.forEach(e=>{
+                if(hospital.indexOf(e)==-1){
+                    hospital.push(e)
+                }
+            })
+        if(element.doctor)
+            element.doctor.specializations.forEach(e=>{
+                if(specializations.indexOf(e)==-1){
+                    specializations.push(e)
+                }
+            })
+        if(element.doctor)
+          if(location.indexOf(element.location)==-1){
+                location.push(element.location)
+            }
+
+    })
+
+    return {hospital: hospital,specializations: specializations,location: location};
+
+}
+
+
+const valueApi = async (req,res)=>{
+
+    let values = await getallValuesApi();
+    res.json(values)
+
+}
+
+
+const filter_search = async (req,res)=>{
+
+    let presentDoctorValues = await getallValuesApi();
+    console.log(req.body);
+    
+    
+    let search = req.body.search;
+    if(presentDoctorValues.hospital.indexOf(search)!=-1){
+        if(req.body.locality){
+            req.session.filters = {
+                location: [req.body.locality],
+                hospital_filter: [req.body.search]
+            }
+        }else{
+            req.session.filters = {
+                hospital_filter: [req.body.search]
+            }
+        }
+    }else if(presentDoctorValues.specializations.indexOf(search)!=-1){
+        if(req.body.locality){
+            req.session.filters = {
+                location: [req.body.locality],
+                treatment_filter: [req.body.search]
+            }}else{
+                req.session.filters = {
+                    treatment: [req.body.search]
+                }
+            }
+    }
+    else{
+            req.session.filters = {
+                location: [req.body.locality]
+            }
+        }
+        res.redirect("/doctors")
+}
+
+
+
+
+
+
 const getAllDoctors = async (req, res, next) => {
     var doctors = [];
+    console.log('filters',req.session.filters);
+    let presentDoctorValues = await getallValuesApi();
     if(req.session.filters){
         if(Object.keys(req.session.filters).length){
+            presentDoctorValues = await correctedArray(presentDoctorValues,req.session.filters)
             doctors = await User.find({
                 $and: [
                     {role: 'doctor'},
@@ -41,7 +164,11 @@ const getAllDoctors = async (req, res, next) => {
                     },
                     {
                         'doctor': { $exists: true }
+                    },
+                    {
+                        "doctor.specializations":{ $in : req.session.filters.treatment ? req.session.filters.treatment : presentDoctorValues.specializations } 
                     }
+                    
                 ]
             }).sort(req.session.sortBy ? {[req.session.sortBy.split('-')[0]] : req.session.sortBy.split('-')[1] === 'asc' ? 1 : -1} : []);
         } else {
@@ -82,6 +209,7 @@ const getAllDoctors = async (req, res, next) => {
     res.locals.doctors = doctors;
     res.locals.currentDay = new Date().getDay();
     res.locals.currentDate = new Date();
+    res.locals.allFilters = presentDoctorValues;
     next();
 }
 
@@ -295,5 +423,7 @@ module.exports = {
     doctorFilters: doctorFilters,
     doctorSort: doctorSort,
     getDoctor: getDoctor,
-    adminEditDoctor: adminEditDoctor
+    adminEditDoctor: adminEditDoctor,
+    filter_search: filter_search,
+    getSearch: valueApi
 }

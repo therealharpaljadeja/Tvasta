@@ -46,8 +46,6 @@ const addDoctorDetails = (req, res, next) => {
 			req.session.errorType = 'Failure';
 			res.redirect('/');
 		} else {
-			console.log(req.body);
-			console.log(req.file);
 			let hospitals = req.body.hospitalList.slice(1,req.body.hospitalList.length - 1).split(',');
             let achievementList = req.body.achievements.slice(1,req.body.achievements.length - 1).split(',');
             let qualificationList = req.body.qualifications.slice(1,req.body.qualifications.length - 1).split(',');
@@ -119,7 +117,6 @@ const addDoctorDetails = (req, res, next) => {
                     });
                 }
             }
-            console.log(req.session);
             
             req.session.error = 'Doctor Successfully Registered';
             req.session.errorType = 'Success';
@@ -136,7 +133,6 @@ const editProfile = (req, res, next) => {
 			req.session.errorType = 'Failure';
 			res.redirect('/edit-profile');
 		} else {
-			console.log(req.body);
 			const user = await User.findOne({ email: req.session.user.email });
 			user.display_picture = req.file === undefined ? req.session.user.display_picture : '/' + req.file.path;
 			user.name = req.body.name;
@@ -190,14 +186,12 @@ const editProfile = (req, res, next) => {
                 }
                 await user.save();
                 req.session.user = user;
-                console.log(req.session.user);
                 req.session.error = 'Profile Updated';
                 req.session.errorType = 'Success';
                 res.redirect('/edit-profile-doctor');
             } else {
                 await user.save();
                 req.session.user = user;
-                console.log(req.session.user);
                 req.session.error = 'Profile Updated';
                 req.session.errorType = 'Success';
                 res.redirect('/edit-profile');   
@@ -284,9 +278,37 @@ const changePhoneNumberOTPVerify = (req, res, next) => {
 }
 
 
+const settings = async (req, res) => {
+    const user = await User.findOne({ _id: req.session.user.id });
+    console.log(user);
+    console.log(req.body.new_password);
+    console.log(req.body.curr_password);
+    console.log(req.body.confirm_password);
+    if(user){
+        if(req.body.new_password !== req.body.confirm_password){
+            req.session.error = 'Passwords Do Not Match';
+            req.session.errorType = 'Failure';
+            res.redirect('/settings');
+        } else {
+            if(await user.comparePassword(req.body.curr_password, user.password)){
+                user.password = req.body.new_password;
+                user.save();
+                req.session.error = 'Password Changed Successfully';
+                req.session.errorType = 'Success';
+                res.redirect('/settings');
+            } else {
+                req.session.error = 'Current Password is Incorrect';
+                req.session.errorType = 'Failure';
+                res.redirect('/settings');
+            }
+        }
+    }
+}
+
 module.exports = {
 	editProfile: editProfile,
 	addDoctorDetails: addDoctorDetails,
     changePhoneNumber: changePhoneNumber,
-    changePhoneNumberOTPVerify: changePhoneNumberOTPVerify
+    changePhoneNumberOTPVerify: changePhoneNumberOTPVerify,
+    settings: settings
 }

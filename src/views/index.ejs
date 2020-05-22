@@ -166,29 +166,36 @@
 			<p class="para hero__container__para">
 				Join the thousands of others who have exercised their right to quality healthcare at a price you can afford.
 			</p>
-			<div class="grid hero__container__field">
-				<div class="hero__container__field__search_location">
-					<input type="text" name="district" placeholder="Ahmedabad" class="hero__container__field__search_location__district" list="localities" id="auto-complete">
-					<datalist id="localities">
-						<option value="New Delhi">
-                        <option value="Mumbai">
-                        <option value="Lucknow">
-                        <option value="Jammu and Kashmir">
-                        <option value="Himachal Pradesh">
-                        <option value="Uttrakhand">
-                        <option value="Punjab">
-                        <option value="Haryana">
-                        <option value="Bihar">
-                        <option value="Madhya Pradesh">
-                        <option value="Rajasthan">
-                        <option value="Gujarat">
-					</datalist>
-					<span class="hero__container__field__search_location__map-marker"><i class="fas fa-map-marker-alt"></i></span>
-					<span id="gps-button" class="hero__container__field__search_location__crosshairs"><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/gps.png" alt=""></span>
+			<form action="/filter_search" method="POST">
+				<div class="grid hero__container__field">
+					<div class="hero__container__field__search_location">
+						<input id="loc_search" type="text" name="locality" placeholder="Ahmedabad" class="hero__container__field__search_location__district" list="localities" id="auto-complete" autocomplete="off">
+						<!-- <datalist id="localities">
+							<option value="New Delhi">
+	                        <option value="Mumbai">
+	                        <option value="Lucknow">
+	                        <option value="Jammu and Kashmir">
+	                        <option value="Himachal Pradesh">
+	                        <option value="Uttrakhand">
+	                        <option value="Punjab">
+	                        <option value="Haryana">
+	                        <option value="Bihar">
+	                        <option value="Madhya Pradesh">
+	                        <option value="Rajasthan">
+	                        <option value="Gujarat">
+						</datalist> -->
+						<div class="city_autocomplete" id="city-list"></div>
+						<span class="hero__container__field__search_location__map-marker"><i class="fas fa-map-marker-alt"></i></span>
+						<span id="gps-button" class="hero__container__field__search_location__crosshairs" id="location_i" onclick="findCity(this)"><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/gps.png" alt=""></span>
+					</div>
+					<div class="hero__container__field__search__doctor">
+						<input type="text" name="search" placeholder="Search for doctors, hospitals and treatments" id="search" class="hero__container__field__search" autocomplete="off">
+						<div class="match-auto_complete" id="match-list"></div>	
+					</div>
+					
+					<button class="hero__container__field__search__button">Search</button>
 				</div>
-				<input type="text" name="search" placeholder="Search for doctors, hospitals and treatments" class="hero__container__field__search">
-				<button class="hero__container__field__search__button">Search</button>
-			</div>
+			</form>
 		</div>
 	</section>
 	<section class="how_it_works">

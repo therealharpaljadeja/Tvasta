@@ -375,7 +375,8 @@
 					grid-template-rows: 1fr 2fr 1fr;
 					align-items: center;
 					border-bottom: .1rem solid #bbb;
-					height: 25rem;
+					// height: 25rem;
+					height: auto;
 					font-family: $nexa-light;
 					&:last-child{
 						border-bottom: none;
@@ -409,6 +410,7 @@
 						grid-column: 1/6;
 						grid-row: 2/3;
 						display: grid;
+						align-self: start;
 						grid-gap: .5rem;
 						grid-template-columns: 100%;
 						label{

@@ -61,14 +61,38 @@
 					<span class="doctor_list__container__col-1__filter__search"><i class="fa fa-search"></i></span>
 					<span class="doctor_list__container__col-1__filter__collapse"><i class="fa fa-minus"></i></span>
 					<div class="doctor_list__container__col-1__filter__options">
-						<label class="checkbox_container" for="New Delhi"><input type="checkbox" class="_New-Delhi" onclick="this.form.submit()" id="New Delhi" name="location[]" value="New Delhi">New Delhi</label>
-	 					<label class="checkbox_container" for="Mumbai"><input type="checkbox" class="_Mumbai" onclick="this.form.submit()" id="Mumbai" name="location[]" value="Mumbai">Mumbai</label>
-						<label class="checkbox_container" for="Bangalore"><input type="checkbox" class="_Bangalore" onclick="this.form.submit()" id="Bangalore" name="location[]" value="Bangalore">Bangalore</label>
-						<label class="checkbox_container" for="Punjab"><input type="checkbox" class="_Punjab" onclick="this.form.submit()" id="Punjab" name="location[]" value="Punjab">Punjab</label>
-						<label class="checkbox_container" for="Ahmedabad"><input type="checkbox" class="_Ahemdabad" onclick="this.form.submit()" id="Ahmedabad" name="location[]" value="Ahmedabad">Ahmedabad</label>
-						<label class="checkbox_container" for="Gurgaon"><input type="checkbox" class="_Gurgaon" onclick="this.form.submit()" id="Gurgaon" name="location[]" value="Gurgaon">Gurgaon</label>
+						<% for(let i = 0; i < filters.location.length; i++) { %>
+							<% if(i <= 6) { %>
+								<label class="checkbox_container" for="New Delhi"><input type="checkbox" class="<%= '_' + filters.location[i].split(' ').join('-') %>" onclick="this.form.submit()" id="New Delhi" name="location[]" value="<%= filters.location[i] %>"><%= filters.location[i] %></label>
+							<% } else { %>
+								<label class="checkbox_container display_none" for="New Delhi"><input type="checkbox" class="<%= '_' + filters.location[i].split(' ').join('-') %>" onclick="this.form.submit()" id="New Delhi" name="location[]" value="<%= filters.location[i] %>"><%= filters.location[i] %></label>
+							<% } %>
+						<% } %>
+						
 					</div>
-					<div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span>Show More</div>
+					<% if(filters.specializations.length > 6) { %>
+						<div class="doctor_list__container__col-1__filter__show_more" id="show-more" onclick="showMore(this)"><span><i class="fa fa-plus"></i></span> Show More</div>
+					<% } %>
+					<div class="doctor_list__container__col-1__filter__show_more display_none" id="show-less" onclick="showLess(this)"><span><i class="fa fa-minus"></i></span> Show Less</div>
+					<!-- <div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span>Show More</div> -->
+				</div>
+				<div class="grid doctor_list__container__col-1__filter doctor_list__container__col-1__filter-1">
+					<p class="doctor_list__container__col-1__filter__title">Specialization</p>
+					<span class="doctor_list__container__col-1__filter__search"><i class="fa fa-search"></i></span>
+					<span class="doctor_list__container__col-1__filter__collapse"><i class="fa fa-minus"></i></span>
+					<div class="doctor_list__container__col-1__filter__options">
+						<% for(let i = 0; i < filters.specializations.length; i++) { %>
+							<% if(i <= 6) { %>
+								<label class="checkbox_container" for="New Delhi"><input type="checkbox" class="<%= '_' + filters.specializations[i].split(' ').join('-') %>" onclick="this.form.submit()" id="New Delhi" name="treatments[]" value="<%= filters.specializations[i] %>"><%= filters.specializations[i] %></label>
+							<% } else { %>
+								<label class="checkbox_container display_none" for="New Delhi"><input type="checkbox" class="<%= '_' + filters.specializations[i].split(' ').join('-') %>" onclick="this.form.submit()" id="New Delhi" name="treatments[]" value="<%= filters.specializations[i] %>"><%= filters.specializations[i] %></label>
+							<% } %>
+						<% } %>
+					</div>
+					<% if(filters.specializations.length > 6) { %>
+						<div class="doctor_list__container__col-1__filter__show_more" id="show-more" onclick="showMore(this)"><span><i class="fa fa-plus"></i></span> Show More</div>
+					<% } %>
+					<div class="doctor_list__container__col-1__filter__show_more display_none" id="show-less" onclick="showLess(this)"><span><i class="fa fa-minus"></i></span> Show Less</div>
 				</div>
 				<!-- <div class="grid doctor_list__container__col-1__filter doctor_list__container__col-1__filter-2">
 					<p class="doctor_list__container__col-1__filter__title">Treatment</p>
@@ -89,14 +113,18 @@
 					<span class="doctor_list__container__col-1__filter__search"><i class="fa fa-search"></i></span>
 					<span class="doctor_list__container__col-1__filter__collapse"><i class="fa fa-minus"></i></span>
 					<div class="doctor_list__container__col-1__filter__options">
-						<label class="checkbox_container" for="Apollo Hospital"><input id="Apollo Hospital" class="_Apollo-Hospital" value="Apollo Hospital" type="checkbox" name="hospital[]" onclick="this.form.submit()">Apollo Hospital</label>
-						<label class="checkbox_container" for="Rockland Hospital"><input id="Rockland Hospital" class="_Rockland-Hospital" value="Rockland Hospital" type="checkbox" name="hospital[]" onclick="this.form.submit()">Rockland Hospital</label>
-						<label class="checkbox_container" for="Kokilaben Hospital"><input id="Kokilaben Hospital" class="_Kokilaben-Hospital" value="Kokilaben Hospital" type="checkbox" name="hospital[]" onclick="this.form.submit()">Kokilaben Hospital</label>
-						<label class="checkbox_container" for="AIIMS"><input id="AIIMS" class="_AIIMS" value="AIIMS" type="checkbox" name="hospital[]" onclick="this.form.submit()">AIIMS</label>
-						<label class="checkbox_container" for="Fortis Hospital"><input id="Fortis Hospital" class="_Fortis-Hospital" value="Fortis Hospital" type="checkbox" name="hospital[]" onclick="this.form.submit()">Fortis Hospital</label>
-						<label class="checkbox_container" for="Primus Super Speeciality Hospital"><input id="Primus Super Speeciality Hospital" class="_Primus-Super-Speciality-Hospital" value="Primus Super Speciality Hospital" type="checkbox" name="hospital[]" onclick="this.form.submit()">Primus Super Speciality Hospital</label>
+						<% for(let i = 0; i < filters.hospital.length; i++) { %>
+							<% if(i <= 6) { %>
+								<label class="checkbox_container" for="New Delhi"><input type="checkbox" class="<%= '_' + filters.hospital[i].split(' ').join('-') %>" onclick="this.form.submit()" id="New Delhi" name="hospital[]" value="<%= filters.hospital[i] %>"><%= filters.hospital[i] %></label>
+							<% } else { %>
+								<label class="checkbox_container display_none" for="New Delhi"><input type="checkbox" class="<%= '_' + filters.hospital[i].split(' ').join('-') %>" onclick="this.form.submit()" id="New Delhi" name="hospital[]" value="<%= filters.hospital[i] %>"><%= filters.hospital[i] %></label>
+							<% } %>
+						<% } %>
 					</div>
-					<div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span> Show More</div>
+					<% if(filters.specializations.length > 6) { %>
+						<div class="doctor_list__container__col-1__filter__show_more" id="show-more" onclick="showMore(this)"><span><i class="fa fa-plus"></i></span> Show More</div>
+					<% } %>
+					<div class="doctor_list__container__col-1__filter__show_more display_none" id="show-less" onclick="showLess(this)"><span><i class="fa fa-minus"></i></span> Show Less</div>
 				</div>
 				<div class="grid doctor_list__container__col-1__filter doctor_list__container__col-1__filter-4">
 					<p class="doctor_list__container__col-1__filter__title">Years Of Experience</p>
@@ -110,7 +138,7 @@
 						<label class="checkbox_container" for="10+"><input id="10+" value="10" class="_10" type="checkbox" name="experience[]" onclick="this.form.submit()">10+</label>
 						<label class="checkbox_container" for="5+"><input id="5+" value="5" class="_5" type="checkbox" name="experience[]" onclick="this.form.submit()">5+</label>
 					</div>
-					<div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span> Show More</div>
+					<!-- <div class="doctor_list__container__col-1__filter__show_more"><span><i class="fa fa-plus"></i></span> Show More</div> -->
 				</div>
 			</div>
 			</form>
@@ -289,78 +317,98 @@
 							<% for(let j = 0; j < 7; j++) { %>
 
 									
-								<% let morningSlots = [];
-								let morningDoctorId = [];
+								<% 
+								let subslots = [];
+								let morningSlots = [];
+								let morningDoctor = [];
 								let afternoonSlots = [];
-								let afternoonDoctorId = [];
+								let afternoonDoctor = [];
 								let eveningSlots = [];
-								let eveningDoctorId = [];
+								let eveningDoctor = [];
 								let morningColor = [];
 								let afternoonColor = [];
 								let eveningColor = [];
+								let morningDates = [];
+								let afternoonDates = [];
+								let eveningDates = [];
+
 								noSlots = 0;
 								if(current >= 7) current = current % 7;
-
+								
 								for(let q = 0; q < doctors[i].slots.length; q++){
-
 									if((doctors[i].slots[q].isDisabled) || (doctors[i].slots[q].isHoliday)){
-
-									} else {
-
+											
+									} else {	
 										if(doctors[i].slots[q].days.indexOf(days[current]) !== -1){
-											noSlots = 1;
-											console.log('no Slots available');
-										} else {
 											for(let m = 0; m < doctors[i].slots[q].subSlots.length; m++){
-
-												if((doctors[i].slots[q].subSlots[m].isBooked) || (doctors[i].slots[q].subSlots[m].isDisabled)) {
+												if(doctors[i].slots[q].subSlots[m].isBooked || doctors[i].slots[q].subSlots[m].isDisabled){
 
 												} else {
+
+
 													var hours;
-												
+
 													if(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[1] == 'pm'){
+
 														if(doctors[i].slots[q].subSlots[m].startTime.split(':')[0] == '12'){
+															
 															hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]);
+
 														} else {
+															
 															hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]) + 12;
+
 														}
 													} else {
+
 														hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]);
+
 													}
 
 													var minutes = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[0]);
 
 													dateForSlots = new Date(dateFromServer);
 													dateForSlots.setDate(dateForSlots.getDate() + j);
+
 													dateForSlots.setHours(hours);
-													<!-- dateForSlots.setHours(dateForSlots.getHours() + 5); -->
-													dateForSlots.setMinutes(minutes);
-													<!-- dateForSlots.setMinutes(dateForSlots.getMinutes() + 30); -->
-													<!-- console.log(dateForSlots, dateForSlots.getHours()); -->
+
+													dateForSlots.setHours(dateForSlots.getHours() + 5);
 													
 
-													if(dateForSlots.getHours() >= 8 && dateForSlots.getHours() <= 11) {
-														morningSlots.push(doctors[i].slots[q].subSlots[m]);
-														morningDoctorId.push(doctors[i].slots[q].doctor);
-														morningColor.push(q);
-													}
-													if(dateForSlots.getHours() >= 12 && dateForSlots.getHours() <= 17){
-														afternoonSlots.push(doctors[i].slots[q].subSlots[m]);
-														afternoonDoctorId.push(doctors[i].slots[q].doctor);
-														afternoonColor.push(q);
-													}
-													if(dateForSlots.getHours() >= 17 && dateForSlots.getHours() <= 23){
-														eveningSlots.push(doctors[i].slots[q].subSlots[m]);
-														eveningDoctorId.push(doctors[i].slots[q].doctor);
-														eveningColor.push(q);
-													}
+
+													dateForSlots.setMinutes(minutes);
+													dateForSlots.setMinutes(dateForSlots.getMinutes() + 30);
+
+
+													if(rightNow < dateForSlots){
+														
+														if(dateForSlots.getUTCHours() >= 8 && dateForSlots.getUTCHours() < 12){
+															
+															morningSlots.push(doctors[i].slots[q].subSlots[m]);
+															morningColor.push(q);
+															morningDoctor.push(doctors[i]._id);
+
+														} else if(dateForSlots.getUTCHours() >= 12 && dateForSlots.getUTCHours() < 17) {
+
+															afternoonSlots.push(doctors[i].slots[q].subSlots[m]);
+															afternoonColor.push(q);
+															afternoonDoctor.push(doctors[i]._id);
+
+														} else if(dateForSlots.getUTCHours() >= 17 && dateForSlots.getUTCHours() < 23) {
+															eveningSlots.push(doctors[i].slots[q].subSlots[m]);
+															eveningColor.push(q);
+															eveningDoctor.push(doctors[i]._id);
+														}	
+
+													}	
+
 												}
 											}
-										}	
-
+										}
 									}	
 										
-								}			
+								}
+											
 								%>	
 								<div class="time-slots time-slot-slide">
 									<div class="time-slot-day-wise">
@@ -372,22 +420,22 @@
 											<div class="time-slot-day-wise-slots">
 												<% for(let d = 0; d < morningSlots.length; d++){ %>
 													<% if(morningColor[d] == 0){ %>
-														<div class="slot" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= morningSlots[d].startTime %>
 														</div>
 													<% } %>
 													<% if(morningColor[d] == 1){ %>
-														<div class="slot slot-red" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot slot-red" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= morningSlots[d].startTime %>
 														</div>
 													<% } %>
 													<% if(morningColor[d] == 2){ %>
-														<div class="slot slot-purple" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot slot-purple" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= morningSlots[d].startTime %>
 														</div>
 													<% } %>
 													<% if(morningColor[d] == 3){ %>
-														<div class="slot slot-green" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot slot-green" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= morningSlots[d].startTime %>
 														</div>
 													<% } %>
@@ -404,22 +452,22 @@
 											<div class="time-slot-day-wise-slots">
 												<% for(let d = 0; d < afternoonSlots.length; d++){ %>
 													<% if(afternoonColor[d] == 0){ %>
-														<div class="slot" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot" onclick="goToAppointment(this)" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= afternoonSlots[d].startTime %>
 														</div>
 													<% } %>
 													<% if(afternoonColor[d] == 1){ %>
-														<div class="slot slot-red" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot slot-red" onclick="goToAppointment(this)" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= afternoonSlots[d].startTime %>
 														</div>
 													<% } %>
 													<% if(afternoonColor[d] == 2){ %>
-														<div class="slot slot-purple" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot slot-purple" onclick="goToAppointment(this)" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= afternoonSlots[d].startTime %>
 														</div>
 													<% } %>
 													<% if(afternoonColor[d] == 3){ %>
-														<div class="slot slot-green" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot slot-green" onclick="goToAppointment(this)"data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= afternoonSlots[d].startTime %>
 														</div>
 													<% } %>
@@ -434,22 +482,22 @@
 											<div class="time-slot-day-wise-slots">
 												<% for(let d = 0; d < eveningSlots.length; d++){ %>
 													<% if(eveningColor[d] == 0){ %>
-														<div class="slot" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot" onclick="goToAppointment(this)" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= eveningSlots[d].startTime %>
 														</div>
 													<% } %>
 													<% if(eveningColor[d] == 1){ %>
-														<div class="slot slot-red" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot slot-red" onclick="goToAppointment(this)" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= eveningSlots[d].startTime %>
 														</div>
 													<% } %>
 													<% if(eveningColor[d] == 2){ %>
-														<div class="slot slot-purple" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot slot-purple" onclick="goToAppointment(this)" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= eveningSlots[d].startTime %>
 														</div>
 													<% } %>
 													<% if(eveningColor[d] == 3){ %>
-														<div class="slot slot-green" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctorId[d] %>" data-date="<% dateForSlots.toDateString() %>">
+														<div class="slot slot-green" onclick="goToAppointment(this)"data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
 															<%= eveningSlots[d].startTime %>
 														</div>
 													<% } %>
@@ -462,7 +510,7 @@
 								</div>
 								
 								<% current++ %>
-								<% console.log('nextDay') %>
+								<% %>
 							<% } %>
 						</div>
 						<div class="legend">

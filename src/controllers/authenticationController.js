@@ -33,7 +33,6 @@ const redirectLogin2 = (req, res, next) => {
 
 const clearError = (req, res, next) => {
 	req.session.error = "";
-	console.log('Error cleared');
 	next();
 }
 
@@ -79,7 +78,6 @@ const signUp = async (req, res, next) => {
 		req.session.error = 'Login Successful';
 		res.redirect('/');	
 	}
-	console.log(req.body);
 }
 
 const emailLogin = async (req, res, next) => {
@@ -92,7 +90,6 @@ const emailLogin = async (req, res, next) => {
 				req.session.error = 'Login Successful';
 				req.session.userId = user.id;
 				req.session.user = user;
-				console.log(req.session.user);
 				if(req.session.user.role === 'admin') res.redirect('/admin');
 				else res.redirect('/');	
 			} else {

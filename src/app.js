@@ -10,6 +10,8 @@ const doctorController = require('./controllers/doctorController');
 const hospitalController = require('./controllers/hospitalController.js');
 const appointmentController = require('./controllers/appointmentController');
 const slotController = require('./controllers/slotController');
+const medicalReportController = require('./controllers/medicalReportController');
+
 const User = require('./models/userModel');
 const Doctor = require('./models/doctorModel');
 
@@ -143,7 +145,7 @@ app.post('/', authenticationController.redirectLogin2, authenticationController.
 app.put('/disable-error', authenticationController.clearError);
 
 app.get('/doctors', authenticationController.redirectLogin, doctorController.getAllDoctors, (req, res) => {
-	res.render('views/doctor.ejs', {dateFromServer: res.locals.currentDate, currentDay: res.locals.currentDay , doctors : res.locals.doctors, session: req.session, filter: req.session.filters ?  req.session.filters : '', sort: req.session.sortBy ?  req.session.sortBy : ''});
+	res.render('views/doctor.ejs', {dateFromServer: res.locals.currentDate, currentDay: res.locals.currentDay , doctors : res.locals.doctors, session: req.session, filter: req.session.filters ?  req.session.filters : '', sort: req.session.sortBy ?  req.session.sortBy : '', filters: res.locals.allFilters});
 });
 
 app.get('/hospitals', authenticationController.redirectLogin, hospitalController.getAllHospitals, (req, res) => {
@@ -169,8 +171,8 @@ app.get('/hospital-details', (req, res) => {
 });
 
 
-app.get('/doctor-details', (req, res) => {
-	res.render('views/doctor_details.ejs', {session: req.session});
+app.get('/doctor/:id', doctorController.getDoctor, (req, res) => {
+	res.render('views/doctor_details.ejs', {session: req.session, doctor: res.locals.doctor});
 });
 
 app.get('/faq', (req, res) => {
@@ -224,16 +226,34 @@ app.get('/user-dashboard-appointments', authenticationController.redirectLogin, 
 });
 
 app.get('/user-dashboard-medical-records', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
-	res.render('views/user_dashboard_medical_records.ejs', { session: req.session, error: req.session.error, errorType: req.session.errorType});
+	res.render("views/user_dashboard_medical_records.ejs", { session: req.session, reports : req.session.user.reports, errorType: req.session.errorType, error: req.session.error }); 
 })
+
+app.post('/user-dashboard-medical-records', authenticationController.redirectLogin, authenticationController.redirectAdmin, medicalReportController.createMedicalReport);
 
 app.get('/user-dashboard-medicines', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
 	res.render('views/user_dashboard_medicines.ejs', {session: req.session});
 })
 
+
+app.get('/settings', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
+	res.render('views/settings.ejs', { session: req.session, error: req.session.error, errorType: req.session.errorType });
+})
+
+app.post('/settings', authenticationController.redirectLogin, authenticationController.redirectAdmin, userController.settings);
+
+app.get('/user-dashboard-medical-records/showReport/:id', authenticationController.redirectLogin, authenticationController.redirectAdmin, medicalReportController.showReport);
+
 app.get('/user-dashboard-lab-tests', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
 	res.render('views/user_dashboard_lab_tests.ejs', {session: req.session});
 })
+
+app.get('/delete_record', authenticationController.redirectLogin, authenticationController.redirectAdmin, medicalReportController.delete_record);
+
+app.post('/update_record', authenticationController.redirectLogin, authenticationController.redirectAdmin, medicalReportController.update_record);
+
+
+app.post('/delReport', authenticationController.redirectLogin, authenticationController.redirectAdmin, medicalReportController.delReport);
 
 app.post('/save-changes', userController.editProfile);
 
@@ -260,6 +280,10 @@ app.post('/add-filters', doctorController.doctorFilters);
 
 app.post('/sort-by', doctorController.doctorSort);
 
+
+app.post('/filter_search',doctorController.filter_search);
+
+app.get('/getSearch', authenticationController.redirectLogin, authenticationController.redirectAdmin, doctorController.getSearch);
 // Reload Method
 // app.post('/doctors', (req, res) => {
 // 	console.log('post req');

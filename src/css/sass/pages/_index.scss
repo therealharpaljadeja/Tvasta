@@ -82,6 +82,29 @@ html{
 			font-family: $nexa-bold;
 			&__search_location{
 				position: relative;
+				
+				.city_autocomplete{
+					position: absolute;
+					background-color: $background-color;
+					font-family: $nexa-bold;
+					width: 100%;
+					.auto_value{
+						padding: 1rem;
+						font-size: 1.2rem;
+						h4{
+							span{
+								border: 1px solid $bright-blue;
+								border-radius: .5rem;
+								padding: .5rem;
+								font-size: 1rem;
+								color: $bright-blue;
+								margin-left: .5rem;	
+							}
+							
+						}
+
+					}
+				}
 
 				&__district{
 					position: relative;
@@ -112,10 +135,38 @@ html{
 				}
 			}
 			&__search{
+				&__doctor{
+					flex-grow: 1;
+					position: relative;
+					.match-auto_complete{
+						position: absolute;
+						background-color: $background-color;
+						font-family: $nexa-bold;
+						width: 100%;
+						.auto_value{
+							padding: 1rem;
+							font-size: 1.2rem;
+							h4{
+								span{
+									border: 1px solid $bright-blue;
+									border-radius: .5rem;
+									padding: .5rem;
+									font-size: 1rem;
+									color: $bright-blue;
+									margin-left: .5rem;	
+								}
+								
+							}
+
+						}
+					}
+				}
 				padding-left: 1rem;
 				font-family: $nexa-light;
 				font-size: 1.1rem;
 				letter-spacing: 0.05rem;
+				width: 100%;
+				height: 100%;
 			}
 			&__search__button{
 				@include button-styling-desktop;

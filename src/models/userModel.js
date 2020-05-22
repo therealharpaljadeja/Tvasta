@@ -1,6 +1,8 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const doctorSchema = require('./doctorModel');
+const medicalReportSchema = require('./medicalReportModel').medicalReportSchema;
+
 
 const userSchema = new mongoose.Schema({
 	name: {
@@ -63,6 +65,7 @@ const userSchema = new mongoose.Schema({
 		enum: ['admin', 'user', 'doctor'],
 		default: 'user'
 	},
+	reports:[{type: medicalReportSchema}],
 	doctor: doctorSchema.doctorSchema
 },{
 	toJSON: { virtuals : true },

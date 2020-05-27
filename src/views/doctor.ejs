@@ -12,8 +12,9 @@
 	<section class="page_desc page_desc--doctor">
 		<div class="container page_desc__container">
 			<h1 class="page_desc__container__heading">
-				<%=  %>
-				<%= session.filters.treatment_filter ? session.filters.treatment_filter[0] : 'All Doctors' %> <%= session.filters.location ? 'in ' : '' %><span><%= session.filters.location ? session.filters.location[session.filters.location.length - 1] : '' %></span>
+
+				<%= console.log(session) %>
+				<%= session.filters && session.filters.treatment_filter ? session.filters.treatment_filter[0] : 'All Doctors' %> <%= session.filters && session.filters.location ? 'in ' : '' %><span><%= session.filters && session.filters.location   ? session.filters.location[session.filters.location.length - 1] : '' %></span>
 			</h1>
 		</div>	
 	</section>

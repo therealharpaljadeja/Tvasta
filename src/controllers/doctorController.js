@@ -211,7 +211,7 @@ const getAllDoctors = async (req, res, next) => {
     res.locals.currentDay = new Date().getDay();
     res.locals.currentDate = new Date();
     res.locals.allFilters = presentDoctorValues;
-    console.log('sesssion filters', req.session.filters);
+    console.log('session filters', req.session.filters);
     next();    
     
 }

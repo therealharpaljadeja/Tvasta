@@ -42,9 +42,6 @@ app.engine('html', ejs.renderFile);
 app.set('view engine', 'ejs');
 
 
-// Development Data
-const dev_data_string = fs.readFileSync('dev_data.json').toString();
-const dev_data_json = JSON.parse(dev_data_string);
 
 // Authentication Routes
 app.get('/email-login', authenticationController.redirectToRespectiveHome, (req, res) => {

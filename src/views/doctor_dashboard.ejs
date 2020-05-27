@@ -139,25 +139,10 @@
 							<h4 class="heading-4">Appointments</h4>
 						</div>
 						<div class="statistics_site__grid__item__figure">
-							<h4 class="heading-4">213</h4>
+							<h4 class="heading-4"><%= appointments.length %></h4>
 						</div>	
 					</div>
 					
-				</div>
-				<div class="statistics_site__grid__item">
-					<div class="statistics_site__grid__item__col--1">
-						<div class="statistics_site__grid__item__icon">
-							<i class="fas fa-syringe"></i>
-						</div>	
-					</div>
-					<div class="statistics_site__grid__item__col--2">
-						<div class="statistics_site__grid__item__title">
-							<h4 class="heading-4">Operations</h4>
-						</div>
-						<div class="statistics_site__grid__item__figure">
-							<h4 class="heading-4">12</h4>
-						</div>	
-					</div>
 				</div>
 				<div class="statistics_site__grid__item">
 					<div class="statistics_site__grid__item__col--1">
@@ -170,22 +155,7 @@
 							<h4 class="heading-4">Patients</h4>
 						</div>
 						<div class="statistics_site__grid__item__figure">
-							<h4 class="heading-4">13</h4>
-						</div>	
-					</div>
-				</div>
-				<div class="statistics_site__grid__item">
-					<div class="statistics_site__grid__item__col--1">
-						<div class="statistics_site__grid__item__icon">
-							<i class="fas fa-rupee-sign"></i>
-						</div>	
-					</div>
-					<div class="statistics_site__grid__item__col--2">
-						<div class="statistics_site__grid__item__title">
-							<h4 class="heading-4">Your Earnings</h4>
-						</div>
-						<div class="statistics_site__grid__item__figure">
-							<h4 class="heading-4">₹ 21313</h4>
+							<h4 class="heading-4"><%= appointments.length %></h4>
 						</div>	
 					</div>
 				</div>
@@ -193,7 +163,8 @@
 		</section>
 		<section class="recent_appointments">
 			<div class="recent_appointments__container">
-				<h3 class="recent_appointments__heading heading-3">Last Appointments</h3>
+				<h3 class="recent_appointments__heading heading-3">Upcoming Appointments</h3>
+
 				<div class="recent_appointments__table_container">
 					<table class="recent_appointments__table">
 						<thead>
@@ -210,6 +181,7 @@
 						</thead>
 						<tbody>
 							<% for(let i = 0; i < bookedSlots.length; i++) { %>
+								<% if(appointments[i].appointmentDate > Date.now()) { %>
 								<tr>
 									<td class="display_picture_container">
 										<img src="./../public/uploads/users/default-user.png" alt="">
@@ -244,6 +216,65 @@
 										
 									</td>
 								</tr>
+								<% } %>
+							<% } %>	
+						</tbody>
+						
+					</table>
+				</div>	
+				<h3 class="recent_appointments__heading heading-3">Last Appointments</h3>
+				<div class="recent_appointments__table_container">
+					<table class="recent_appointments__table">
+						<thead>
+							<tr>
+								<th>Photo</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Date</th>
+								<th>Visit Time</th>
+								<th>Number</th>
+								<th>Hospital</th>
+								<!-- <th>Action</th> -->
+							</tr>	
+						</thead>
+						<tbody>
+							<% for(let i = 0; i < bookedSlots.length; i++) { %>
+								<% if(appointments[i].appointmentDate < Date.now()) { %>
+								<tr>
+									<td class="display_picture_container">
+										<img src="./../public/uploads/users/default-user.png" alt="">
+									</td>
+									<td>
+										<%= patients[i].name %>
+									</td>
+									<td>
+										<%= patients[i].email %>
+									</td>
+									<td>
+										<%= appointments[i].appointmentDate.toDateString() %>
+									</td>
+									<td>
+										<%= bookedSlots[i].slots.subSlots.startTime %>
+									</td>
+									<td>
+										<%= patients[i].phoneNumber %>
+									</td>
+									<td>
+										<%= bookedSlots[i].slots.hospital %>
+									</td>
+									<td>
+									<!-- 	<div class="actions">
+											<a href="/reschedule-appointment/<%= appointments[i]._id %>"><div class="appointment_edit_button">
+												<i class="fas fa-pencil-alt"></i>
+											</div></a>
+											<div class="appointment_edit_button" data-appointment="<%= appointments[i]._id  %>" onclick="cancelAppointment(this)">
+												<i class="fas fa-trash-alt"></i>
+											</div>	
+										</div>
+										
+									</td> -->
+								</tr>
+								<% } %>
 							<% } %>	
 						</tbody>
 						

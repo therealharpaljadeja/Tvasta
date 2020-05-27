@@ -7,10 +7,6 @@
 				Dashboard
 			</li>
 			<li class="menu-item">
-				<i class="item-icon fas fa-thermometer"></i>
-				<p class="para"><a href="/admin">Dashboard</a></p>
-			</li>
-			<li class="menu-item">
 				<i class="item-icon fas fa-stethoscope"></i>
 				<p class="para"><a href="/admin">Appointments</a></p>
 			</li>
@@ -23,20 +19,12 @@
 				<p class="para"><a href="/admin-hospitals">Hospitals</a></p>
 			</li>
 			<li class="menu-item">
-				<i class="item-icon fas fa-user-nurse"></i>
-				<p class="para"><a href="/admin">Departments</a></p>
-			</li>
-			<li class="menu-item">
 				<i class="item-icon fas fa-user-injured"></i>
-				<p class="para"><a href="/admin">Patients</a></p>
+				<p class="para"><a href="/admin-patients">Patients</a></p>
 			</li>	
 			<li class="menu-item">
 				<i class="item-icon fas fa-user-injured"></i>
 				<p class="para"><a href="/settings">Settings</a></p>
-			</li>	
-			<li class="menu-item">
-				<i class="item-icon fas fa-money-check-alt"></i>
-				<p class="para"><a href="/admin">Payments</a></p>
 			</li>	
 		</ul>
 		<% } else if(session.user.role === 'doctor') { %>
@@ -47,10 +35,6 @@
 				<li class="menu-item">
 					<i class="item-icon fas fa-thermometer"></i>
 					<p class="para"><a href="/edit-profile-doctor">Profile</a></p>
-				</li>
-				<li class="menu-item">
-					<i class="item-icon fas fa-thermometer"></i>
-					<p class="para"><a href="/doctor-dashboard">Dashboard</a></p>
 				</li>
 				<li class="menu-item">
 					<i class="item-icon fas fa-stethoscope"></i>
@@ -64,10 +48,6 @@
 					<i class="item-icon fas fa-money-check-alt"></i>
 					<p class="para"><a href="/settings">Settings</a></p>
 				</li>
-				<li class="menu-item">
-					<i class="item-icon fas fa-money-check-alt"></i>
-					<p class="para"><a href="/doctor-dashboard">Payments</a></p>
-				</li>	
 			</ul>
 		<% } else if(session.user.role === 'user') { %>
 			<ul class="menu">
@@ -90,10 +70,6 @@
 					<i class="item-icon fas fa-money-check-alt"></i>
 					<p class="para"><a href="/settings">Settings</a></p>
 				</li>
-				<li class="menu-item">
-					<i class="item-icon fas fa-money-check-alt"></i>
-					<p class="para"><a href="/edit-profile">Payments</a></p>
-				</li>	
 			</ul>
 		<% } %>
 	</div>

@@ -1392,11 +1392,11 @@ html {
     letter-spacing: 0.05rem;
   }
   .hero__container__field__search_location__map-marker {
-    padding-top: 1.3rem;
+    padding-top: 0.8rem;
     padding-left: 2rem;
   }
   .hero__container__field__search_location__crosshairs {
-    padding-top: 1.3rem;
+    padding-top: 0.8rem;
     padding-right: 2rem;
   }
   .hero__container__field__search_location__crosshairs img {
@@ -1627,6 +1627,11 @@ html {
   grid-row-gap: 1rem;
   height: min-content;
 }
+.doctor_list__container__col-2 .no-result, .hospital_list__container__col-2 .no-result {
+  font-family: "Nexa Bold";
+  color: #0173b2;
+  text-align: center;
+}
 .doctor_list__container__col-2__card, .hospital_list__container__col-2__card {
   display: grid;
   border: 0.1rem solid #bbb;
@@ -1661,6 +1666,8 @@ html {
 }
 .doctor_list__container__col-2__card__name .doctor_menu_container .doctor_menu, .hospital_list__container__col-2__card__name .doctor_menu_container .doctor_menu {
   display: flex;
+  border: 1px solid #0173b2;
+  padding: 1rem;
   flex-direction: column;
   grid-gap: 1rem;
   justify-content: flex-end;
@@ -2096,13 +2103,16 @@ html {
   .doctor_list__container__col-1__filter-by__tags, .hospital_list__container__col-1__filter-by__tags {
     margin-top: 1rem;
     padding-left: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    grid-gap: 0.5rem;
   }
   .doctor_list__container__col-1__filter-by__tags .filter_button, .hospital_list__container__col-1__filter-by__tags .filter_button {
     border: 1px solid #0173b2;
     border-radius: 1rem;
     padding: 0.5rem;
     display: inline;
-    line-height: 3rem;
     white-space: nowrap;
   }
   .doctor_list__container__col-1__filter-by__tags .filter_button p, .hospital_list__container__col-1__filter-by__tags .filter_button p {
@@ -2486,7 +2496,8 @@ html {
   flex-direction: column;
 }
 .form_container__form__input_field--city-state {
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .form_container__form__input_field--city-state input {
   width: 100%;
@@ -4941,7 +4952,7 @@ html {
   }
 
   .statistics_site__grid {
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
   }
 }
 .add_doctors {
@@ -5023,6 +5034,9 @@ html {
 .page-content .page-content-container .appointment_container {
   position: relative;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  grid-gap: 1rem;
 }
 .page-content .page-content-container .appointment_container .no_appointments_container {
   position: relative;

@@ -125,6 +125,7 @@
 		<section class="page-content">
 			<div class="page-content-container">
 				<div class="appointment_container">
+					<h3 class="recent_appointments__heading heading-3">Upcoming Appointments</h3>
 					<% if(!appointments.length) { %>
 						<div class="no_appointments_container">
 							<div class="no_appointments">
@@ -134,6 +135,7 @@
 						</div>
 					<% } else { %>
 						<% for(let i = 0; i < appointments.length; i++) { %>
+							<% if(appointments[i].appointmentDate > Date.now()) { %>
 							<div class="appointment">
 								<div class="appointment_date">
 									<div class="appointment_date_date">
@@ -159,18 +161,18 @@
 											<span class="cancelled">
 												Cancelled
 											</span>
+										<% } else if(appointments[i].appointmentDate < Date.now()) { %>
+											<span class="approved">
+												Completed
+											</span>
 										<% } else if(appointments[i].status === 'Approved') { %>
 											<span class="approved">
 												Approved
 											</span>
-										<% } else if(appointments[i].status === 'Completed') { %>
-											<span class="approved">
-												Completed
-											</span>
 										<% } %>
 									</div>
 								</div>
-								<% if(appointments[i].status == 'Cancelled') { %>
+								<% if(appointments[i].status == 'Cancelled' || appointments[i].appointmentDate < Date.now()) { %>
 								<% } else { %>
 								<div class="appointment_view_details">
 									<button class="appointment_view_details_btn appointment_view_details_book_again" onclick="popupCancelAppointment(this)" data-appointment="<%= appointments[i]._id %>">
@@ -182,6 +184,69 @@
 								</div>
 								<% } %>
 							</div>
+							<% } %>
+						<% } %>	
+					<% } %>
+					<h3 class="recent_appointments__heading heading-3">Last Appointments</h3>
+					<% if(!appointments.length) { %>
+						<div class="no_appointments_container">
+							<div class="no_appointments">
+								<i class="fas fa-folder-open"></i>
+								<h4 class="heading-4">No Appointments</h4>
+							</div>
+						</div>
+					<% } else { %>
+						<% for(let i = 0; i < appointments.length; i++) { %>
+							<% if(appointments[i].appointmentDate < Date.now()) { %>
+							<div class="appointment">
+								<div class="appointment_date">
+									<div class="appointment_date_date">
+										<%= appointments[i].appointmentDate.getDate() %>
+									</div>
+									<div class="appointment_date_month">
+										<%= appointments[i].appointmentDate.toDateString().split(' ')[1] %>
+									</div>
+								</div>
+								<div class="appointment_details">
+									<div class="appointment_details_doctor_name">
+										Dr. <%= doctors[i].name %>, Dentist
+									</div>
+									<div class="appointment_details_time">
+										<%= appointments[i].appointmentDate.toDateString().split(' ')[0] %>, <%= slots[i].subSlots.startTime %>
+									</div>
+									<div class="appointment_details_clinic">
+										<%= slots[i].hospital %>
+									</div>
+
+									<div class="appointment_details_status">
+										<% if((slots[i].holiday) || (slots[i].subSlots.isDisabled) || (appointments[i].status === 'Cancelled')) { %>
+											<span class="cancelled">
+												Cancelled
+											</span>
+										<% } else if(appointments[i].appointmentDate < Date.now()) { %>
+											<span class="approved">
+												Completed
+											</span>
+										<% } else if(appointments[i].status === 'Approved') { %>
+											<span class="approved">
+												Approved
+											</span>
+										<% } %>
+									</div>
+								</div>
+								<% if(appointments[i].status == 'Cancelled' || appointments[i].appointmentDate < Date.now()) { %>
+								<% } else { %>
+								<div class="appointment_view_details">
+									<button class="appointment_view_details_btn appointment_view_details_book_again" onclick="popupCancelAppointment(this)" data-appointment="<%= appointments[i]._id %>">
+										Cancel Appointment
+									</button>
+									<a href="/reschedule-appointment/<%= appointments[i]._id %>"><button class="appointment_view_details_btn appointment_view_details_view_details" onclick="rescheduleAppointment(this)">
+										Reschedule Appointment
+									</button></a>
+								</div>
+								<% } %>
+							</div>
+							<% } %>
 						<% } %>	
 					<% } %>
 				</div>

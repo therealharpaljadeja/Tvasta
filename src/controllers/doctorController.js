@@ -38,20 +38,21 @@ const correctedArray = async (param_list,filters)=>{
         for(let i=0;i<filters.hospital_filter.length;i++){
             if(param_list.hospital.indexOf(filters.hospital_filter[i])!=-1){
                 console.log(param_list.hospital.indexOf(filters.hospital_filter[i]))
-                param_list.hospital.splice(param_list.speciality.indexOf(filters.hospital_filter[i]),1);
+                param_list.hospital.splice(param_list.hospital.indexOf(filters.hospital_filter[i]),1);
                 param_list.hospital.unshift(filters.hospital_filter[i]);
             }
         }
     if(filters.treatment_filter)
         for(let i=0;i<filters.treatment_filter.length;i++){
-            if(param_list.speciality.indexOf(filters.treatment_filter[i])!=-1){
-                console.log(param_list.speciality.indexOf(filters.treatment_filter[i]))
-                param_list.speciality.splice(param_list.speciality.indexOf(filters.treatment_filter[i]),1);
-                param_list.speciality.unshift(filters.treatment_filter[i]);
+            if(param_list.specializations.indexOf(filters.treatment_filter[i])!=-1){
+                console.log(param_list.specializations.indexOf(filters.treatment_filter[i]))
+                param_list.specializations.splice(param_list.specializations.indexOf(filters.treatment_filter[i]),1);
+                param_list.specializations.unshift(filters.treatment_filter[i]);
             }
         }
 
-    console.log(param_list)
+
+    // console.log('param_list' ,param_list);
 
     return param_list;
 
@@ -145,7 +146,7 @@ const filter_search = async (req,res)=>{
 
 const getAllDoctors = async (req, res, next) => {
     var doctors = [];
-    console.log('filters',req.session.filters);
+    // console.log('filters',req.session.filters);
     let presentDoctorValues = await getallValuesApi();
     if(req.session.filters){
         if(Object.keys(req.session.filters).length){
@@ -210,7 +211,9 @@ const getAllDoctors = async (req, res, next) => {
     res.locals.currentDay = new Date().getDay();
     res.locals.currentDate = new Date();
     res.locals.allFilters = presentDoctorValues;
-    next();
+    console.log('sesssion filters', req.session.filters);
+    next();    
+    
 }
 
 const filterDoctor = async (req, res, next) => {
@@ -271,7 +274,7 @@ const addDoctor = async (req, res, next) => {
             //     slotDuration = JSON.parse(slotDurationString[i]).value.split(' ')[0];
             // }
             // console.log(slotDuration);
-            console.log(req.body);
+            // console.log(req.body);
             const newDoctor = await User.create({
                 role: 'doctor',
                 name: req.body.name,
@@ -296,7 +299,7 @@ const addDoctor = async (req, res, next) => {
                     description: req.body.description,    
                 }
             });
-            console.log(newDoctor);
+            // console.log(newDoctor);
             for(let i = 0; i < newDoctor.doctor.hospitalList.length; i++){
                 const hospital = await Hospital.findOne({ name: newDoctor.doctor.hospitalList[i] });
                 if(hospital){
@@ -356,7 +359,7 @@ const adminEditDoctor = (req, res, next) => {
             res.redirect('/admin-edit-doctor');
         } else {
             const user = await User.findOne({ email: req.body.email });
-            console.log(req.body);
+            // console.log(req.body);
             user.display_picture = req.file === undefined ? req.body.display_picture : '/' + req.file.path;
             user.name = req.body.name;
             user.phoneNumber = req.body.phoneNumber;

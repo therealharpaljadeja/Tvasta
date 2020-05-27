@@ -339,6 +339,10 @@
 		</div>
 	</div>
 	<script>
+		const menuItemActive = document.querySelectorAll(`a[href='/${window.location.href.split('/')[3]}']`);
+		menuItemActive[1].parentElement.parentElement.classList.add('menu-item--active');
+	</script>
+	<script>
 	
 		var editNumber = document.getElementById('edit_phone_number');
 		let formContainer = document.querySelector('.change_phone_number');

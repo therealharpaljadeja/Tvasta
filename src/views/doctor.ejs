@@ -12,7 +12,8 @@
 	<section class="page_desc page_desc--doctor">
 		<div class="container page_desc__container">
 			<h1 class="page_desc__container__heading">
-				Cardiac Surgeons in <span>Delhi</span>
+				<%=  %>
+				<%= session.filters.treatment_filter ? session.filters.treatment_filter[0] : 'All Doctors' %> <%= session.filters.location ? 'in ' : '' %><span><%= session.filters.location ? session.filters.location[session.filters.location.length - 1] : '' %></span>
 			</h1>
 		</div>	
 	</section>
@@ -143,405 +144,414 @@
 			</div>
 			</form>
 			<div class="grid doctor_list__container__col-2">
-				<% for(let i = 0; i < doctors.length; i++){ %>
-				
-				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-1">
-					<div height="min-content">
-						<div class="doctor_list__container__col-2__card__name">
-							<a href="http://localhost:8000/doctor/<%= doctors[i].id %>"><h3><%= doctors[i].name %></h3></a>
-						</div>
-						<div class="doctor_list__container__col-2__card__other_details">
-							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-certificate"></i></span><%= doctors[i].doctor.achievements[0] %></li>
-							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span><%= doctors[i].doctor.achievements[1] %></li>
-							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fas fa-clock"></i></span><%= doctors[i].doctor.experience %> Years Of Experience</li>
-							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fas fa-building"></i></span><%= doctors[i].doctor.hospital %></li>
-							<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fas fa-map-marker-alt"></i></span><%= doctors[i].location %></li>
-						</div>
-						<button class="doctor_list__container__col-2__card__book">Book an appointment</button>
-					</div>
+				<% if(doctors.length === 0) { %>
+					<h4 class="heading-4 no-result">No results where found for this query</h4>
+				<% } else { %>
+					<% for(let i = 0; i < doctors.length; i++){ %>
 					
-					<div class="doctor_list__container__col-2__card__doctor_img_wrapper">
-						<img src="<%= doctors[i].display_picture %>" alt="" class="doctor_list__container__col-2__card__doctor_img_wrapper__img">	
-					</div>
-					<div class="doctor_list__container__col-2__card__time_slot">
-						<h4 class="heading-4">Select a Time Slot</h4>
-							
-						<div class="time-slots-header carousel">
-							<div class="time-slots-header-controls time-slots-header-left right">
-								<i class="fas fa-chevron-left"></i>
+					<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-1">
+						<div height="min-content">
+							<div class="doctor_list__container__col-2__card__name">
+								<a href="http://localhost:8000/doctor/<%= doctors[i].id %>"><h3><%= doctors[i].name %></h3></a>
 							</div>
-							<div class="carousel-dates slides">
-								<div class="date-heading date-heading--active current slide">
-									<% var k = currentDay; %>
-									
-									<% var rightNowCount = new Date(dateFromServer);
+							<div class="doctor_list__container__col-2__card__other_details">
+								<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-certificate"></i></span><%= doctors[i].doctor.achievements[0] %></li>
+								<% if(doctors[i].doctor.achievements.length > 1) { %>
+									<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__achievement-2"><span><img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/certificate.png" alt=""></span><%= doctors[i].doctor.achievements[1] %></li>
+								<% } %>
+								<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__experience"><span><i class="fas fa-clock"></i></span><%= doctors[i].doctor.experience %> Years Of Experience</li>
+								
+								<% for(let h = 0; h < doctors[i].doctor.hospitalList.length; h++) { %>
+									<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__hospital"><span><i class="fas fa-building"></i></span><%= doctors[i].doctor.hospitalList[h] %></li>
+								<% } %>
+								<li class="doctor_list__container__col-2__card__other_details__para doctor_list__container__col-2__card__other_details__location"><span><i class="fas fa-map-marker-alt"></i></span><%= doctors[i].location %></li>
+							</div>
+							<button class="doctor_list__container__col-2__card__book">Book an appointment</button>
+						</div>
+						
+						<div class="doctor_list__container__col-2__card__doctor_img_wrapper">
+							<img src="<%= doctors[i].display_picture %>" alt="" class="doctor_list__container__col-2__card__doctor_img_wrapper__img">	
+						</div>
+						<div class="doctor_list__container__col-2__card__time_slot">
+							<h4 class="heading-4">Select a Time Slot</h4>
+								
+							<div class="time-slots-header carousel">
+								<div class="time-slots-header-controls time-slots-header-left right">
+									<i class="fas fa-chevron-left"></i>
+								</div>
+								<div class="carousel-dates slides">
+									<div class="date-heading date-heading--active current slide">
+										<% var k = currentDay; %>
 										
-
-										rightNowCount.setHours(rightNowCount.getHours() + 5);
-
-										rightNowCount.setMinutes(rightNowCount.getMinutes() + 30);
-										
-
-										var dateForSlotsCount = new Date(dateFromServer);
-										
-
-										dateForSlotsCount.setHours(dateForSlotsCount.getHours() + 5);
-										
-										
-										dateForSlotsCount.setMinutes(dateForSlotsCount.getMinutes() + 30); 
-										
-
-										
-
-										%>
-									<% const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']; %>
-									<% function slotsAvailable(day, k) {
-										let slotCount = 0;
-										for(let j = 0; j < doctors[i].slots.length; j++){
-
-											if((doctors[i].slots[j].isDisabled) || (doctors[i].slots[j].holiday)) {
+										<% var rightNowCount = new Date(dateFromServer);
 											
-											} else {
 
- 												if(doctors[i].slots[j].days.indexOf(day) !== -1){	
-													for(let c = 0; c < doctors[i].slots[j].subSlots.length; c++){
+											rightNowCount.setHours(rightNowCount.getHours() + 5);
+
+											rightNowCount.setMinutes(rightNowCount.getMinutes() + 30);
 											
-														if(doctors[i].slots[j].subSlots[c].isBooked || doctors[i].slots[j].subSlots[c].isDisabled){
-														
-														} else {
 
-														var hoursCount;
+											var dateForSlotsCount = new Date(dateFromServer);
+											
 
-														if(doctors[i].slots[j].subSlots[c].startTime.split(':')[1].split(' ')[1] == 'pm'){
-															if(doctors[i].slots[j].subSlots[c].startTime.split(':')[0] == '12'){
-																hoursCount = parseInt(doctors[i].slots[j].subSlots[c].startTime.split(':')[0]);
+											dateForSlotsCount.setHours(dateForSlotsCount.getHours() + 5);
+											
+											
+											dateForSlotsCount.setMinutes(dateForSlotsCount.getMinutes() + 30); 
+											
+
+											
+
+											%>
+										<% const days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday']; %>
+										<% function slotsAvailable(day, k) {
+											let slotCount = 0;
+											for(let j = 0; j < doctors[i].slots.length; j++){
+
+												if((doctors[i].slots[j].isDisabled) || (doctors[i].slots[j].holiday)) {
+												
+												} else {
+
+	 												if(doctors[i].slots[j].days.indexOf(day) !== -1){	
+														for(let c = 0; c < doctors[i].slots[j].subSlots.length; c++){
+												
+															if(doctors[i].slots[j].subSlots[c].isBooked || doctors[i].slots[j].subSlots[c].isDisabled){
+															
 															} else {
-																hoursCount = parseInt(doctors[i].slots[j].subSlots[c].startTime.split(':')[0]) + 12;
+
+															var hoursCount;
+
+															if(doctors[i].slots[j].subSlots[c].startTime.split(':')[1].split(' ')[1] == 'pm'){
+																if(doctors[i].slots[j].subSlots[c].startTime.split(':')[0] == '12'){
+																	hoursCount = parseInt(doctors[i].slots[j].subSlots[c].startTime.split(':')[0]);
+																} else {
+																	hoursCount = parseInt(doctors[i].slots[j].subSlots[c].startTime.split(':')[0]) + 12;
+																}
+															} else {
+																hoursCount = parseInt(doctors[i].slots[j].subSlots[c].startTime.split(':')[0]);
+															} 
+																
+															var minutesCount = parseInt(doctors[i].slots[j].subSlots[c].startTime.split(':')[1].split(' ')[0]);
+																
+															
+															dateForSlotsCount = new Date(dateFromServer);
+															
+
+
+															while(days.indexOf(day) !== dateForSlotsCount.getDay()){
+																dateForSlotsCount.setDate(dateForSlotsCount.getDate() + 1);
 															}
-														} else {
-															hoursCount = parseInt(doctors[i].slots[j].subSlots[c].startTime.split(':')[0]);
-														} 
+
+
+																					
+															dateForSlotsCount.setHours(hoursCount);
+
 															
-														var minutesCount = parseInt(doctors[i].slots[j].subSlots[c].startTime.split(':')[1].split(' ')[0]);
+															dateForSlotsCount.setHours(dateForSlotsCount.getHours() + 5);
+
 															
-														
-														dateForSlotsCount = new Date(dateFromServer);
-														
-
-
-														while(days.indexOf(day) !== dateForSlotsCount.getDay()){
-															dateForSlotsCount.setDate(dateForSlotsCount.getDate() + 1);
-														}
-
-
-																				
-														dateForSlotsCount.setHours(hoursCount);
-
-														
-														dateForSlotsCount.setHours(dateForSlotsCount.getHours() + 5);
-
-														
-														dateForSlotsCount.setMinutes(minutesCount);
-														
-														dateForSlotsCount.setMinutes(dateForSlotsCount.getMinutes() + 30);
-														
-														
-															if(rightNowCount < dateForSlotsCount) {
-																slotCount++;
+															dateForSlotsCount.setMinutes(minutesCount);
+															
+															dateForSlotsCount.setMinutes(dateForSlotsCount.getMinutes() + 30);
+															
+															
+																if(rightNowCount < dateForSlotsCount) {
+																	slotCount++;
+																}
 															}
 														}
 													}
 												}
 											}
-										}
-										return slotCount;
-									} %>
-									<div class="day-date">
-										<span>Today</span>
-									</div>
-									<div class="day-slots-available">
-										<% let AvailableSlots = slotsAvailable(days[k]) %>
-										<%= AvailableSlots === 0 ? 'No' : AvailableSlots %> Slots Available
-									</div>
-								</div>
-								<div class="date-heading slide">
-									<div class="day-date">
-										<span>Tommorow</span>
-									</div>
-									<div class="day-slots-available">
-										<% AvailableSlots = slotsAvailable(days[k+1])  %>
-										<%= AvailableSlots === 0 ? 'No' : AvailableSlots %> Slots Available
-									</div>
-								</div>
-								<% let dateForCarousel = dateFromServer;
-								let carouselDate = new Date(dateForCarousel);
-								carouselDate.setDate(carouselDate.getDate() + 1);
-								k = k + 2; 
-								for(let r = 1; r < 6 ; r++) { %>
-								<% k = k == 7 ? k % 7 : k; %>
-									<div class="date-heading slide">
+											return slotCount;
+										} %>
 										<div class="day-date">
-											<% carouselDate.setDate(carouselDate.getDate() + 1) %>
-											<span><%= new Date(carouselDate).toDateString() %></span>
+											<span>Today</span>
 										</div>
 										<div class="day-slots-available">
-											<% AvailableSlots = slotsAvailable(days[k]) %>
+											<% let AvailableSlots = slotsAvailable(days[k]) %>
 											<%= AvailableSlots === 0 ? 'No' : AvailableSlots %> Slots Available
 										</div>
 									</div>
-									<% k++ %>
-								<% } %>
-							</div>
-							<div class="time-slots-header-controls time-slots-header-right left">
-								<i class="fas fa-chevron-right"></i>
-							</div>
-						</div>
-						<div class="time-slots-container time-slots-carousel">
-							<% let current = currentDay;
-							
-							var subslots = [];	
-							var dateForSlots = new Date(dateFromServer);
-							var dateForTime = new Date(dateFromServer);
-							
-							
-
-							var rightNow = new Date(dateFromServer);
-							rightNow.setHours(dateFromServer.getHours() + 5);
-							rightNow.setMinutes(dateFromServer.getMinutes() + 30);
-							dateForSlots.setHours(dateFromServer.getHours() + 5);
-							dateForSlots.setMinutes(dateFromServer.getMinutes() + 30);
-							
-
-
-							%>
-							<% for(let j = 0; j < 7; j++) { %>
-
-									
-								<% 
-								let subslots = [];
-								let morningSlots = [];
-								let morningDoctor = [];
-								let afternoonSlots = [];
-								let afternoonDoctor = [];
-								let eveningSlots = [];
-								let eveningDoctor = [];
-								let morningColor = [];
-								let afternoonColor = [];
-								let eveningColor = [];
-								let morningDates = [];
-								let afternoonDates = [];
-								let eveningDates = [];
-
-								noSlots = 0;
-								if(current >= 7) current = current % 7;
-								
-								for(let q = 0; q < doctors[i].slots.length; q++){
-									if((doctors[i].slots[q].isDisabled) || (doctors[i].slots[q].isHoliday)){
-											
-									} else {	
-										if(doctors[i].slots[q].days.indexOf(days[current]) !== -1){
-											for(let m = 0; m < doctors[i].slots[q].subSlots.length; m++){
-												if(doctors[i].slots[q].subSlots[m].isBooked || doctors[i].slots[q].subSlots[m].isDisabled){
-
-												} else {
-
-
-													var hours;
-
-													if(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[1] == 'pm'){
-
-														if(doctors[i].slots[q].subSlots[m].startTime.split(':')[0] == '12'){
-															
-															hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]);
-
-														} else {
-															
-															hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]) + 12;
-
-														}
-													} else {
-
-														hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]);
-
-													}
-
-													var minutes = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[0]);
-
-													dateForSlots = new Date(dateFromServer);
-													dateForSlots.setDate(dateForSlots.getDate() + j);
-
-													dateForSlots.setHours(hours);
-
-													dateForSlots.setHours(dateForSlots.getHours() + 5);
-													
-
-
-													dateForSlots.setMinutes(minutes);
-													dateForSlots.setMinutes(dateForSlots.getMinutes() + 30);
-
-
-													if(rightNow < dateForSlots){
-														
-														if(dateForSlots.getUTCHours() >= 8 && dateForSlots.getUTCHours() < 12){
-															
-															morningSlots.push(doctors[i].slots[q].subSlots[m]);
-															morningColor.push(q);
-															morningDoctor.push(doctors[i]._id);
-
-														} else if(dateForSlots.getUTCHours() >= 12 && dateForSlots.getUTCHours() < 17) {
-
-															afternoonSlots.push(doctors[i].slots[q].subSlots[m]);
-															afternoonColor.push(q);
-															afternoonDoctor.push(doctors[i]._id);
-
-														} else if(dateForSlots.getUTCHours() >= 17 && dateForSlots.getUTCHours() < 23) {
-															eveningSlots.push(doctors[i].slots[q].subSlots[m]);
-															eveningColor.push(q);
-															eveningDoctor.push(doctors[i]._id);
-														}	
-
-													}	
-
-												}
-											}
-										}
-									}	
-										
-								}
-											
-								%>	
-								<div class="time-slots time-slot-slide">
-									<div class="time-slot-day-wise">
-										<div class="time-slot-morning">
-											<div class="time-slot-day-wise-heading">
-												<i class="far fa-sun"></i>
-												<h4 class="para-1">Morning</h4>
-											</div>
-											<div class="time-slot-day-wise-slots">
-												<% for(let d = 0; d < morningSlots.length; d++){ %>
-													<% if(morningColor[d] == 0){ %>
-														<div class="slot" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= morningSlots[d].startTime %>
-														</div>
-													<% } %>
-													<% if(morningColor[d] == 1){ %>
-														<div class="slot slot-red" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= morningSlots[d].startTime %>
-														</div>
-													<% } %>
-													<% if(morningColor[d] == 2){ %>
-														<div class="slot slot-purple" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= morningSlots[d].startTime %>
-														</div>
-													<% } %>
-													<% if(morningColor[d] == 3){ %>
-														<div class="slot slot-green" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= morningSlots[d].startTime %>
-														</div>
-													<% } %>
-													
-												<% } %>
-												
-											</div>
+									<div class="date-heading slide">
+										<div class="day-date">
+											<span>Tommorow</span>
 										</div>
-										<div class="time-slot-morning">
-											<div class="time-slot-day-wise-heading">
-												<i class="far fa-sun"></i>
-												<h4 class="para-1">Afternoon</h4>
-											</div>
-											<div class="time-slot-day-wise-slots">
-												<% for(let d = 0; d < afternoonSlots.length; d++){ %>
-													<% if(afternoonColor[d] == 0){ %>
-														<div class="slot" onclick="goToAppointment(this)" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= afternoonSlots[d].startTime %>
-														</div>
-													<% } %>
-													<% if(afternoonColor[d] == 1){ %>
-														<div class="slot slot-red" onclick="goToAppointment(this)" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= afternoonSlots[d].startTime %>
-														</div>
-													<% } %>
-													<% if(afternoonColor[d] == 2){ %>
-														<div class="slot slot-purple" onclick="goToAppointment(this)" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= afternoonSlots[d].startTime %>
-														</div>
-													<% } %>
-													<% if(afternoonColor[d] == 3){ %>
-														<div class="slot slot-green" onclick="goToAppointment(this)"data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= afternoonSlots[d].startTime %>
-														</div>
-													<% } %>
-												<% } %>
-											</div>
-										</div>
-										<div class="time-slot-morning">
-											<div class="time-slot-day-wise-heading">
-												<i class="far fa-sun"></i>
-												<h4 class="para-1">Evening</h4>
-											</div>
-											<div class="time-slot-day-wise-slots">
-												<% for(let d = 0; d < eveningSlots.length; d++){ %>
-													<% if(eveningColor[d] == 0){ %>
-														<div class="slot" onclick="goToAppointment(this)" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= eveningSlots[d].startTime %>
-														</div>
-													<% } %>
-													<% if(eveningColor[d] == 1){ %>
-														<div class="slot slot-red" onclick="goToAppointment(this)" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= eveningSlots[d].startTime %>
-														</div>
-													<% } %>
-													<% if(eveningColor[d] == 2){ %>
-														<div class="slot slot-purple" onclick="goToAppointment(this)" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= eveningSlots[d].startTime %>
-														</div>
-													<% } %>
-													<% if(eveningColor[d] == 3){ %>
-														<div class="slot slot-green" onclick="goToAppointment(this)"data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
-															<%= eveningSlots[d].startTime %>
-														</div>
-													<% } %>
-													
-												<% } %>
-											</div>
+										<div class="day-slots-available">
+											<% AvailableSlots = slotsAvailable(days[k+1])  %>
+											<%= AvailableSlots === 0 ? 'No' : AvailableSlots %> Slots Available
 										</div>
 									</div>
-								
+									<% let dateForCarousel = dateFromServer;
+									let carouselDate = new Date(dateForCarousel);
+									carouselDate.setDate(carouselDate.getDate() + 1);
+									k = k + 2; 
+									for(let r = 1; r < 6 ; r++) { %>
+									<% k = k == 7 ? k % 7 : k; %>
+										<div class="date-heading slide">
+											<div class="day-date">
+												<% carouselDate.setDate(carouselDate.getDate() + 1) %>
+												<span><%= new Date(carouselDate).toDateString() %></span>
+											</div>
+											<div class="day-slots-available">
+												<% AvailableSlots = slotsAvailable(days[k]) %>
+												<%= AvailableSlots === 0 ? 'No' : AvailableSlots %> Slots Available
+											</div>
+										</div>
+										<% k++ %>
+									<% } %>
 								</div>
+								<div class="time-slots-header-controls time-slots-header-right left">
+									<i class="fas fa-chevron-right"></i>
+								</div>
+							</div>
+							<div class="time-slots-container time-slots-carousel">
+								<% let current = currentDay;
 								
-								<% current++ %>
-								<% %>
+								var subslots = [];	
+								var dateForSlots = new Date(dateFromServer);
+								var dateForTime = new Date(dateFromServer);
+								
+								
+
+								var rightNow = new Date(dateFromServer);
+								rightNow.setHours(dateFromServer.getHours() + 5);
+								rightNow.setMinutes(dateFromServer.getMinutes() + 30);
+								dateForSlots.setHours(dateFromServer.getHours() + 5);
+								dateForSlots.setMinutes(dateFromServer.getMinutes() + 30);
+								
+
+
+								%>
+								<% for(let j = 0; j < 7; j++) { %>
+
+										
+									<% 
+									let subslots = [];
+									let morningSlots = [];
+									let morningDoctor = [];
+									let afternoonSlots = [];
+									let afternoonDoctor = [];
+									let eveningSlots = [];
+									let eveningDoctor = [];
+									let morningColor = [];
+									let afternoonColor = [];
+									let eveningColor = [];
+									let morningDates = [];
+									let afternoonDates = [];
+									let eveningDates = [];
+
+									noSlots = 0;
+									if(current >= 7) current = current % 7;
+									
+									for(let q = 0; q < doctors[i].slots.length; q++){
+										if((doctors[i].slots[q].isDisabled) || (doctors[i].slots[q].isHoliday)){
+												
+										} else {	
+											if(doctors[i].slots[q].days.indexOf(days[current]) !== -1){
+												for(let m = 0; m < doctors[i].slots[q].subSlots.length; m++){
+													if(doctors[i].slots[q].subSlots[m].isBooked || doctors[i].slots[q].subSlots[m].isDisabled){
+
+													} else {
+
+
+														var hours;
+
+														if(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[1] == 'pm'){
+
+															if(doctors[i].slots[q].subSlots[m].startTime.split(':')[0] == '12'){
+																
+																hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]);
+
+															} else {
+																
+																hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]) + 12;
+
+															}
+														} else {
+
+															hours = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[0]);
+
+														}
+
+														var minutes = parseInt(doctors[i].slots[q].subSlots[m].startTime.split(':')[1].split(' ')[0]);
+
+														dateForSlots = new Date(dateFromServer);
+														dateForSlots.setDate(dateForSlots.getDate() + j);
+
+														dateForSlots.setHours(hours);
+
+														dateForSlots.setHours(dateForSlots.getHours() + 5);
+														
+
+
+														dateForSlots.setMinutes(minutes);
+														dateForSlots.setMinutes(dateForSlots.getMinutes() + 30);
+
+
+														if(rightNow < dateForSlots){
+															
+															if(dateForSlots.getUTCHours() >= 8 && dateForSlots.getUTCHours() < 12){
+																
+																morningSlots.push(doctors[i].slots[q].subSlots[m]);
+																morningColor.push(q);
+																morningDoctor.push(doctors[i]._id);
+
+															} else if(dateForSlots.getUTCHours() >= 12 && dateForSlots.getUTCHours() < 17) {
+
+																afternoonSlots.push(doctors[i].slots[q].subSlots[m]);
+																afternoonColor.push(q);
+																afternoonDoctor.push(doctors[i]._id);
+
+															} else if(dateForSlots.getUTCHours() >= 17 && dateForSlots.getUTCHours() < 23) {
+																eveningSlots.push(doctors[i].slots[q].subSlots[m]);
+																eveningColor.push(q);
+																eveningDoctor.push(doctors[i]._id);
+															}	
+
+														}	
+
+													}
+												}
+											}
+										}	
+											
+									}
+												
+									%>	
+									<div class="time-slots time-slot-slide">
+										<div class="time-slot-day-wise">
+											<div class="time-slot-morning">
+												<div class="time-slot-day-wise-heading">
+													<i class="far fa-sun"></i>
+													<h4 class="para-1">Morning</h4>
+												</div>
+												<div class="time-slot-day-wise-slots">
+													<% for(let d = 0; d < morningSlots.length; d++){ %>
+														<% if(morningColor[d] == 0){ %>
+															<div class="slot" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= morningSlots[d].startTime %>
+															</div>
+														<% } %>
+														<% if(morningColor[d] == 1){ %>
+															<div class="slot slot-red" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= morningSlots[d].startTime %>
+															</div>
+														<% } %>
+														<% if(morningColor[d] == 2){ %>
+															<div class="slot slot-purple" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= morningSlots[d].startTime %>
+															</div>
+														<% } %>
+														<% if(morningColor[d] == 3){ %>
+															<div class="slot slot-green" onclick="goToAppointment(this)" data-subslotid="<%= morningSlots[d]._id %>" data-doctorid="<%= morningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= morningSlots[d].startTime %>
+															</div>
+														<% } %>
+														
+													<% } %>
+													
+												</div>
+											</div>
+											<div class="time-slot-morning">
+												<div class="time-slot-day-wise-heading">
+													<i class="far fa-sun"></i>
+													<h4 class="para-1">Afternoon</h4>
+												</div>
+												<div class="time-slot-day-wise-slots">
+													<% for(let d = 0; d < afternoonSlots.length; d++){ %>
+														<% if(afternoonColor[d] == 0){ %>
+															<div class="slot" onclick="goToAppointment(this)" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= afternoonSlots[d].startTime %>
+															</div>
+														<% } %>
+														<% if(afternoonColor[d] == 1){ %>
+															<div class="slot slot-red" onclick="goToAppointment(this)" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= afternoonSlots[d].startTime %>
+															</div>
+														<% } %>
+														<% if(afternoonColor[d] == 2){ %>
+															<div class="slot slot-purple" onclick="goToAppointment(this)" data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= afternoonSlots[d].startTime %>
+															</div>
+														<% } %>
+														<% if(afternoonColor[d] == 3){ %>
+															<div class="slot slot-green" onclick="goToAppointment(this)"data-subslotid="<%= afternoonSlots[d]._id %>" data-doctorid="<%= afternoonDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= afternoonSlots[d].startTime %>
+															</div>
+														<% } %>
+													<% } %>
+												</div>
+											</div>
+											<div class="time-slot-morning">
+												<div class="time-slot-day-wise-heading">
+													<i class="far fa-sun"></i>
+													<h4 class="para-1">Evening</h4>
+												</div>
+												<div class="time-slot-day-wise-slots">
+													<% for(let d = 0; d < eveningSlots.length; d++){ %>
+														<% if(eveningColor[d] == 0){ %>
+															<div class="slot" onclick="goToAppointment(this)" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= eveningSlots[d].startTime %>
+															</div>
+														<% } %>
+														<% if(eveningColor[d] == 1){ %>
+															<div class="slot slot-red" onclick="goToAppointment(this)" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= eveningSlots[d].startTime %>
+															</div>
+														<% } %>
+														<% if(eveningColor[d] == 2){ %>
+															<div class="slot slot-purple" onclick="goToAppointment(this)" data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= eveningSlots[d].startTime %>
+															</div>
+														<% } %>
+														<% if(eveningColor[d] == 3){ %>
+															<div class="slot slot-green" onclick="goToAppointment(this)"data-subslotid="<%= eveningSlots[d]._id %>" data-doctorid="<%= eveningDoctor[d] %>" data-date="<%= dateForSlots.toDateString() %>">
+																<%= eveningSlots[d].startTime %>
+															</div>
+														<% } %>
+														
+													<% } %>
+												</div>
+											</div>
+										</div>
+									
+									</div>
+									
+									<% current++ %>
+									<% %>
+								<% } %>
+							</div>
+							<div class="legend">
+							<% for(let n = 0; n < doctors[i].slots.length; n++) { %>
+								<% if((doctors[i].slots[n].isDisabled) || (doctors[i].slots[n].holiday)) { %>
+									<% } else { %>
+										<% if(n == 0) { %>
+											<div class="legend-item legend-item-blue">
+												<%= doctors[i].slots[n].hospital %>
+											</div>
+										<% } %>
+										<% if(n == 1) { %>
+											<div class="legend-item legend-item-red">
+												<%= doctors[i].slots[n].hospital %>
+											</div>
+										<% } %>
+										<% if(n == 2) { %>
+											<div class="legend-item legend-item-purple">
+												<%= doctors[i].slots[n].hospital %>
+											</div>
+										<% } %>
+										<% if(n == 3) { %>
+											<div class="legend-item legend-item-green">
+												<%= doctors[i].slots[n].hospital %>
+											</div>
+										<% } %>
+								<% } %>
 							<% } %>
-						</div>
-						<div class="legend">
-						<% for(let n = 0; n < doctors[i].slots.length; n++) { %>
-							<% if((doctors[i].slots[n].isDisabled) || (doctors[i].slots[n].holiday)) { %>
-								<% } else { %>
-									<% if(n == 0) { %>
-										<div class="legend-item legend-item-blue">
-											<%= doctors[i].slots[n].hospital %>
-										</div>
-									<% } %>
-									<% if(n == 1) { %>
-										<div class="legend-item legend-item-red">
-											<%= doctors[i].slots[n].hospital %>
-										</div>
-									<% } %>
-									<% if(n == 2) { %>
-										<div class="legend-item legend-item-purple">
-											<%= doctors[i].slots[n].hospital %>
-										</div>
-									<% } %>
-									<% if(n == 3) { %>
-										<div class="legend-item legend-item-green">
-											<%= doctors[i].slots[n].hospital %>
-										</div>
-									<% } %>
-							<% } %>
-						<% } %>
+							</div>
 						</div>
 					</div>
-				</div>
+					<% } %>
 				<% } %>
 				<!-- <div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-1">
 					<div class="doctor_list__container__col-2__card__name">
@@ -639,7 +649,7 @@
 						<img src="https://s3.ap-south-1.amazonaws.com/appdev.konfinity.com/css/tasks/image--003.jpg" alt="" class="doctor_list__container__col-2__card__doctor_img_wrapper__img">	
 					</div>
 				</div>	 -->
-			</div>
+			</div>	
 		</div>
 	</div>
 
@@ -653,7 +663,6 @@
 	</div>
 	<script>
 		function goToAppointment(slot) {
-			console.log(slot.dataset);
 			window.location.href = `http://localhost:8000/appointment/${slot.dataset.doctorid}?slot=${slot.dataset.subslotid}&date=${slot.dataset.date}`;
 		}
 	</script>
@@ -662,22 +671,23 @@
 
 	        let filter_finder =  doc.parentElement.querySelector(".text");
 
-	        console.log(filter_finder);
 	        
-	        document.querySelector("._" + filter_finder.innerText.split(' ').join('-')).removeAttribute("checked",false);
+
+	        if(document.querySelector("._" + filter_finder.innerText.split(' ').join('-'))) {
+	        	document.querySelector("._" + filter_finder.innerText.split(' ').join('-')).removeAttribute("checked",false);	
+	        }
+	        
 
 	        document.querySelector("#filter_form").submit();
 	        
 	        }
 
 
-		console.log('<%- filter %>')
 		let filter = '<%- JSON.stringify(filter) %>';
 		let sort_by = '<%- JSON.stringify(sort) %>';
 		// console.log(filter);
 		filter = JSON.parse(filter);
 		sort_by = JSON.parse(sort_by);
-		console.log(filter);
 		if(filter){
 			let key = Object.keys(filter)
             key.forEach(element=>{ 
@@ -698,8 +708,6 @@
 
 		const appointment = async (el, id) => {
 			const currentDate = document.querySelector('.date-heading--active');
-			console.log(currentDate.children[0].children[0].innerText);
-			console.log(el.innerText);
 			const hour = el.innerText.split(':')[0];
 			
 			// console.log(id);
@@ -867,12 +875,10 @@
 	<!-- <script src="./../doctors.js"></script> -->
 	<script>
 		 let url = window.location.search;
-		  console.log(url);
 		  url = url.split('%20').join(' ');
 		  const checkboxes = document.getElementsByClassName('checkbox_container');
 		  // console.log(checkboxes);
 
-		  console.log(url);
 		  [...checkboxes].forEach(checkbox => {
 		    if (url.indexOf(checkbox.firstChild.getAttribute('value')) > -1) {
 		      checkbox.firstChild.checked = true;
@@ -893,7 +899,6 @@
 
 		function add(some) {
 		    let newUrl = window.location.href;
-		    console.log(some.checked);
 		    if (some.checked) {
 		      //add query
 		      if (newUrl.indexOf('?') == -1) {

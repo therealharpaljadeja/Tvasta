@@ -64,6 +64,11 @@
 			grid-template-columns: 100%;
 			grid-row-gap: 1rem; 
 			height: min-content;
+			.no-result{
+				font-family: $nexa-bold;
+				color: $bright-blue;
+				text-align: center;
+			}
 			&__card{
 				display: grid;
 				border: .1rem solid #bbb;
@@ -95,6 +100,8 @@
 						top: 4rem;
 						.doctor_menu{
 							display: flex;
+							border: 1px solid $bright-blue;
+							padding: 1rem;
 							flex-direction: column;
 							grid-gap: 1rem;
 							justify-content: flex-end;
@@ -554,12 +561,16 @@
 						&__tags{
 							margin-top: 1rem;
 							padding-left: 1.5rem;
+							display: flex;
+							flex-direction: row;
+							flex-wrap: wrap;
+							grid-gap: .5rem;
 							.filter_button{
 								border: 1px solid $bright-blue;
 								border-radius: 1rem;
 								padding: .5rem;
 								display: inline;
-								line-height: 3rem;
+								// line-height: 3rem;
 								white-space: nowrap;
 								p{
 									font-size: 1rem;
@@ -573,6 +584,7 @@
 									border-radius: 50%;
 									width: 1.5rem;
 									position: relative;
+									// top: .2rem;
 									i{
 										position: relative;
 										transform: translateX(-50%);

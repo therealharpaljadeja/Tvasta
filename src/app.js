@@ -95,8 +95,8 @@ app.get('/logout', authenticationController.logout);
 
 // Admin Routes
 
-app.get('/admin', authenticationController.redirectLogin, authenticationController.checkAdmin, appointmentController.getAppointmentToAdminDashboard, (req, res) => {
-	res.render('views/dashboard.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType, patients: res.locals.patients, subslots: res.locals.subslots, appointments: res.locals.appointments });
+app.get('/admin', authenticationController.redirectLogin, authenticationController.checkAdmin, appointmentController.getAppointmentToAdminDashboard, userController.getAllUsers, (req, res) => {
+	res.render('views/dashboard.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType, patients: res.locals.patients, subslots: res.locals.subslots, appointments: res.locals.appointments, users: res.locals.users });
 });
 
 app.get('/admin-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, doctorController.getAllDoctors, (req, res) => {
@@ -106,6 +106,10 @@ app.get('/admin-doctors', authenticationController.redirectLogin, authentication
 app.get('/admin-hospitals', authenticationController.redirectLogin, authenticationController.checkAdmin, hospitalController.getAllHospitalsAdmin, (req, res) => {
 	res.render('views/admin_dashboard_hospitals.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType, hospitals: res.locals.hospitals});
 });
+
+app.get('/admin-patients', authenticationController.redirectLogin, authenticationController.checkAdmin, userController.getAllUsers, (req, res) => {
+	res.render('views/admin_dashboard_patients.ejs', {session: req.session, error: req.session.error, errorType: req.session.errorType, patients: res.locals.users});
+})
 
 app.get('/add-doctors', authenticationController.redirectLogin, authenticationController.checkAdmin, (req, res) => {
 	res.render('views/dashboard_addDoctor.ejs', {session: req.session, error:req.session.error, errorType: req.session.errorType, doctors: res.locals.doctors});
@@ -236,7 +240,7 @@ app.get('/user-dashboard-medicines', authenticationController.redirectLogin, aut
 })
 
 
-app.get('/settings', authenticationController.redirectLogin, authenticationController.redirectAdmin, (req, res) => {
+app.get('/settings', authenticationController.redirectLogin, (req, res) => {
 	res.render('views/settings.ejs', { session: req.session, error: req.session.error, errorType: req.session.errorType });
 })
 

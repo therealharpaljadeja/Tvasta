@@ -305,10 +305,17 @@ const settings = async (req, res) => {
     }
 }
 
+const getAllUsers = async(req, res, next) => {
+    const users = await User.find({ role: 'user' });
+    res.locals.users = users;
+    next();
+}
+
 module.exports = {
 	editProfile: editProfile,
 	addDoctorDetails: addDoctorDetails,
     changePhoneNumber: changePhoneNumber,
     changePhoneNumberOTPVerify: changePhoneNumberOTPVerify,
-    settings: settings
+    settings: settings,
+    getAllUsers: getAllUsers
 }

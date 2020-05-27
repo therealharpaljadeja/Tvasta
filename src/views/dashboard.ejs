@@ -138,25 +138,10 @@
 							<h4 class="heading-4">Appointments</h4>
 						</div>
 						<div class="statistics_site__grid__item__figure">
-							<h4 class="heading-4">213</h4>
+							<h4 class="heading-4"><%= appointments.length %></h4>
 						</div>	
 					</div>
 					
-				</div>
-				<div class="statistics_site__grid__item">
-					<div class="statistics_site__grid__item__col--1">
-						<div class="statistics_site__grid__item__icon">
-							<i class="fas fa-syringe"></i>
-						</div>	
-					</div>
-					<div class="statistics_site__grid__item__col--2">
-						<div class="statistics_site__grid__item__title">
-							<h4 class="heading-4">Operations</h4>
-						</div>
-						<div class="statistics_site__grid__item__figure">
-							<h4 class="heading-4">12</h4>
-						</div>	
-					</div>
 				</div>
 				<div class="statistics_site__grid__item">
 					<div class="statistics_site__grid__item__col--1">
@@ -169,25 +154,9 @@
 							<h4 class="heading-4">Patients</h4>
 						</div>
 						<div class="statistics_site__grid__item__figure">
-							<h4 class="heading-4">13</h4>
+							<h4 class="heading-4"><%= users.length %></h4>
 						</div>	
 					</div>
-				</div>
-				<div class="statistics_site__grid__item">
-					<div class="statistics_site__grid__item__col--1">
-						<div class="statistics_site__grid__item__icon">
-							<i class="fas fa-rupee-sign"></i>
-						</div>	
-					</div>
-					<div class="statistics_site__grid__item__col--2">
-						<div class="statistics_site__grid__item__title">
-							<h4 class="heading-4">Hospital Earnings</h4>
-						</div>
-						<div class="statistics_site__grid__item__figure">
-							<h4 class="heading-4">₹ 21313</h4>
-						</div>	
-					</div>
-					
 				</div>
 			</div>
 		</section>
@@ -198,7 +167,6 @@
 		</section> -->
 		<section class="recent_appointments">
 			<div class="recent_appointments__container">
-				<h3 class="recent_appointments__heading heading-3">Last Appointments</h3>
 				<div class="recent_appointments__table_container">
 					<table class="recent_appointments__table">
 						<thead>
@@ -269,7 +237,7 @@
 	</div>
 	<script>
 		const menuItemActive = document.querySelectorAll(`a[href='/${window.location.href.split('/')[3]}']`);
-		menuItemActive[3].parentElement.parentElement.classList.add('menu-item--active');
+		menuItemActive[1].parentElement.parentElement.classList.add('menu-item--active');
 		console.log(menuItemActive);
 	</script>
 	<script src="https://d3js.org/d3.v5.min.js"></script>

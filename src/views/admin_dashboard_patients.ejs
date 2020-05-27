@@ -107,8 +107,8 @@
 
 			</ul>
 		</div>
-	</sidebar>
-	<header class="admin_header">
+	</sidebar> -->
+	<!-- <header class="admin_header">
 		<div class="menu-burger">
 			<i class="fas fa-bars navbar__burger"></i>
 		</div>
@@ -122,77 +122,78 @@
 	</header> -->
 	
 	<%- include('partials/header.ejs') %>
-
 	<div class="background-dashboard">
 	<%- include('partials/admin_sidebar.ejs') %>
 	<div class="dashboard_content">
-		<!-- <a href="/add-hospitals"><button class="add_doctors">
-			<i class="fas fa-plus"></i>
-		</button></a> -->
-		<section class="admin_doctors">
-			<div class="admin_doctors__grid">
-				<% for(let i = 0; i < hospitals.length; i++){ %>
-				<div class="doctor_list__container__col-2__card doctor_list__container__col-2__card-1">
-					<div>
-						<div class="doctor_list__container__col-2__card__name">
-							<h3><%= hospitals[i].name %>
-								<% if(hospitals[i].isVerified) { %> 
-									<span><i class="fas fa-check-circle"></i></span>
-								<% } %>
-							</h3>
-							<i id="edit_doctors" class="fas fa-ellipsis-h"></i>
-							<div class="doctor_menu_container display_none">
-								<ul class="doctor_menu">
-									<a href="/admin-edit-doctor/<%= hospitals[i]._id%>"><li class="doctor_menu_item">Edit Hospital</li></a>
-									<a href="/delete-doctor/<%= hospitals[i]._id%>"><li class="doctor_menu_item">Remove Hospital</li></a>
-									<!-- <a href="/verify-hospital/<%= hospitals[i]._id %>"><li class="doctor_menu_item">Verify Hospital</li></a> -->
-								</ul>
-							</div>
-						</div>
-						<div class="doctor_list__container__col-2__card__other_details">
-							<% if(hospitals[i].isVerified){ %>
-								<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-1"><span><i class="fas fa-map-marker-alt"></i></span><%= hospitals[i].address %></p>
-								<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__achievement-2"><span><i class="fas fa-bed"></i></span><%= hospitals[i].noOfBeds %> beds</p>
-								<p class="hospital_list__container__col-2__card__other_details__para hospital_list__container__col-2__card__other_details__experience"><span><i class="fas fa-stethoscope"></i></span>Famous Treatments</p>
-								<div class="hospital_list__container__col-2__card__other_details__tags">
-									<% for(let j = 0; j < hospitals[i].specializations.length; j++){ %>
-									<span class="hospital_list__container__col-2__card__other_details__tags__tag"><%= hospitals[i].specializations[j] %></span>
-									<% } %>
-								</div>
-							<% } %>
-						</div>
-						<% if(!(hospitals[i].isVerified)) { %>
-							<button onclick="verifyHospital(this)" class="doctor_list__container__col-2__card__book" data-hospital="<%= hospitals[i]._id %>">Verify Hospital</button>
-						<% } %>
-					</div>
-					<div class="doctor_list__container__col-2__card__doctor_img_wrapper">
-						<img src="<%= hospitals[i].display_picture %>" alt="" class="doctor_list__container__col-2__card__doctor_img_wrapper__img">	
-					</div>
-				</div>
-				<% } %>
+		<!-- <section class="earnings_chart_container">
+			<svg class="earnings_chart">
+				
+			</svg>
+		</section> -->
+		<section class="recent_appointments">
+			<div class="recent_appointments__container">
+				<h3 class="recent_appointments__heading heading-3">Patients</h3>
+				<div class="recent_appointments__table_container">
+					<table class="recent_appointments__table">
+						<thead>
+							<tr>
+								<th>Photo</th>
+								<th>Name</th>
+								<th>Email</th>
+								<th>Number</th>
+								<!-- <th>Action</th> -->
+							</tr>	
+						</thead>
+						<tbody>
+							<% for(let i = 0; i < patients.length; i++) { %>
+								<tr>
+									<td class="display_picture_container">
+										<img src="<%= patients[i].display_picture === undefined	? '/public/uploads/users/default-user.png' : patients[i].display_picture   %>" alt="">
+									</td>
+									<td>
+										<%= patients[i].name %>
+									</td>
+									<td>
+										<%= patients[i].email %>
+									</td>
+									<td>
+										<%= patients[i].phoneNumber %>
+									</td>
+									<!-- <td>
+										<div class="actions">
+											<div class="appointment_edit_button">
+												<i class="fas fa-pencil-alt"></i>
+											</div>
+											<div class="appointment_edit_button">
+												<i class="fas fa-trash-alt"></i>
+											</div>	
+										</div>
+									</td> -->
+								</tr>
+							<% } %>	
+						</tbody>
+						
+					</table>
+				</div>	
 			</div>
+			
+
 		</section>
+		<section class="">
+			
+		</section>
+		
 	</div>
 	</div>
 	<script>
-		const verifyHospital = async (button) => {
-			const res = await fetch(`/verify-hospital/${button.dataset.hospital}`);
-			window.location.href = res.url;
-		}
-
 		const menuItemActive = document.querySelectorAll(`a[href='/${window.location.href.split('/')[3]}']`);
 		menuItemActive[1].parentElement.parentElement.classList.add('menu-item--active');
+		console.log(menuItemActive);
 	</script>
-	<script>
-		const edit_doctors = document.querySelectorAll('#edit_doctors');
-		// const edit_doctors_menu = document.querySelector('.doctor_menu_container');
-		edit_doctors.forEach(el => {
-			el.addEventListener('click', () => {
-				const doctor_menu = el.parentElement.children[2].classList.toggle('display_none');
-			});
-		});
+	<script src="https://d3js.org/d3.v5.min.js"></script>
+	<script src="./../charts_in_admin.js"></script>
+	<script src="./../index.js">
 	</script>
-	<script src="./../index.js"></script>
 	<script src="./../dashboard.js"></script>
 	<script src="./../error.js"></script>
 </body>

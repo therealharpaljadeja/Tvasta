@@ -26,14 +26,11 @@ carousel = (function(){
     //   current.style.transform = "translateX(100%)";
     // }
     current.classList.add('date-heading--active');
-    console.log('Next')
   }
   next.addEventListener('click', function(ev) {
-    console.log('Next');
     navigate(1);
   });
   prev.addEventListener('click', function(ev) {
-    console.log('Prev');
     navigate(-1);
   });
   navigate(0);

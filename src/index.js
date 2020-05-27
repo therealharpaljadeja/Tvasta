@@ -1,6 +1,4 @@
 const navbar_menu = document.querySelector('.navbar__menu');
-console.log(navbar_menu);
-console.log(window.location.href.split('/')[3]);
 
 
 const activeLink = document.querySelector(`a[href='/${window.location.href.split('/')[3]}']`);
@@ -10,7 +8,6 @@ if(activeLink) activeLink.classList.add('navbar__menu__ul__item--active');
 
 function modal_display(param){
 
-    console.log(param.parentElement)
     param.parentElement.querySelector("#myModal").style.display="block";
 
 }
@@ -122,7 +119,6 @@ let citylist = document.getElementById("city-list");
 
 
 if(window.location.href == "http://localhost:8000/"){
-	console.log(matchlist, citylist);
     if(search)
         search.addEventListener('input',() => searchValues(search.value));
 
@@ -130,13 +126,11 @@ if(window.location.href == "http://localhost:8000/"){
         loc_search.addEventListener('input',() => searchValues(loc_search.value,"location"));
     
     function addValue(value){
-        console.log(value)
         search.value = value;
         matchlist.innerHTML = "";
     }
 
     function addCityValue(value){
-        console.log(value)
         loc_search.value = value;
         citylist.innerHTML = "";
     }
@@ -298,7 +292,6 @@ if(sideMenutreatmentChevron){
 function findCity(param){
 
     param.classList.toggle("colorchanger");
-    console.log("snd")
     let http = new XMLHttpRequest();
     let url = 'https://geolocation-db.com/json/0f761a30-fe14-11e9-b59f-e53803842572';
     http.open("GET", url,true);
@@ -306,7 +299,6 @@ function findCity(param){
 
         let response = JSON.parse(http.response);
 
-        console.log(response.city);
         param.parentElement.querySelector("input").value = response.city
         param.classList.toggle("colorchanger");
         param.style.color = "#2a2d3e";
@@ -315,7 +307,6 @@ function findCity(param){
 
     http.onprogress = (e)=>{
 
-        console.log(e);
 
     }
 
@@ -424,7 +415,6 @@ const orderingCards = (start) => {
 		cards[i].style.display = 'none';
 	}
 	let formula = (4 * start);
-	console.log(formula);
 	cards[formula].style.display = 'grid';
 	cards[formula + 1].style.display = 'grid';
 	cards[formula + 2].style.display = 'grid';

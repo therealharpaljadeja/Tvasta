@@ -7,7 +7,6 @@ function selectOptionFromBackend (optionsList, value){
 	for(var i=0; i < optionsList.options.length; i++){
 		option = optionsList.options[i];
 		if(option.value == value){
-			console.log(value);
 			option.selected = 'selected';
 		}
 	}	

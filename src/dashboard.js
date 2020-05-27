@@ -15,7 +15,6 @@ const hideSidebar = () => {
 }
 
 const showSidebar = () => {
-	console.log('hiiii')
 	sidebar.style.display = 'flex';
 }
 

@@ -17,10 +17,10 @@
     "browserify": "^16.5.1",
     "dotenv": "^8.2.0",
     "lite-server": "^2.5.4",
-    "nodemon": "^2.0.2",
     "sass": "^1.25.0"
   },
   "dependencies": {
+    "nodemon": "^2.0.2",
     "axios": "^0.19.2",
     "bcryptjs": "^2.4.3",
     "ejs": "^3.0.1",

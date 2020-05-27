@@ -17,7 +17,6 @@ function onKeyUpEvent(index, event) {
 	 } else {
 		getCodeBoxElement(index).blur();
 		// Submit code
-		console.log('submit code ');
 	 }
   }
   if (eventCode === 8 && index !== 1) {
@@ -42,7 +41,6 @@ const countDown = setInterval(() => {
 		timer.innerHTML = 'Resend';
 		resendOTPBtn.style.color = '#0173b2';
 		resendOTPBtn.addEventListener('click', (el) => {
-			console.log(el);
 			fetch('/resend-otp', {
 				method: 'put'
 			});

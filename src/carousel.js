@@ -13,7 +13,6 @@ const getOrder = elem => {
 const moveRight = _ => {
   slides.forEach(function(slide) {
     order = getOrder(slide);
-    console.log(order);
     if (order < slides.length) {
       slide.style.order = order += 1;
     } else {

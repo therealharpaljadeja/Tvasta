@@ -2,8 +2,6 @@
 
 ## Tvastra App is an web app where patients can book appointments with doctors.
 
-## There will be timming issue in the app which i realised after deploying it. This is because of server location.
-
 ## [Click Here For Demo](https://tvastra-app.herokuapp.com)
 
 ## [LinkedIn Profile](https://www.linkedin.com/in/harpalsinhjadeja)
